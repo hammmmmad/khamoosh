@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>سرفراز خاموش | شعر و متن‌های سنگین</title>
+    
+    <!-- Fonts & Icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Three.js for 3D -->
+    <script type="importmap">
+        {
+            "imports": {
+                "three": "https://unpkg.com/three@0.128.0/build/three.module.js"
+            }
+        }
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', sans-serif;
+            background-color: #faf9f6;
+            color: #1e1e2a;
+            transition: background-color 0.3s, color 0.3s;
+            line-height: 1.6;
+        }
+
+        /* Dark Mode */
+        body.dark {
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+
+        body.dark .card {
+            background-color: #1e1e2a;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        body.dark nav {
+            background: rgba(18, 18, 24, 0.95);
+        }
+
+        body.dark footer {
+            background: #0a0a0f;
+        }
+
+        /* 3D Canvas */
+        #canvas-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+            pointer-events: none;
+            opacity: 0.15;
+        }
+        body.dark #canvas-container {
+            opacity: 0.25;
+        }
+
+        /* Content */
+        .content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* ===== LOGO + HEADER ===== */
+        .logo-area {
+            text-align: center;
+            padding: 40px 20px 20px;
+        }
+        .main-logo {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            padding: 15px 35px;
+            border-radius: 80px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.2);
+            margin-bottom: 20px;
+        }
+        .main-logo i {
+            font-size: 3rem;
+            color: white;
+            filter: drop-shadow(0 0 5px rgba(0,0,0,0.3));
+        }
+        .main-logo h1 {
+            font-size: 2rem;
+            color: white;
+            margin: 0;
+            letter-spacing: 1px;
+        }
+        .logo-tagline {
+            color: #888;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+        }
+
+        header h2 {
+            font-size: 2rem;
+            font-weight: 900;
+            margin-top: 20px;
+            background: linear-gradient(135deg, #8e2de2, #4a00e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.8;
+        }
+
+        /* ===== NAVBAR JAZZ ===== */
+        nav {
+            position: sticky;
+            top: 20px;
+            background: rgba(250, 249, 246, 0.9);
+            backdrop-filter: blur(15px);
+            z-index: 10;
+            border-radius: 60px;
+            margin: 20px auto;
+            width: fit-content;
+            padding: 8px 25px;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            flex-wrap: wrap;
+            transition: all 0.3s;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            border: 1px solid rgba(128,128,128,0.2);
+        }
+        body.dark nav {
+            background: rgba(18, 18, 24, 0.9);
+            border-color: rgba(255,255,255,0.05);
+        }
+        nav a {
+            text-decoration: none;
+            font-weight: 600;
+            color: inherit;
+            font-size: 1rem;
+            padding: 10px 5px;
+            transition: 0.2s;
+            position: relative;
+        }
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 0%;
+            height: 2px;
+            background: #8e2de2;
+            transition: 0.25s;
+        }
+        nav a:hover::after, nav a.active::after {
+            width: 100%;
+            left: 0;
+            right: auto;
+        }
+        nav a:hover, nav a.active {
+            color: #8e2de2;
+        }
+
+        /* Cards with individual icons */
+        .section {
+            display: none;
+            animation: fade 0.4s ease;
+        }
+        .section.active-section {
+            display: block;
+        }
+        @keyframes fade {
+            from { opacity: 0; transform: translateY(10px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        .card {
+            background: white;
+            border-radius: 28px;
+            padding: 25px;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            border: 1px solid rgba(0,0,0,0.03);
+        }
+        .card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0,0,0,0.1);
+        }
+        .card-icon {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            display: inline-block;
+            background: linear-gradient(135deg, #f5f0ff, #e9e0ff);
+            padding: 12px;
+            border-radius: 20px;
+            color: #8e2de2;
+        }
+        body.dark .card-icon {
+            background: #2a2a35;
+        }
+        .card h3 {
+            font-size: 1.6rem;
+            margin-bottom: 10px;
+        }
+        .card .poem-text {
+            font-style: normal;
+            line-height: 1.8;
+            margin-top: 15px;
+            border-right: 3px solid #8e2de2;
+            padding-right: 15px;
+        }
+
+        /* Contact Form */
+        .contact-form {
+            max-width: 600px;
+            margin: 40px auto;
+            background: rgba(255,255,255,0.05);
+            padding: 30px;
+            border-radius: 30px;
+        }
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            margin: 10px 0;
+            border-radius: 20px;
+            border: 1px solid #ccc;
+            background: inherit;
+            font-family: inherit;
+        }
+        button {
+            background: #8e2de2;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 40px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            background: #f1f0ea;
+            border-radius: 40px 40px 0 0;
+        }
+        .social-icons a {
+            color: inherit;
+            font-size: 1.8rem;
+            margin: 0 12px;
+            transition: 0.2s;
+            display: inline-block;
+        }
+        .social-icons a:hover {
+            color: #8e2de2;
+            transform: scale(1.1);
+        }
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 25px;
+            left: 25px;
+            background: #8e2de2;
+            color: white;
+            border: none;
+            border-radius: 50px;
+            padding: 12px 20px;
+            cursor: pointer;
+            font-weight: bold;
+            z-index: 99;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+
+        @media (max-width: 700px) {
+            .main-logo { padding: 10px 20px;}
+            .main-logo i { font-size: 2rem;}
+            .main-logo h1 { font-size: 1.3rem;}
+            nav { gap: 15px; padding: 6px 18px;}
+        }
+    </style>
+</head>
+<body>
+
+<div id="canvas-container"></div>
+
+<div class="content">
+    
+    <!-- Logo + Brand -->
+    <div class="logo-area">
+        <div class="main-logo">
+            <i class="fas fa-feather-alt"></i>
+            <h1>سرفراز خاموش</h1>
+            <i class="fas fa-moon"></i>
+        </div>
+        <div class="logo-tagline">آوای بلند سکوت</div>
+        <header>
+            <h2>شعر و متن‌های سنگین</h2>
+            <p>واژه‌هایی که از اعماق می‌آیند</p>
+        </header>
+    </div>
+
+    <!-- Stylish Nav Menu -->
+    <nav>
+        <a href="#" data-section="home" class="active">🏠 خانه</a>
+        <a href="#" data-section="poems">📜 شعرها</a>
+        <a href="#" data-section="heavytexts">⚡ متن‌های سنگین</a>
+        <a href="#" data-section="contact">📞 تماس با ما</a>
+    </nav>
+
+    <!-- HOME Section -->
+    <div id="home" class="section active-section">
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-pen-fancy"></i></div>
+                <h3>تازه‌ترین سروده</h3>
+                <div class="poem-text">«بی‌صدا فریاد زدم...<br> کوه‌ها لرزیدند، اما تو نشنیدی.»</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-hand-sparkles"></i></div>
+                <h3>حکایت سکوت</h3>
+                <div class="poem-text">سکوت من پر از فریادهاییست<br>که روزی دنیا را تکان خواهند داد.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-dragon"></i></div>
+                <h3>تاریخچه</h3>
+                <div class="poem-text">سرفراز خاموش، روایتگر شب‌های بی‌ستاره.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- POEMS Section (هر کارت با لوگوی مجزا) -->
+    <div id="poems" class="section">
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-feather"></i></div>
+                <h3>آخرین پرواز</h3>
+                <div class="poem-text">پر بگشا از قفس، ای مرغ شب‌های تار<br>تا که خورشید طلوعی دگر از افق دارد</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-moon"></i></div>
+                <h3>مهتاب تلخ</h3>
+                <div class="poem-text">ماه پشت ابر غم پنهان شد<br>و من در انتظار یک تبسم سنگی شدم</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-wind"></i></div>
+                <h3>آواز باد</h3>
+                <div class="poem-text">باد، نام تو را زمزمه می‌کند<br>اما من، در میان طوفان، تنها شده‌ام</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- HEAVY TEXTS Section (هر کدوم یه لوگوی غم‌انگیز یا سنگین) -->
+    <div id="heavytexts" class="section">
+        <div class="cards-grid">
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-skull"></i></div>
+                <h3>پوچی مطلق</h3>
+                <div class="poem-text">ما ایستاده‌ایم بر لبه‌ی هیچ‌انگاری... و آسمان فرو می‌ریزد ذره ذره.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-mask"></i></div>
+                <h3>نقاب سکوت</h3>
+                <div class="poem-text">همه حقیقت را پشت نقاب خنده پنهان کرده‌اند. من نقاب را کندم... هیچکس نماند.</div>
+            </div>
+            <div class="card">
+                <div class="card-icon"><i class="fas fa-fire"></i></div>
+                <h3>خاکستر کلمات</h3>
+                <div class="poem-text">سوختم در آتش حرف‌های نگفته... و تو از دودش هراسان گریختی.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- CONTACT Section -->
+    <div id="contact" class="section">
+        <div class="contact-form">
+            <h3 style="text-align:center;">تماس با سرفراز خاموش</h3>
+            <input type="text" placeholder="نام شما" id="name">
+            <input type="email" placeholder="ایمیل">
+            <textarea rows="4" placeholder="پیام شما..."></textarea>
+            <button>📨 ارسال پیام</button>
+        </div>
+    </div>
+
+    <!-- Footer with socials -->
+    <footer>
+        <div class="social-icons">
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-telegram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
+        <p style="margin-top:25px;">© 2025 سرفراز خاموش | تمامی محتواها تقدیم به آنهایی که در سکوت فریاد می‌زنند</p>
+    </footer>
+</div>
+
+<button class="dark-mode-toggle" id="darkModeBtn">🌙 دارک مود</button>
+
+<!-- Three.js Script -->
+<script type="module">
+    import * as THREE from 'three';
+
+    const container = document.getElementById('canvas-container');
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(0, 0, 8);
+    
+    const renderer = new THREE.WebGLRenderer({ alpha: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setClearColor(0x000000, 0);
+    container.appendChild(renderer.domElement);
+
+    // Floating particles geometry
+    const particlesGeometry = new THREE.BufferGeometry();
+    const particlesCount = 1200;
+    const posArray = new Float32Array(particlesCount * 3);
+    for(let i = 0; i < particlesCount; i++) {
+        posArray[i*3] = (Math.random() - 0.5) * 20;
+        posArray[i*3+1] = (Math.random() - 0.5) * 15;
+        posArray[i*3+2] = (Math.random() - 0.5) * 15 - 5;
+    }
+    particlesGeometry.setAttribute('position', new THREE.BufferAttribute(posArray, 3));
+    
+    const particlesMaterial = new THREE.PointsMaterial({
+        size: 0.06,
+        color: 0xaa66ff,
+        transparent: true,
+        opacity: 0.7,
+        blending: THREE.AdditiveBlending
+    });
+    const particlesMesh = new THREE.Points(particlesGeometry, particlesMaterial);
+    scene.add(particlesMesh);
+    
+    let time = 0;
+    function animate() {
+        requestAnimationFrame(animate);
+        time += 0.002;
+        particlesMesh.rotation.y = time * 0.2;
+        particlesMesh.rotation.x = Math.sin(time * 0.1) * 0.1;
+        renderer.render(scene, camera);
+    }
+    animate();
+    
+    window.addEventListener('resize', () => {
+        camera.aspect = window.innerWidth / window.innerHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+</script>
+
+<script>
+    // Dark Mode Toggle
+    const btn = document.getElementById('darkModeBtn');
+    btn.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        btn.innerHTML = document.body.classList.contains('dark') ? '☀️ لایت مود' : '🌙 دارک مود';
+    });
+
+    // Navigation menu with active class
+    const sections = ['home', 'poems', 'heavytexts', 'contact'];
+    const navLinks = document.querySelectorAll('nav a');
+    
+    function showSection(sectionId) {
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el) el.classList.remove('active-section');
+        });
+        document.getElementById(sectionId).classList.add('active-section');
+        
+        navLinks.forEach(link => {
+            link.classList.remove('active');
+            if(link.getAttribute('data-section') === sectionId) {
+                link.classList.add('active');
+            }
+        });
+    }
+    
+    navLinks.forEach(link => {
+        link.addEventListener('click', (e) => {
+            e.preventDefault();
+            const section = link.getAttribute('data-section');
+            if(section) showSection(section);
+        });
+    });
+    
+    // Contact dummy alert
+    document.querySelector('.contact-form button')?.addEventListener('click', () => {
+        alert('پیام شما دریافت شد. سرفراز خاموش در سکوت پاسخ خواهد داد.');
+    });
+</script>
+
+</body>
+      </html>
