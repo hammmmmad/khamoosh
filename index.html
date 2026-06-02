@@ -4,10 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>سرفراز خموش | اشعار کوتاه</title>
-    <!-- Font Awesome 6 (رایگان) -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
+        /* ===== فونت اختصاصی OTF برای لوگو ===== */
         @font-face {
             font-family: 'Ignogito';
             src: url('fonts/ignogito.otf') format('opentype');
@@ -34,7 +33,41 @@
             color: #eef2ff;
         }
 
-        /* هدر شیشه‌ای */
+        /* ===== فیلترهای هوشمند برای آیکون‌ها ===== */
+        /* روز: همه آیکون‌های تکرنگ (منو، همبرگر، شبکه‌های اجتماعی، زبان، دکمه‌های کارت) مشکی */
+        body:not(.dark) .nav-menu a img,
+        body:not(.dark) .hamburger img,
+        body:not(.dark) .social-icons a img,
+        body:not(.dark) .lang-btn img,
+        body:not(.dark) .card-actions button img {
+            filter: brightness(0) contrast(1);
+        }
+
+        /* شب: همان آیکون‌ها سفید */
+        body.dark .nav-menu a img,
+        body.dark .hamburger img,
+        body.dark .social-icons a img,
+        body.dark .lang-btn img,
+        body.dark .card-actions button img {
+            filter: brightness(0) invert(1);
+        }
+
+        /* موارد استثنا (هیچ‌گاه فیلتر نشوند) */
+        body.dark .logo-img,
+        body.dark .poem-logo img,
+        body.dark .theme-btn img,
+        body.dark .lang-option img,
+        body:not(.dark) .lang-option img {
+            filter: none;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+
+        /* هدر شیشه‌ای چسبنده */
         .glass-header {
             position: sticky;
             top: 20px;
@@ -96,11 +129,10 @@
             backdrop-filter: blur(8px);
             align-items: center;
             justify-content: center;
-            font-size: 1.4rem;
-            color: inherit;
         }
-        body.dark .hamburger {
-            background: rgba(255, 255, 255, 0.15);
+        .hamburger img {
+            width: 24px;
+            height: 24px;
         }
 
         .nav-menu {
@@ -124,9 +156,9 @@
         .nav-menu a:hover {
             background: rgba(59, 130, 246, 0.2);
         }
-        .nav-menu a i {
-            width: 1.2rem;
-            font-size: 1rem;
+        .nav-menu a img {
+            width: 20px;
+            height: 20px;
         }
 
         .nav-actions {
@@ -145,9 +177,12 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            color: inherit;
         }
+        .theme-btn img {
+            width: 28px;
+            height: 28px;
+        }
+
         .lang-selector {
             position: relative;
         }
@@ -165,6 +200,10 @@
             font-family: inherit;
             font-size: 0.9rem;
             color: inherit;
+        }
+        .lang-btn img {
+            width: 20px;
+            height: 20px;
         }
         .lang-dropdown {
             position: absolute;
@@ -194,11 +233,16 @@
             gap: 10px;
             transition: 0.2s;
         }
+        .lang-option img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
         .lang-option:hover {
             background: rgba(59, 130, 246, 0.2);
         }
 
-        /* کارت‌ها */
+        /* کارت‌های شعر */
         .poems-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -216,6 +260,7 @@
             overflow: hidden;
             color: #f0f0f0;
         }
+        /* نویز درشت */
         .poem-card::before {
             content: "";
             position: absolute;
@@ -257,13 +302,15 @@
             color: #ddd;
         }
         .poem-text {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             line-height: 1.8;
             text-align: center;
             white-space: pre-line;
             color: #e0e0e0;
             margin-bottom: 1rem;
         }
+
+        /* دکمه‌های کارت */
         .card-actions {
             display: flex;
             justify-content: center;
@@ -290,6 +337,10 @@
             background: rgba(139, 92, 246, 0.5);
             transform: scale(1.05);
         }
+        .card-actions button img {
+            width: 18px;
+            height: 18px;
+        }
         .like-btn.liked {
             background: rgba(239, 68, 68, 0.5);
         }
@@ -298,7 +349,7 @@
             margin-left: 4px;
         }
 
-        /* فوتر */
+        /* فوتر شیشه‌ای */
         .glass-footer {
             margin-top: 3rem;
             background: rgba(231, 231, 231, 0.35);
@@ -333,23 +384,31 @@
             justify-content: center;
             transition: 0.2s;
             text-decoration: none;
-            font-size: 1.4rem;
-            color: inherit;
+        }
+        .social-icons a img {
+            width: 24px;
+            height: 24px;
         }
         .social-icons a:hover {
             background: #8b5cf6;
             transform: translateY(-3px);
-            color: white;
         }
         .copyright {
             font-size: 0.75rem;
             opacity: 0.7;
         }
 
+        /* موبایل */
         @media (max-width: 768px) {
-            .container { padding: 0.8rem; }
-            .navbar { position: relative; }
-            .hamburger { display: flex; }
+            .container {
+                padding: 0.8rem;
+            }
+            .navbar {
+                position: relative;
+            }
+            .hamburger {
+                display: flex;
+            }
             .nav-menu {
                 display: none;
                 position: absolute;
@@ -370,14 +429,35 @@
             body.dark .nav-menu {
                 background: rgba(0, 0, 0, 0.95);
                 border-color: rgba(255, 255, 255, 0.2);
+                color: white;
             }
-            .nav-menu.open { display: flex; }
-            .nav-menu a { justify-content: center; padding: 0.7rem; }
-            .lang-btn span:not(.lang-text) { display: none; }
-            .poems-grid { grid-template-columns: 1fr; }
-            .footer-content { flex-direction: column; text-align: center; }
+            body.dark .nav-menu a img {
+                filter: brightness(0) invert(1);
+            }
+            .nav-menu.open {
+                display: flex;
+            }
+            .nav-menu a {
+                justify-content: center;
+                padding: 0.7rem;
+            }
+            .lang-btn span:not(.lang-text) {
+                display: none;
+            }
+            .lang-btn {
+                padding: 0 0.9rem;
+            }
+            .poems-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
         }
 
+        /* پیام toast */
         .toast-msg {
             position: fixed;
             bottom: 30px;
@@ -409,23 +489,27 @@
                     <p class="site-tag" data-fa="شعرهای کوتاه" data-en="Short Poems">شعرهای کوتاه</p>
                 </div>
             </div>
-            <button class="hamburger" id="hamburgerBtn"><i class="fas fa-bars"></i></button>
+            <button class="hamburger" id="hamburgerBtn">
+                <img src="Images/menu.png" alt="منو" onerror="this.src='https://placehold.co/24x24?text=☰'">
+            </button>
             <div class="nav-menu" id="navMenu">
-                <a href="#" data-fa="خانه" data-en="Home"><i class="fas fa-home"></i><span>خانه</span></a>
-                <a href="#" data-fa="داستان‌ها" data-en="Stories"><i class="fas fa-book-open"></i><span>داستان‌ها</span></a>
-                <a href="#" data-fa="اشعار" data-en="Poems"><i class="fas fa-pen-fancy"></i><span>اشعار</span></a>
-                <a href="#" data-fa="اخبار فناوری" data-en="Tech News"><i class="fas fa-microchip"></i><span>اخبار فناوری</span></a>
-                <a href="#" data-fa="درباره" data-en="About"><i class="fas fa-user"></i><span>درباره</span></a>
+                <a href="#" data-fa="خانه" data-en="Home"><img src="Images/home.png" alt="خانه"><span>خانه</span></a>
+                <a href="#" data-fa="داستان‌ها" data-en="Stories"><img src="Images/story.png" alt="داستان"><span>داستان‌ها</span></a>
+                <a href="#" data-fa="اشعار" data-en="Poems"><img src="Images/poetry.png" alt="اشعار"><span>اشعار</span></a>
+                <a href="#" data-fa="اخبار فناوری" data-en="Tech News"><img src="Images/tech.png" alt="فناوری"><span>اخبار فناوری</span></a>
+                <a href="#" data-fa="درباره" data-en="About"><img src="Images/about.png" alt="درباره"><span>درباره</span></a>
             </div>
             <div class="nav-actions">
                 <div class="lang-selector" id="langSelector">
-                    <button class="lang-btn" id="langBtn"><i class="fas fa-globe"></i><span id="currentLangLabel">فارسی</span><span class="lang-text">▼</span></button>
+                    <button class="lang-btn" id="langBtn">
+                        <img src="Images/golo.png" alt="زبان"><span id="currentLangLabel">فارسی</span><span class="lang-text">▼</span>
+                    </button>
                     <div class="lang-dropdown">
-                        <div class="lang-option" data-lang="fa"><span>🇮🇷</span> فارسی</div>
-                        <div class="lang-option" data-lang="en"><span>🇬🇧</span> English</div>
+                        <div class="lang-option" data-lang="fa"><img src="Images/afghan.png" alt="فارسی"><span>فارسی</span></div>
+                        <div class="lang-option" data-lang="en"><img src="Images/usa.png" alt="English"><span>English</span></div>
                     </div>
                 </div>
-                <button class="theme-btn" id="themeBtn"><i class="fas fa-moon" id="themeIcon"></i></button>
+                <button class="theme-btn" id="themeBtn"><img id="themeIcon" src="Images/night.png" alt="تم شب/روز"></button>
             </div>
         </div>
     </header>
@@ -436,18 +520,19 @@
         <div class="footer-content">
             <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
             <div class="social-icons">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-pinterest-p"></i></a>
-                <a href="#"><i class="fab fa-behance"></i></a>
-                <a href="#"><i class="fab fa-whatsapp"></i></a>
+                <a href="#"><img src="Images/facebook.png" alt="فیسبوک"></a>
+                <a href="#"><img src="Images/instagram.png" alt="اینستاگرام"></a>
+                <a href="#"><img src="Images/linkedin.png" alt="لینکدین"></a>
+                <a href="#"><img src="Images/pinterest.png" alt="پینترست"></a>
+                <a href="#"><img src="Images/ben.png" alt="بهنس"></a>
+                <a href="#"><img src="Images/whatsapp (2).png" alt="واتساپ"></a>
             </div>
         </div>
     </footer>
 </div>
 
 <script>
+    // اشعار (با لوگوی یکسان)
     const poemsList = [
         { id: 0, logo: "Images/Khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
         { id: 1, logo: "Images/Khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
@@ -516,13 +601,16 @@
                 <div class="poem-text">${text.replace(/\n/g, '<br>')}</div>
                 <div class="card-actions">
                     <button class="copy-btn" data-text="${text.replace(/"/g, '&quot;')}">
-                        <i class="fas fa-copy"></i> <span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span>
+                        <img src="Images/copy.png" alt="کپی" onerror="this.src='https://placehold.co/18x18?text=📋'">
+                        <span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span>
                     </button>
                     <button class="share-btn" data-text="${text.replace(/"/g, '&quot;')}" data-type="${type.replace(/"/g, '&quot;')}">
-                        <i class="fas fa-share-alt"></i> <span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span>
+                        <img src="Images/share.png" alt="اشتراک" onerror="this.src='https://placehold.co/18x18?text=📤'">
+                        <span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span>
                     </button>
                     <button class="like-btn ${liked ? 'liked' : ''}">
-                        <i class="fas fa-heart"></i> <span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span>
+                        <img src="Images/like.png" alt="لایک" onerror="this.src='https://placehold.co/18x18?text=❤️'">
+                        <span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span>
                         <span class="like-count">${likes}</span>
                     </button>
                 </div>
@@ -560,7 +648,9 @@
             }
         });
         const tag = document.querySelector('.site-tag');
-        if (tag) tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+        if (tag) {
+            tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+        }
         const footerCopy = document.getElementById('footerCopy');
         if (footerCopy) {
             footerCopy.innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
@@ -582,12 +672,10 @@
         const themeIcon = document.getElementById('themeIcon');
         if (saved === 'dark') {
             body.classList.add('dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.src = 'Images/day.png';
         } else {
             body.classList.remove('dark');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+            themeIcon.src = 'Images/night.png';
         }
     }
 
@@ -596,13 +684,11 @@
         const themeIcon = document.getElementById('themeIcon');
         if (body.classList.contains('dark')) {
             body.classList.remove('dark');
-            themeIcon.classList.remove('fa-sun');
-            themeIcon.classList.add('fa-moon');
+            themeIcon.src = 'Images/night.png';
             localStorage.setItem('sarfraz_theme', 'light');
         } else {
             body.classList.add('dark');
-            themeIcon.classList.remove('fa-moon');
-            themeIcon.classList.add('fa-sun');
+            themeIcon.src = 'Images/day.png';
             localStorage.setItem('sarfraz_theme', 'dark');
         }
     }
