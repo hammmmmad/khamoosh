@@ -61,14 +61,6 @@
             filter: none;
         }
 
-        body.dark .theme-btn img {
-            color: white;
-        }
-
-        body.dark .theme-btn img {
-            filter: invert(1)
-        }
-
         .container {
             max-width: 1300px;
             margin: 0 auto;
@@ -334,7 +326,7 @@
         }
 
         .poem-text {
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             line-height: 1.8;
             text-align: center;
             white-space: pre-line;
@@ -505,9 +497,17 @@
                 gap: 1.5rem;
             }
 
+            /* اصلاح فوتر در موبایل: آیکون‌ها در یک ردیف افقی با فاصله منظم */
             .footer-content {
                 flex-direction: column;
                 text-align: center;
+            }
+
+            .social-icons {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.8rem;
             }
         }
 
@@ -552,7 +552,7 @@
                         onerror="this.src='https://placehold.co/70x70?text=SK'">
                     <div class="site-name">
                         <h1>Sarfraz Khamoosh</h1>
-                        <p class="site-tag" data-fa="شعرهای کوتاه" data-en="Short Poems">شعرهای کوتاه</p>
+                        <p class="site-tag" data-fa="KHAMOOSH" data-en="KHAMOOSH">شعرهای کوتاه</p>
                     </div>
                 </div>
                 <button class="hamburger" id="hamburgerBtn">
@@ -758,11 +758,11 @@
             const themeIcon = document.getElementById('themeIcon');
             if (body.classList.contains('dark')) {
                 body.classList.remove('dark');
-                themeIcon.src = 'images/day.png';
+                themeIcon.src = 'images/night.png';
                 localStorage.setItem('sarfraz_theme', 'light');
             } else {
                 body.classList.add('dark');
-                themeIcon.src = 'images/night.png';
+                themeIcon.src = 'images/day.png';
                 localStorage.setItem('sarfraz_theme', 'dark');
             }
         }
