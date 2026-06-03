@@ -404,6 +404,7 @@
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
+            align-items: center;
         }
 
         .social-icons a {
@@ -426,6 +427,29 @@
         .social-icons a:hover {
             background: #8b5cf6;
             transform: translateY(-3px);
+        }
+
+        /* استایل آیکون CODM */
+        .codm-icon {
+            background: rgba(255, 255, 250, 0.3);
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            cursor: pointer;
+        }
+
+        .codm-icon:hover {
+            background: #ffffff;
+            transform: translateY(-3px);
+        }
+
+        .codm-icon img {
+            width: 35px;
+            height: 35px;
         }
 
         .copyright {
@@ -497,7 +521,6 @@
                 gap: 1.5rem;
             }
 
-            /* اصلاح فوتر در موبایل: آیکون‌ها در یک ردیف افقی با فاصله منظم */
             .footer-content {
                 flex-direction: column;
                 text-align: center;
@@ -540,6 +563,70 @@
                 visibility: hidden;
             }
         }
+
+        /* مودال شیشه‌ای */
+        .glass-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glass-modal-content {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
+        body.dark .glass-modal-content {
+            background: rgba(0, 0, 0, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #eef2ff;
+        }
+
+        .glass-modal-content code {
+            display: inline-block;
+            background: #2d3a4e;
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin: 10px 0;
+            direction: ltr;
+            font-size: 1rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .modal-buttons button {
+            background: #8b5cf6;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .modal-buttons button:last-child {
+            background: rgba(255, 255, 255, 0.2);
+        }
     </style>
 </head>
 
@@ -561,14 +648,14 @@
                 <div class="nav-menu" id="navMenu">
                     <a href="#" data-fa="خانه" data-en="Home"><img src="images/home.png"
                             alt="خانه"><span>خانه</span></a>
-                    <a href="#" data-fa="داستان‌ها" data-en="Stories"><img src="images/story.png"
-                            alt="داستان"><span>داستان‌ها</span></a>
+
+                    <a href="#" data-fa="درباره" data-en="About"><img src="images/about.png"
+                            alt="درباره"><span>درباره</span></a>
                     <a href="#" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png"
                             alt="اشعار"><span>اشعار</span></a>
                     <a href="#" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png"
                             alt="فناوری"><span>اخبار فناوری</span></a>
-                    <a href="#" data-fa="درباره" data-en="About"><img src="images/about.png"
-                            alt="درباره"><span>درباره</span></a>
+
                 </div>
                 <div class="nav-actions">
                     <div class="lang-selector" id="langSelector">
@@ -595,15 +682,59 @@
             <div class="footer-content">
                 <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
                 <div class="social-icons">
-                    <a href="#"><img src="images/facebook.png" alt="فیسبوک"></a>
-                    <a href="#"><img src="images/instagram.png" alt="اینستاگرام"></a>
-                    <a href="#"><img src="images/linkedin.png" alt="لینکدین"></a>
-                    <a href="#"><img src="images/pinterest.png" alt="پینترست"></a>
-                    <a href="#"><img src="images/ben.png" alt="بهنس"></a>
-                    <a href="#"><img src="images/whatsapp.png" alt="واتساپ"></a>
+                    <a href="
+https://www.facebook.com/profile.php?id=61590217606266
+"><img src="images/facebook.png" alt="فیسبوک"></a>
+                    <a href="
+https://www.instagram.com/admin_khamoosh?igsh=MXFoazVocHd0NnFzMw
+==
+"><img src="images/instagram.png" alt="اینستاگرام"></a>
+                    <a href="
+https://www.linkedin.com/in/sarfraz-khamoosh-766277228
+"><img src="images/linkedin.png" alt="لینکدین"></a>
+                    <a href="
+https://pin.it/WY1aeKX2a
+"><img src="images/pinterest.png" alt="پینترست"></a>
+                    <a href="
+https://www.behance.net/merlinsarfraz
+"><img src="images/ben.png" alt="بهنس"></a>
+                    <a href="
+https://wa.me/qr/E2RLH5T72CSFE1
+"><img src="images/whatsapp.png" alt="واتساپ"></a>
+                    <a href="
+https://www.tiktok.com/@sarfraz_khamoosh?_r=1&_t=ZS-96uByf6HU9s
+
+"><img src="images/tik.png" alt="تیک تاک"></a>
+                    <a href="
+https://khamoooooosh675.substack.com
+"><img src="images/substack.png" alt="ساب‌استک"></a>
+                    <a href="
+https://github.com/hammmmmad
+"><img src="images/github.png" alt="گیت‌هاب"></a>
+                    <a href="
+https://www.threads.com/@sarfraz_khamoosh23
+"><img src="images/threads.png" alt="تردز"></a>
+                    <!-- آیکون Call of Duty -->
+                    <div class="codm-icon" id="codmBtn">
+                        <img src="images/call of.png" alt="CODM"
+                            onerror="this.src='https://placehold.co/24x24?text=🎮'">
+                    </div>
                 </div>
             </div>
         </footer>
+    </div>
+
+    <!-- مودال شیشه‌ای UID -->
+    <div id="uidModal" class="glass-modal">
+        <div class="glass-modal-content">
+            <h3 style="font-family: Vazirmatn; margin-bottom: 1rem;">🎮 کال‌آف دیوتی موبایل</h3>
+            <p>UID من :</p>
+            <code>7500139701825634305</code>
+            <div class="modal-buttons">
+                <button id="copyUidBtn">📋 کپی UID</button>
+                <button id="closeModalBtn">بستن</button>
+            </div>
+        </div>
     </div>
 
     <script>
@@ -804,6 +935,25 @@
                 });
             });
         }
+
+        // مودال CODM
+        const modal = document.getElementById('uidModal');
+        const codmBtn = document.getElementById('codmBtn');
+        const copyUidBtn = document.getElementById('copyUidBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        function openModal() { modal.style.display = 'flex'; }
+        function closeModal() { modal.style.display = 'none'; }
+        function copyUid() {
+            navigator.clipboard.writeText('7500139701825634305');
+            showToast(currentLang === 'fa' ? '✅ UID کپی شد!' : '✅ UID copied!');
+            closeModal();
+        }
+
+        if (codmBtn) codmBtn.addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+        if (copyUidBtn) copyUidBtn.addEventListener('click', copyUid);
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
 
         document.addEventListener('DOMContentLoaded', () => {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
