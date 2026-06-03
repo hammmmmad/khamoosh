@@ -541,7 +541,7 @@
 </head>
 
 <body>
-    <div class="container">
+    <<<<<<< HEAD <div class="container">
         <header class="glass-header">
             <div class="navbar">
                 <div class="logo-area">
@@ -599,74 +599,167 @@
                     <a href="#"><img src="images/ben.png" alt="بهنس"></a>
                     <a href="#"><img src="images/whatsapp.png" alt="واتساپ"></a>
                 </div>
-            </div>
-        </footer>
-    </div>
+                =======
+                <div class="container">
+                    <header class="glass-header">
+                        <div class="navbar">
+                            <div class="logo-area">
+                                <img class="logo-img" src="images/Khamoosh.jpg" alt="لوگو"
+                                    onerror="this.src='https://placehold.co/70x70?text=SK'">
+                                <div class="site-name">
+                                    <h1>Sarfraz Khamoosh</h1>
+                                    <p class="site-tag" data-fa="شعرهای کوتاه" data-en="Short Poems">شعرهای کوتاه</p>
+                                </div>
+                            </div>
+                            <button class="hamburger" id="hamburgerBtn">
+                                <img src="images/menu.png" alt="منو"
+                                    onerror="this.src='https://placehold.co/24x24?text=☰'">
+                            </button>
+                            <div class="nav-menu" id="navMenu">
+                                <a href="#" data-fa="خانه" data-en="Home"><img src="images/home.png"
+                                        alt="خانه"><span>خانه</span></a>
+                                <a href="#" data-fa="داستان‌ها" data-en="Stories"><img src="images/story.png"
+                                        alt="داستان"><span>داستان‌ها</span></a>
+                                <a href="#" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png"
+                                        alt="اشعار"><span>اشعار</span></a>
+                                <a href="#" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png"
+                                        alt="فناوری"><span>اخبار فناوری</span></a>
+                                <a href="#" data-fa="درباره" data-en="About"><img src="images/about.png"
+                                        alt="درباره"><span>درباره</span></a>
+                                >>>>>>> af1f937230168df23719bb40dd7e153a1bb9bc1d
+                            </div>
+                            <div class="nav-actions">
+                                <div class="lang-selector" id="langSelector">
+                                    <button class="lang-btn" id="langBtn">
+                                        <img src="images/golo.png" alt="زبان"><span
+                                            id="currentLangLabel">فارسی</span><span class="lang-text">▼</span>
+                                    </button>
+                                    <div class="lang-dropdown">
+                                        <div class="lang-option" data-lang="fa"><img src="images/afghan.png"
+                                                alt="فارسی"><span>فارسی</span></div>
+                                        <div class="lang-option" data-lang="en"><img src="images/usa.png"
+                                                alt="English"><span>English</span></div>
+                                    </div>
+                                </div>
+                                <button class="theme-btn" id="themeBtn"><img id="themeIcon" src="images/night.png"
+                                        alt="تم شب/روز"></button>
+                            </div>
+                        </div>
+                    </header>
 
-    <script>
-        // اشعار (با لوگوی یکسان)
-        const poemsList = [
-            { id: 0, logo: "images/khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
-            { id: 1, logo: "images/khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
-            { id: 2, logo: "images/khamoosh.jpg", typeFa: "شعر کلاسیک", typeEn: "Classical Poem", textFa: "ای درخت کهن، برگ و بارت کو؟\nروزگاری تو سایه گستری\nاکنون اما، خشکیده شاخه‌هایت\nو خزان زودرس، مهمان سفره‌ات", textEn: "O ancient tree, where are your leaves and fruits?\nOnce you spread shade\nBut now your branches are withered\nAnd premature autumn is your guest" },
-            { id: 3, logo: "images/khamoosh.jpg", typeFa: "غزل مدرن", typeEn: "Modern Ghazal", textFa: "عشق را با سرب نوشتم بر دیوار\nتا کسی نتواند پاک کند\nبا باران که شستش\nسنگین‌تر می‌شود", textEn: "I wrote love with lead on the wall\nSo no one could erase it\nWhen washed by rain\nIt becomes heavier" },
-            { id: 4, logo: "images/khamoosh.jpg", typeFa: "شعر فلسفی", typeEn: "Philosophical Poetry", textFa: "بین دو تا سکوت\nلحظه‌ای هست\nکه تمام هستی در آن خلاصه می‌شود\nلحظه‌ای که می‌فهمی\nهر چه داشتی\nبادی بود که گذشت", textEn: "Between two silences\nThere is a moment\nIn which all existence is summarized\nA moment when you realize\nEverything you had\nWas just wind that passed" },
-            { id: 5, logo: "images/khamoosh.jpg", typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
-        ];
+                    <<<<<<< HEAD <script>
+                        // اشعار (با لوگوی یکسان)
+                        const poemsList = [
+                        { id: 0, logo: "images/khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر
+                        تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط
+                        تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage
+                        of memories\nAnd I am left with a question whose answer\nOnly you know" },
+                        { id: 1, logo: "images/khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa:
+                        "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A
+                        bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no
+                        longer blue" },
+                        { id: 2, logo: "images/khamoosh.jpg", typeFa: "شعر کلاسیک", typeEn: "Classical Poem", textFa:
+                        "ای درخت کهن، برگ و بارت کو؟\nروزگاری تو سایه گستری\nاکنون اما، خشکیده شاخه‌هایت\nو خزان زودرس،
+                        مهمان سفره‌ات", textEn: "O ancient tree, where are your leaves and fruits?\nOnce you spread
+                        shade\nBut now your branches are withered\nAnd premature autumn is your guest" },
+                        { id: 3, logo: "images/khamoosh.jpg", typeFa: "غزل مدرن", typeEn: "Modern Ghazal", textFa: "عشق
+                        را با سرب نوشتم بر دیوار\nتا کسی نتواند پاک کند\nبا باران که شستش\nسنگین‌تر می‌شود", textEn: "I
+                        wrote love with lead on the wall\nSo no one could erase it\nWhen washed by rain\nIt becomes
+                        heavier" },
+                        { id: 4, logo: "images/khamoosh.jpg", typeFa: "شعر فلسفی", typeEn: "Philosophical Poetry",
+                        textFa: "بین دو تا سکوت\nلحظه‌ای هست\nکه تمام هستی در آن خلاصه می‌شود\nلحظه‌ای که می‌فهمی\nهر چه
+                        داشتی\nبادی بود که گذشت", textEn: "Between two silences\nThere is a moment\nIn which all
+                        existence is summarized\nA moment when you realize\nEverything you had\nWas just wind that
+                        passed" },
+                        { id: 5, logo: "images/khamoosh.jpg", typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai",
+                        textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام
+                        شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI
+                        am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until
+                        dawn\nFor one smile of yours\nI am not cheap" }
+                        ];
+                        =======
+                        <div class="poems-grid" id="poemsGrid"></div>
+                        >>>>>>> af1f937230168df23719bb40dd7e153a1bb9bc1d
 
-        let currentLang = 'fa';
-        let likesData = JSON.parse(localStorage.getItem('poem_likes')) || {};
+                        <footer class="glass-footer">
+                            <div class="footer-content">
+                                <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
+                                <div class="social-icons">
+                                    <a href="#"><img src="images/facebook.png" alt="فیسبوک"></a>
+                                    <a href="#"><img src="images/instagram.png" alt="اینستاگرام"></a>
+                                    <a href="#"><img src="images/linkedin.png" alt="لینکدین"></a>
+                                    <a href="#"><img src="images/pinterest.png" alt="پینترست"></a>
+                                    <a href="#"><img src="images/ben.png" alt="بهنس"></a>
+                                    <a href="#"><img src="images/whatsapp.png" alt="واتساپ"></a>
+                                </div>
+                            </div>
+                        </footer>
+                </div>
 
-        function showToast(msg) {
-            let existing = document.querySelector('.toast-msg');
-            if (existing) existing.remove();
-            let toast = document.createElement('div');
-            toast.className = 'toast-msg';
-            toast.textContent = msg;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2000);
-        }
+                <script>
+                    // اشعار (با لوگوی یکسان)
+                    const poemsList = [
+                        { id: 0, logo: "images/Khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
+                        { id: 1, logo: "images/Khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
+                        { id: 2, logo: "images/Khamoosh.jpg", typeFa: "شعر کلاسیک", typeEn: "Classical Poem", textFa: "ای درخت کهن، برگ و بارت کو؟\nروزگاری تو سایه گستری\nاکنون اما، خشکیده شاخه‌هایت\nو خزان زودرس، مهمان سفره‌ات", textEn: "O ancient tree, where are your leaves and fruits?\nOnce you spread shade\nBut now your branches are withered\nAnd premature autumn is your guest" },
+                        { id: 3, logo: "images/Khamoosh.jpg", typeFa: "غزل مدرن", typeEn: "Modern Ghazal", textFa: "عشق را با سرب نوشتم بر دیوار\nتا کسی نتواند پاک کند\nبا باران که شستش\nسنگین‌تر می‌شود", textEn: "I wrote love with lead on the wall\nSo no one could erase it\nWhen washed by rain\nIt becomes heavier" },
+                        { id: 4, logo: "images/Khamoosh.jpg", typeFa: "شعر فلسفی", typeEn: "Philosophical Poetry", textFa: "بین دو تا سکوت\nلحظه‌ای هست\nکه تمام هستی در آن خلاصه می‌شود\nلحظه‌ای که می‌فهمی\nهر چه داشتی\nبادی بود که گذشت", textEn: "Between two silences\nThere is a moment\nIn which all existence is summarized\nA moment when you realize\nEverything you had\nWas just wind that passed" },
+                        { id: 5, logo: "images/Khamoosh.jpg", typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
+                    ];
 
-        function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(currentLang === 'fa' ? '✅ متن کپی شد!' : '✅ Text copied!');
-            }).catch(() => {
-                showToast(currentLang === 'fa' ? '❌ خطا در کپی' : '❌ Copy failed');
-            });
-        }
+                    let currentLang = 'fa';
+                    let likesData = JSON.parse(localStorage.getItem('poem_likes')) || {};
 
-        function sharePoem(text, type) {
-            const shareText = `${type}\n\n${text}`;
-            if (navigator.share) {
-                navigator.share({ title: 'اشعار سرفراز خموش', text: shareText }).catch(() => { });
-            } else {
-                copyText(shareText);
-                showToast(currentLang === 'fa' ? 'متن برای اشتراک کپی شد' : 'Text copied for sharing');
-            }
-        }
+                    function showToast(msg) {
+                        let existing = document.querySelector('.toast-msg');
+                        if (existing) existing.remove();
+                        let toast = document.createElement('div');
+                        toast.className = 'toast-msg';
+                        toast.textContent = msg;
+                        document.body.appendChild(toast);
+                        setTimeout(() => toast.remove(), 2000);
+                    }
 
-        function likePoem(id, btn, countSpan) {
-            if (!likesData[id]) likesData[id] = 0;
-            if (btn.classList.contains('liked')) {
-                likesData[id]--;
-                btn.classList.remove('liked');
-            } else {
-                likesData[id]++;
-                btn.classList.add('liked');
-            }
-            countSpan.textContent = likesData[id];
-            localStorage.setItem('poem_likes', JSON.stringify(likesData));
-        }
+                    function copyText(text) {
+                        navigator.clipboard.writeText(text).then(() => {
+                            showToast(currentLang === 'fa' ? '✅ متن کپی شد!' : '✅ Text copied!');
+                        }).catch(() => {
+                            showToast(currentLang === 'fa' ? '❌ خطا در کپی' : '❌ Copy failed');
+                        });
+                    }
 
-        function renderPoems() {
-            const grid = document.getElementById('poemsGrid');
-            if (!grid) return;
-            grid.innerHTML = poemsList.map(p => {
-                const text = currentLang === 'fa' ? p.textFa : p.textEn;
-                const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
-                const likes = likesData[p.id] || 0;
-                const liked = likesData[p.id] > 0;
-                return `
+                    function sharePoem(text, type) {
+                        const shareText = `${type}\n\n${text}`;
+                        if (navigator.share) {
+                            navigator.share({ title: 'اشعار سرفراز خموش', text: shareText }).catch(() => { });
+                        } else {
+                            copyText(shareText);
+                            showToast(currentLang === 'fa' ? 'متن برای اشتراک کپی شد' : 'Text copied for sharing');
+                        }
+                    }
+
+                    function likePoem(id, btn, countSpan) {
+                        if (!likesData[id]) likesData[id] = 0;
+                        if (btn.classList.contains('liked')) {
+                            likesData[id]--;
+                            btn.classList.remove('liked');
+                        } else {
+                            likesData[id]++;
+                            btn.classList.add('liked');
+                        }
+                        countSpan.textContent = likesData[id];
+                        localStorage.setItem('poem_likes', JSON.stringify(likesData));
+                    }
+
+                    function renderPoems() {
+                        const grid = document.getElementById('poemsGrid');
+                        if (!grid) return;
+                        grid.innerHTML = poemsList.map(p => {
+                            const text = currentLang === 'fa' ? p.textFa : p.textEn;
+                            const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
+                            const likes = likesData[p.id] || 0;
+                            const liked = likesData[p.id] > 0;
+                            return `
             <div class="poem-card" data-id="${p.id}">
                 <div class="poem-logo"><img src="${p.logo}" alt="لوگو" onerror="this.src='https://placehold.co/70x70?text=🎭'"></div>
                 <div class="poem-type">${type}</div>
@@ -687,140 +780,237 @@
                     </button>
                 </div>
             </div>`;
-            }).join('');
+                        }).join('');
 
-            document.querySelectorAll('.copy-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    copyText(btn.getAttribute('data-text'));
-                });
-            });
-            document.querySelectorAll('.share-btn').forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    sharePoem(btn.getAttribute('data-text'), btn.getAttribute('data-type'));
-                });
-            });
-            document.querySelectorAll('.like-btn').forEach(btn => {
-                const card = btn.closest('.poem-card');
-                const id = parseInt(card.getAttribute('data-id'));
-                const countSpan = btn.querySelector('.like-count');
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    likePoem(id, btn, countSpan);
-                });
-            });
-        }
+                        document.querySelectorAll('.copy-btn').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                copyText(btn.getAttribute('data-text'));
+                            });
+                        });
+                        document.querySelectorAll('.share-btn').forEach(btn => {
+                            btn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                sharePoem(btn.getAttribute('data-text'), btn.getAttribute('data-type'));
+                            });
+                        });
+                        document.querySelectorAll('.like-btn').forEach(btn => {
+                            const card = btn.closest('.poem-card');
+                            const id = parseInt(card.getAttribute('data-id'));
+                            const countSpan = btn.querySelector('.like-count');
+                            btn.addEventListener('click', (e) => {
+                                e.stopPropagation();
+                                likePoem(id, btn, countSpan);
+                            });
+                        });
+                    }
 
-        function updateTexts() {
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                const span = link.querySelector('span');
-                if (span) {
-                    span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
-                }
-            });
-            const tag = document.querySelector('.site-tag');
-            if (tag) {
-                tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
-            }
-            const footerCopy = document.getElementById('footerCopy');
-            if (footerCopy) {
-                footerCopy.innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
-            }
-            const langLabel = document.getElementById('currentLangLabel');
-            if (langLabel) langLabel.innerText = currentLang === 'fa' ? 'فارسی' : 'English';
-            renderPoems();
-        }
+                    function updateTexts() {
+                        document.querySelectorAll('.nav-menu a').forEach(link => {
+                            const span = link.querySelector('span');
+                            if (span) {
+                                span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
+                            }
+                        });
+                        const tag = document.querySelector('.site-tag');
+                        if (tag) {
+                            tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+                        }
+                        const footerCopy = document.getElementById('footerCopy');
+                        if (footerCopy) {
+                            footerCopy.innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
+                        }
+                        const langLabel = document.getElementById('currentLangLabel');
+                        if (langLabel) langLabel.innerText = currentLang === 'fa' ? 'فارسی' : 'English';
+                        renderPoems();
+                    }
 
-        function setLanguage(lang) {
-            currentLang = lang;
-            updateTexts();
-            localStorage.setItem('sarfraz_lang', lang);
-        }
+                    function setLanguage(lang) {
+                        currentLang = lang;
+                        updateTexts();
+                        localStorage.setItem('sarfraz_lang', lang);
+                    }
 
-        function initTheme() {
-            const saved = localStorage.getItem('sarfraz_theme');
-            const body = document.body;
-            const themeIcon = document.getElementById('themeIcon');
-            if (saved === 'dark') {
-                body.classList.add('dark');
-                themeIcon.src = 'images/night.png';
-            } else {
-                body.classList.remove('dark');
-                themeIcon.src = 'images/day.png';
-            }
-        }
+                    function initTheme() {
+                        const saved = localStorage.getItem('sarfraz_theme');
+                        const body = document.body;
+                        const themeIcon = document.getElementById('themeIcon');
+                        if (saved === 'dark') {
+                            body.classList.add('dark');
+                            themeIcon.src = 'images/night.png';
+                        } else {
+                            body.classList.remove('dark');
+                            themeIcon.src = 'images/day.png';
+                        }
+                    }
 
-        function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.getElementById('themeIcon');
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                themeIcon.src = 'images/night.png';
-                localStorage.setItem('sarfraz_theme', 'light');
-            } else {
-                body.classList.add('dark');
-                themeIcon.src = 'images/day.png';
-                localStorage.setItem('sarfraz_theme', 'dark');
-            }
-        }
+                    function toggleTheme() {
+                        const body = document.body;
+                        const themeIcon = document.getElementById('themeIcon');
+                        if (body.classList.contains('dark')) {
+                            body.classList.remove('dark');
+                            themeIcon.src = 'images/night.png';
+                            localStorage.setItem('sarfraz_theme', 'light');
+                        } else {
+                            body.classList.add('dark');
+                            themeIcon.src = 'images/day.png';
+                            localStorage.setItem('sarfraz_theme', 'dark');
+                        }
+                    }
 
-        function initMobileMenu() {
-            const hamburger = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            if (!hamburger || !navMenu) return;
-            hamburger.addEventListener('click', (e) => {
-                e.stopPropagation();
-                navMenu.classList.toggle('open');
-            });
-            document.addEventListener('click', (e) => {
-                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    navMenu.classList.remove('open');
-                }
-            });
-            navMenu.querySelectorAll('a').forEach(link => {
-                link.addEventListener('click', () => navMenu.classList.remove('open'));
-            });
-        }
+                    function initMobileMenu() {
+                        const hamburger = document.getElementById('hamburgerBtn');
+                        const navMenu = document.getElementById('navMenu');
+                        if (!hamburger || !navMenu) return;
+                        hamburger.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            navMenu.classList.toggle('open');
+                        });
+                        document.addEventListener('click', (e) => {
+                            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                                navMenu.classList.remove('open');
+                            }
+                        });
+                        navMenu.querySelectorAll('a').forEach(link => {
+                            link.addEventListener('click', () => navMenu.classList.remove('open'));
+                        });
+                    }
 
-        function initLanguage() {
-            const selector = document.getElementById('langSelector');
-            const btn = document.getElementById('langBtn');
-            if (!selector || !btn) return;
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                selector.classList.toggle('open');
-            });
-            document.addEventListener('click', (e) => {
-                if (!selector.contains(e.target)) selector.classList.remove('open');
-            });
-            document.querySelectorAll('.lang-option').forEach(opt => {
-                opt.addEventListener('click', () => {
-                    const lang = opt.getAttribute('data-lang');
-                    if (lang) setLanguage(lang);
-                    selector.classList.remove('open');
-                });
-            });
-        }
+                    function initLanguage() {
+                        const selector = document.getElementById('langSelector');
+                        const btn = document.getElementById('langBtn');
+                        if (!selector || !btn) return;
+                        btn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            copyText(btn.getAttribute('data-text'));
+                        });
+                    });
+                    document.querySelectorAll('.share-btn').forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            sharePoem(btn.getAttribute('data-text'), btn.getAttribute('data-type'));
+                        });
+                    });
+                    document.querySelectorAll('.like-btn').forEach(btn => {
+                        const card = btn.closest('.poem-card');
+                        const id = parseInt(card.getAttribute('data-id'));
+                        const countSpan = btn.querySelector('.like-count');
+                        btn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            likePoem(id, btn, countSpan);
+                        });
+                    });
+    }
 
-        document.addEventListener('DOMContentLoaded', () => {
-            const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
-            setLanguage(savedLang);
-            initTheme();
-            initMobileMenu();
-            initLanguage();
+                    function updateTexts() {
+                        document.querySelectorAll('.nav-menu a').forEach(link => {
+                            const span = link.querySelector('span');
+                            if (span) {
+                                span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
+                            }
+                        });
+                        const tag = document.querySelector('.site-tag');
+                        if (tag) {
+                            tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+                        }
+                        const footerCopy = document.getElementById('footerCopy');
+                        if (footerCopy) {
+                            footerCopy.innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
+                        }
+                        const langLabel = document.getElementById('currentLangLabel');
+                        if (langLabel) langLabel.innerText = currentLang === 'fa' ? 'فارسی' : 'English';
+                        renderPoems();
+                    }
 
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const text = link.querySelector('span')?.innerText || '';
-                    alert(currentLang === 'fa' ? `بخش "${text}" در حال آماده‌سازی است` : `Section "${text}" is under construction`);
-                });
-            });
+                    function setLanguage(lang) {
+                        currentLang = lang;
+                        updateTexts();
+                        localStorage.setItem('sarfraz_lang', lang);
+                    }
 
-            document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-        });
-    </script>
+                    function initTheme() {
+                        const saved = localStorage.getItem('sarfraz_theme');
+                        const body = document.body;
+                        const themeIcon = document.getElementById('themeIcon');
+                        if (saved === 'dark') {
+                            body.classList.add('dark');
+                            themeIcon.src = 'images/day.png';
+                        } else {
+                            body.classList.remove('dark');
+                            themeIcon.src = 'images/night.png';
+                        }
+                    }
+
+                    function toggleTheme() {
+                        const body = document.body;
+                        const themeIcon = document.getElementById('themeIcon');
+                        if (body.classList.contains('dark')) {
+                            body.classList.remove('dark');
+                            themeIcon.src = 'images/night.png';
+                            localStorage.setItem('sarfraz_theme', 'light');
+                        } else {
+                            body.classList.add('dark');
+                            themeIcon.src = 'images/day.png';
+                            localStorage.setItem('sarfraz_theme', 'dark');
+                        }
+                    }
+
+                    function initMobileMenu() {
+                        const hamburger = document.getElementById('hamburgerBtn');
+                        const navMenu = document.getElementById('navMenu');
+                        if (!hamburger || !navMenu) return;
+                        hamburger.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            navMenu.classList.toggle('open');
+                        });
+                        document.addEventListener('click', (e) => {
+                            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                                navMenu.classList.remove('open');
+                            }
+                        });
+                        navMenu.querySelectorAll('a').forEach(link => {
+                            link.addEventListener('click', () => navMenu.classList.remove('open'));
+                        });
+                    }
+
+                    function initLanguage() {
+                        const selector = document.getElementById('langSelector');
+                        const btn = document.getElementById('langBtn');
+                        if (!selector || !btn) return;
+                        btn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            selector.classList.toggle('open');
+                        });
+                        document.addEventListener('click', (e) => {
+                            if (!selector.contains(e.target)) selector.classList.remove('open');
+                        });
+                        document.querySelectorAll('.lang-option').forEach(opt => {
+                            opt.addEventListener('click', () => {
+                                const lang = opt.getAttribute('data-lang');
+                                if (lang) setLanguage(lang);
+                                selector.classList.remove('open');
+                            });
+                        });
+                    }
+
+                    document.addEventListener('DOMContentLoaded', () => {
+                        const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
+                        setLanguage(savedLang);
+                        initTheme();
+                        initMobileMenu();
+                        initLanguage();
+
+                        document.querySelectorAll('.nav-menu a').forEach(link => {
+                            link.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const text = link.querySelector('span')?.innerText || '';
+                                alert(currentLang === 'fa' ? `بخش "${text}" در حال آماده‌سازی است` : `Section "${text}" is under construction`);
+                            });
+                        });
+
+                        document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+                    });
+                </script>
 </body>
 
 </html>
