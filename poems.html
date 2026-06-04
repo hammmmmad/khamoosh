@@ -1,0 +1,1108 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>اشعار | سرفراز خموش</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Ignogito';
+            src: url('fonts/ignogito.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', system-ui, sans-serif;
+            background: #f0f2f8;
+            color: #1e2a3e;
+            min-height: 100vh;
+            transition: background 0.3s;
+        }
+
+        body.dark {
+            background: #0a0a0f;
+        }
+
+        /* هدر شیشه‌ای */
+        .glass-header {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            padding: 0.7rem 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        body.dark .glass-header {
+            background: rgba(0, 0, 0, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark .navbar,
+        body.dark .nav-menu a,
+        body.dark .lang-btn,
+        body.dark .lang-btn span,
+        body.dark .hamburger,
+        body.dark .nav-actions {
+            color: #ffffff;
+        }
+
+        body.dark .nav-menu a img,
+        body.dark .hamburger img,
+        body.dark .lang-btn img {
+            filter: brightness(0) invert(1);
+        }
+
+        body.dark .logo-img {
+            filter: none;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+        }
+
+        .site-name h1 {
+            font-family: 'Ignogito', 'Vazirmatn', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .site-name p {
+            font-size: 0.65rem;
+            opacity: 0.8;
+        }
+
+        .hamburger {
+            display: none;
+            background: rgba(255, 255, 240, 0.3);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 30px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        body:not(.dark) .nav-menu a {
+            color: #1e2a3e;
+        }
+
+        body.dark .nav-menu a {
+            color: #eef2ff;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .nav-menu a img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .theme-btn {
+            background: rgba(255, 255, 240, 0.3);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-btn img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .lang-selector {
+            position: relative;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 240, 0.3);
+            border: none;
+            border-radius: 2rem;
+            padding: 0 1rem;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            min-width: 130px;
+            display: none;
+            z-index: 200;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .lang-option img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .lang-option:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        /* ===== دکمه‌های دسته‌بندی ===== */
+        .categories-bar {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .cat-btn {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 0.6rem 1.5rem;
+            border-radius: 2rem;
+            font-family: inherit;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            color: #1e2a3e;
+        }
+
+        body.dark .cat-btn {
+            background: rgba(0, 0, 0, 0.5);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #eef2ff;
+        }
+
+        .cat-btn.active {
+            background: #8b5cf6;
+            color: white;
+            border-color: #8b5cf6;
+        }
+
+        body.dark .cat-btn.active {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        /* ===== کارت‌های شعر (روز سفید الماسی، شب تیره) ===== */
+        .category-section {
+            margin-bottom: 2.5rem;
+        }
+
+        .category-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-right: 1rem;
+            border-right: 5px solid #8b5cf6;
+        }
+
+        body:not(.dark) .category-title {
+            color: #1e2a3e;
+        }
+
+        body.dark .category-title {
+            color: #f0f0f0;
+        }
+
+        .poems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 2rem;
+        }
+
+        .poem-card {
+            border-radius: 2rem;
+            padding: 1.5rem;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.3s, backdrop-filter 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* روز: شیشه‌ای الماسی */
+        body:not(.dark) .poem-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        /* شب: تیره */
+        body.dark .poem-card {
+            background: rgba(20, 20, 30, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        /* نویز مشترک */
+        .poem-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.08'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            opacity: 0.2;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .poem-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .poem-type {
+            font-size: 0.7rem;
+            background: rgba(0, 0, 0, 0.05);
+            display: inline-block;
+            padding: 0.2rem 1rem;
+            border-radius: 30px;
+            margin-bottom: 1rem;
+            font-weight: 600;
+        }
+
+        body:not(.dark) .poem-type {
+            color: #2d3a4e;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark .poem-type {
+            color: #ddd;
+            background: #2d3a4e;
+        }
+
+        .poem-text {
+            font-size: 0.95rem;
+            line-height: 1.8;
+            text-align: center;
+            white-space: pre-line;
+            margin-bottom: 1rem;
+        }
+
+        body:not(.dark) .poem-text {
+            color: #2d3a4e;
+        }
+
+        body.dark .poem-text {
+            color: #e0e0e0;
+        }
+
+        /* دکمه‌های اکشن */
+        .card-actions {
+            display: flex;
+            justify-content: center;
+            gap: 1.2rem;
+            margin-top: 0.8rem;
+            padding-top: 0.8rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        body.dark .card-actions {
+            border-top-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .card-actions button {
+            background: rgba(255, 255, 255, 0.2);
+            border: none;
+            padding: 8px 12px;
+            border-radius: 2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-family: inherit;
+            font-size: 0.8rem;
+            transition: 0.2s;
+        }
+
+        body:not(.dark) .card-actions button {
+            color: #1e2a3e;
+            background: rgba(0, 0, 0, 0.05);
+        }
+
+        body.dark .card-actions button {
+            color: #e0e0e0;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        .card-actions button:hover {
+            background: #8b5cf6;
+            color: white;
+        }
+
+        .like-btn.liked {
+            background: #ef4444;
+            color: white;
+        }
+
+        .like-count {
+            margin-left: 4px;
+            font-size: 0.75rem;
+        }
+
+        /* فوتر */
+        .glass-footer {
+            margin-top: 3rem;
+            border-radius: 2rem 2rem 1rem 1rem;
+            padding: 2rem 1.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+
+        body:not(.dark) .glass-footer {
+            background: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+            border-top: 1px solid #e5e7eb;
+        }
+
+        body:not(.dark) .footer-content,
+        body:not(.dark) .copyright {
+            color: #1e2a3e;
+        }
+
+        body:not(.dark) .social-icons a,
+        body:not(.dark) .codm-btn {
+            background: #f3f4f6;
+        }
+
+        body:not(.dark) .social-icons a img,
+        body:not(.dark) .codm-btn img {
+            filter: brightness(0) contrast(1);
+        }
+
+        body.dark .glass-footer {
+            background: #0a0a0f;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .footer-content,
+        body.dark .copyright {
+            color: #eef2ff;
+        }
+
+        body.dark .social-icons a,
+        body.dark .codm-btn {
+            background: #1f2937;
+        }
+
+        body.dark .social-icons a img,
+        body.dark .codm-btn img {
+            filter: brightness(0) invert(1);
+        }
+
+        body.dark .social-icons a:hover,
+        body.dark .codm-btn:hover {
+            background: #f97316 !important;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .social-icons a,
+        .codm-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .social-icons a img,
+        .codm-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* موبایل */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.8rem;
+            }
+
+            .navbar {
+                position: relative;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.3rem;
+                padding: 1rem;
+                border-radius: 1.5rem;
+                z-index: 9999;
+                box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            body.dark .nav-menu {
+                background: rgba(0, 0, 0, 0.95);
+                border-color: rgba(255, 255, 255, 0.2);
+                color: white;
+            }
+
+            body.dark .nav-menu a img {
+                filter: brightness(0) invert(1);
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-menu a {
+                justify-content: center;
+                padding: 0.7rem;
+            }
+
+            .lang-btn span:not(.lang-text) {
+                display: none;
+            }
+
+            .lang-btn {
+                padding: 0 0.9rem;
+            }
+
+            .poems-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .categories-bar {
+                gap: 0.7rem;
+            }
+
+            .cat-btn {
+                padding: 0.4rem 1rem;
+                font-size: 0.8rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        /* مودال و toast */
+        .glass-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .modal-content {
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+        }
+
+        .modal-content code {
+            display: inline-block;
+            background: #2d3a4e;
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin: 10px 0;
+            direction: ltr;
+            color: white;
+        }
+
+        .modal-buttons button {
+            background: #8b5cf6;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            z-index: 2000;
+            animation: fadeOut 2s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="glass-header">
+            <div class="navbar">
+                <div class="logo-area">
+                    <img class="logo-img" src="images/Khamoosh.jpg" alt="لوگو"
+                        onerror="this.src='https://placehold.co/70x70?text=SK'">
+                    <div class="site-name">
+                        <h1>Sarfraz Khamoosh</h1>
+                        <p class="site-tag" data-fa="اشعار" data-en="Poems">اشعار</p>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburgerBtn">
+                    <img src="images/menu.png" alt="منو" onerror="this.src='https://placehold.co/24x24?text=☰'">
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" data-fa="خانه" data-en="Home"><img src="images/home.png"
+                            alt="خانه"><span>خانه</span></a>
+                    <a href="about.html" data-fa="درباره" data-en="About"><img src="images/about.png"
+                            alt="درباره"><span>درباره</span></a>
+                    <a href="poems.html" data-fa="اشعار" data-en="Poems" class="active"><img src="images/poetry.png"
+                            alt="اشعار"><span>اشعار</span></a>
+                    <a href="tech-news.html" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png"
+                            alt="فناوری"><span>اخبار فناوری</span></a>
+                </div>
+                <div class="nav-actions">
+                    <div class="lang-selector" id="langSelector">
+                        <button class="lang-btn" id="langBtn">
+                            <img src="images/golo.png" alt="زبان"><span id="currentLangLabel">فارسی</span><span
+                                class="lang-text">▼</span>
+                        </button>
+                        <div class="lang-dropdown">
+                            <div class="lang-option" data-lang="fa"><img src="images/afghan.png"
+                                    alt="فارسی"><span>فارسی</span></div>
+                            <div class="lang-option" data-lang="en"><img src="images/usa.png"
+                                    alt="English"><span>English</span></div>
+                        </div>
+                    </div>
+                    <button class="theme-btn" id="themeBtn">
+                        <img id="themeIcon" src="images/night.png" alt="تم شب/روز"
+                            onerror="this.src='https://placehold.co/28x28?text=🌙'">
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- دکمه‌های دسته‌بندی -->
+        <div class="categories-bar" id="categoriesBar"></div>
+
+        <!-- بخش‌های دسته‌بندی اشعار -->
+        <div id="categoriesContainer"></div>
+
+        <footer class="glass-footer">
+            <div class="footer-content">
+                <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61590217606266"><img src="images/facebook.png"
+                            alt="فیسبوک"></a>
+                    <a href="https://www.instagram.com/admin_khamoosh"><img src="images/instagram.png"
+                            alt="اینستاگرام"></a>
+                    <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228"><img src="images/linkedin.png"
+                            alt="لینکدین"></a>
+                    <a href="https://pin.it/WY1aeKX2a"><img src="images/pinterest.png" alt="پینترست"></a>
+                    <a href="https://www.behance.net/merlinsarfraz"><img src="images/ben.png" alt="بهنس"></a>
+                    <a href="https://wa.me/qr/E2RLH5T72CSFE1"><img src="images/whatsapp.png" alt="واتساپ"></a>
+                    <a href="https://www.tiktok.com/@sarfraz_khamoosh"><img src="images/tik.png" alt="تیک تاک"></a>
+                    <a href="https://khamoooooosh675.substack.com"><img src="images/substack.png" alt="ساب‌استک"></a>
+                    <a href="https://github.com/hammmmmad"><img src="images/github.png" alt="گیت‌هاب"></a>
+                    <a href="https://www.threads.com/@sarfraz_khamoosh23"><img src="images/threads.png" alt="تردز"></a>
+                    <div class="codm-btn" id="codmBtn">
+                        <img src="images/call of.png" alt="CODM"
+                            onerror="this.src='https://placehold.co/24x24?text=🎮'">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- مودال UID -->
+    <div id="uidModal" class="glass-modal">
+        <div class="modal-content">
+            <h3>🎮 کال‌آف دیوتی موبایل</h3>
+            <p>UID من :</p>
+            <code>7500139701825634305</code>
+            <div class="modal-buttons">
+                <button id="copyUidBtn">📋 کپی UID</button>
+                <button id="closeModalBtn">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ========== داده‌های اشعار بر اساس دسته ==========
+        const categoriesData = {
+            mystical: { fa: "اشعار عارفانه", en: "Mystical Poems" },
+            romantic: { fa: "اشعار عاشقانه", en: "Romantic Poems" },
+            oritic: { fa: "اشعار اورتیک", en: "Oritic Poems" },
+            blank: { fa: "اشعار سپید", en: "Blank Verse" },
+            heavy: { fa: "متن‌های سنگین", en: "Heavy Texts" }
+        };
+
+        const poemsDB = {
+            mystical: [
+                { id: 100, textFa: "چون گل به آفتاب حقیقت گشوده شو\nوز غیر او ببند نظر، چون که او بس است", textEn: "Open like a flower to the sun of truth\nClose your eyes to others, for He is enough" },
+                { id: 101, textFa: "در خرابات طریقت من و دلتنگی خویش\nعشق را یافت دل از جرعه‌ای از می دوش", textEn: "In the tavern of the path, me and my sorrow\nLove found the heart from a sip of last night's wine" }
+            ],
+            romantic: [
+                { id: 200, textFa: "در دل شب، در هوای تو\nباد زلفت می‌وزد از سوی تو\nعشق سر می‌زد ز هر سو، ای صنم\nبی‌تو دلگیر است جان، بی‌تو وطن", textEn: "In the heart of night, in your air\nYour hair's wind blows from your side\nLove sprouts from every side, O idol\nWithout you, the soul is sad, without you, home" },
+                { id: 201, textFa: "نگاهت را به من بخش ای پری پیکر\nکه دلم بی‌تو اسیر شب و تنهایی", textEn: "Give your gaze to me, O fairy-like\nFor my heart without you is captive to night and loneliness" }
+            ],
+            oritic: [
+                { id: 300, textFa: "ای کاشکی که کوه شوم و پایدار\nیا باد که هر جا بروم بی‌قرار", textEn: "I wish I were a mountain, steadfast\nOr the wind, restless wherever I go" },
+                { id: 301, textFa: "در طوفان بی‌کرانِ بودن\nتنها دل است که لنگر می‌شود", textEn: "In the boundless storm of existence\nOnly the heart becomes the anchor" }
+            ],
+            blank: [
+                { id: 400, textFa: "سکوت شب\nپر از نجوای برگ‌های خشک\nمن مانده‌ام\nبا روایتی از باد", textEn: "The silence of the night\nFull of whispers of dry leaves\nI am left\nWith a tale of the wind" },
+                { id: 401, textFa: "فردا که برسد\nشاید خورشید را به گلدان اتاق بیاورم\nتا پنجره باز شود", textEn: "When tomorrow comes\nPerhaps I'll bring the sun into the room's pot\nSo the window will open" }
+            ],
+            heavy: [
+                { id: 500, textFa: "در دل شب سرد زمستان، که برف خاطرات می‌بارید، او تنها نشسته بود و به دیوار خاموش اتاق خیره. هیچ صدایی نیست، جز ضربان نبض تنهایی که هر لحظه سنگین‌تر می‌شود. تمام وجودش را سوالی پر کرده بود: آیا بعد از این همه راه، هنوز می‌توان به آغاز بازگشت؟", textEn: "In the cold winter night, as the snow of memories fell, he sat alone, staring at the silent wall of the room. There was no sound, except the heartbeat of loneliness growing heavier each moment. A question filled his entire being: after all this way, can one still return to the beginning?" },
+                { id: 501, textFa: "زندگی گاهی چون اقیانوسی طوفانی است که کرانه‌هایش در مه گم شده. آدمی میان امواج دست و پا می‌زند و تنها امیدش به تخته پاره‌ای است که شاید او را به ساحلی ناشناخته برساند. این است سرنوشت ما؛ میان جهل و امید، میان تاریکی و روشنایی.", textEn: "Life is sometimes like a stormy ocean whose shores are lost in fog. Man struggles among the waves, his only hope a piece of wood that might carry him to an unknown shore. This is our destiny; between ignorance and hope, between darkness and light." }
+            ]
+        };
+
+        let currentLang = 'fa';
+        let likesData = JSON.parse(localStorage.getItem('poems_likes')) || {};
+
+        function showToast(msg) {
+            let existing = document.querySelector('.toast-msg');
+            if (existing) existing.remove();
+            let toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(currentLang === 'fa' ? '✅ متن کپی شد!' : '✅ Text copied!');
+            }).catch(() => {
+                showToast(currentLang === 'fa' ? '❌ خطا در کپی' : '❌ Copy failed');
+            });
+        }
+
+        function sharePoem(text, type) {
+            const shareText = `${type}\n\n${text}`;
+            if (navigator.share) {
+                navigator.share({ title: 'اشعار سرفراز خموش', text: shareText }).catch(() => { });
+            } else {
+                copyText(shareText);
+                showToast(currentLang === 'fa' ? 'متن برای اشتراک کپی شد' : 'Text copied for sharing');
+            }
+        }
+
+        function likePoem(id, btn, countSpan) {
+            if (!likesData[id]) likesData[id] = 0;
+            if (btn.classList.contains('liked')) {
+                likesData[id]--;
+                btn.classList.remove('liked');
+            } else {
+                likesData[id]++;
+                btn.classList.add('liked');
+            }
+            countSpan.textContent = likesData[id];
+            localStorage.setItem('poems_likes', JSON.stringify(likesData));
+        }
+
+        function renderCategory(key, catTitle) {
+            const poems = poemsDB[key];
+            if (!poems) return '';
+            return `
+                <div class="category-section" data-category="${key}">
+                    <h2 class="category-title">${catTitle}</h2>
+                    <div class="poems-grid">
+                        ${poems.map(p => {
+                const text = currentLang === 'fa' ? p.textFa : p.textEn;
+                const type = currentLang === 'fa' ? catTitle : categoriesData[key].en;
+                const likes = likesData[p.id] || 0;
+                const liked = likesData[p.id] > 0;
+                return `
+                                <div class="poem-card" data-id="${p.id}">
+                                    <div class="poem-type">${type}</div>
+                                    <div class="poem-text">${text.replace(/\n/g, '<br>')}</div>
+                                    <div class="card-actions">
+                                        <button class="copy-btn" data-text="${text.replace(/"/g, '&quot;')}">
+                                            📋 <span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span>
+                                        </button>
+                                        <button class="share-btn" data-text="${text.replace(/"/g, '&quot;')}" data-type="${type.replace(/"/g, '&quot;')}">
+                                            📤 <span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span>
+                                        </button>
+                                        <button class="like-btn ${liked ? 'liked' : ''}">
+                                            ❤️ <span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span>
+                                            <span class="like-count">${likes}</span>
+                                        </button>
+                                    </div>
+                                </div>
+                            `;
+            }).join('')}
+                    </div>
+                </div>
+            `;
+        }
+
+        function renderAllCategories() {
+            const container = document.getElementById('categoriesContainer');
+            let html = '';
+            for (const [key, titleObj] of Object.entries(categoriesData)) {
+                const catTitle = currentLang === 'fa' ? titleObj.fa : titleObj.en;
+                html += renderCategory(key, catTitle);
+            }
+            container.innerHTML = html;
+            attachCardEvents();
+        }
+
+        function attachCardEvents() {
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.removeEventListener('click', copyHandler);
+                btn.addEventListener('click', copyHandler);
+            });
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.removeEventListener('click', shareHandler);
+                btn.addEventListener('click', shareHandler);
+            });
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                btn.removeEventListener('click', likeHandler);
+                btn.addEventListener('click', likeHandler);
+            });
+        }
+
+        function copyHandler(e) {
+            e.stopPropagation();
+            const text = this.getAttribute('data-text');
+            copyText(text);
+        }
+        function shareHandler(e) {
+            e.stopPropagation();
+            const text = this.getAttribute('data-text');
+            const type = this.getAttribute('data-type');
+            sharePoem(text, type);
+        }
+        function likeHandler(e) {
+            e.stopPropagation();
+            const card = this.closest('.poem-card');
+            const id = parseInt(card.getAttribute('data-id'));
+            const countSpan = this.querySelector('.like-count');
+            likePoem(id, this, countSpan);
+        }
+
+        // دکمه‌های فیلتر (نمایش/مخفی کردن دسته‌ها)
+        function initFilterButtons() {
+            const bar = document.getElementById('categoriesBar');
+            const categories = Object.keys(categoriesData);
+            bar.innerHTML = '';
+            categories.forEach(key => {
+                const btn = document.createElement('button');
+                btn.className = 'cat-btn';
+                btn.setAttribute('data-cat', key);
+                btn.textContent = currentLang === 'fa' ? categoriesData[key].fa : categoriesData[key].en;
+                btn.addEventListener('click', () => {
+                    document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                    btn.classList.add('active');
+                    const sections = document.querySelectorAll('.category-section');
+                    sections.forEach(section => {
+                        if (section.getAttribute('data-category') === key) {
+                            section.style.display = 'block';
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    });
+                });
+                bar.appendChild(btn);
+            });
+            // پیش‌فرض همه را نشان بده
+            const allBtn = document.createElement('button');
+            allBtn.className = 'cat-btn active';
+            allBtn.textContent = currentLang === 'fa' ? 'همه' : 'All';
+            allBtn.addEventListener('click', () => {
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                allBtn.classList.add('active');
+                document.querySelectorAll('.category-section').forEach(section => section.style.display = 'block');
+            });
+            bar.prepend(allBtn);
+        }
+
+        function updateUI() {
+            renderAllCategories();
+            initFilterButtons();
+            // به‌روز رسانی منو و فوتر
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                const span = link.querySelector('span');
+                if (span) {
+                    span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
+                }
+            });
+            const tag = document.querySelector('.site-tag');
+            if (tag) tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+            document.getElementById('footerCopy').innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
+            document.getElementById('currentLangLabel').innerText = currentLang === 'fa' ? 'فارسی' : 'English';
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            updateUI();
+            localStorage.setItem('sarfraz_lang', lang);
+        }
+
+        // تم شب/روز
+        function initTheme() {
+            const saved = localStorage.getItem('sarfraz_theme');
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (saved === 'dark') {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+            } else {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+            }
+        }
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+                localStorage.setItem('sarfraz_theme', 'light');
+            } else {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+                localStorage.setItem('sarfraz_theme', 'dark');
+            }
+        }
+
+        // منوی موبایل
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            if (!hamburger || !navMenu) return;
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('open');
+                }
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navMenu.classList.remove('open'));
+            });
+        }
+
+        function initLanguage() {
+            const selector = document.getElementById('langSelector');
+            const btn = document.getElementById('langBtn');
+            if (!selector || !btn) return;
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selector.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!selector.contains(e.target)) selector.classList.remove('open');
+            });
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.addEventListener('click', () => {
+                    const lang = opt.getAttribute('data-lang');
+                    if (lang) setLanguage(lang);
+                    selector.classList.remove('open');
+                });
+            });
+        }
+
+        // مودال CODM
+        const modal = document.getElementById('uidModal');
+        const codmBtn = document.getElementById('codmBtn');
+        const copyUidBtn = document.getElementById('copyUidBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        function openModal() { modal.style.display = 'flex'; }
+        function closeModal() { modal.style.display = 'none'; }
+        function copyUid() {
+            navigator.clipboard.writeText('7500139701825634305');
+            showToast(currentLang === 'fa' ? '✅ UID کپی شد!' : '✅ UID copied!');
+            closeModal();
+        }
+        if (codmBtn) codmBtn.addEventListener('click', openModal);
+        if (copyUidBtn) copyUidBtn.addEventListener('click', copyUid);
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        if (modal) modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
+            currentLang = savedLang;
+            updateUI();
+            initTheme();
+            initMobileMenu();
+            initLanguage();
+            document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+        });
+    </script>
+</body>
+
+</html>
