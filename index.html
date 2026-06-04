@@ -1,11 +1,14 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>سرفراز خموش | اشعار کوتاه</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
     <style>
+        /* ===== فونت اختصاصی OTF برای لوگو ===== */
         @font-face {
             font-family: 'Ignogito';
             src: url('fonts/ignogito.otf') format('opentype');
@@ -22,51 +25,67 @@
 
         body {
             font-family: 'Vazirmatn', 'Segoe UI', system-ui, sans-serif;
-            background: #f0f2f8;
+            background: #f5f7fc;
             color: #1e2a3e;
+            transition: background 0.3s, color 0.2s;
             min-height: 100vh;
-            transition: background 0.3s;
         }
 
         body.dark {
-            background: #0a0a0f;
+            background: #000000;
+            color: #eef2ff;
         }
 
-        /* هدر شیشه‌ای */
+        /* ===== فیلترهای هوشمند برای آیکون‌ها ===== */
+        body:not(.dark) .nav-menu a img,
+        body:not(.dark) .hamburger img,
+        body:not(.dark) .social-icons a img,
+        body:not(.dark) .lang-btn img,
+        body:not(.dark) .card-actions button img {
+            filter: brightness(0) contrast(1);
+        }
+
+        body.dark .nav-menu a img,
+        body.dark .hamburger img,
+        body.dark .social-icons a img,
+        body.dark .lang-btn img,
+        body.dark .card-actions button img {
+            filter: brightness(0) invert(1);
+        }
+
+        body.dark .logo-img,
+        body.dark .poem-logo img,
+        body.dark .theme-btn img,
+        body.dark .lang-option img,
+        body:not(.dark) .lang-option img {
+            filter: none;
+        }
+
+        .container {
+            max-width: 1300px;
+            margin: 0 auto;
+            padding: 1.2rem;
+        }
+
+        /* هدر شیشه‌ای چسبنده */
         .glass-header {
             position: sticky;
             top: 20px;
             z-index: 1000;
-            background: rgba(255, 255, 255, 0.4);
+            background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(16px);
             border-radius: 2rem;
             padding: 0.7rem 1.5rem;
             margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.6);
+            border: 1px solid rgba(255, 255, 255, 0.5);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             transition: all 0.3s;
         }
+
         body.dark .glass-header {
-            background: rgba(0, 0, 0, 0.7);
+            background: rgba(0, 0, 0, 0.6);
             border-color: rgba(255, 255, 255, 0.2);
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        body.dark .navbar,
-        body.dark .nav-menu a,
-        body.dark .lang-btn,
-        body.dark .lang-btn span,
-        body.dark .hamburger,
-        body.dark .nav-actions {
-            color: #ffffff;
-        }
-        body.dark .nav-menu a img,
-        body.dark .hamburger img,
-        body.dark .lang-btn img {
-            filter: brightness(0) invert(1);
-        }
-        body.dark .logo-img {
-            filter: none;
         }
 
         .navbar {
@@ -76,11 +95,13 @@
             flex-wrap: wrap;
             gap: 0.8rem;
         }
+
         .logo-area {
             display: flex;
             align-items: center;
             gap: 10px;
         }
+
         .logo-img {
             width: 70px;
             height: 70px;
@@ -88,16 +109,19 @@
             border: 2px solid white;
             object-fit: cover;
         }
+
         .site-name h1 {
             font-family: 'Ignogito', 'Vazirmatn', sans-serif;
             font-size: 1.6rem;
             font-weight: 800;
             letter-spacing: 1px;
         }
+
         .site-name p {
             font-size: 0.65rem;
             opacity: 0.8;
         }
+
         .hamburger {
             display: none;
             background: rgba(255, 255, 240, 0.3);
@@ -110,15 +134,22 @@
             align-items: center;
             justify-content: center;
         }
-        .hamburger img { width: 24px; height: 24px; }
+
+        .hamburger img {
+            width: 24px;
+            height: 24px;
+        }
+
         .nav-menu {
             display: flex;
             gap: 0.8rem;
             align-items: center;
             flex-wrap: wrap;
         }
+
         .nav-menu a {
             text-decoration: none;
+            color: inherit;
             font-weight: 500;
             padding: 0.5rem 1rem;
             border-radius: 2rem;
@@ -128,17 +159,22 @@
             transition: 0.2s;
             font-size: 0.9rem;
         }
-        body:not(.dark) .nav-menu a { color: #1e2a3e; }
-        body.dark .nav-menu a { color: #eef2ff; }
+
         .nav-menu a:hover {
             background: rgba(59, 130, 246, 0.2);
         }
-        .nav-menu a img { width: 20px; height: 20px; }
+
+        .nav-menu a img {
+            width: 20px;
+            height: 20px;
+        }
+
         .nav-actions {
             display: flex;
             gap: 0.6rem;
             align-items: center;
         }
+
         .theme-btn {
             background: rgba(255, 255, 240, 0.3);
             border: none;
@@ -151,10 +187,16 @@
             align-items: center;
             justify-content: center;
         }
-        .theme-btn img { width: 28px; height: 28px; }
+
+        .theme-btn img {
+            width: 28px;
+            height: 28px;
+        }
+
         .lang-selector {
             position: relative;
         }
+
         .lang-btn {
             background: rgba(255, 255, 240, 0.3);
             border: none;
@@ -168,8 +210,14 @@
             backdrop-filter: blur(8px);
             font-family: inherit;
             font-size: 0.9rem;
+            color: inherit;
         }
-        .lang-btn img { width: 20px; height: 20px; }
+
+        .lang-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
         .lang-dropdown {
             position: absolute;
             top: 110%;
@@ -180,10 +228,19 @@
             min-width: 130px;
             display: none;
             z-index: 200;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-            border: 1px solid rgba(0,0,0,0.1);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.1);
         }
-        .lang-selector.open .lang-dropdown { display: block; }
+
+        body.dark .lang-dropdown {
+            background: rgba(20, 30, 55, 0.96);
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: block;
+        }
+
         .lang-option {
             padding: 8px 15px;
             cursor: pointer;
@@ -192,42 +249,53 @@
             gap: 10px;
             transition: 0.2s;
         }
-        .lang-option img { width: 24px; height: 24px; border-radius: 50%; }
-        .lang-option:hover { background: rgba(59, 130, 246, 0.2); }
 
-        /* کارت‌های شعر (همیشه تیره با نویز و سایه) */
+        .lang-option img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .lang-option:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        /* کارت‌های شعر */
         .poems-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
             gap: 2rem;
             margin: 2rem 0 3rem;
         }
+
         .poem-card {
             background: rgba(20, 20, 30, 0.85);
             backdrop-filter: blur(10px);
             border-radius: 2rem;
             padding: 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.2);
-            transition: transform 0.25s, box-shadow 0.25s;
+            transition: 0.25s;
             position: relative;
             overflow: hidden;
             color: #f0f0f0;
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
         }
+
         .poem-card::before {
             content: "";
             position: absolute;
             inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.12'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='coarseNoise' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23coarseNoise)' opacity='0.18'/%3E%3C/svg%3E");
             background-repeat: repeat;
-            opacity: 0.2;
+            background-size: 200px 200px;
+            opacity: 0.18;
             pointer-events: none;
             mix-blend-mode: overlay;
         }
+
         .poem-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.4);
+            transform: translateY(-5px);
         }
+
         .poem-logo {
             width: 70px;
             height: 70px;
@@ -236,15 +304,16 @@
             align-items: center;
             justify-content: center;
             margin: 0 auto 0.8rem auto;
-            background: rgba(139,92,246,0.2);
         }
+
         .poem-logo img {
-            width: 60px;
-            height: 60px;
+            width: 70px;
+            height: 70px;
             border-radius: 50%;
             border: 2px solid white;
             object-fit: cover;
         }
+
         .poem-type {
             font-size: 0.7rem;
             background: #2d3a4e;
@@ -255,6 +324,7 @@
             font-weight: 600;
             color: #ddd;
         }
+
         .poem-text {
             font-size: 0.95rem;
             line-height: 1.8;
@@ -263,14 +333,16 @@
             color: #e0e0e0;
             margin-bottom: 1rem;
         }
+
         .card-actions {
             display: flex;
             justify-content: center;
-            gap: 1.2rem;
+            gap: 1.5rem;
             margin-top: 0.8rem;
             padding-top: 0.8rem;
             border-top: 1px solid rgba(255, 255, 255, 0.2);
         }
+
         .card-actions button {
             background: rgba(255, 255, 255, 0.1);
             border: none;
@@ -285,66 +357,41 @@
             color: #e0e0e0;
             transition: 0.2s;
         }
+
         .card-actions button:hover {
             background: rgba(139, 92, 246, 0.5);
             transform: scale(1.05);
         }
+
         .card-actions button img {
             width: 18px;
             height: 18px;
         }
+
         .like-btn.liked {
             background: rgba(239, 68, 68, 0.5);
         }
+
         .like-count {
             font-size: 0.75rem;
             margin-left: 4px;
         }
 
-        /* فوتر */
+        /* فوتر شیشه‌ای */
         .glass-footer {
             margin-top: 3rem;
+            background: rgba(231, 231, 231, 0.35);
+            backdrop-filter: blur(16px);
             border-radius: 2rem 2rem 1rem 1rem;
             padding: 2rem 1.5rem 1.5rem;
-            transition: all 0.3s;
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
         }
-        body:not(.dark) .glass-footer {
-            background: #ffffff;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
-            border-top: 1px solid #e5e7eb;
-        }
-        body:not(.dark) .footer-content,
-        body:not(.dark) .copyright {
-            color: #1e2a3e;
-        }
-        body:not(.dark) .social-icons a,
-        body:not(.dark) .codm-btn {
-            background: #f3f4f6;
-        }
-        body:not(.dark) .social-icons a img,
-        body:not(.dark) .codm-btn img {
-            filter: brightness(0) contrast(1);
-        }
+
         body.dark .glass-footer {
-            background: #0a0a0f;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            background: rgba(0, 0, 0, 0.5);
+            border-top-color: rgba(255, 255, 255, 0.1);
         }
-        body.dark .footer-content,
-        body.dark .copyright {
-            color: #eef2ff;
-        }
-        body.dark .social-icons a,
-        body.dark .codm-btn {
-            background: #1f2937;
-        }
-        body.dark .social-icons a img,
-        body.dark .codm-btn img {
-            filter: brightness(0) invert(1);
-        }
-        body.dark .social-icons a:hover,
-        body.dark .codm-btn:hover {
-            background: #f97316 !important;
-        }
+
         .footer-content {
             display: flex;
             flex-wrap: wrap;
@@ -352,13 +399,16 @@
             align-items: center;
             gap: 1.5rem;
         }
+
         .social-icons {
             display: flex;
             gap: 1rem;
             flex-wrap: wrap;
             align-items: center;
         }
-        .social-icons a, .codm-btn {
+
+        .social-icons a {
+            background: rgba(255, 255, 250, 0.3);
             width: 44px;
             height: 44px;
             border-radius: 50%;
@@ -367,13 +417,12 @@
             justify-content: center;
             transition: 0.2s;
             text-decoration: none;
-            cursor: pointer;
         }
-        .social-icons a img, .codm-btn img {
+
+        .social-icons a img {
             width: 24px;
             height: 24px;
         }
-<<<<<<< HEAD
 
         .social-icons a:hover {
             background: #8b5cf6;
@@ -403,8 +452,6 @@
             height: 35px;
         }
 
-=======
->>>>>>> 7bc8cd457fc04e937a54c7d2316fdf9917ddd7b9
         .copyright {
             font-size: 0.75rem;
             opacity: 0.7;
@@ -412,9 +459,18 @@
 
         /* موبایل */
         @media (max-width: 768px) {
-            .container { padding: 0.8rem; }
-            .navbar { position: relative; }
-            .hamburger { display: flex; }
+            .container {
+                padding: 0.8rem;
+            }
+
+            .navbar {
+                position: relative;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
             .nav-menu {
                 display: none;
                 position: absolute;
@@ -429,71 +485,56 @@
                 padding: 1rem;
                 border-radius: 1.5rem;
                 z-index: 9999;
-                box-shadow: 0 20px 30px rgba(0,0,0,0.2);
-                border: 1px solid rgba(0,0,0,0.1);
+                box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(0, 0, 0, 0.1);
             }
+
             body.dark .nav-menu {
                 background: rgba(0, 0, 0, 0.95);
                 border-color: rgba(255, 255, 255, 0.2);
                 color: white;
             }
-            body.dark .nav-menu a img { filter: brightness(0) invert(1); }
-            .nav-menu.open { display: flex; }
-            .nav-menu a { justify-content: center; padding: 0.7rem; }
-            .lang-btn span:not(.lang-text) { display: none; }
-            .lang-btn { padding: 0 0.9rem; }
-            .poems-grid { grid-template-columns: 1fr; gap: 1.5rem; }
-            .footer-content { flex-direction: column; text-align: center; }
-            .social-icons { justify-content: center; }
+
+            body.dark .nav-menu a img {
+                filter: brightness(0) invert(1);
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-menu a {
+                justify-content: center;
+                padding: 0.7rem;
+            }
+
+            .lang-btn span:not(.lang-text) {
+                display: none;
+            }
+
+            .lang-btn {
+                padding: 0 0.9rem;
+            }
+
+            .poems-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-icons {
+                flex-direction: row;
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 0.8rem;
+            }
         }
 
-        /* مودال UID */
-        .glass-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(8px);
-            z-index: 10000;
-            align-items: center;
-            justify-content: center;
-        }
-        .modal-content {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 2rem;
-            padding: 1.8rem;
-            text-align: center;
-            width: 85%;
-            max-width: 350px;
-            border: 1px solid rgba(255,255,255,0.5);
-            box-shadow: 0 20px 35px rgba(0,0,0,0.2);
-        }
-        body.dark .modal-content {
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-        }
-        .modal-content code {
-            display: inline-block;
-            background: #2d3a4e;
-            padding: 8px 12px;
-            border-radius: 12px;
-            margin: 10px 0;
-            direction: ltr;
-            color: white;
-        }
-        .modal-buttons button {
-            background: #8b5cf6;
-            border: none;
-            padding: 8px 20px;
-            border-radius: 2rem;
-            color: white;
-            cursor: pointer;
-            margin: 0 5px;
-        }
+        /* پیام toast */
         .toast-msg {
             position: fixed;
             bottom: 30px;
@@ -507,48 +548,103 @@
             z-index: 2000;
             animation: fadeOut 2s ease forwards;
         }
+
         @keyframes fadeOut {
-            0% { opacity: 1; }
-            70% { opacity: 1; }
-            100% { opacity: 0; visibility: hidden; }
+            0% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        /* مودال شیشه‌ای */
+        .glass-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .glass-modal-content {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+            color: #fff;
+        }
+
+        body.dark .glass-modal-content {
+            background: rgba(0, 0, 0, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            color: #eef2ff;
+        }
+
+        .glass-modal-content code {
+            display: inline-block;
+            background: #2d3a4e;
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin: 10px 0;
+            direction: ltr;
+            font-size: 1rem;
+        }
+
+        .modal-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+
+        .modal-buttons button {
+            background: #8b5cf6;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+        }
+
+        .modal-buttons button:last-child {
+            background: rgba(255, 255, 255, 0.2);
         }
     </style>
 </head>
+
 <body>
-<div class="container">
-    <header class="glass-header">
-        <div class="navbar">
-            <div class="logo-area">
-                <img class="logo-img" src="images/Khamoosh.jpg" alt="لوگو" onerror="this.src='https://placehold.co/70x70?text=SK'">
-                <div class="site-name">
-                    <h1>Sarfraz Khamoosh</h1>
-                    <p class="site-tag" data-fa="شعرهای کوتاه" data-en="Short Poems">شعرهای کوتاه</p>
-                </div>
-            </div>
-            <button class="hamburger" id="hamburgerBtn">
-                <img src="images/menu.png" alt="منو" onerror="this.src='https://placehold.co/24x24?text=☰'">
-            </button>
-            <div class="nav-menu" id="navMenu">
-                <a href="index.html" data-fa="خانه" data-en="Home"><img src="images/home.png" alt="خانه"><span>خانه</span></a>
-                <a href="#" data-fa="داستان‌ها" data-en="Stories"><img src="images/story.png" alt="داستان"><span>داستان‌ها</span></a>
-                <a href="index.html" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png" alt="اشعار"><span>اشعار</span></a>
-                <a href="#" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png" alt="فناوری"><span>اخبار فناوری</span></a>
-                <a href="about.html" data-fa="درباره" data-en="About"><img src="images/about.png" alt="درباره"><span>درباره</span></a>
-            </div>
-            <div class="nav-actions">
-                <div class="lang-selector" id="langSelector">
-                    <button class="lang-btn" id="langBtn">
-                        <img src="images/golo.png" alt="زبان"><span id="currentLangLabel">فارسی</span><span class="lang-text">▼</span>
-                    </button>
-                    <div class="lang-dropdown">
-                        <div class="lang-option" data-lang="fa"><img src="images/afghan.png" alt="فارسی"><span>فارسی</span></div>
-                        <div class="lang-option" data-lang="en"><img src="images/usa.png" alt="English"><span>English</span></div>
+    <div class="container">
+        <header class="glass-header">
+            <div class="navbar">
+                <div class="logo-area">
+                    <img class="logo-img" src="images/Khamoosh.jpg" alt="لوگو"
+                        onerror="this.src='https://placehold.co/70x70?text=SK'">
+                    <div class="site-name">
+                        <h1>Sarfraz Khamoosh</h1>
+                        <p class="site-tag" data-fa="KHAMOOSH" data-en="KHAMOOSH">شعرهای کوتاه</p>
                     </div>
                 </div>
-                <button class="theme-btn" id="themeBtn">
-                    <img id="themeIcon" src="images/night.png" alt="تم شب/روز" onerror="this.src='https://placehold.co/28x28?text=🌙'">
+                <button class="hamburger" id="hamburgerBtn">
+                    <img src="images/menu.png" alt="منو" onerror="this.src='https://placehold.co/24x24?text=☰'">
                 </button>
-<<<<<<< HEAD
                 <div class="nav-menu" id="navMenu">
                     <a href="index.html" data-fa="خانه" data-en="Home"><img src="images/home.png"
                             alt="خانه"><span>خانه</span></a>
@@ -617,113 +713,73 @@
             <div class="modal-buttons">
                 <button id="copyUidBtn">📋 کپی UID</button>
                 <button id="closeModalBtn">بستن</button>
-=======
->>>>>>> 7bc8cd457fc04e937a54c7d2316fdf9917ddd7b9
             </div>
-        </div>
-    </header>
-
-    <div class="poems-grid" id="poemsGrid"></div>
-
-    <footer class="glass-footer">
-        <div class="footer-content">
-            <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
-            <div class="social-icons">
-                <a href="#"><img src="images/facebook.png" alt="فیسبوک"></a>
-                <a href="#"><img src="images/instagram.png" alt="اینستاگرام"></a>
-                <a href="#"><img src="images/linkedin.png" alt="لینکدین"></a>
-                <a href="#"><img src="images/pinterest.png" alt="پینترست"></a>
-                <a href="#"><img src="images/ben.png" alt="بهنس"></a>
-                <a href="#"><img src="images/whatsapp.png" alt="واتساپ"></a>
-                <a href="#"><img src="images/tik.png" alt="تیک تاک"></a>
-                <a href="#"><img src="images/substack.png" alt="ساب‌استک"></a>
-                <a href="#"><img src="images/github.png" alt="گیت‌هاب"></a>
-                <a href="#"><img src="images/threads.png" alt="تردز"></a>
-                <div class="codm-btn" id="codmBtn">
-                    <img src="images/codm-icon.png" alt="CODM" onerror="this.src='https://placehold.co/24x24?text=🎮'">
-                </div>
-            </div>
-        </div>
-    </footer>
-</div>
-
-<!-- مودال UID -->
-<div id="uidModal" class="glass-modal">
-    <div class="modal-content">
-        <h3>🎮 کال‌آف دیوتی موبایل</h3>
-        <p>UID من :</p>
-        <code>7500139701825634305</code>
-        <div class="modal-buttons">
-            <button id="copyUidBtn">📋 کپی UID</button>
-            <button id="closeModalBtn">بستن</button>
         </div>
     </div>
-</div>
 
-<script>
-    // اشعار (6 قطعه)
-    const poemsList = [
-        { id: 0, logo: "images/Khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
-        { id: 1, logo: "images/Khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
-        { id: 2, logo: "images/Khamoosh.jpg", typeFa: "شعر کلاسیک", typeEn: "Classical Poem", textFa: "ای درخت کهن، برگ و بارت کو؟\nروزگاری تو سایه گستری\nاکنون اما، خشکیده شاخه‌هایت\nو خزان زودرس، مهمان سفره‌ات", textEn: "O ancient tree, where are your leaves and fruits?\nOnce you spread shade\nBut now your branches are withered\nAnd premature autumn is your guest" },
-        { id: 3, logo: "images/Khamoosh.jpg", typeFa: "غزل مدرن", typeEn: "Modern Ghazal", textFa: "عشق را با سرب نوشتم بر دیوار\nتا کسی نتواند پاک کند\nبا باران که شستش\nسنگین‌تر می‌شود", textEn: "I wrote love with lead on the wall\nSo no one could erase it\nWhen washed by rain\nIt becomes heavier" },
-        { id: 4, logo: "images/Khamoosh.jpg", typeFa: "شعر فلسفی", typeEn: "Philosophical Poetry", textFa: "بین دو تا سکوت\nلحظه‌ای هست\nکه تمام هستی در آن خلاصه می‌شود\nلحظه‌ای که می‌فهمی\nهر چه داشتی\nبادی بود که گذشت", textEn: "Between two silences\nThere is a moment\nIn which all existence is summarized\nA moment when you realize\nEverything you had\nWas just wind that passed" },
-        { id: 5, logo: "images/Khamoosh.jpg", typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
-    ];
+    <script>
+        const poemsList = [
+            { id: 0, logo: "images/Khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
+            { id: 1, logo: "images/Khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
+            { id: 2, logo: "images/Khamoosh.jpg", typeFa: "شعر کلاسیک", typeEn: "Classical Poem", textFa: "ای درخت کهن، برگ و بارت کو؟\nروزگاری تو سایه گستری\nاکنون اما، خشکیده شاخه‌هایت\nو خزان زودرس، مهمان سفره‌ات", textEn: "O ancient tree, where are your leaves and fruits?\nOnce you spread shade\nBut now your branches are withered\nAnd premature autumn is your guest" },
+            { id: 3, logo: "images/Khamoosh.jpg", typeFa: "غزل مدرن", typeEn: "Modern Ghazal", textFa: "عشق را با سرب نوشتم بر دیوار\nتا کسی نتواند پاک کند\nبا باران که شستش\nسنگین‌تر می‌شود", textEn: "I wrote love with lead on the wall\nSo no one could erase it\nWhen washed by rain\nIt becomes heavier" },
+            { id: 4, logo: "images/Khamoosh.jpg", typeFa: "شعر فلسفی", typeEn: "Philosophical Poetry", textFa: "بین دو تا سکوت\nلحظه‌ای هست\nکه تمام هستی در آن خلاصه می‌شود\nلحظه‌ای که می‌فهمی\nهر چه داشتی\nبادی بود که گذشت", textEn: "Between two silences\nThere is a moment\nIn which all existence is summarized\nA moment when you realize\nEverything you had\nWas just wind that passed" },
+            { id: 5, logo: "images/Khamoosh.jpg", typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
+        ];
 
-    let currentLang = 'fa';
-    let likesData = JSON.parse(localStorage.getItem('poem_likes')) || {};
+        let currentLang = 'fa';
+        let likesData = JSON.parse(localStorage.getItem('poem_likes')) || {};
 
-    function showToast(msg) {
-        let existing = document.querySelector('.toast-msg');
-        if (existing) existing.remove();
-        let toast = document.createElement('div');
-        toast.className = 'toast-msg';
-        toast.textContent = msg;
-        document.body.appendChild(toast);
-        setTimeout(() => toast.remove(), 2000);
-    }
-
-    function copyText(text) {
-        navigator.clipboard.writeText(text).then(() => {
-            showToast(currentLang === 'fa' ? '✅ متن کپی شد!' : '✅ Text copied!');
-        }).catch(() => {
-            showToast(currentLang === 'fa' ? '❌ خطا در کپی' : '❌ Copy failed');
-        });
-    }
-
-    function sharePoem(text, type) {
-        const shareText = `${type}\n\n${text}`;
-        if (navigator.share) {
-            navigator.share({ title: 'اشعار سرفراز خموش', text: shareText }).catch(() => {});
-        } else {
-            copyText(shareText);
-            showToast(currentLang === 'fa' ? 'متن برای اشتراک کپی شد' : 'Text copied for sharing');
+        function showToast(msg) {
+            let existing = document.querySelector('.toast-msg');
+            if (existing) existing.remove();
+            let toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
         }
-    }
 
-    function likePoem(id, btn, countSpan) {
-        if (!likesData[id]) likesData[id] = 0;
-        if (btn.classList.contains('liked')) {
-            likesData[id]--;
-            btn.classList.remove('liked');
-        } else {
-            likesData[id]++;
-            btn.classList.add('liked');
+        function copyText(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast(currentLang === 'fa' ? '✅ متن کپی شد!' : '✅ Text copied!');
+            }).catch(() => {
+                showToast(currentLang === 'fa' ? '❌ خطا در کپی' : '❌ Copy failed');
+            });
         }
-        countSpan.textContent = likesData[id];
-        localStorage.setItem('poem_likes', JSON.stringify(likesData));
-    }
 
-    function renderPoems() {
-        const grid = document.getElementById('poemsGrid');
-        if (!grid) return;
-        grid.innerHTML = poemsList.map(p => {
-            const text = currentLang === 'fa' ? p.textFa : p.textEn;
-            const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
-            const likes = likesData[p.id] || 0;
-            const liked = likesData[p.id] > 0;
-            return `
+        function sharePoem(text, type) {
+            const shareText = `${type}\n\n${text}`;
+            if (navigator.share) {
+                navigator.share({ title: 'اشعار سرفراز خموش', text: shareText }).catch(() => { });
+            } else {
+                copyText(shareText);
+                showToast(currentLang === 'fa' ? 'متن برای اشتراک کپی شد' : 'Text copied for sharing');
+            }
+        }
+
+        function likePoem(id, btn, countSpan) {
+            if (!likesData[id]) likesData[id] = 0;
+            if (btn.classList.contains('liked')) {
+                likesData[id]--;
+                btn.classList.remove('liked');
+            } else {
+                likesData[id]++;
+                btn.classList.add('liked');
+            }
+            countSpan.textContent = likesData[id];
+            localStorage.setItem('poem_likes', JSON.stringify(likesData));
+        }
+
+        function renderPoems() {
+            const grid = document.getElementById('poemsGrid');
+            if (!grid) return;
+            grid.innerHTML = poemsList.map(p => {
+                const text = currentLang === 'fa' ? p.textFa : p.textEn;
+                const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
+                const likes = likesData[p.id] || 0;
+                const liked = likesData[p.id] > 0;
+                return `
             <div class="poem-card" data-id="${p.id}">
                 <div class="poem-logo"><img src="${p.logo}" alt="لوگو" onerror="this.src='https://placehold.co/70x70?text=🎭'"></div>
                 <div class="poem-type">${type}</div>
@@ -744,14 +800,110 @@
                     </button>
                 </div>
             </div>`;
-        }).join('');
+            }).join('');
 
-        document.querySelectorAll('.copy-btn').forEach(btn => {
+            document.querySelectorAll('.copy-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    copyText(btn.getAttribute('data-text'));
+                });
+            });
+            document.querySelectorAll('.share-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    sharePoem(btn.getAttribute('data-text'), btn.getAttribute('data-type'));
+                });
+            });
+            document.querySelectorAll('.like-btn').forEach(btn => {
+                const card = btn.closest('.poem-card');
+                const id = parseInt(card.getAttribute('data-id'));
+                const countSpan = btn.querySelector('.like-count');
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    likePoem(id, btn, countSpan);
+                });
+            });
+        }
+
+        function updateTexts() {
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                const span = link.querySelector('span');
+                if (span) {
+                    span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
+                }
+            });
+            const tag = document.querySelector('.site-tag');
+            if (tag) {
+                tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+            }
+            const footerCopy = document.getElementById('footerCopy');
+            if (footerCopy) {
+                footerCopy.innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
+            }
+            const langLabel = document.getElementById('currentLangLabel');
+            if (langLabel) langLabel.innerText = currentLang === 'fa' ? 'فارسی' : 'English';
+            renderPoems();
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            updateTexts();
+            localStorage.setItem('sarfraz_lang', lang);
+        }
+
+        function initTheme() {
+            const saved = localStorage.getItem('sarfraz_theme');
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (saved === 'dark') {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+            } else {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+                localStorage.setItem('sarfraz_theme', 'light');
+            } else {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+                localStorage.setItem('sarfraz_theme', 'dark');
+            }
+        }
+
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            if (!hamburger || !navMenu) return;
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('open');
+                }
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navMenu.classList.remove('open'));
+            });
+        }
+
+        function initLanguage() {
+            const selector = document.getElementById('langSelector');
+            const btn = document.getElementById('langBtn');
+            if (!selector || !btn) return;
             btn.addEventListener('click', (e) => {
                 e.stopPropagation();
-                copyText(btn.getAttribute('data-text'));
+                selector.classList.toggle('open');
             });
-<<<<<<< HEAD
             document.addEventListener('click', (e) => {
                 if (!selector.contains(e.target)) selector.classList.remove('open');
             });
@@ -792,142 +944,8 @@
 
             // حذف preventDefault مزاحم از لینک‌های منو – دیگر هیچ event listener اضافه نمی‌کنیم
             document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-=======
->>>>>>> 7bc8cd457fc04e937a54c7d2316fdf9917ddd7b9
         });
-        document.querySelectorAll('.share-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                sharePoem(btn.getAttribute('data-text'), btn.getAttribute('data-type'));
-            });
-        });
-        document.querySelectorAll('.like-btn').forEach(btn => {
-            const card = btn.closest('.poem-card');
-            const id = parseInt(card.getAttribute('data-id'));
-            const countSpan = btn.querySelector('.like-count');
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                likePoem(id, btn, countSpan);
-            });
-        });
-    }
-
-    function updateTexts() {
-        document.querySelectorAll('.nav-menu a').forEach(link => {
-            const span = link.querySelector('span');
-            if (span) {
-                span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
-            }
-        });
-        const tag = document.querySelector('.site-tag');
-        if (tag) {
-            tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
-        }
-        const footerCopy = document.getElementById('footerCopy');
-        if (footerCopy) {
-            footerCopy.innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
-        }
-        const langLabel = document.getElementById('currentLangLabel');
-        if (langLabel) langLabel.innerText = currentLang === 'fa' ? 'فارسی' : 'English';
-        renderPoems();
-    }
-
-    function setLanguage(lang) {
-        currentLang = lang;
-        updateTexts();
-        localStorage.setItem('sarfraz_lang', lang);
-    }
-
-    function initTheme() {
-        const saved = localStorage.getItem('sarfraz_theme');
-        const body = document.body;
-        const themeIcon = document.getElementById('themeIcon');
-        if (saved === 'dark') {
-            body.classList.add('dark');
-            themeIcon.src = 'images/day.png';
-        } else {
-            body.classList.remove('dark');
-            themeIcon.src = 'images/night.png';
-        }
-    }
-    function toggleTheme() {
-        const body = document.body;
-        const themeIcon = document.getElementById('themeIcon');
-        if (body.classList.contains('dark')) {
-            body.classList.remove('dark');
-            themeIcon.src = 'images/night.png';
-            localStorage.setItem('sarfraz_theme', 'light');
-        } else {
-            body.classList.add('dark');
-            themeIcon.src = 'images/day.png';
-            localStorage.setItem('sarfraz_theme', 'dark');
-        }
-    }
-
-    function initMobileMenu() {
-        const hamburger = document.getElementById('hamburgerBtn');
-        const navMenu = document.getElementById('navMenu');
-        if (!hamburger || !navMenu) return;
-        hamburger.addEventListener('click', (e) => {
-            e.stopPropagation();
-            navMenu.classList.toggle('open');
-        });
-        document.addEventListener('click', (e) => {
-            if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                navMenu.classList.remove('open');
-            }
-        });
-        navMenu.querySelectorAll('a').forEach(link => {
-            link.addEventListener('click', () => navMenu.classList.remove('open'));
-        });
-    }
-
-    function initLanguage() {
-        const selector = document.getElementById('langSelector');
-        const btn = document.getElementById('langBtn');
-        if (!selector || !btn) return;
-        btn.addEventListener('click', (e) => {
-            e.stopPropagation();
-            selector.classList.toggle('open');
-        });
-        document.addEventListener('click', (e) => {
-            if (!selector.contains(e.target)) selector.classList.remove('open');
-        });
-        document.querySelectorAll('.lang-option').forEach(opt => {
-            opt.addEventListener('click', () => {
-                const lang = opt.getAttribute('data-lang');
-                if (lang) setLanguage(lang);
-                selector.classList.remove('open');
-            });
-        });
-    }
-
-    // کد مودال UID
-    const modal = document.getElementById('uidModal');
-    const codmBtn = document.getElementById('codmBtn');
-    const copyUidBtn = document.getElementById('copyUidBtn');
-    const closeModalBtn = document.getElementById('closeModalBtn');
-    function openModal() { modal.style.display = 'flex'; }
-    function closeModal() { modal.style.display = 'none'; }
-    function copyUid() {
-        navigator.clipboard.writeText('7500139701825634305');
-        showToast(currentLang === 'fa' ? '✅ UID کپی شد!' : '✅ UID copied!');
-        closeModal();
-    }
-    if (codmBtn) codmBtn.addEventListener('click', openModal);
-    if (copyUidBtn) copyUidBtn.addEventListener('click', copyUid);
-    if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-    modal.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
-
-    document.addEventListener('DOMContentLoaded', () => {
-        const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
-        setLanguage(savedLang);
-        initTheme();
-        initMobileMenu();
-        initLanguage();
-
-        document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-    });
-</script>
+    </script>
 </body>
+
 </html>
