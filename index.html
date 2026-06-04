@@ -443,7 +443,7 @@
         }
 
         .codm-icon:hover {
-            background: #ffffff;
+            background: #8b5cf6;
             transform: translateY(-3px);
         }
 
@@ -648,14 +648,12 @@
                 <div class="nav-menu" id="navMenu">
                     <a href="index.html" data-fa="خانه" data-en="Home"><img src="images/home.png"
                             alt="خانه"><span>خانه</span></a>
-
                     <a href="about.html" data-fa="درباره" data-en="About"><img src="images/about.png"
                             alt="درباره"><span>درباره</span></a>
                     <a href="poems.html" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png"
                             alt="اشعار"><span>اشعار</span></a>
                     <a href="tech-news.html" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png"
                             alt="فناوری"><span>اخبار فناوری</span></a>
-
                 </div>
                 <div class="nav-actions">
                     <div class="lang-selector" id="langSelector">
@@ -682,42 +680,24 @@
             <div class="footer-content">
                 <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
                 <div class="social-icons">
-                    <a href="
-https://www.facebook.com/profile.php?id=61590217606266
-"><img src="images/facebook.png" alt="فیسبوک"></a>
-                    <a href="
-https://www.instagram.com/admin_khamoosh?igsh=MXFoazVocHd0NnFzMw
-==
-"><img src="images/instagram.png" alt="اینستاگرام"></a>
-                    <a href="
-https://www.linkedin.com/in/sarfraz-khamoosh-766277228
-"><img src="images/linkedin.png" alt="لینکدین"></a>
-                    <a href="
-https://pin.it/WY1aeKX2a
-"><img src="images/pinterest.png" alt="پینترست"></a>
-                    <a href="
-https://www.behance.net/merlinsarfraz
-"><img src="images/ben.png" alt="بهنس"></a>
-                    <a href="
-https://wa.me/qr/E2RLH5T72CSFE1
-"><img src="images/whatsapp.png" alt="واتساپ"></a>
-                    <a href="
-https://www.tiktok.com/@sarfraz_khamoosh?_r=1&_t=ZS-96uByf6HU9s
-
-"><img src="images/tik.png" alt="تیک تاک"></a>
-                    <a href="
-https://khamoooooosh675.substack.com
-"><img src="images/substack.png" alt="ساب‌استک"></a>
-                    <a href="
-https://github.com/hammmmmad
-"><img src="images/github.png" alt="گیت‌هاب"></a>
-                    <a href="
-https://www.threads.com/@sarfraz_khamoosh23
-"><img src="images/threads.png" alt="تردز"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61590217606266"><img src="images/facebook.png"
+                            alt="فیسبوک"></a>
+                    <a href="https://www.instagram.com/admin_khamoosh?igsh=MXFoazVocHd0NnFzMw=="><img
+                            src="images/instagram.png" alt="اینستاگرام"></a>
+                    <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228"><img src="images/linkedin.png"
+                            alt="لینکدین"></a>
+                    <a href="https://pin.it/WY1aeKX2a"><img src="images/pinterest.png" alt="پینترست"></a>
+                    <a href="https://www.behance.net/merlinsarfraz"><img src="images/ben.png" alt="بهنس"></a>
+                    <a href="https://wa.me/qr/E2RLH5T72CSFE1"><img src="images/whatsapp.png" alt="واتساپ"></a>
+                    <a href="https://www.tiktok.com/@sarfraz_khamoosh?_r=1&_t=ZS-96uByf6HU9s"><img src="images/tik.png"
+                            alt="تیک تاک"></a>
+                    <a href="https://khamoooooosh675.substack.com"><img src="images/substack.png" alt="ساب‌استک"></a>
+                    <a href="https://github.com/hammmmmad"><img src="images/github.png" alt="گیت‌هاب"></a>
+                    <a href="https://www.threads.com/@sarfraz_khamoosh23"><img src="images/threads.png" alt="تردز"></a>
                     <!-- آیکون Call of Duty -->
                     <div class="codm-icon" id="codmBtn">
                         <img src="images/call of.png" alt="CODM"
-                            onerror="this.src='https://placehold.co/24x24?text=🎮'">
+                            onerror="this.src='https://placehold.co/35x35?text=🎮'">
                     </div>
                 </div>
             </div>
@@ -962,14 +942,7 @@ https://www.threads.com/@sarfraz_khamoosh23
             initMobileMenu();
             initLanguage();
 
-            document.querySelectorAll('.nav-menu a').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const text = link.querySelector('span')?.innerText || '';
-                    alert(currentLang === 'fa' ? `بخش "${text}" در حال آماده‌سازی است` : `Section "${text}" is under construction`);
-                });
-            });
-
+            // حذف preventDefault مزاحم از لینک‌های منو – دیگر هیچ event listener اضافه نمی‌کنیم
             document.getElementById('themeBtn').addEventListener('click', toggleTheme);
         });
     </script>

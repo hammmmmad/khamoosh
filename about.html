@@ -30,12 +30,10 @@
             transition: background 0.3s;
         }
 
-        /* ---------- حالت شب (تیره کردن کارت‌ها، فوتر و هدر) ---------- */
         body.dark {
             background: #0a0a0f;
         }
 
-        /* هدر شیشه‌ای در روز و شب */
         .glass-header {
             position: sticky;
             top: 20px;
@@ -56,7 +54,6 @@
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
         }
 
-        /* آیکون‌ها و متن‌های هدر در شب سفید */
         body.dark .navbar,
         body.dark .nav-menu a,
         body.dark .lang-btn,
@@ -76,7 +73,6 @@
             filter: none;
         }
 
-        /* ===== کارت‌ها: روز شیشه‌ای الماسی، شب تیره ===== */
         .glass-card {
             border-radius: 2rem;
             padding: 1.8rem;
@@ -88,7 +84,6 @@
             overflow: hidden;
         }
 
-        /* حالت روز */
         body:not(.dark) .glass-card {
             background: rgba(255, 255, 255, 0.7);
             backdrop-filter: blur(12px);
@@ -96,7 +91,6 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
         }
 
-        /* حالت شب */
         body.dark .glass-card {
             background: rgba(20, 20, 30, 0.85);
             backdrop-filter: blur(10px);
@@ -104,7 +98,6 @@
             box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
         }
 
-        /* نویز مشترک برای هر دو حالت */
         .glass-card::before {
             content: "";
             position: absolute;
@@ -121,7 +114,6 @@
             box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
         }
 
-        /* تیتر کارت‌ها */
         .glass-card h2 {
             font-size: 1.5rem;
             margin-bottom: 1.2rem;
@@ -155,7 +147,6 @@
             color: #e0e0e0;
         }
 
-        /* معرفی (مستقل از کارت) */
         .intro-english {
             font-family: 'Ignogito', 'Courier New', monospace;
             font-size: 2.2rem;
@@ -184,7 +175,6 @@
             color: #9ca3af;
         }
 
-        /* حوزه‌های تخصصی */
         .specialties-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -200,7 +190,6 @@
             font-size: 0.95rem;
         }
 
-        /* آیکون‌های داخل کارت‌ها: پس‌زمینه سفید گرد با سایه */
         .specialties-list li img,
         .skill-icon,
         .lang-icon {
@@ -213,7 +202,6 @@
             box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
         }
 
-        /* مهارت‌ها و زبان‌ها */
         .skills-grid,
         .lang-grid {
             display: flex;
@@ -285,7 +273,6 @@
             color: #e0e0e0;
         }
 
-        /* ---------- فوتر ---------- */
         .glass-footer {
             margin-top: 3rem;
             border-radius: 2rem 2rem 1rem 1rem;
@@ -293,7 +280,6 @@
             transition: all 0.3s;
         }
 
-        /* روز: پس‌زمینه سفید، آیکون‌ها سیاه */
         body:not(.dark) .glass-footer {
             background: #ffffff;
             box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
@@ -315,7 +301,6 @@
             filter: brightness(0) contrast(1);
         }
 
-        /* شب: پس‌زمینه سیاه، آیکون‌ها سفید با نارنجی کمرنگ */
         body.dark .glass-footer {
             background: #0a0a0f;
             border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -336,7 +321,6 @@
             filter: brightness(0) invert(1);
         }
 
-        /* رنگ نارنجی کم‌رنگ روی آیکون‌های فوتر در شب */
         body.dark .social-icons a:hover,
         body.dark .codm-btn:hover {
             background: #f97316 !important;
@@ -381,7 +365,6 @@
             opacity: 0.7;
         }
 
-        /* ===== بقیه المان‌ها (منو، دکمه زبان، همبرگر و ...) ===== */
         .navbar {
             display: flex;
             align-items: center;
@@ -555,7 +538,6 @@
             background: rgba(59, 130, 246, 0.2);
         }
 
-        /* موبایل */
         @media (max-width: 768px) {
             .container {
                 padding: 0.8rem;
@@ -658,7 +640,6 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
-        /* مودال شیشه‌ای UID */
         .glass-modal {
             display: none;
             position: fixed;
@@ -761,9 +742,10 @@
                             alt="خانه"><span>خانه</span></a>
                     <a href="about.html" data-fa="درباره" data-en="About"><img src="images/about.png"
                             alt="درباره"><span>درباره</span></a>
-                    <a href="news.html" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png"
+                    <a href="poems.html" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png"
+                            alt="اشعار"><span>اشعار</span></a>
+                    <a href="tech-news.html" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png"
                             alt="فناوری"><span>اخبار فناوری</span></a>
-
                 </div>
                 <div class="nav-actions">
                     <div class="lang-selector" id="langSelector">
@@ -790,7 +772,6 @@
         <div class="job-titles" id="jobTitles">برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور
             مهاجرت | مربی فیتنس</div>
 
-        <!-- بیوگرافی + علاقه به شعر -->
         <div class="glass-card">
             <h2 id="bioTitle">📖 بیوگرافی</h2>
             <p id="bioText">سرفراز خموش، متولد سال ۱۳۷۷ (۱۹۹۸ میلادی) در شهر مزار شریف افغانستان، از جمله متخصصان جوان و
@@ -800,25 +781,21 @@
                 همواره از مطالعه کتاب و سرودن شعر لذت می‌برد.</p>
         </div>
 
-        <!-- حوزه‌های تخصصی -->
         <div class="glass-card">
             <h2 id="specialtiesTitle">⚡ حوزه‌های تخصصی</h2>
             <ul class="specialties-list" id="specialtiesList"></ul>
         </div>
 
-        <!-- مهارت‌های نرم‌افزاری -->
         <div class="glass-card">
             <h2 id="skillsTitle">🛠️ مهارت‌های نرم‌افزاری</h2>
             <div class="skills-grid" id="skillsGrid"></div>
         </div>
 
-        <!-- زبان‌های برنامه‌نویسی -->
         <div class="glass-card">
             <h2 id="langTitle">💻 زبان‌های برنامه‌نویسی</h2>
             <div class="lang-grid" id="langGrid"></div>
         </div>
 
-        <!-- نقل قول -->
         <div class="glass-card">
             <p id="quoteText" style="text-align: center; font-style: italic;">«خلاقیت، دانش و پشتکار، سه ستون اصلی
                 موفقیت هستند.»</p>
@@ -828,17 +805,20 @@
             <div class="footer-content">
                 <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
                 <div class="social-icons">
-                    <a href="#"><img src="images/facebook.png" alt="فیسبوک"></a>
-                    <a href="#"><img src="images/instagram.png" alt="اینستاگرام"></a>
-                    <a href="#"><img src="images/linkedin.png" alt="لینکدین"></a>
-                    <a href="#"><img src="images/pinterest.png" alt="پینترست"></a>
-                    <a href="#"><img src="images/ben.png" alt="بهنس"></a>
-                    <a href="#"><img src="images/whatsapp.png" alt="واتساپ"></a>
-                    <a href="#"><img src="images/tik.png" alt="تیک تاک"></a>
-                    <a href="#"><img src="images/substack.png" alt="ساب‌استک"></a>
-                    <a href="#"><img src="images/github.png" alt="گیت‌هاب"></a>
-                    <a href="#"><img src="images/threads.png" alt="تردز"></a>
-                    <!-- آیکون کالاف دیوتی با قابلیت UID -->
+                    <a href="https://www.facebook.com/profile.php?id=61590217606266"><img src="images/facebook.png"
+                            alt="فیسبوک"></a>
+                    <a href="https://www.instagram.com/admin_khamoosh?igsh=MXFoazVocHd0NnFzMw=="><img
+                            src="images/instagram.png" alt="اینستاگرام"></a>
+                    <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228"><img src="images/linkedin.png"
+                            alt="لینکدین"></a>
+                    <a href="https://pin.it/WY1aeKX2a"><img src="images/pinterest.png" alt="پینترست"></a>
+                    <a href="https://www.behance.net/merlinsarfraz"><img src="images/ben.png" alt="بهنس"></a>
+                    <a href="https://wa.me/qr/E2RLH5T72CSFE1"><img src="images/whatsapp.png" alt="واتساپ"></a>
+                    <a href="https://www.tiktok.com/@sarfraz_khamoosh?_r=1&_t=ZS-96uByf6HU9s"><img src="images/tik.png"
+                            alt="تیک تاک"></a>
+                    <a href="https://khamoooooosh675.substack.com"><img src="images/substack.png" alt="ساب‌استک"></a>
+                    <a href="https://github.com/hammmmmad"><img src="images/github.png" alt="گیت‌هاب"></a>
+                    <a href="https://www.threads.com/@sarfraz_khamoosh23"><img src="images/threads.png" alt="تردز"></a>
                     <div class="codm-btn" id="codmBtn">
                         <img src="images/call of.png" alt="CODM"
                             onerror="this.src='https://placehold.co/24x24?text=🎮'">
@@ -848,7 +828,6 @@
         </footer>
     </div>
 
-    <!-- مودال UID -->
     <div id="uidModal" class="glass-modal">
         <div class="modal-content">
             <h3>🎮 کال‌آف دیوتی موبایل</h3>
@@ -862,7 +841,6 @@
     </div>
 
     <script>
-        // داده‌های حوزه‌های تخصصی
         const specialtiesData = [
             { nameFa: "برنامه‌نویسی و توسعه نرم‌افزار", nameEn: "Programming & Software Development", icon: "images/programer.png" },
             { nameFa: "طراحی و توسعه وب‌سایت", nameEn: "Website Design & Development", icon: "images/website.png" },
@@ -916,35 +894,35 @@
         function renderSpecialties() {
             const container = document.getElementById('specialtiesList');
             container.innerHTML = specialtiesData.map(item => `
-            <li>
-                <img src="${item.icon}" alt="${currentLang === 'fa' ? item.nameFa : item.nameEn}" onerror="this.src='https://placehold.co/40x40?text=🔹'">
-                <span>${currentLang === 'fa' ? item.nameFa : item.nameEn}</span>
-            </li>
-        `).join('');
+                <li>
+                    <img src="${item.icon}" alt="${currentLang === 'fa' ? item.nameFa : item.nameEn}" onerror="this.src='https://placehold.co/40x40?text=🔹'">
+                    <span>${currentLang === 'fa' ? item.nameFa : item.nameEn}</span>
+                </li>
+            `).join('');
         }
 
         function renderSkills() {
             const container = document.getElementById('skillsGrid');
             container.innerHTML = skillsData.map(skill => `
-            <div class="skill-item">
-                <img class="skill-icon" src="${skill.icon}" alt="${skill.name}" onerror="this.src='https://placehold.co/40x40?text=🎨'">
-                <span class="skill-name">${skill.name}</span>
-                <div class="skill-bar-container"><div class="skill-bar" data-percent="${skill.percent}"></div></div>
-                <span class="skill-percent">${skill.percent}%</span>
-            </div>
-        `).join('');
+                <div class="skill-item">
+                    <img class="skill-icon" src="${skill.icon}" alt="${skill.name}" onerror="this.src='https://placehold.co/40x40?text=🎨'">
+                    <span class="skill-name">${skill.name}</span>
+                    <div class="skill-bar-container"><div class="skill-bar" data-percent="${skill.percent}"></div></div>
+                    <span class="skill-percent">${skill.percent}%</span>
+                </div>
+            `).join('');
         }
 
         function renderLangs() {
             const container = document.getElementById('langGrid');
             container.innerHTML = langsData.map(lang => `
-            <div class="lang-item">
-                <img class="lang-icon" src="${lang.icon}" alt="${lang.name}" onerror="this.src='https://placehold.co/40x40?text=💻'">
-                <span class="lang-name">${lang.name}</span>
-                <div class="lang-bar-container"><div class="lang-bar" data-percent="${lang.percent}"></div></div>
-                <span class="lang-percent">${lang.percent}%</span>
-            </div>
-        `).join('');
+                <div class="lang-item">
+                    <img class="lang-icon" src="${lang.icon}" alt="${lang.name}" onerror="this.src='https://placehold.co/40x40?text=💻'">
+                    <span class="lang-name">${lang.name}</span>
+                    <div class="lang-bar-container"><div class="lang-bar" data-percent="${lang.percent}"></div></div>
+                    <span class="lang-percent">${lang.percent}%</span>
+                </div>
+            `).join('');
         }
 
         function animateBarsOnScroll() {
@@ -1003,6 +981,7 @@
                 themeIcon.src = 'images/night.png';
             }
         }
+
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('themeIcon');
@@ -1043,7 +1022,6 @@
             });
         }
 
-        // مودال UID
         const modal = document.getElementById('uidModal');
         const codmBtn = document.getElementById('codmBtn');
         const copyUidBtn = document.getElementById('copyUidBtn');
