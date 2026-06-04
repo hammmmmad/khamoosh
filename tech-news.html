@@ -1,0 +1,1043 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>اخبار فناوری | سرفراز خموش</title>
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Ignogito';
+            src: url('fonts/ignogito.otf') format('opentype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Vazirmatn', 'Segoe UI', system-ui, sans-serif;
+            background: #f0f2f8;
+            color: #1e2a3e;
+            min-height: 100vh;
+            transition: background 0.3s;
+        }
+
+        body.dark {
+            background: #0a0a0f;
+        }
+
+        .glass-header {
+            position: sticky;
+            top: 20px;
+            z-index: 1000;
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            border-radius: 2rem;
+            padding: 0.7rem 1.5rem;
+            margin-bottom: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s;
+        }
+
+        body.dark .glass-header {
+            background: rgba(0, 0, 0, 0.7);
+            border-color: rgba(255, 255, 255, 0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark .navbar,
+        body.dark .nav-menu a,
+        body.dark .lang-btn,
+        body.dark .lang-btn span,
+        body.dark .hamburger,
+        body.dark .nav-actions {
+            color: #ffffff;
+        }
+
+        body.dark .nav-menu a img,
+        body.dark .hamburger img,
+        body.dark .lang-btn img {
+            filter: brightness(0) invert(1);
+        }
+
+        body.dark .logo-img {
+            filter: none;
+        }
+
+        .navbar {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .logo-img {
+            width: 70px;
+            height: 70px;
+            border-radius: 50%;
+            border: 2px solid white;
+            object-fit: cover;
+        }
+
+        .site-name h1 {
+            font-family: 'Ignogito', 'Vazirmatn', sans-serif;
+            font-size: 1.6rem;
+            font-weight: 800;
+            letter-spacing: 1px;
+        }
+
+        .site-name p {
+            font-size: 0.65rem;
+            opacity: 0.8;
+        }
+
+        .hamburger {
+            display: none;
+            background: rgba(255, 255, 240, 0.3);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 30px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hamburger img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-menu a {
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            border-radius: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: 0.2s;
+            font-size: 0.9rem;
+        }
+
+        body:not(.dark) .nav-menu a {
+            color: #1e2a3e;
+        }
+
+        body.dark .nav-menu a {
+            color: #eef2ff;
+        }
+
+        .nav-menu a:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        .nav-menu a img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .nav-actions {
+            display: flex;
+            gap: 0.6rem;
+            align-items: center;
+        }
+
+        .theme-btn {
+            background: rgba(255, 255, 240, 0.3);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .theme-btn img {
+            width: 28px;
+            height: 28px;
+        }
+
+        .lang-selector {
+            position: relative;
+        }
+
+        .lang-btn {
+            background: rgba(255, 255, 240, 0.3);
+            border: none;
+            border-radius: 2rem;
+            padding: 0 1rem;
+            height: 44px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            backdrop-filter: blur(8px);
+            font-family: inherit;
+            font-size: 0.9rem;
+        }
+
+        .lang-btn img {
+            width: 20px;
+            height: 20px;
+        }
+
+        .lang-dropdown {
+            position: absolute;
+            top: 110%;
+            right: 0;
+            background: rgba(255, 255, 255, 0.96);
+            backdrop-filter: blur(12px);
+            border-radius: 1rem;
+            min-width: 130px;
+            display: none;
+            z-index: 200;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .lang-selector.open .lang-dropdown {
+            display: block;
+        }
+
+        .lang-option {
+            padding: 8px 15px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: 0.2s;
+        }
+
+        .lang-option img {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+        }
+
+        .lang-option:hover {
+            background: rgba(59, 130, 246, 0.2);
+        }
+
+        /* شبکه اخبار */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+            gap: 2rem;
+            margin: 2rem 0 3rem;
+        }
+
+        .news-card {
+            border-radius: 2rem;
+            overflow: hidden;
+            transition: transform 0.25s, box-shadow 0.25s, background 0.3s, backdrop-filter 0.3s;
+            cursor: pointer;
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark .news-card {
+            background: rgba(20, 20, 30, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .news-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .news-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+
+        .news-card:hover .news-img {
+            transform: scale(1.02);
+        }
+
+        .news-content {
+            padding: 1.2rem;
+        }
+
+        .news-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            line-height: 1.4;
+        }
+
+        body:not(.dark) .news-title {
+            color: #1e2a3e;
+        }
+
+        body.dark .news-title {
+            color: #f0f0f0;
+        }
+
+        .news-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #6b7280;
+        }
+
+        body.dark .news-meta {
+            color: #9ca3af;
+        }
+
+        .admin-info {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .admin-avatar {
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 2px solid #ddd;
+            background: #ffffff;
+            box-shadow: #666666 0px 2px 10px;
+        }
+
+        /* مودال */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(10px);
+            z-index: 10001;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+        }
+
+        .modal-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            max-width: 800px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            direction: rtl;
+            padding: 1.8rem;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.3);
+        }
+
+        body.dark .modal-container {
+            background: rgba(0, 0, 0, 0.85);
+            color: #eef2ff;
+            border-color: rgba(255, 255, 255, 0.2);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 1rem;
+            left: 1rem;
+            background: #8b5cf6;
+            border: none;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            padding-left: 2rem;
+        }
+
+        .modal-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            font-size: 0.8rem;
+            color: #6b7280;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .modal-content-text {
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        /* فوتر */
+        .glass-footer {
+            margin-top: 3rem;
+            border-radius: 2rem 2rem 1rem 1rem;
+            padding: 2rem 1.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+
+        body:not(.dark) .glass-footer {
+            background: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+            border-top: 1px solid #e5e7eb;
+        }
+
+        body:not(.dark) .footer-content,
+        body:not(.dark) .copyright {
+            color: #1e2a3e;
+        }
+
+        body:not(.dark) .social-icons a,
+        body:not(.dark) .codm-btn {
+            background: #f3f4f6;
+        }
+
+        body:not(.dark) .social-icons a img,
+        body:not(.dark) .codm-btn img {
+            filter: brightness(0) contrast(1);
+        }
+
+        body.dark .glass-footer {
+            background: #0a0a0f;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .footer-content,
+        body.dark .copyright {
+            color: #eef2ff;
+        }
+
+        body.dark .social-icons a,
+        body.dark .codm-btn {
+            background: #1f2937;
+        }
+
+        body.dark .social-icons a img,
+        body.dark .codm-btn img {
+            filter: brightness(0) invert(1);
+        }
+
+        body.dark .social-icons a:hover,
+        body.dark .codm-btn:hover {
+            background: #f97316 !important;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .social-icons a,
+        .codm-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .social-icons a img,
+        .codm-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 0.8rem;
+            }
+
+            .navbar {
+                position: relative;
+            }
+
+            .hamburger {
+                display: flex;
+            }
+
+            .nav-menu {
+                display: none;
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.97);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                align-items: stretch;
+                gap: 0.3rem;
+                padding: 1rem;
+                border-radius: 1.5rem;
+                z-index: 9999;
+                box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
+                border: 1px solid rgba(0, 0, 0, 0.1);
+            }
+
+            body.dark .nav-menu {
+                background: rgba(0, 0, 0, 0.95);
+                border-color: rgba(255, 255, 255, 0.2);
+                color: white;
+            }
+
+            body.dark .nav-menu a img {
+                filter: brightness(0) invert(1);
+            }
+
+            .nav-menu.open {
+                display: flex;
+            }
+
+            .nav-menu a {
+                justify-content: center;
+                padding: 0.7rem;
+            }
+
+            .lang-btn span:not(.lang-text) {
+                display: none;
+            }
+
+            .lang-btn {
+                padding: 0 0.9rem;
+            }
+
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .social-icons {
+                justify-content: center;
+            }
+        }
+
+        .glass-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(8px);
+            z-index: 10000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 2rem;
+            padding: 1.8rem;
+            text-align: center;
+            width: 85%;
+            max-width: 350px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.2);
+        }
+
+        body.dark .modal-content {
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+        }
+
+        .modal-content code {
+            display: inline-block;
+            background: #2d3a4e;
+            padding: 8px 12px;
+            border-radius: 12px;
+            margin: 10px 0;
+            direction: ltr;
+            color: white;
+        }
+
+        .modal-buttons button {
+            background: #8b5cf6;
+            border: none;
+            padding: 8px 20px;
+            border-radius: 2rem;
+            color: white;
+            cursor: pointer;
+            margin: 0 5px;
+        }
+
+        .toast-msg {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            z-index: 2000;
+            animation: fadeOut 2s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+
+            70% {
+                opacity: 1;
+            }
+
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <header class="glass-header">
+            <div class="navbar">
+                <div class="logo-area">
+                    <img class="logo-img" src="images/Khamoosh.jpg" alt="لوگو"
+                        onerror="this.src='https://placehold.co/70x70?text=SK'">
+                    <div class="site-name">
+                        <h1>Sarfraz Khamoosh</h1>
+                        <p class="site-tag" data-fa="اخبار فناوری" data-en="Tech News">اخبار فناوری</p>
+                    </div>
+                </div>
+                <button class="hamburger" id="hamburgerBtn">
+                    <img src="images/menu.png" alt="منو" onerror="this.src='https://placehold.co/24x24?text=☰'">
+                </button>
+                <div class="nav-menu" id="navMenu">
+                    <a href="index.html" data-fa="خانه" data-en="Home"><img src="images/home.png"
+                            alt="خانه"><span>خانه</span></a>
+                    <a href="about.html" data-fa="درباره" data-en="About"><img src="images/about.png"
+                            alt="درباره"><span>درباره</span></a>
+                    <a href="poems.html" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png"
+                            alt="اشعار"><span>اشعار</span></a>
+                    <a href="tech-news.html" data-fa="اخبار فناوری" data-en="Tech News" class="active"><img
+                            src="images/tech.png" alt="فناوری"><span>اخبار فناوری</span></a>
+                </div>
+                <div class="nav-actions">
+                    <div class="lang-selector" id="langSelector">
+                        <button class="lang-btn" id="langBtn">
+                            <img src="images/golo.png" alt="زبان"><span id="currentLangLabel">فارسی</span><span
+                                class="lang-text">▼</span>
+                        </button>
+                        <div class="lang-dropdown">
+                            <div class="lang-option" data-lang="fa"><img src="images/afghan.png"
+                                    alt="فارسی"><span>فارسی</span></div>
+                            <div class="lang-option" data-lang="en"><img src="images/usa.png"
+                                    alt="English"><span>English</span></div>
+                        </div>
+                    </div>
+                    <button class="theme-btn" id="themeBtn">
+                        <img id="themeIcon" src="images/night.png" alt="تم شب/روز"
+                            onerror="this.src='https://placehold.co/28x28?text=🌙'">
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <div class="news-grid" id="newsGrid"></div>
+
+        <footer class="glass-footer">
+            <div class="footer-content">
+                <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
+                <div class="social-icons">
+                    <a href="https://www.facebook.com/profile.php?id=61590217606266"><img src="images/facebook.png"
+                            alt="فیسبوک"></a>
+                    <a href="https://www.instagram.com/admin_khamoosh"><img src="images/instagram.png"
+                            alt="اینستاگرام"></a>
+                    <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228"><img src="images/linkedin.png"
+                            alt="لینکدین"></a>
+                    <a href="https://pin.it/WY1aeKX2a"><img src="images/pinterest.png" alt="پینترست"></a>
+                    <a href="https://www.behance.net/merlinsarfraz"><img src="images/ben.png" alt="بهنس"></a>
+                    <a href="https://wa.me/qr/E2RLH5T72CSFE1"><img src="images/whatsapp.png" alt="واتساپ"></a>
+                    <a href="https://www.tiktok.com/@sarfraz_khamoosh"><img src="images/tik.png" alt="تیک تاک"></a>
+                    <a href="https://khamoooooosh675.substack.com"><img src="images/substack.png" alt="ساب‌استک"></a>
+                    <a href="https://github.com/hammmmmad"><img src="images/github.png" alt="گیت‌هاب"></a>
+                    <a href="https://www.threads.com/@sarfraz_khamoosh23"><img src="images/threads.png" alt="تردز"></a>
+                    <div class="codm-btn" id="codmBtn">
+                        <img src="images/call of.png" alt="CODM"
+                            onerror="this.src='https://placehold.co/24x24?text=🎮'">
+                    </div>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <div id="newsModal" class="modal-overlay">
+        <div class="modal-container">
+            <button class="modal-close" id="modalCloseBtn">✕</button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <div id="uidModal" class="glass-modal">
+        <div class="modal-content">
+            <h3>🎮 کال‌آف دیوتی موبایل</h3>
+            <p>UID من :</p>
+            <code>7500139701825634305</code>
+            <div class="modal-buttons">
+                <button id="copyUidBtn">📋 کپی UID</button>
+                <button id="closeModalBtn">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // اخبار دو زبانه
+        const newsData = [
+            {
+                id: 1,
+                titleFa: "گوگل ۸۵ میلیارد دلار برای توسعه هوش مصنوعی جذب سرمایه کرد",
+                titleEn: "Google Raises $85 Billion for AI Development",
+                date: "۳ جون ۲۰۲۶",
+                image: "news-pic/google.jpg",
+                fullTextFa: `شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند؛ رقمی که از آن به‌عنوان یکی از بزرگ‌ترین جذب سرمایه‌های تاریخ بازار سهام یاد می‌شود.
+
+بر اساس گزارش منتشرشده، این شرکت در ابتدا قصد داشت ۴۰ میلیارد دلار سهام عرضه کند، اما استقبال گسترده سرمایه‌گذاران باعث شد میزان سرمایه جذب‌شده در مرحله نخست به ۴۵ میلیارد دلار افزایش یابد. آلفابت همچنین اعلام کرده است که قصد دارد در سه‌ماهه آینده ۴۰ میلیارد دلار دیگر نیز از طریق فروش سهام جذب کند.
+
+Sundar Pichai، مدیرعامل گوگل، اعلام کرده است که این سرمایه بخشی از برنامه چندساله شرکت برای توسعه زیرساخت‌های هوش مصنوعی و پاسخ به افزایش تقاضای کاربران و شرکت‌ها برای خدمات مبتنی بر AI خواهد بود.
+
+گوگل پیش‌تر در کنفرانس سالانه خود اعلام کرده بود که تا پایان سال ۲۰۲۶ بین ۱۸۰ تا ۱۹۰ میلیارد دلار در بخش زیرساخت‌های هوش مصنوعی، مراکز داده و توان پردازشی سرمایه‌گذاری خواهد کرد.
+
+تحلیلگران معتقدند این جذب سرمایه بی‌سابقه نشان می‌دهد که اعتماد سرمایه‌گذاران به آینده صنعت هوش مصنوعی همچنان بسیار بالا است. این موضوع می‌تواند راه را برای ورود شرکت‌های بزرگ هوش مصنوعی مانند Anthropic و OpenAI به بازار بورس هموارتر کند.
+
+این اقدام آلفابت همچنین به‌عنوان نشانه‌ای از رقابت فشرده میان شرکت‌های بزرگ فناوری برای تسلط بر بازار هوش مصنوعی در سال‌های آینده ارزیابی می‌شود.`,
+                fullTextEn: `Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion through a large stock offering to fund artificial intelligence projects — a figure described as one of the largest capital raises in stock market history.
+
+According to the report, the company initially planned to offer $40 billion in shares, but strong investor demand increased the first-phase raise to $45 billion. Alphabet also announced it intends to raise another $40 billion through stock sales in the next quarter.
+
+Sundar Pichai, Google's CEO, stated that this capital is part of the company's multi-year plan to develop AI infrastructure and meet growing user and business demand for AI-powered services.
+
+Earlier at its annual conference, Google had announced it would invest between $180 billion and $190 billion by the end of 2026 in AI infrastructure, data centers, and computing power.
+
+Analysts believe this unprecedented capital raise shows that investor confidence in the future of the AI industry remains very high. This could pave the way for major AI companies like Anthropic and OpenAI to enter the stock market.
+
+Alphabet's move is also seen as a sign of intense competition among big tech companies to dominate the AI market in the coming years.`
+            },
+            {
+                id: 2,
+                titleFa: "استارتاپ اروپایی Lovable همکاری خود با گوگل را گسترش داد",
+                titleEn: "European Startup Lovable Expands Partnership with Google",
+                date: "۳ جون ۲۰۲۶",
+                image: "news-pic/ai.jpg",
+                fullTextFa: `استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است. بر اساس این توافق، میزان استفاده Lovable از زیرساخت‌های ابری و خدمات هوش مصنوعی گوگل تا پنج برابر افزایش خواهد یافت.
+
+هرچند ارزش مالی این قرارداد اعلام نشده، اما منابع آگاه به TechCrunch گفته‌اند که Lovable دسترسی گسترده‌تری به مدل‌های هوش مصنوعی Anthropic، از جمله مدل Claude، و همچنین مدل‌های Gemini گوگل دریافت خواهد کرد.
+
+Lovable یکی از سریع‌ترین شرکت‌های در حال رشد اروپا محسوب می‌شود. این شرکت اعلام کرده است که در ماه فبروری سال جاری درآمد سالانه آن به بیش از ۴۰۰ میلیون دلار رسیده و تنها در یک ماه ۱۰۰ میلیون دلار به درآمد خود افزوده است. این موفقیت در حالی رقم خورده که شرکت تنها ۱۴۶ کارمند دارد.
+
+براساس ادعای این شرکت، بیش از نیمی از شرکت‌های فهرست Fortune 500 به‌نوعی از خدمات و محصولات Lovable استفاده می‌کنند.
+
+همچنین قرار است ابزارهای هوش مصنوعی Lovable از طریق بازار سازمانی گوگل عرضه شوند تا شرکت‌های بزرگ بتوانند آسان‌تر از این خدمات استفاده کرده و فرآیند خرید و پرداخت را ساده‌تر انجام دهند.
+
+در بخش امنیت نیز Lovable با Wiz همکاری خواهد کرد؛ شرکتی که اخیراً توسط گوگل با ارزش ۳۲ میلیارد دلار خریداری شده است. این همکاری امکان شناسایی و رفع مشکلات امنیتی کدها را به‌صورت لحظه‌ای فراهم می‌کند.
+
+کارشناسان معتقدند این توافق علاوه بر تقویت جایگاه Lovable، به رشد اکوسیستم هوش مصنوعی گوگل و Anthropic نیز کمک خواهد کرد و بخشی از استراتژی گوگل برای گسترش سرمایه‌گذاری‌های عظیم خود در حوزه هوش مصنوعی به شمار می‌رود.`,
+                fullTextEn: `Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud. Under the deal, Lovable's use of Google's cloud infrastructure and AI services will increase up to fivefold.
+
+Although the financial value was not disclosed, sources told TechCrunch that Lovable will gain broader access to Anthropic's AI models, including Claude, as well as Google's Gemini models.
+
+Lovable is one of Europe's fastest-growing companies. It announced that its annual recurring revenue exceeded $400 million in February of this year, adding $100 million in just one month — achieved with only 146 employees.
+
+According to the company, more than half of the Fortune 500 use Lovable's services and products in some way.
+
+Lovable's AI tools will also be offered through Google's corporate marketplace, making it easier for large enterprises to purchase and use them.
+
+In security, Lovable will partner with Wiz, a company recently acquired by Google for $32 billion, enabling real-time detection and remediation of code security issues.
+
+Experts believe this agreement will not only strengthen Lovable's position but also boost the AI ecosystem of Google and Anthropic, and is part of Google's strategy to expand its massive AI investments.`
+            },
+            {
+                id: 3,
+                titleFa: "متا بازی محبوب VR «Supernatural» را نجات داد",
+                titleEn: "Meta Rescues Popular VR Game 'Supernatural'",
+                date: "۳ جون ۲۰۲۶",
+                image: "news-pic/meta.jpg",
+                fullTextFa: `شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد.
+
+متا در سال ۲۰۲۳ استودیوی Within، سازنده Supernatural، را پس از یک نبرد حقوقی طولانی با نهادهای ضدانحصار خریداری کرده بود. ارزش این معامله حدود ۴۰۰ میلیون دلار برآورد شده بود.
+
+با این حال، متا در اوایل سال جاری بخش بزرگی از تیم واقعیت مجازی خود را تعدیل کرد و اعلام نمود که دیگر محتوای جدیدی برای Supernatural تولید نخواهد شد. این تصمیم با واکنش منفی کاربران مواجه شد و بسیاری از طرفداران نگران تعطیلی کامل این برنامه بودند.
+
+اکنون متا تصمیم گرفته است مالکیت و توسعه این اپلیکیشن را به شرکت تازه‌تأسیس Supernatural Health واگذار کند. این شرکت توسط بنیان‌گذاران اصلی Supernatural اداره خواهد شد و مسئولیت ادامه توسعه و ارائه خدمات این برنامه را بر عهده می‌گیرد.
+
+در بیانیه Supernatural Health آمده است: "Supernatural دوباره متولد می‌شود؛ با همان مربیان، همان هویت و همان هدف برای تبدیل ورزش به بخش لذت‌بخش روز کاربران."
+
+کاربران این اپلیکیشن از این تصمیم استقبال کرده‌اند، زیرا نگران بودند که متا پس از خرید این محصول، آن را کنار بگذارد یا متوقف کند.
+
+چرا این خبر مهم است؟ Supernatural یکی از موفق‌ترین برنامه‌های ورزشی در حوزه واقعیت مجازی محسوب می‌شود. این برنامه توانسته ورزش و تناسب اندام را برای کاربران هدست‌های VR جذاب‌تر کند. انتقال آن به یک شرکت مستقل احتمال توسعه سریع‌تر و افزودن قابلیت‌های جدید را افزایش می‌دهد. این تصمیم یکی از معدود مواردی است که متا به جای تعطیلی یک محصول، آن را به تیم اصلی سازنده بازمی‌گرداند.`,
+                fullTextEn: `Meta has announced that the virtual reality fitness app Supernatural will not be shut down but instead transferred to a new independent company.
+
+Meta had acquired Within, the studio behind Supernatural, in 2023 after a long antitrust battle. The deal was valued at around $400 million.
+
+However, early this year, Meta laid off a large part of its VR team and said it would no longer produce new content for Supernatural. The decision was met with backlash from users, who feared the app would be completely discontinued.
+
+Now Meta has decided to transfer ownership and development of the app to a newly formed company, Supernatural Health, which will be run by the original founders and will continue to develop and provide the service.
+
+In a statement, Supernatural Health said: "Supernatural is reborn — with the same coaches, the same identity, and the same goal of making exercise a joyful part of users' daily lives."
+
+Users have welcomed the decision, as they were worried Meta would abandon the product after its acquisition.
+
+Why is this important? Supernatural is one of the most successful fitness apps in VR, making exercise more engaging for headset users. Moving it to an independent company could lead to faster development and new features. This is one of the rare cases where Meta, instead of shuttering a product, returns it to its original creators.`
+            }
+        ];
+
+        let currentLang = 'fa';
+
+        function showToast(msg) {
+            let existing = document.querySelector('.toast-msg');
+            if (existing) existing.remove();
+            let toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            setTimeout(() => toast.remove(), 2000);
+        }
+
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            if (!grid) return;
+            grid.innerHTML = newsData.map(news => {
+                const title = currentLang === 'fa' ? news.titleFa : news.titleEn;
+                return `
+                <div class="news-card" data-id="${news.id}">
+                    <img class="news-img" src="${news.image}" alt="${title}" onerror="this.src='https://placehold.co/600x400?text=News+Image'">
+                    <div class="news-content">
+                        <div class="news-title">${title}</div>
+                        <div class="news-meta">
+                            <div class="admin-info">
+                                <img class="admin-avatar" src="images/Khamoosh.jpg" alt="admin" onerror="this.src='https://placehold.co/32x32?text=SK'">
+                                <span>${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span>
+                            </div>
+                            <span>📅 ${news.date}</span>
+                        </div>
+                    </div>
+                </div>
+            `;
+            }).join('');
+
+            document.querySelectorAll('.news-card').forEach(card => {
+                card.addEventListener('click', () => {
+                    const id = parseInt(card.getAttribute('data-id'));
+                    const news = newsData.find(n => n.id === id);
+                    if (news) openNewsModal(news);
+                });
+            });
+        }
+
+        function openNewsModal(news) {
+            const modal = document.getElementById('newsModal');
+            const modalContentDiv = document.getElementById('modalContent');
+            const title = currentLang === 'fa' ? news.titleFa : news.titleEn;
+            const fullText = currentLang === 'fa' ? news.fullTextFa : news.fullTextEn;
+            modalContentDiv.innerHTML = `
+            <h2 class="modal-title">${title}</h2>
+            <div class="modal-meta">
+                <div class="admin-info">
+                    <img class="admin-avatar" src="images/Khamoosh.jpg" alt="admin" onerror="this.src='https://placehold.co/32x32?text=SK'">
+                    <span>${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span>
+                </div>
+                <span>📅 ${news.date}</span>
+            </div>
+            <div class="modal-content-text">${fullText.replace(/\n/g, '<br>')}</div>
+        `;
+            modal.style.display = 'flex';
+        }
+
+        function closeNewsModal() {
+            document.getElementById('newsModal').style.display = 'none';
+        }
+
+        function updateUI() {
+            renderNews();
+            document.querySelectorAll('.nav-menu a').forEach(link => {
+                const span = link.querySelector('span');
+                if (span) {
+                    span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
+                }
+            });
+            const tag = document.querySelector('.site-tag');
+            if (tag) tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+            const footerCopy = document.getElementById('footerCopy');
+            if (footerCopy) footerCopy.innerHTML = currentLang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
+            const langLabel = document.getElementById('currentLangLabel');
+            if (langLabel) langLabel.innerText = currentLang === 'fa' ? 'فارسی' : 'English';
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            updateUI();
+            localStorage.setItem('sarfraz_lang', lang);
+        }
+
+        function initTheme() {
+            const saved = localStorage.getItem('sarfraz_theme');
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (saved === 'dark') {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+            } else {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+            }
+        }
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+                localStorage.setItem('sarfraz_theme', 'light');
+            } else {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+                localStorage.setItem('sarfraz_theme', 'dark');
+            }
+        }
+
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            if (!hamburger || !navMenu) return;
+            hamburger.addEventListener('click', (e) => {
+                e.stopPropagation();
+                navMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
+                    navMenu.classList.remove('open');
+                }
+            });
+            navMenu.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => navMenu.classList.remove('open'));
+            });
+        }
+
+        function initLanguage() {
+            const selector = document.getElementById('langSelector');
+            const btn = document.getElementById('langBtn');
+            if (!selector || !btn) return;
+            btn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                selector.classList.toggle('open');
+            });
+            document.addEventListener('click', (e) => {
+                if (!selector.contains(e.target)) selector.classList.remove('open');
+            });
+            document.querySelectorAll('.lang-option').forEach(opt => {
+                opt.addEventListener('click', () => {
+                    const lang = opt.getAttribute('data-lang');
+                    if (lang) setLanguage(lang);
+                    selector.classList.remove('open');
+                });
+            });
+        }
+
+        // مودال UID
+        const modalUid = document.getElementById('uidModal');
+        const codmBtn = document.getElementById('codmBtn');
+        const copyUidBtn = document.getElementById('copyUidBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+        function openUidModal() { modalUid.style.display = 'flex'; }
+        function closeUidModal() { modalUid.style.display = 'none'; }
+        function copyUid() {
+            navigator.clipboard.writeText('7500139701825634305');
+            showToast(currentLang === 'fa' ? '✅ UID کپی شد!' : '✅ UID copied!');
+            closeUidModal();
+        }
+        if (codmBtn) codmBtn.addEventListener('click', openUidModal);
+        if (copyUidBtn) copyUidBtn.addEventListener('click', copyUid);
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeUidModal);
+        if (modalUid) modalUid.addEventListener('click', (e) => { if (e.target === modalUid) closeUidModal(); });
+
+        document.getElementById('modalCloseBtn').addEventListener('click', closeNewsModal);
+        document.getElementById('newsModal').addEventListener('click', (e) => {
+            if (e.target === document.getElementById('newsModal')) closeNewsModal();
+        });
+
+        document.addEventListener('DOMContentLoaded', () => {
+            const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
+            currentLang = savedLang;
+            renderNews();
+            updateUI();
+            initTheme();
+            initMobileMenu();
+            initLanguage();
+            document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+        });
+    </script>
+</body>
+
+</html>
