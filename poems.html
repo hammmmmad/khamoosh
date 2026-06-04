@@ -434,9 +434,26 @@
             color: white;
         }
 
+        /* تصاویر دکمه‌ها */
+        .card-actions button img {
+            width: 18px;
+            height: 18px;
+        }
+
+        /* فیلتر روز و شب برای این تصاویر (در استایل بالا وجود دارد) */
+        body:not(.dark) .card-actions button img {
+            filter: brightness(0) contrast(1);
+        }
+        body.dark .card-actions button img {
+            filter: brightness(0) invert(1);
+        }
+
         .like-btn.liked {
             background: #ef4444;
             color: white;
+        }
+        .like-btn.liked img {
+            filter: brightness(0) invert(1); /* قلب قرمز در حالت لایک شده سفید شود */
         }
 
         .like-count {
@@ -889,13 +906,16 @@
                                     <div class="poem-text">${text.replace(/\n/g, '<br>')}</div>
                                     <div class="card-actions">
                                         <button class="copy-btn" data-text="${text.replace(/"/g, '&quot;')}">
-                                            📋 <span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span>
+                                            <img src="images/copy.png" alt="کپی" onerror="this.src='https://placehold.co/18x18?text=📋'">
+                                            <span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span>
                                         </button>
                                         <button class="share-btn" data-text="${text.replace(/"/g, '&quot;')}" data-type="${type.replace(/"/g, '&quot;')}">
-                                            📤 <span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span>
+                                            <img src="images/share.png" alt="اشتراک" onerror="this.src='https://placehold.co/18x18?text=📤'">
+                                            <span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span>
                                         </button>
                                         <button class="like-btn ${liked ? 'liked' : ''}">
-                                            ❤️ <span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span>
+                                            <img src="images/like.png" alt="لایک" onerror="this.src='https://placehold.co/18x18?text=❤️'">
+                                            <span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span>
                                             <span class="like-count">${likes}</span>
                                         </button>
                                     </div>
