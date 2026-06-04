@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
     <title>درباره من | سرفراز خموش</title>
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         @font-face {
             font-family: 'Ignogito';
@@ -34,6 +32,7 @@
             background: #0a0a0f;
         }
 
+        /* هدر شیشه‌ای */
         .glass-header {
             position: sticky;
             top: 20px;
@@ -71,298 +70,6 @@
 
         body.dark .logo-img {
             filter: none;
-        }
-
-        .glass-card {
-            border-radius: 2rem;
-            padding: 1.8rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, backdrop-filter 0.3s;
-            transform-style: preserve-3d;
-            perspective: 1000px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body:not(.dark) .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        }
-
-        body.dark .glass-card {
-            background: rgba(20, 20, 30, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-        }
-
-        .glass-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            opacity: 0.3;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .glass-card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-right: 4px solid #8b5cf6;
-            padding-right: 1rem;
-        }
-
-        body:not(.dark) .glass-card h2 {
-            color: #1e2a3e;
-        }
-
-        body.dark .glass-card h2 {
-            color: #f0f0f0;
-        }
-
-        .glass-card p,
-        .glass-card li {
-            line-height: 1.8;
-        }
-
-        body:not(.dark) .glass-card p,
-        body:not(.dark) .glass-card li {
-            color: #2d3a4e;
-        }
-
-        body.dark .glass-card p,
-        body.dark .glass-card li {
-            color: #e0e0e0;
-        }
-
-        .intro-english {
-            font-family: 'Ignogito', 'Courier New', monospace;
-            font-size: 2.2rem;
-            font-weight: bold;
-            text-align: center;
-            letter-spacing: 2px;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-
-        .job-titles {
-            text-align: center;
-            font-size: 1rem;
-            margin-bottom: 2rem;
-            direction: ltr;
-        }
-
-        body:not(.dark) .job-titles {
-            color: #4b5563;
-        }
-
-        body.dark .job-titles {
-            color: #9ca3af;
-        }
-
-        .specialties-list {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 0.8rem;
-            list-style: none;
-            margin-top: 1rem;
-        }
-
-        .specialties-list li {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            font-size: 0.95rem;
-        }
-
-        .specialties-list li img,
-        .skill-icon,
-        .lang-icon {
-            width: 40px;
-            height: 40px;
-            object-fit: contain;
-            background: white;
-            border-radius: 50%;
-            padding: 6px;
-            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .skills-grid,
-        .lang-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.2rem;
-        }
-
-        .skill-item,
-        .lang-item {
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            flex-wrap: wrap;
-        }
-
-        .skill-name,
-        .lang-name {
-            width: 160px;
-            font-weight: 600;
-        }
-
-        body:not(.dark) .skill-name,
-        body:not(.dark) .lang-name {
-            color: #1f2937;
-        }
-
-        body.dark .skill-name,
-        body.dark .lang-name {
-            color: #f0f0f0;
-        }
-
-        .skill-bar-container,
-        .lang-bar-container {
-            flex: 1;
-            height: 10px;
-            background: rgba(0, 0, 0, 0.1);
-            border-radius: 10px;
-            overflow: hidden;
-        }
-
-        body.dark .skill-bar-container,
-        body.dark .lang-bar-container {
-            background: rgba(255, 255, 255, 0.2);
-        }
-
-        .skill-bar,
-        .lang-bar {
-            height: 100%;
-            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
-            border-radius: 10px;
-            width: 0%;
-            transition: width 1.2s cubic-bezier(0.22, 0.97, 0.36, 1);
-        }
-
-        .skill-percent,
-        .lang-percent {
-            width: 45px;
-            text-align: center;
-            font-weight: 600;
-        }
-
-        body:not(.dark) .skill-percent,
-        body:not(.dark) .lang-percent {
-            color: #1f2937;
-        }
-
-        body.dark .skill-percent,
-        body.dark .lang-percent {
-            color: #e0e0e0;
-        }
-
-        .glass-footer {
-            margin-top: 3rem;
-            border-radius: 2rem 2rem 1rem 1rem;
-            padding: 2rem 1.5rem 1.5rem;
-            transition: all 0.3s;
-        }
-
-        body:not(.dark) .glass-footer {
-            background: #ffffff;
-            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
-            border-top: 1px solid #e5e7eb;
-        }
-
-        body:not(.dark) .footer-content,
-        body:not(.dark) .copyright {
-            color: #1e2a3e;
-        }
-
-        body:not(.dark) .social-icons a,
-        body:not(.dark) .codm-btn {
-            background: #f3f4f6;
-        }
-
-        body:not(.dark) .social-icons a img,
-        body:not(.dark) .codm-btn img {
-            filter: brightness(0) contrast(1);
-        }
-
-        body.dark .glass-footer {
-            background: #0a0a0f;
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-        }
-
-        body.dark .footer-content,
-        body.dark .copyright {
-            color: #eef2ff;
-        }
-
-        body.dark .social-icons a,
-        body.dark .codm-btn {
-            background: #1f2937;
-        }
-
-        body.dark .social-icons a img,
-        body.dark .codm-btn img {
-            filter: brightness(0) invert(1);
-        }
-
-        body.dark .social-icons a:hover,
-        body.dark .codm-btn:hover {
-            background: #f97316 !important;
-        }
-
-        .footer-content {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: space-between;
-            align-items: center;
-            gap: 1.5rem;
-        }
-
-        .social-icons {
-            display: flex;
-            gap: 1rem;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-
-        .social-icons a,
-        .codm-btn {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.2s;
-            text-decoration: none;
-            cursor: pointer;
-        }
-
-        .social-icons a img,
-        .codm-btn img {
-            width: 24px;
-            height: 24px;
-        }
-
-        .copyright {
-            font-size: 0.75rem;
-            opacity: 0.7;
         }
 
         .navbar {
@@ -538,6 +245,308 @@
             background: rgba(59, 130, 246, 0.2);
         }
 
+        /* کارت‌های شیشه‌ای */
+        .glass-card {
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, backdrop-filter 0.3s;
+            transform-style: preserve-3d;
+            perspective: 1000px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        /* حالت روز */
+        body:not(.dark) .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        /* حالت شب */
+        body.dark .glass-card {
+            background: rgba(20, 20, 30, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        /* نویز مشترک */
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            opacity: 0.3;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .glass-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 4px solid #8b5cf6;
+            padding-right: 1rem;
+        }
+
+        body:not(.dark) .glass-card h2 {
+            color: #1e2a3e;
+        }
+
+        body.dark .glass-card h2 {
+            color: #f0f0f0;
+        }
+
+        .glass-card p,
+        .glass-card li {
+            line-height: 1.8;
+        }
+
+        body:not(.dark) .glass-card p,
+        body:not(.dark) .glass-card li {
+            color: #2d3a4e;
+        }
+
+        body.dark .glass-card p,
+        body.dark .glass-card li {
+            color: #e0e0e0;
+        }
+
+        /* معرفی */
+        .intro-english {
+            font-family: 'Ignogito', 'Courier New', monospace;
+            font-size: 2.2rem;
+            font-weight: bold;
+            text-align: center;
+            letter-spacing: 2px;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .job-titles {
+            text-align: center;
+            font-size: 1rem;
+            margin-bottom: 2rem;
+            direction: ltr;
+        }
+
+        body:not(.dark) .job-titles {
+            color: #4b5563;
+        }
+
+        body.dark .job-titles {
+            color: #9ca3af;
+        }
+
+        /* حوزه‌های تخصصی */
+        .specialties-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 0.8rem;
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .specialties-list li {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        /* آیکون‌های داخل کارت‌ها: پس‌زمینه سفید گرد با سایه */
+        .specialties-list li img,
+        .skill-icon,
+        .lang-icon {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background: white;
+            border-radius: 50%;
+            padding: 6px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* مهارت‌ها و زبان‌ها */
+        .skills-grid,
+        .lang-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .skill-item,
+        .lang-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .skill-name,
+        .lang-name {
+            width: 160px;
+            font-weight: 600;
+        }
+
+        body:not(.dark) .skill-name,
+        body:not(.dark) .lang-name {
+            color: #1f2937;
+        }
+
+        body.dark .skill-name,
+        body.dark .lang-name {
+            color: #f0f0f0;
+        }
+
+        .skill-bar-container,
+        .lang-bar-container {
+            flex: 1;
+            height: 10px;
+            background: rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+        }
+
+        body.dark .skill-bar-container,
+        body.dark .lang-bar-container {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .skill-bar,
+        .lang-bar {
+            height: 100%;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            border-radius: 10px;
+            width: 0%;
+            transition: width 1.2s cubic-bezier(0.22, 0.97, 0.36, 1);
+        }
+
+        .skill-percent,
+        .lang-percent {
+            width: 45px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        body:not(.dark) .skill-percent,
+        body:not(.dark) .lang-percent {
+            color: #1f2937;
+        }
+
+        body.dark .skill-percent,
+        body.dark .lang-percent {
+            color: #e0e0e0;
+        }
+
+        /* فوتر */
+        .glass-footer {
+            margin-top: 3rem;
+            border-radius: 2rem 2rem 1rem 1rem;
+            padding: 2rem 1.5rem 1.5rem;
+            transition: all 0.3s;
+        }
+
+        body:not(.dark) .glass-footer {
+            background: #ffffff;
+            box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.05);
+            border-top: 1px solid #e5e7eb;
+        }
+
+        body:not(.dark) .footer-content,
+        body:not(.dark) .copyright {
+            color: #1e2a3e;
+        }
+
+        body:not(.dark) .social-icons a,
+        body:not(.dark) .codm-btn {
+            background: #f3f4f6;
+        }
+
+        body:not(.dark) .social-icons a img,
+        body:not(.dark) .codm-btn img {
+            filter: brightness(0) contrast(1);
+        }
+
+        body.dark .glass-footer {
+            background: #0a0a0f;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        body.dark .footer-content,
+        body.dark .copyright {
+            color: #eef2ff;
+        }
+
+        body.dark .social-icons a,
+        body.dark .codm-btn {
+            background: #1f2937;
+        }
+
+        body.dark .social-icons a img,
+        body.dark .codm-btn img {
+            filter: brightness(0) invert(1);
+        }
+
+        body.dark .social-icons a:hover,
+        body.dark .codm-btn:hover {
+            background: #f97316 !important;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            align-items: center;
+        }
+
+        .social-icons a,
+        .codm-btn {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .social-icons a img,
+        .codm-btn img {
+            width: 24px;
+            height: 24px;
+        }
+
+        .copyright {
+            font-size: 0.75rem;
+            opacity: 0.7;
+        }
+
+        /* موبایل */
         @media (max-width: 768px) {
             .container {
                 padding: 0.8rem;
@@ -640,6 +649,7 @@
             animation: fadeInUp 0.6s ease forwards;
         }
 
+        /* مودال شیشه‌ای UID */
         .glass-modal {
             display: none;
             position: fixed;
@@ -738,96 +748,84 @@
                     <img src="images/menu.png" alt="منو" onerror="this.src='https://placehold.co/24x24?text=☰'">
                 </button>
                 <div class="nav-menu" id="navMenu">
-                    <a href="index.html" data-fa="خانه" data-en="Home"><img src="images/home.png"
-                            alt="خانه"><span>خانه</span></a>
-                    <a href="about.html" data-fa="درباره" data-en="About"><img src="images/about.png"
-                            alt="درباره"><span>درباره</span></a>
-                    <a href="poems.html" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png"
-                            alt="اشعار"><span>اشعار</span></a>
-                    <a href="tech-news.html" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png"
-                            alt="فناوری"><span>اخبار فناوری</span></a>
+                    <a href="index.html" data-fa="خانه" data-en="Home"><img src="images/home.png" alt="خانه"><span>خانه</span></a>
+                    <a href="about.html" data-fa="درباره" data-en="About" class="active"><img src="images/about.png" alt="درباره"><span>درباره</span></a>
+                    <a href="poems.html" data-fa="اشعار" data-en="Poems"><img src="images/poetry.png" alt="اشعار"><span>اشعار</span></a>
+                    <a href="tech-news.html" data-fa="اخبار فناوری" data-en="Tech News"><img src="images/tech.png" alt="فناوری"><span>اخبار فناوری</span></a>
                 </div>
                 <div class="nav-actions">
                     <div class="lang-selector" id="langSelector">
                         <button class="lang-btn" id="langBtn">
-                            <img src="images/golo.png" alt="زبان"><span id="currentLangLabel">فارسی</span><span
-                                class="lang-text">▼</span>
+                            <img src="images/golo.png" alt="زبان"><span id="currentLangLabel">فارسی</span><span class="lang-text">▼</span>
                         </button>
                         <div class="lang-dropdown">
-                            <div class="lang-option" data-lang="fa"><img src="images/afghan.png"
-                                    alt="فارسی"><span>فارسی</span></div>
-                            <div class="lang-option" data-lang="en"><img src="images/usa.png"
-                                    alt="English"><span>English</span></div>
+                            <div class="lang-option" data-lang="fa"><img src="images/afghan.png" alt="فارسی"><span>فارسی</span></div>
+                            <div class="lang-option" data-lang="en"><img src="images/usa.png" alt="English"><span>English</span></div>
                         </div>
                     </div>
                     <button class="theme-btn" id="themeBtn">
-                        <img id="themeIcon" src="images/night.png" alt="تم شب/روز"
-                            onerror="this.src='https://placehold.co/28x28?text=🌙'">
+                        <img id="themeIcon" src="images/night.png" alt="تم شب/روز" onerror="this.src='https://placehold.co/28x28?text=🌙'">
                     </button>
                 </div>
             </div>
         </header>
 
         <div class="intro-english" id="introName">Sarfraz Khamoosh</div>
-        <div class="job-titles" id="jobTitles">برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور
-            مهاجرت | مربی فیتنس</div>
+        <div class="job-titles" id="jobTitles">برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور مهاجرت | مربی فیتنس</div>
 
+        <!-- بیوگرافی + علاقه به شعر (ترجمه‌پذیر) -->
         <div class="glass-card">
             <h2 id="bioTitle">📖 بیوگرافی</h2>
-            <p id="bioText">سرفراز خموش، متولد سال ۱۳۷۷ (۱۹۹۸ میلادی) در شهر مزار شریف افغانستان، از جمله متخصصان جوان و
-                خلاق در حوزه فناوری، طراحی و توسعه دیجیتال است. وی با سال‌ها تجربه و علاقه‌مندی در زمینه‌های مختلف
-                تکنولوژی و طراحی، توانسته است مهارت‌های متنوعی را در کنار یکدیگر توسعه دهد.</p>
-            <p style="margin-top: 1rem; color: #8b5cf6; font-weight: 500;">✨ سرفراز خموش به شعر و ادبیات علاقه‌مند است و
-                همواره از مطالعه کتاب و سرودن شعر لذت می‌برد.</p>
+            <p id="bioText">سرفراز خموش، متولد سال ۱۳۷۷ (۱۹۹۸ میلادی) در شهر مزار شریف افغانستان، از جمله متخصصان جوان و خلاق در حوزه فناوری، طراحی و توسعه دیجیتال است. وی با سال‌ها تجربه و علاقه‌مندی در زمینه‌های مختلف تکنولوژی و طراحی، توانسته است مهارت‌های متنوعی را در کنار یکدیگر توسعه دهد.</p>
+            <p id="poetryInterest" style="margin-top: 1rem; color: #8b5cf6; font-weight: 500;">✨ سرفراز خموش به شعر و ادبیات علاقه‌مند است و همواره از مطالعه کتاب و سرودن شعر لذت می‌برد.</p>
         </div>
 
+        <!-- حوزه‌های تخصصی -->
         <div class="glass-card">
             <h2 id="specialtiesTitle">⚡ حوزه‌های تخصصی</h2>
             <ul class="specialties-list" id="specialtiesList"></ul>
         </div>
 
+        <!-- مهارت‌های نرم‌افزاری -->
         <div class="glass-card">
             <h2 id="skillsTitle">🛠️ مهارت‌های نرم‌افزاری</h2>
             <div class="skills-grid" id="skillsGrid"></div>
         </div>
 
+        <!-- زبان‌های برنامه‌نویسی -->
         <div class="glass-card">
             <h2 id="langTitle">💻 زبان‌های برنامه‌نویسی</h2>
             <div class="lang-grid" id="langGrid"></div>
         </div>
 
+        <!-- نقل قول (ترجمه‌پذیر) -->
         <div class="glass-card">
-            <p id="quoteText" style="text-align: center; font-style: italic;">«خلاقیت، دانش و پشتکار، سه ستون اصلی
-                موفقیت هستند.»</p>
+            <p id="quoteText" style="text-align: center; font-style: italic;">«خلاقیت، دانش و پشتکار، سه ستون اصلی موفقیت هستند.»</p>
         </div>
 
         <footer class="glass-footer">
             <div class="footer-content">
                 <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61590217606266"><img src="images/facebook.png"
-                            alt="فیسبوک"></a>
-                    <a href="https://www.instagram.com/admin_khamoosh?igsh=MXFoazVocHd0NnFzMw=="><img
-                            src="images/instagram.png" alt="اینستاگرام"></a>
-                    <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228"><img src="images/linkedin.png"
-                            alt="لینکدین"></a>
+                    <a href="https://www.facebook.com/profile.php?id=61590217606266"><img src="images/facebook.png" alt="فیسبوک"></a>
+                    <a href="https://www.instagram.com/admin_khamoosh"><img src="images/instagram.png" alt="اینستاگرام"></a>
+                    <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228"><img src="images/linkedin.png" alt="لینکدین"></a>
                     <a href="https://pin.it/WY1aeKX2a"><img src="images/pinterest.png" alt="پینترست"></a>
                     <a href="https://www.behance.net/merlinsarfraz"><img src="images/ben.png" alt="بهنس"></a>
                     <a href="https://wa.me/qr/E2RLH5T72CSFE1"><img src="images/whatsapp.png" alt="واتساپ"></a>
-                    <a href="https://www.tiktok.com/@sarfraz_khamoosh?_r=1&_t=ZS-96uByf6HU9s"><img src="images/tik.png"
-                            alt="تیک تاک"></a>
+                    <a href="https://www.tiktok.com/@sarfraz_khamoosh"><img src="images/tik.png" alt="تیک تاک"></a>
                     <a href="https://khamoooooosh675.substack.com"><img src="images/substack.png" alt="ساب‌استک"></a>
                     <a href="https://github.com/hammmmmad"><img src="images/github.png" alt="گیت‌هاب"></a>
                     <a href="https://www.threads.com/@sarfraz_khamoosh23"><img src="images/threads.png" alt="تردز"></a>
                     <div class="codm-btn" id="codmBtn">
-                        <img src="images/call of.png" alt="CODM"
-                            onerror="this.src='https://placehold.co/24x24?text=🎮'">
+                        <img src="images/call of.png" alt="CODM" onerror="this.src='https://placehold.co/24x24?text=🎮'">
                     </div>
                 </div>
             </div>
         </footer>
     </div>
 
+    <!-- مودال UID -->
     <div id="uidModal" class="glass-modal">
         <div class="modal-content">
             <h3>🎮 کال‌آف دیوتی موبایل</h3>
@@ -841,6 +839,7 @@
     </div>
 
     <script>
+        // داده‌های حوزه‌های تخصصی
         const specialtiesData = [
             { nameFa: "برنامه‌نویسی و توسعه نرم‌افزار", nameEn: "Programming & Software Development", icon: "images/programer.png" },
             { nameFa: "طراحی و توسعه وب‌سایت", nameEn: "Website Design & Development", icon: "images/website.png" },
@@ -878,15 +877,27 @@
         let currentLang = 'fa';
         const translations = {
             fa: {
-                bioTitle: "📖 بیوگرافی", specialtiesTitle: " حوزه‌های تخصصی", skillsTitle: " مهارت‌های نرم‌افزاری",
-                langTitle: "💻 زبان‌های برنامه‌نویسی", quoteText: "«خلاقیت، دانش و پشتکار، سه ستون اصلی موفقیت هستند.»",
-                footerCopy: "© 2026 سرفراز خموش | تمام حقوق محفوظ است", introName: "سرفراز خموش",
+                bioTitle: "📖 بیوگرافی",
+                bioText: "سرفراز خموش، متولد سال ۱۳۷۷ (۱۹۹۸ میلادی) در شهر مزار شریف افغانستان، از جمله متخصصان جوان و خلاق در حوزه فناوری، طراحی و توسعه دیجیتال است. وی با سال‌ها تجربه و علاقه‌مندی در زمینه‌های مختلف تکنولوژی و طراحی، توانسته است مهارت‌های متنوعی را در کنار یکدیگر توسعه دهد.",
+                poetryInterest: "✨ سرفراز خموش به شعر و ادبیات علاقه‌مند است و همواره از مطالعه کتاب و سرودن شعر لذت می‌برد.",
+                specialtiesTitle: "⚡ حوزه‌های تخصصی",
+                skillsTitle: "🛠️ مهارت‌های نرم‌افزاری",
+                langTitle: "💻 زبان‌های برنامه‌نویسی",
+                quoteText: "«خلاقیت، دانش و پشتکار، سه ستون اصلی موفقیت هستند.»",
+                footerCopy: "© 2026 سرفراز خموش | تمام حقوق محفوظ است",
+                introName: "سرفراز خموش",
                 jobTitles: "برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور مهاجرت | مربی فیتنس"
             },
             en: {
-                bioTitle: " Biography", specialtiesTitle: " Specialties", skillsTitle: " Software Skills",
-                langTitle: " Programming Languages", quoteText: "«Creativity, knowledge and perseverance are the three pillars of success.»",
-                footerCopy: "© 2026 Sarfraz Khamoosh | All Rights Reserved", introName: "Sarfraz Khamoosh",
+                bioTitle: "📖 Biography",
+                bioText: "Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, is a young and creative specialist in technology, design, and digital development. With years of experience, he has developed diverse skills across various fields.",
+                poetryInterest: "✨ Sarfraz Khamoosh is deeply interested in poetry and literature, and always enjoys reading books and composing poetry.",
+                specialtiesTitle: "⚡ Specialties",
+                skillsTitle: "🛠️ Software Skills",
+                langTitle: "💻 Programming Languages",
+                quoteText: "«Creativity, knowledge and perseverance are the three pillars of success.»",
+                footerCopy: "© 2026 Sarfraz Khamoosh | All Rights Reserved",
+                introName: "Sarfraz Khamoosh",
                 jobTitles: "Developer | Web & App Creator | Graphic Designer | Immigration Consultant | Fitness Coach"
             }
         };
@@ -943,6 +954,8 @@
         function updateTexts() {
             const t = translations[currentLang];
             document.getElementById('bioTitle').innerText = t.bioTitle;
+            document.getElementById('bioText').innerText = t.bioText;
+            document.getElementById('poetryInterest').innerText = t.poetryInterest;
             document.getElementById('specialtiesTitle').innerText = t.specialtiesTitle;
             document.getElementById('skillsTitle').innerText = t.skillsTitle;
             document.getElementById('langTitle').innerText = t.langTitle;
@@ -981,7 +994,6 @@
                 themeIcon.src = 'images/night.png';
             }
         }
-
         function toggleTheme() {
             const body = document.body;
             const themeIcon = document.getElementById('themeIcon');
@@ -1022,6 +1034,7 @@
             });
         }
 
+        // مودال CODM
         const modal = document.getElementById('uidModal');
         const codmBtn = document.getElementById('codmBtn');
         const copyUidBtn = document.getElementById('copyUidBtn');
@@ -1061,5 +1074,4 @@
         });
     </script>
 </body>
-
 </html>
