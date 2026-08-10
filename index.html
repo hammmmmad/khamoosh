@@ -1,116 +1,166 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fa" dir="rtl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sarfraz Khamoosh | Premium Immigration News Portal</title>
-    <meta name="description" content="Sarfraz Khamoosh is a trusted immigration news platform providing the latest updates on P1, P2, SIV, Sponsorship, and Family Reunification programs.">
-    <link rel="canonical" href="https://khamoosh.abrdns.com/">
-    
-    <meta property="og:type" content="website">
-    <meta property="og:title" content="Sarfraz Khamoosh | Premium Immigration News">
-    <meta property="og:description" content="Trusted immigration news, guides, and official announcements.">
-    <meta property="og:url" content="https://khamoosh.abrdns.com/">
-    <meta name="twitter:card" content="summary_large_image">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sarfraz Khamoosh | در حال بروزرسانی</title>
 
-    <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#2563eb">
+<link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css" rel="stylesheet">
-    
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script>
-        tailwind.config = {
-            darkMode: 'class',
-            theme: {
-                extend: {
-                    fontFamily: { 'poppins': ['Poppins', 'sans-serif'] },
-                    colors: { 'brand-blue': '#2563eb', 'brand-light': '#eff6ff' }
-                }
-            }
-        }
-    </script>
+<style>
 
-    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/styles.css">
-    
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "Organization",
-      "name": "Sarfraz Khamoosh",
-      "url": "https://khamoosh.abrdns.com",
-      "logo": "https://khamoosh.abrdns.com/logo.png",
-      "sameAs": ["https://twitter.com/khamoosh", "https://facebook.com/khamoosh"]
-    }
-    </script>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Vazirmatn',sans-serif;
+}
+
+body{
+
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:linear-gradient(135deg,#0f172a,#1e3a8a,#2563eb);
+overflow:hidden;
+color:white;
+
+}
+
+.container{
+
+width:90%;
+max-width:650px;
+padding:50px;
+border-radius:30px;
+background:rgba(255,255,255,.08);
+backdrop-filter:blur(18px);
+border:1px solid rgba(255,255,255,.15);
+text-align:center;
+box-shadow:0 25px 60px rgba(0,0,0,.35);
+
+}
+
+.logo{
+
+font-size:38px;
+margin-bottom:20px;
+
+}
+
+h1{
+
+font-size:40px;
+margin-bottom:15px;
+
+}
+
+p{
+
+font-size:18px;
+line-height:2;
+opacity:.9;
+
+}
+
+.loader{
+
+margin:45px auto;
+width:85px;
+height:85px;
+border-radius:50%;
+border:8px solid rgba(255,255,255,.15);
+border-top:8px solid #ffffff;
+animation:spin 1s linear infinite;
+
+}
+
+@keyframes spin{
+
+100%{
+
+transform:rotate(360deg);
+
+}
+
+}
+
+.progress{
+
+width:100%;
+height:10px;
+background:rgba(255,255,255,.15);
+border-radius:50px;
+overflow:hidden;
+margin-top:35px;
+
+}
+
+.progress span{
+
+display:block;
+height:100%;
+width:65%;
+background:white;
+border-radius:50px;
+animation:loading 3s ease infinite;
+
+}
+
+@keyframes loading{
+
+0%{width:10%;}
+50%{width:70%;}
+100%{width:100%;}
+
+}
+
+.footer{
+
+margin-top:35px;
+font-size:15px;
+opacity:.75;
+
+}
+
+</style>
+
 </head>
-<body class="bg-brand-light dark:bg-slate-900 font-poppins transition-colors duration-300">
 
-    <!-- Desktop Top Navigation -->
-    <header class="hidden md:block sticky top-0 z-40 glass-effect border-b border-white/20">
-        <nav class="container mx-auto px-6 py-4 flex justify-between items-center">
-            <a href="#/" class="text-2xl font-extrabold text-brand-blue dark:text-white flex items-center gap-2">
-                <i class="bi bi-globe-americas"></i> Sarfraz Khamoosh
-            </a>
-            <ul class="flex space-x-8 items-center font-medium text-slate-700 dark:text-slate-200">
-                <li><a href="#/" class="nav-link hover:text-brand-blue transition">Home</a></li>
-                <li><a href="#/immigration" class="nav-link hover:text-brand-blue transition">Immigration</a></li>
-                <li><a href="#/about" class="nav-link hover:text-brand-blue transition">About</a></li>
-                <li><a href="#/contact" class="nav-link hover:text-brand-blue transition">Contact</a></li>
-                <li><a href="#/profile" class="px-5 py-2 bg-brand-blue text-white rounded-xl hover:bg-blue-700 transition shadow-md shadow-blue-500/30">Profile</a></li>
-                <li>
-                    <button id="theme-toggle-desktop" class="p-2 rounded-full hover:bg-slate-200 dark:hover:bg-slate-700">
-                        <i class="bi bi-moon-stars-fill dark:text-yellow-400"></i>
-                    </button>
-                </li>
-            </ul>
-        </nav>
-    </header>
+<body>
 
-    <!-- Main Application Content -->
-    <main id="app" class="pb-32 md:pb-10 min-h-screen"></main>
+<div class="container">
 
-    <!-- Mobile Soft Animated Bottom Navigation -->
-    <nav class="md:hidden fixed bottom-0 left-0 right-0 z-50 flex justify-center pointer-events-none">
-        <div class="nav-arc glass-effect pointer-events-auto">
-            <a href="#/immigration" class="nav-item">
-                <i class="bi bi-globe2"></i>
-                <span class="nav-label">Immigration</span>
-            </a>
-            <a href="#/about" class="nav-item">
-                <i class="bi bi-info-circle"></i>
-                <span class="nav-label">About</span>
-            </a>
-            
-            <div class="nav-item-placeholder"></div>
-            
-            <a href="#/profile" class="nav-item">
-                <i class="bi bi-person"></i>
-                <span class="nav-label">Profile</span>
-            </a>
-            <a href="#/contact" class="nav-item">
-                <i class="bi bi-telephone"></i>
-                <span class="nav-label">Contact</span>
-            </a>
-        </div>
-        
-        <a href="#/" class="home-btn-wrapper pointer-events-auto">
-            <div class="home-btn">
-                <i class="bi bi-house-door-fill"></i>
-            </div>
-            <span class="nav-label home-label">Home</span>
-        </a>
-    </nav>
+<div class="logo">🛠️</div>
 
-    <!-- Back to Top Button -->
-    <button id="back-to-top" class="hidden fixed bottom-28 right-6 z-40 p-3 bg-brand-blue text-white rounded-full shadow-lg hover:bg-blue-700 transition md:bottom-10">
-        <i class="bi bi-arrow-up text-xl"></i>
-    </button>
+<h1>وب‌سایت در حال بروزرسانی است</h1>
 
-    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
-    <script src="js/app.js"></script>
+<p>
+
+کاربران گرامی،<br>
+
+وب‌سایت <strong>Sarfraz Khamoosh</strong> جهت ارائه امکانات جدید، افزایش سرعت، بهبود امنیت و طراحی حرفه‌ای‌تر، در حال بروزرسانی می‌باشد.
+
+<br><br>
+
+به‌زودی با نسخه‌ای مدرن و قدرتمند بازخواهیم گشت.
+
+</p>
+
+<div class="loader"></div>
+
+<div class="progress">
+<span></span>
+</div>
+
+<div class="footer">
+
+© 2026 Sarfraz Khamoosh — All Rights Reserved
+
+</div>
+
+</div>
+
 </body>
 </html>
