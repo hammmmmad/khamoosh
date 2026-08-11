@@ -103,7 +103,7 @@
         }
 
         /* ============================================================
-           BOTTOM NAVIGATION (8 ITEMS, HOME BIGGER PURPLE WITH ANIMATION)
+           BOTTOM NAVIGATION (HOME BIGGER & CENTER)
            ============================================================ */
         .bottom-nav-wrapper {
             position: fixed;
@@ -140,7 +140,6 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
-        /* آیتم‌های معمولی */
         .nav-item {
             display: flex;
             flex-direction: column;
@@ -178,8 +177,13 @@
             white-space: nowrap;
             display: block;
         }
+        /* ===== Hover & Press Animation for Nav Items ===== */
         .nav-item:hover {
             color: #6b7280;
+            transform: translateY(-3px) scale(1.02);
+        }
+        .nav-item:active {
+            transform: scale(0.92) translateY(2px);
         }
         body.dark .nav-item {
             color: #6b7280;
@@ -196,11 +200,8 @@
         .nav-item.active i {
             transform: scale(1.08);
         }
-        .nav-item:active {
-            transform: scale(0.92);
-        }
 
-        /* ===== دکمه خانه (بزرگ‌تر، رنگ گلابی، انیمیشن نرم) ===== */
+        /* ===== HOME BUTTON (bigger, purple, with hover & press animation) ===== */
         .nav-item-home {
             position: relative;
             top: -22px;
@@ -247,15 +248,14 @@
             display: block;
         }
         .nav-item-home:hover {
-            transform: scale(1.08) translateY(-3px);
+            transform: scale(1.08) translateY(-4px);
             box-shadow: 0 22px 48px rgba(139, 92, 246, 0.5);
             animation: none;
         }
         .nav-item-home:active {
-            transform: scale(0.92);
+            transform: scale(0.92) translateY(2px);
             box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
         }
-
         @keyframes homePulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.03); }
@@ -327,6 +327,9 @@
             background: rgba(139, 92, 246, 0.25);
             color: #fff;
             transform: translateY(-2px);
+        }
+        .card-actions button:active {
+            transform: scale(0.92);
         }
         .card-actions button i {
             font-size: 0.9rem;
@@ -431,7 +434,7 @@
         }
 
         /* ============================================================
-           PAGE: PROFILE (با لینک‌های اجتماعی)
+           PAGE: PROFILE (SOCIAL LINKS AS VERTICAL LIST WITH NAMES)
            ============================================================ */
         .profile-layout {
             display: grid;
@@ -504,32 +507,52 @@
             font-weight: 400;
             margin-right: 4px;
         }
-        /* لینک‌های اجتماعی در پروفایل (جایگزین فوتر) */
-        .profile-social {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 0.8rem;
+
+        /* ===== Social Links - Vertical List with Names ===== */
+        .profile-social-list {
             margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            align-items: stretch;
         }
-        .profile-social a {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
+        .profile-social-list a {
             display: flex;
             align-items: center;
-            justify-content: center;
+            gap: 12px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            background: rgba(255, 255, 255, 0.15);
             color: inherit;
-            font-size: 1.2rem;
-            transition: 0.25s;
             text-decoration: none;
-            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(139, 92, 246, 0.06);
+            font-size: 0.9rem;
         }
-        .profile-social a:hover {
+        .profile-social-list a i {
+            width: 24px;
+            text-align: center;
+            color: #8b5cf6;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .profile-social-list a .sname {
+            flex: 1;
+            text-align: right;
+            font-weight: 500;
+        }
+        .profile-social-list a:hover {
             background: #8b5cf6;
             color: #fff;
-            transform: translateY(-4px);
+            transform: translateX(-4px) scale(1.02);
+            border-color: #8b5cf6;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+        }
+        .profile-social-list a:hover i {
+            color: #fff;
+        }
+        .profile-social-list a:active {
+            transform: scale(0.95) translateX(-2px);
         }
 
         /* ============================================================
@@ -564,6 +587,13 @@
             color: #fff;
             border-color: #8b5cf6;
             box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
+        }
+        .cat-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.15);
+        }
+        .cat-btn:active {
+            transform: scale(0.95);
         }
         .category-section {
             margin-bottom: 2.5rem;
@@ -631,7 +661,10 @@
         .bell-btn:hover {
             background: #8b5cf6;
             color: #fff;
-            transform: scale(1.08);
+            transform: scale(1.08) rotate(8deg);
+        }
+        .bell-btn:active {
+            transform: scale(0.92);
         }
         .bell-btn .badge {
             position: absolute;
@@ -682,6 +715,9 @@
             transform: translateY(-8px);
             box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
         }
+        .news-card:active {
+            transform: scale(0.98);
+        }
         .news-card img {
             width: 100%;
             height: 190px;
@@ -729,6 +765,9 @@
             transform: scale(1.03);
             border-color: #8b5cf6;
             box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2);
+        }
+        .gallery-item:active {
+            transform: scale(0.95);
         }
         .gallery-item img {
             width: 100%;
@@ -833,6 +872,13 @@
             background: rgba(139, 92, 246, 0.08);
             color: #8b5cf6;
         }
+        .lang-group button:hover, .view-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+        }
+        .lang-group button:active, .view-group button:active {
+            transform: scale(0.95);
+        }
 
         /* ============================================================
            MODALS
@@ -890,6 +936,9 @@
         .modal-box .close:hover {
             transform: rotate(90deg);
             background: #7c3aed;
+        }
+        .modal-box .close:active {
+            transform: scale(0.9) rotate(90deg);
         }
         .modal-box h2 {
             font-size: 1.6rem;
@@ -1000,7 +1049,7 @@
              PAGES
              ============================================================ -->
 
-        <!-- ===== HOME ===== -->
+        <!-- ===== HOME (ACTIVE) ===== -->
         <div class="page active" id="page-home">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-feather-alt" style="color:#8b5cf6;"></i> اشعار کوتاه
@@ -1044,7 +1093,7 @@
             <div id="categoriesContainer"></div>
         </div>
 
-        <!-- ===== PROFILE (با لینک‌های اجتماعی) ===== -->
+        <!-- ===== PROFILE (WITH SOCIAL LINKS VERTICAL) ===== -->
         <div class="page" id="page-profile">
             <div class="profile-layout">
                 <div class="profile-card">
@@ -1058,21 +1107,53 @@
                         <div class="item"><i class="fas fa-location-dot"></i> موقعیت <span>ازبکستان</span></div>
                         <div class="item"><i class="fas fa-graduation-cap"></i> مدرک <span>لیسانس</span></div>
                     </div>
-                    <!-- لینک‌های اجتماعی (جایگزین فوتر) -->
-                    <div class="profile-social">
-                        <a href="https://www.facebook.com/profile.php?id=61590217606266" target="_blank"><i class="fab fa-facebook-f"></i></a>
-                        <a href="https://www.instagram.com/admin_khamoosh" target="_blank"><i class="fab fa-instagram"></i></a>
-                        <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="https://github.com/hammmmmad" target="_blank"><i class="fab fa-github"></i></a>
-                        <a href="https://pin.it/WY1aeKX2a" target="_blank"><i class="fab fa-pinterest"></i></a>
-                        <a href="https://www.behance.net/merlinsarfraz" target="_blank"><i class="fab fa-behance"></i></a>
-                        <a href="https://wa.me/qr/E2RLH5T72CSFE1" target="_blank"><i class="fab fa-whatsapp"></i></a>
-                        <a href="https://www.tiktok.com/@sarfraz_khamoosh" target="_blank"><i class="fab fa-tiktok"></i></a>
-                        <a href="https://khamoooooosh675.substack.com" target="_blank"><i class="fas fa-newspaper"></i></a>
-                        <a href="https://www.threads.com/@sarfraz_khamoosh23" target="_blank"><i class="fab fa-threads"></i></a>
-                        <div id="codmBtn" style="cursor:pointer; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:1.2rem; transition:0.25s; border:1px solid rgba(139,92,246,0.1);">
-                            <i class="fas fa-gamepad" style="color:#8b5cf6;"></i>
-                        </div>
+
+                    <!-- Social Links - Vertical with Names -->
+                    <div class="profile-social-list">
+                        <a href="https://www.facebook.com/profile.php?id=61590217606266" target="_blank" aria-label="فیسبوک">
+                            <i class="fab fa-facebook-f"></i>
+                            <span class="sname">فیسبوک</span>
+                        </a>
+                        <a href="https://www.instagram.com/admin_khamoosh" target="_blank" aria-label="اینستاگرام">
+                            <i class="fab fa-instagram"></i>
+                            <span class="sname">اینستاگرام</span>
+                        </a>
+                        <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228" target="_blank" aria-label="لینکدین">
+                            <i class="fab fa-linkedin-in"></i>
+                            <span class="sname">لینکدین</span>
+                        </a>
+                        <a href="https://github.com/hammmmmad" target="_blank" aria-label="گیت‌هاب">
+                            <i class="fab fa-github"></i>
+                            <span class="sname">گیت‌هاب</span>
+                        </a>
+                        <a href="https://pin.it/WY1aeKX2a" target="_blank" aria-label="پینترست">
+                            <i class="fab fa-pinterest"></i>
+                            <span class="sname">پینترست</span>
+                        </a>
+                        <a href="https://www.behance.net/merlinsarfraz" target="_blank" aria-label="بهنس">
+                            <i class="fab fa-behance"></i>
+                            <span class="sname">بهنس</span>
+                        </a>
+                        <a href="https://wa.me/qr/E2RLH5T72CSFE1" target="_blank" aria-label="واتساپ">
+                            <i class="fab fa-whatsapp"></i>
+                            <span class="sname">واتساپ</span>
+                        </a>
+                        <a href="https://www.tiktok.com/@sarfraz_khamoosh" target="_blank" aria-label="تیک تاک">
+                            <i class="fab fa-tiktok"></i>
+                            <span class="sname">تیک تاک</span>
+                        </a>
+                        <a href="https://khamoooooosh675.substack.com" target="_blank" aria-label="ساب‌استک">
+                            <i class="fas fa-newspaper"></i>
+                            <span class="sname">ساب‌استک</span>
+                        </a>
+                        <a href="https://www.threads.com/@sarfraz_khamoosh23" target="_blank" aria-label="تردز">
+                            <i class="fab fa-threads"></i>
+                            <span class="sname">تردز</span>
+                        </a>
+                        <a href="#" id="codmBtn" style="cursor:pointer;" aria-label="کال‌آف دیوتی">
+                            <i class="fas fa-gamepad"></i>
+                            <span class="sname">کال‌آف دیوتی</span>
+                        </a>
                     </div>
                 </div>
                 <div class="glass" style="padding:1.8rem;">
@@ -1116,8 +1197,8 @@
                 <div class="settings-row">
                     <div class="label"><i class="fas fa-globe-asia"></i> زبان</div>
                     <div class="lang-group">
-                        <button class="lang-opt active" data-lang="fa">🇦🇫 دری</button>
-                        <button class="lang-opt" data-lang="en">🇺🇸 English</button>
+                        <button class="lang-opt active" data-lang="fa">دری</button>
+                        <button class="lang-opt" data-lang="en">English</button>
                     </div>
                 </div>
                 <div class="settings-row">
@@ -1177,47 +1258,47 @@
             <p>UID من :</p>
             <code style="display:inline-block; background:rgba(0,0,0,0.04); padding:6px 18px; border-radius:16px; font-family:'Inter',monospace; font-size:1.1rem; margin:8px 0 14px;">7500139701825634305</code>
             <div class="modal-actions" style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
-                <button class="primary" id="copyUidBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:#8b5cf6; color:#fff; transition:0.25s; font-family:inherit;">📋 کپی</button>
+                <button class="primary" id="copyUidBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:#8b5cf6; color:#fff; transition:0.25s; font-family:inherit;"><i class="fas fa-copy"></i> کپی</button>
                 <button class="secondary" id="closeUidModalBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:rgba(0,0,0,0.04); color:inherit; transition:0.25s; font-family:inherit;">بستن</button>
             </div>
         </div>
     </div>
 
     <!-- ============================================================
-         BOTTOM NAVIGATION (8 ITEMS, HOME BIGGER & CENTER with data-page)
+         BOTTOM NAVIGATION (HOME BIGGER & CENTER)
          ============================================================ -->
     <div class="bottom-nav-wrapper">
         <nav class="bottom-nav" id="bottomNav">
-            <button class="nav-item" data-page="about" onclick="navigateTo('about')">
+            <button class="nav-item" data-page="about" onclick="navigateTo('about')" aria-label="درباره">
                 <i class="fas fa-user"></i>
                 <span id="label-about">درباره</span>
             </button>
-            <button class="nav-item" data-page="poems" onclick="navigateTo('poems')">
+            <button class="nav-item" data-page="poems" onclick="navigateTo('poems')" aria-label="اشعار">
                 <i class="fas fa-book"></i>
                 <span id="label-poems">اشعار</span>
             </button>
-            <!-- خانه با data-page="home" برای active شدن -->
+            <!-- HOME (bigger, center, with animation) -->
             <button class="nav-item-home" data-page="home" onclick="navigateTo('home')" aria-label="خانه">
                 <i class="fas fa-home"></i>
                 <span id="label-home">خانه</span>
             </button>
-            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')">
+            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')" aria-label="پروفایل">
                 <i class="fas fa-id-card"></i>
                 <span id="label-profile">پروفایل</span>
             </button>
-            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')">
+            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')" aria-label="تنظیمات">
                 <i class="fas fa-cog"></i>
                 <span id="label-settings">تنظیمات</span>
             </button>
-            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')">
+            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')" aria-label="مهاجرت">
                 <i class="fas fa-plane"></i>
                 <span id="label-immigration">مهاجرت</span>
             </button>
-            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')">
+            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')" aria-label="فناوری">
                 <i class="fas fa-microchip"></i>
                 <span id="label-technews">فناوری</span>
             </button>
-            <button class="nav-item" data-page="gallery" onclick="navigateTo('gallery')">
+            <button class="nav-item" data-page="gallery" onclick="navigateTo('gallery')" aria-label="گالری">
                 <i class="fas fa-images"></i>
                 <span id="label-gallery">گالری</span>
             </button>
@@ -1231,8 +1312,6 @@
         // ================================================================
         // 1. DATA
         // ================================================================
-
-        // اشعار صفحه خانه
         const poemsList = [
             { id: 0, typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
             { id: 1, typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
@@ -1242,7 +1321,6 @@
             { id: 5, typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
         ];
 
-        // دسته‌بندی اشعار
         const categoriesData = {
             mystical: { fa: "عارفانه", en: "Mystical" },
             romantic: { fa: "عاشقانه", en: "Romantic" },
@@ -1258,7 +1336,6 @@
             heavy: [{ id: 500, textFa: "در دل شب سرد زمستان، که برف خاطرات می‌بارید، او تنها نشسته بود و به دیوار خاموش اتاق خیره. هیچ صدایی نیست، جز ضربان نبض تنهایی که هر لحظه سنگین‌تر می‌شود. تمام وجودش را سوالی پر کرده بود: آیا بعد از این همه راه، هنوز می‌توان به آغاز بازگشت؟", textEn: "In the cold winter night, as the snow of memories fell, he sat alone, staring at the silent wall of the room. There was no sound, except the heartbeat of loneliness growing heavier each moment. A question filled his entire being: after all this way, can one still return to the beginning?" }]
         };
 
-        // درباره
         const specialties = [
             { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev" },
             { fa: "طراحی و توسعه وب‌سایت", en: "Web Design & Dev" },
@@ -1279,7 +1356,6 @@
             { name: "InDesign", pct: 50 }
         ];
 
-        // مهاجرت
         const immigrationPrograms = [
             { id: 'siv', fa: "برنامه SIV", en: "SIV Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۰" },
             { id: 'p1', fa: "برنامه P1", en: "P1 Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۸" },
@@ -1288,7 +1364,7 @@
             { id: 'parole', fa: "برنامه Parole", en: "Parole Program", statusFa: "در انتظار", statusEn: "Pending", date: "۲۰۲۶-۰۶-۱۰" },
             { id: 'reparole', fa: "برنامه Re-Parole", en: "Re-Parole", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۵" },
             { id: 'welcome', fa: "برنامه Welcome Corps", en: "Welcome Corps", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۴" },
-            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۹" },
+            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-０۶-۱۹" },
             { id: 'cr2', fa: "برنامه CR2", en: "CR2 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۷" },
             { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۱" },
             { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open", date: "۲۰۲۶-۰۶-۰۱" },
@@ -1296,31 +1372,30 @@
             { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۴" }
         ];
 
-        // اخبار فناوری (کامل)
         const newsData = [{
             id: 1,
             fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد",
             en: "Google Raises $85B for AI",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/google.jpg",
-            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند؛ رقمی که از آن به‌عنوان یکی از بزرگ‌ترین جذب سرمایه‌های تاریخ بازار سهام یاد می‌شود. بر اساس گزارش منتشرشده، این شرکت در ابتدا قصد داشت ۴۰ میلیارد دلار سهام عرضه کند، اما استقبال گسترده سرمایه‌گذاران باعث شد میزان سرمایه جذب‌شده در مرحله نخست به ۴۵ میلیارد دلار افزایش یابد. آلفابت همچنین اعلام کرده است که قصد دارد در سه‌ماهه آینده ۴۰ میلیارد دلار دیگر نیز از طریق فروش سهام جذب کند. Sundar Pichai، مدیرعامل گوگل، اعلام کرده است که این سرمایه بخشی از برنامه چندساله شرکت برای توسعه زیرساخت‌های هوش مصنوعی و پاسخ به افزایش تقاضای کاربران و شرکت‌ها برای خدمات مبتنی بر AI خواهد بود. گوگل پیش‌تر در کنفرانس سالانه خود اعلام کرده بود که تا پایان سال ۲۰۲۶ بین ۱۸۰ تا ۱۹۰ میلیارد دلار در بخش زیرساخت‌های هوش مصنوعی، مراکز داده و توان پردازشی سرمایه‌گذاری خواهد کرد. تحلیلگران معتقدند این جذب سرمایه بی‌سابقه نشان می‌دهد که اعتماد سرمایه‌گذاران به آینده صنعت هوش مصنوعی همچنان بسیار بالا است.",
-            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion through a large stock offering to fund artificial intelligence projects — a figure described as one of the largest capital raises in stock market history. According to the report, the company initially planned to offer $40 billion in shares, but strong investor demand increased the first-phase raise to $45 billion. Alphabet also announced it intends to raise another $40 billion through stock sales in the next quarter. Sundar Pichai, Google's CEO, stated that this capital is part of the company's multi-year plan to develop AI infrastructure and meet growing user and business demand for AI-powered services. Earlier at its annual conference, Google had announced it would invest between $180 billion and $190 billion by the end of 2026 in AI infrastructure, data centers, and computing power. Analysts believe this unprecedented capital raise shows that investor confidence in the future of the AI industry remains very high."
+            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...",
+            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..."
         }, {
             id: 2,
             fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد",
             en: "Startup Lovable Expands Google Partnership",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/ai.jpg",
-            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است. بر اساس این توافق، میزان استفاده Lovable از زیرساخت‌های ابری و خدمات هوش مصنوعی گوگل تا پنج برابر افزایش خواهد یافت. هرچند ارزش مالی این قرارداد اعلام نشده، اما منابع آگاه به TechCrunch گفته‌اند که Lovable دسترسی گسترده‌تری به مدل‌های هوش مصنوعی Anthropic، از جمله مدل Claude، و همچنین مدل‌های Gemini گوگل دریافت خواهد کرد. Lovable یکی از سریع‌ترین شرکت‌های در حال رشد اروپا محسوب می‌شود. این شرکت اعلام کرده است که در ماه فبروری سال جاری درآمد سالانه آن به بیش از ۴۰۰ میلیون دلار رسیده و تنها در یک ماه ۱۰۰ میلیون دلار به درآمد خود افزوده است.",
-            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud. Under the deal, Lovable's use of Google's cloud infrastructure and AI services will increase up to fivefold. Although the financial value was not disclosed, sources told TechCrunch that Lovable will gain broader access to Anthropic's AI models, including Claude, as well as Google's Gemini models. Lovable is one of Europe's fastest-growing companies. It announced that its annual recurring revenue exceeded $400 million in February of this year, adding $100 million in just one month — achieved with only 146 employees."
+            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...",
+            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..."
         }, {
             id: 3,
             fa: "متا بازی VR «Supernatural» را نجات داد",
             en: "Meta Rescues VR Game 'Supernatural'",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/meta.jpg",
-            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد. متا در سال ۲۰۲۳ استودیوی Within، سازنده Supernatural، را پس از یک نبرد حقوقی طولانی با نهادهای ضدانحصار خریداری کرده بود. ارزش این معامله حدود ۴۰۰ میلیون دلار برآورد شده بود. با این حال، متا در اوایل سال جاری بخش بزرگی از تیم واقعیت مجازی خود را تعدیل کرد و اعلام نمود که دیگر محتوای جدیدی برای Supernatural تولید نخواهد شد. این تصمیم با واکنش منفی کاربران مواجه شد و بسیاری از طرفداران نگران تعطیلی کامل این برنامه بودند. اکنون متا تصمیم گرفته است مالکیت و توسعه این اپلیکیشن را به شرکت تازه‌تأسیس Supernatural Health واگذار کند.",
-            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down but instead transferred to a new independent company. Meta had acquired Within, the studio behind Supernatural, in 2023 after a long antitrust battle. The deal was valued at around $400 million. However, early this year, Meta laid off a large part of its VR team and said it would no longer produce new content for Supernatural. The decision was met with backlash from users, who feared the app would be completely discontinued. Now Meta has decided to transfer ownership and development of the app to a newly formed company, Supernatural Health."
+            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...",
+            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..."
         }];
 
         // ================================================================
@@ -1345,7 +1420,7 @@
             setTimeout(() => t.remove(), 2800);
         }
         function copyText(t) {
-            navigator.clipboard.writeText(t).then(() => toast('✅ کپی شد!')).catch(() => toast('❌ خطا'));
+            navigator.clipboard.writeText(t).then(() => toast('کپی شد!')).catch(() => toast('خطا'));
         }
         function sharePoem(text, type) {
             const s = type + '\n\n' + text;
@@ -1362,7 +1437,6 @@
             const target = document.getElementById('page-' + page);
             if (target) target.classList.add('active');
 
-            // به‌روزرسانی active در نوار ناوبری (برای دکمه خانه هم کار می‌کند چون data-page دارد)
             document.querySelectorAll('.bottom-nav .nav-item, .bottom-nav .nav-item-home').forEach(el => {
                 el.classList.remove('active');
                 if (el.getAttribute('data-page') === page) {
@@ -1397,7 +1471,7 @@
                 home: { fa: 'سایت رسمی سرفراز خموش، برنامه‌نویس و طراح گرافیک', en: 'Official site of Sarfraz Khamoosh, developer & designer' },
                 about: { fa: 'بیوگرافی و تخصص‌های سرفراز خموش', en: 'Biography & specialties of Sarfraz Khamoosh' },
                 poems: { fa: 'مجموعه اشعار عارفانه و عاشقانه', en: 'Collection of mystical & romantic poems' },
-                profile: { fa: 'پروفایل کامل سرفراز خموش با لینک‌های اجتماعی', en: 'Full profile of Sarfraz Khamoosh with social links' },
+                profile: { fa: 'پروفایل کامل سرفراز خموش با شبکه‌های اجتماعی', en: 'Full profile of Sarfraz Khamoosh with social links' },
                 settings: { fa: 'تنظیمات سایت سرفراز خموش', en: 'Settings of Sarfraz Khamoosh' },
                 immigration: { fa: 'آخرین اخبار مهاجرت آمریکا', en: 'Latest US immigration news' },
                 technews: { fa: 'آخرین اخبار فناوری و هوش مصنوعی', en: 'Latest tech & AI news' },
@@ -1418,8 +1492,6 @@
         // ================================================================
         // 5. RENDER FUNCTIONS
         // ================================================================
-
-        // HOME
         function renderHome() {
             const grid = document.getElementById('poemsGrid');
             if (!grid) return;
@@ -1439,7 +1511,6 @@
             localStorage.setItem('poem_likes', JSON.stringify(likesHome));
         }
 
-        // ABOUT
         function renderAbout() {
             const grid = document.getElementById('doughnutGrid');
             if (grid) {
@@ -1460,7 +1531,6 @@
             }
         }
 
-        // POEMS CATEGORIES
         function renderPoemsCategories() {
             const container = document.getElementById('categoriesContainer');
             const bar = document.getElementById('categoriesBar');
@@ -1513,7 +1583,6 @@
             localStorage.setItem('poems_likes', JSON.stringify(likesCat));
         }
 
-        // IMMIGRATION
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
             if (!grid) return;
@@ -1521,26 +1590,26 @@
                 const name = currentLang === 'fa' ? prog.fa : prog.en;
                 const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
                 const has = notifBadges[prog.id] || false;
-                return `<div class="imm-card"><div class="info"><h4>${name}</h4><div class="status">${status}</div><div class="date">📅 ${prog.date}</div></div><button class="bell-btn ${has?'has-notification':''}" onclick="checkNotif('${prog.id}','${name.replace(/"/g,'&quot;')}',this)"><i class="fas fa-bell"></i>${has?'<span class="badge">1</span>':''}</button></div>`;
+                return `<div class="imm-card"><div class="info"><h4>${name}</h4><div class="status">${status}</div><div class="date">${prog.date}</div></div><button class="bell-btn ${has?'has-notification':''}" onclick="checkNotif('${prog.id}','${name.replace(/"/g,'&quot;')}',this)"><i class="fas fa-bell"></i>${has?'<span class="badge">1</span>':''}</button></div>`;
             }).join('');
         }
         function checkNotif(id, name, btn) {
             const msgs = {
-                siv: { fa: '🔄 تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد', en: '🔄 New SIV changes: Re-prioritization' },
-                p1: { fa: '📢 برنامه P1: مهلت ثبت‌نام تمدید شد', en: '📢 P1: Deadline extended' },
-                p2: { fa: '✅ برنامه P2: نتایج جدید منتشر شد', en: '✅ P2: New results published' },
-                asylum: { fa: '⚖️ تغییرات در روند پناهندگی', en: '⚖️ Asylum process changes' },
-                parole: { fa: '📋 برنامه Parole: دستورالعمل‌های جدید', en: '📋 Parole: New guidelines' },
-                reparole: { fa: '🔄 Re-Parole: تمدید خودکار', en: '🔄 Re-Parole: Auto-extension' },
-                welcome: { fa: '🤝 Welcome Corps: افزایش ظرفیت', en: '🤝 Welcome Corps: Capacity increased' },
-                cr1: { fa: '💍 CR1: کاهش زمان پردازش', en: '💍 CR1: Processing time reduced' },
-                cr2: { fa: '💍 CR2: به‌روزرسانی مدارک', en: '💍 CR2: Document update' },
-                k1: { fa: '💕 K1: تغییرات در فرم‌ها', en: '💕 K1: Form changes' },
-                dv: { fa: '🎯 DV Lottery: تاریخ ثبت‌نام اعلام شد', en: '🎯 DV Lottery: Registration date set' },
-                i130_gc: { fa: '📄 I-130 با گرین کارت: افزایش تعرفه', en: '📄 I-130 with GC: Fee increase' },
-                i130_us: { fa: '📄 I-130 با پاسپورت: تسریع در رسیدگی', en: '📄 I-130 with US Passport: Expedited' }
+                siv: { fa: 'تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد', en: 'New SIV changes: Re-prioritization' },
+                p1: { fa: 'برنامه P1: مهلت ثبت‌نام تمدید شد', en: 'P1: Deadline extended' },
+                p2: { fa: 'برنامه P2: نتایج جدید منتشر شد', en: 'P2: New results published' },
+                asylum: { fa: 'تغییرات در روند پناهندگی', en: 'Asylum process changes' },
+                parole: { fa: 'برنامه Parole: دستورالعمل‌های جدید', en: 'Parole: New guidelines' },
+                reparole: { fa: 'Re-Parole: تمدید خودکار', en: 'Re-Parole: Auto-extension' },
+                welcome: { fa: 'Welcome Corps: افزایش ظرفیت', en: 'Welcome Corps: Capacity increased' },
+                cr1: { fa: 'CR1: کاهش زمان پردازش', en: 'CR1: Processing time reduced' },
+                cr2: { fa: 'CR2: به‌روزرسانی مدارک', en: 'CR2: Document update' },
+                k1: { fa: 'K1: تغییرات در فرم‌ها', en: 'K1: Form changes' },
+                dv: { fa: 'DV Lottery: تاریخ ثبت‌نام اعلام شد', en: 'DV Lottery: Registration date set' },
+                i130_gc: { fa: 'I-130 با گرین کارت: افزایش تعرفه', en: 'I-130 with GC: Fee increase' },
+                i130_us: { fa: 'I-130 با پاسپورت: تسریع در رسیدگی', en: 'I-130 with US Passport: Expedited' }
             };
-            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? '📢 خبر جدید برای ' + name : '📢 New update for ' + name);
+            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? 'خبر جدید برای ' + name : 'New update for ' + name);
             showNotif(name, msg);
             if (notifBadges[id]) {
                 notifBadges[id] = false;
@@ -1569,7 +1638,6 @@
             setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(-20px)'; setTimeout(() => el.remove(), 400); }, 5000);
         }
 
-        // TECH NEWS
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
@@ -1581,7 +1649,7 @@
                                 <h4>${title}</h4>
                                 <div class="meta">
                                     <span><i class="fas fa-user-circle"></i> سرفراز خموش</span>
-                                    <span>📅 ${n.date}</span>
+                                    <span>${n.date}</span>
                                 </div>
                             </div>
                         </div>`;
@@ -1601,11 +1669,9 @@
             document.getElementById('newsModal').classList.remove('open');
         }
 
-        // GALLERY (با تصاویر پروفایل و لوگو)
         function renderGallery() {
             const grid = document.getElementById('galleryGrid');
             if (!grid) return;
-            // لیست تصاویر از پوشه images (شامل Khamoosh.jpg و Kham.png)
             const imageNames = [
                 'Khamoosh.jpg', 'Kham.png', 'programer.png', 'website.png',
                 'application.png', 'ux.png', 'logo.png', 'banner.png',
@@ -1615,22 +1681,18 @@
                 'conva.png', 'python.png', 'flutter.png', 'xml.png',
                 'php.png', 'go.png', 'javas.png'
             ];
-            // فیلتر فقط تصاویر با پسوند معتبر
             const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
             const validImages = imageNames.filter(name => {
                 const ext = name.split('.').pop().toLowerCase();
                 return validExts.includes(ext);
             });
-
             if (validImages.length === 0) {
                 grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">هیچ تصویری در پوشه images یافت نشد.</p>`;
                 return;
             }
-
-            // نمایش تصاویر با placeholder در صورت خطا
             grid.innerHTML = validImages.map(name => {
                 const path = 'images/' + name;
-                const label = name.replace(/\.[^/.]+$/, ""); // حذف پسوند برای نام
+                const label = name.replace(/\.[^/.]+$/, "");
                 return `<div class="gallery-item" onclick="window.open('${path}','_blank')">
                             <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
                             <div class="overlay">${label}</div>
@@ -1680,8 +1742,6 @@
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('sarfraz_lang', lang);
-
-            // برچسب‌های نوار ناوبری
             const labelMap = {
                 'label-about': { fa: 'درباره', en: 'About' },
                 'label-poems': { fa: 'اشعار', en: 'Poems' },
@@ -1697,7 +1757,6 @@
                 if (el) el.textContent = labelMap[id][lang];
             });
 
-            // رندر مجدد صفحات
             const active = document.querySelector('.page.active');
             if (active) {
                 const id = active.id.replace('page-', '');
@@ -1724,7 +1783,7 @@
             function close() { modal.classList.remove('open'); }
             function copyUid() {
                 navigator.clipboard.writeText('7500139701825634305');
-                toast('✅ UID کپی شد!');
+                toast('UID کپی شد!');
                 close();
             }
             if (openBtn) openBtn.addEventListener('click', open);
