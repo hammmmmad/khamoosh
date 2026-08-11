@@ -1,18 +1,25 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    
-    <!-- ===== متا تگ‌های داینامیک (توسط جاوااسکریپت مدیریت می‌شود) ===== -->
-    <title id="dynamicTitle">سرفراز خموش | خانه</title>
-    <meta name="description" id="dynamicDescription" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک و مشاور مهاجرت">
-    <meta name="keywords" id="dynamicKeywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, برنامه‌نویس, مهاجرت, اشعار, افغانستان, مزارشریف">
-    <meta name="author" content="سرفراز خموش">
-    <meta name="robots" content="index, follow">
-
-    <!-- ===== دیتای ساختاریافته (برای نمایش در گوگل) ===== -->
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سرفراز خموش | Sarfraz Khamoosh</title>
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <!-- SEO Meta -->
+    <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
+    <meta name="keywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, مهاجرت, اشعار, افغانستان, مزار شریف" />
+    <meta name="author" content="سرفراز خموش" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="سرفراز خموش | وب‌سایت رسمی" />
+    <meta property="og:description" content="سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
+    <meta property="og:image" content="https://khamoosh.abrdns.com/images/Kham.png" />
+    <meta property="og:url" content="https://khamoosh.abrdns.com" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <link rel="icon" type="image/png" href="images/Kham.png" />
+    <!-- Schema.org -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -35,879 +42,1765 @@
             ]
         }
     </script>
-    <script type="application/ld+json">
-        {
-            "@context": "https://schema.org",
-            "@type": "WebSite",
-            "name": "سرفراز خموش",
-            "alternateName": "Sarfraz Khamoosh",
-            "url": "https://khamoosh.abrdns.com",
-            "potentialAction": {
-                "@type": "SearchAction",
-                "target": "https://khamoosh.abrdns.com/?search={search_term_string}",
-                "query-input": "required name=search_term_string"
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            background: #f0f2f8;
+            color: #1a1a2e;
+            min-height: 100vh;
+            padding-bottom: 110px;
+            transition: background 0.4s, color 0.4s;
+        }
+        body.dark {
+            background: #0a0a12;
+            color: #e8e8f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1.2rem;
+        }
+
+        /* ===== GLASS CARD ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.35s ease;
+        }
+        body.dark .glass {
+            background: rgba(16, 18, 34, 0.7);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.07);
+        }
+
+        /* ===== HEADER ===== */
+        .brand-header {
+            display: flex;
+            align-items: center;
+            gap: 1.2rem;
+            margin-bottom: 2rem;
+            cursor: default;
+        }
+        .brand-header img {
+            width: 72px;
+            height: 72px;
+            border-radius: 50%;
+            border: 3px solid #8b5cf6;
+            object-fit: cover;
+            box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
+            transition: 0.3s;
+        }
+        .brand-header img:hover {
+            transform: scale(1.04) rotate(-2deg);
+        }
+        .brand-header h1 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .brand-header span {
+            font-size: 0.85rem;
+            opacity: 0.6;
+            font-weight: 300;
+            display: block;
+            -webkit-text-fill-color: initial;
+            color: inherit;
+        }
+
+        /* ===== PAGES ===== */
+        .page {
+            display: none;
+            animation: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-    </script>
 
-    <!-- ===== Open Graph (برای اشتراک در فیسبوک، واتساپ، تلگرام) ===== -->
-    <meta property="og:title" content="سرفراز خموش | وب‌سایت رسمی">
-    <meta property="og:description" content="سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر">
-    <meta property="og:image" content="https://khamoosh.abrdns.com/images/Kham.png">
-    <meta property="og:url" content="https://khamoosh.abrdns.com">
-    <meta property="og:type" content="website">
-    <meta name="theme-color" content="#8b5cf6">
+        /* ===== BOTTOM NAVIGATION ===== */
+        .bottom-nav-wrapper {
+            position: fixed;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 999;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            pointer-events: auto;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 50px;
+            padding: 10px 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 6px 18px rgba(0, 0, 0, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-around;
+            max-width: 640px;
+            width: calc(100% - 32px);
+            height: 80px;
+            transition: background 0.4s, border-color 0.4s;
+            gap: 2px;
+        }
+        body.dark .bottom-nav {
+            background: rgba(16, 18, 34, 0.92);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
 
-    <link rel="icon" type="image/png" href="images/Kham.png">
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #9ca3af;
+            font-size: 0.6rem;
+            font-weight: 500;
+            transition: color 0.25s;
+            padding: 4px 8px;
+            border-radius: 30px;
+            min-width: 52px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            gap: 4px;
+            flex: 1;
+            height: 64px;
+            position: relative;
+        }
+        .nav-item i {
+            font-size: 1.3rem;
+            transition: all 0.25s;
+            display: block;
+            color: currentColor;
+        }
+        .nav-item span {
+            font-size: 0.5rem;
+            letter-spacing: 0.4px;
+            opacity: 0.75;
+            line-height: 1.2;
+            font-weight: 600;
+            white-space: nowrap;
+        }
+        .nav-item:hover {
+            color: #6b7280;
+        }
+        body.dark .nav-item {
+            color: #6b7280;
+        }
+        body.dark .nav-item:hover {
+            color: #b0b8c8;
+        }
+        .nav-item.active {
+            color: #1f2937;
+        }
+        body.dark .nav-item.active {
+            color: #e5e7eb;
+        }
+        .nav-item.active i {
+            transform: scale(1.08);
+        }
 
-    <style>
-        /* ===== تمام استایل‌های قبلی ===== */
-        @font-face {
-            font-family: 'Ignogito';
-            src: url('fonts/ignogito.otf') format('opentype');
-            font-weight: normal;
-            font-style: normal;
-            font-display: swap;
+        /* Home button (bigger, center) */
+        .nav-item-home {
+            position: relative;
+            top: -18px;
+            flex: 0 0 70px;
+            height: 70px;
+            min-width: 70px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2.5px solid rgba(255, 255, 255, 0.85);
+            color: #ffffff;
+            cursor: pointer;
+            flex-shrink: 0;
+            margin-top: -8px;
         }
-        * { margin: 0; padding: 0; box-sizing: border-box; }
-        body {
-            font-family: 'Vazirmatn', 'Segoe UI', system-ui, sans-serif;
-            background: #f5f7fc;
-            color: #1e2a3e;
-            transition: background 0.3s, color 0.2s;
-            min-height: 100vh;
-            padding-bottom: 100px;
+        body.dark .nav-item-home {
+            background: #f0f0f5;
+            border-color: rgba(0, 0, 0, 0.12);
+            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
+            color: #1a1a2e;
         }
-        body.dark { background: #0a0a0f; color: #eef2ff; }
-        .container { max-width: 1300px; margin: 0 auto; padding: 1.2rem; }
-        
-        /* ===== صفحات ===== */
-        .page { display: none; animation: fadeIn 0.4s ease; }
-        .page.active { display: block; }
-        @keyframes fadeIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+        .nav-item-home i {
+            font-size: 2.2rem;
+            display: block;
+            color: inherit;
+            transition: 0.3s;
+        }
+        .nav-item-home:hover {
+            transform: scale(1.08) translateY(-3px);
+            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+        }
+        .nav-item-home:active {
+            transform: scale(0.92);
+        }
 
-        /* ===== کارت‌های شیشه‌ای ===== */
-        .glass-card {
-            border-radius: 2rem; padding: 1.8rem; margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s;
-            position: relative; overflow: hidden;
+        /* ===== HOME - POEMS ===== */
+        .poems-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 2rem;
         }
-        body:not(.dark) .glass-card {
-            background: rgba(255, 255, 255, 0.7); backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8); box-shadow: 0 12px 28px rgba(0,0,0,0.08);
-        }
-        body.dark .glass-card {
-            background: rgba(20, 20, 30, 0.85); backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2); box-shadow: 0 12px 28px rgba(0,0,0,0.3);
-        }
-        .glass-card::before {
-            content: ""; position: absolute; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
-            background-repeat: repeat; opacity: 0.3; pointer-events: none; mix-blend-mode: overlay;
-        }
-        .glass-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(0,0,0,0.15); }
-        .glass-card h2 {
-            font-size: 1.5rem; margin-bottom: 1.2rem; display: flex; align-items: center; gap: 10px;
-            border-right: 4px solid #8b5cf6; padding-right: 1rem;
-        }
-        body:not(.dark) .glass-card h2 { color: #1e2a3e; }
-        body.dark .glass-card h2 { color: #f0f0f0; }
-        .glass-card p, .glass-card li { line-height: 1.8; }
-        body:not(.dark) .glass-card p, body:not(.dark) .glass-card li { color: #2d3a4e; }
-        body.dark .glass-card p, body.dark .glass-card li { color: #e0e0e0; }
-
-        /* ===== صفحه خانه (اشعار) ===== */
-        .poems-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 2rem; margin: 2rem 0 3rem; }
         .poem-card {
-            background: rgba(20, 20, 30, 0.85); backdrop-filter: blur(10px);
-            border-radius: 2rem; padding: 1.5rem; border: 1px solid rgba(255,255,255,0.2);
-            transition: 0.25s; position: relative; overflow: hidden; color: #f0f0f0;
+            background: rgba(16, 18, 34, 0.88);
+            backdrop-filter: blur(14px);
+            border-radius: 2.2rem;
+            padding: 1.8rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            color: #f0f0f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
         }
-        .poem-card::before {
-            content: ""; position: absolute; inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='coarseNoise' x='0%25' y='0%25' width='100%25' height='100%25'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.05' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23coarseNoise)' opacity='0.18'/%3E%3C/svg%3E");
-            background-repeat: repeat; background-size: 200px 200px; opacity: 0.18; pointer-events: none; mix-blend-mode: overlay;
+        .poem-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.35);
         }
-        .poem-card:hover { transform: translateY(-5px); }
-        .poem-logo { width: 70px; height: 70px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 0.8rem auto; }
-        .poem-logo img { width: 70px; height: 70px; border-radius: 50%; border: 2px solid white; object-fit: cover; }
-        .poem-type { font-size: 0.7rem; background: #2d3a4e; padding: 0.2rem 1rem; border-radius: 30px; width: fit-content; margin: 0 auto 0.8rem auto; font-weight: 600; color: #ddd; }
-        .poem-text { font-size: 0.95rem; line-height: 1.8; text-align: center; white-space: pre-line; color: #e0e0e0; margin-bottom: 1rem; }
-        .card-actions { display: flex; justify-content: center; gap: 1.5rem; margin-top: 0.8rem; padding-top: 0.8rem; border-top: 1px solid rgba(255,255,255,0.2); }
-        .card-actions button { background: rgba(255,255,255,0.1); border: none; padding: 8px 12px; border-radius: 2rem; cursor: pointer; display: flex; align-items: center; gap: 6px; font-family: inherit; font-size: 0.8rem; color: #e0e0e0; transition: 0.2s; }
-        .card-actions button:hover { background: rgba(139,92,246,0.5); transform: scale(1.05); }
-        .card-actions button svg { width: 18px; height: 18px; stroke: currentColor; fill: none; stroke-width: 2; }
-        .like-btn.liked { background: rgba(239,68,68,0.5); }
-        .like-count { font-size: 0.75rem; margin-left: 4px; }
+        .poem-card .type {
+            font-size: 0.7rem;
+            background: rgba(139, 92, 246, 0.2);
+            padding: 0.25rem 1.4rem;
+            border-radius: 40px;
+            color: #b8a5f0;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            letter-spacing: 0.3px;
+        }
+        .poem-card .text {
+            font-size: 0.95rem;
+            line-height: 1.9;
+            white-space: pre-line;
+            color: #e0e0ea;
+            margin-bottom: 1rem;
+        }
+        .poem-card .actions {
+            display: flex;
+            gap: 1rem;
+            margin-top: 0.2rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .poem-card .actions button {
+            background: rgba(255, 255, 255, 0.05);
+            border: none;
+            padding: 6px 16px;
+            border-radius: 40px;
+            color: #c8c8d8;
+            font-family: inherit;
+            font-size: 0.75rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            cursor: pointer;
+            transition: 0.25s;
+        }
+        .poem-card .actions button:hover {
+            background: rgba(139, 92, 246, 0.25);
+            color: #fff;
+            transform: translateY(-2px);
+        }
+        .poem-card .actions button i {
+            font-size: 0.9rem;
+        }
+        .like-btn.liked {
+            background: rgba(239, 68, 68, 0.2) !important;
+            color: #f87171 !important;
+        }
 
-        /* ===== درباره ===== */
-        .intro-english { font-family: 'Ignogito', 'Courier New', monospace; font-size: 2.2rem; font-weight: bold; text-align: center; letter-spacing: 2px; margin-bottom: 0.5rem; background: linear-gradient(135deg, #8b5cf6, #3b82f6); -webkit-background-clip: text; background-clip: text; color: transparent; }
-        .job-titles { text-align: center; font-size: 1rem; margin-bottom: 2rem; direction: ltr; }
-        body:not(.dark) .job-titles { color: #4b5563; } body.dark .job-titles { color: #9ca3af; }
-        .specialties-list { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 0.8rem; list-style: none; margin-top: 1rem; }
-        .specialties-list li { display: flex; align-items: center; gap: 12px; font-size: 0.95rem; }
-        .specialties-list li img, .skill-icon, .lang-icon { width: 40px; height: 40px; object-fit: contain; background: white; border-radius: 50%; padding: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.1); }
-        .skills-grid, .lang-grid { display: flex; flex-direction: column; gap: 1.2rem; }
-        .skill-item, .lang-item { display: flex; align-items: center; gap: 1rem; flex-wrap: wrap; }
-        .skill-name, .lang-name { width: 160px; font-weight: 600; }
-        body:not(.dark) .skill-name, body:not(.dark) .lang-name { color: #1f2937; } body.dark .skill-name, body.dark .lang-name { color: #f0f0f0; }
-        .skill-bar-container, .lang-bar-container { flex: 1; height: 10px; background: rgba(0,0,0,0.1); border-radius: 10px; overflow: hidden; }
-        body.dark .skill-bar-container, body.dark .lang-bar-container { background: rgba(255,255,255,0.2); }
-        .skill-bar, .lang-bar { height: 100%; background: linear-gradient(90deg, #8b5cf6, #3b82f6); border-radius: 10px; width: 0%; transition: width 1.2s cubic-bezier(0.22, 0.97, 0.36, 1); }
-        .skill-percent, .lang-percent { width: 45px; text-align: center; font-weight: 600; }
+        /* ===== ABOUT ===== */
+        .about-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .about-intro h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 2.6rem;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .about-intro p {
+            opacity: 0.7;
+            font-size: 1rem;
+            margin-top: 0.2rem;
+            font-weight: 400;
+        }
 
-        /* ===== پروفایل ===== */
-        .profile-header { text-align: center; padding: 2rem 0; }
-        .profile-avatar { width: 150px; height: 150px; border-radius: 50%; border: 4px solid #8b5cf6; object-fit: cover; margin-bottom: 1rem; box-shadow: 0 8px 30px rgba(139,92,246,0.3); }
-        .profile-name { font-size: 2rem; font-weight: 800; }
-        .profile-title { font-size: 1.1rem; opacity: 0.8; margin-top: 0.3rem; }
-        .profile-info-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1rem; margin-top: 1.5rem; }
-        .profile-info-item { display: flex; align-items: center; gap: 12px; padding: 0.8rem 1rem; border-radius: 1rem; background: rgba(139,92,246,0.08); }
-        .profile-info-item svg { width: 24px; height: 24px; stroke: #8b5cf6; fill: none; stroke-width: 2; }
+        /* Doughnut skills */
+        .skills-doughnut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            margin-top: 1.5rem;
+        }
+        .doughnut-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .doughnut-item .label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        .doughnut {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            background: conic-gradient(#8b5cf6 var(--pct), rgba(0, 0, 0, 0.07) var(--pct));
+            transition: background 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 6px 24px rgba(139, 92, 246, 0.15);
+        }
+        .doughnut::after {
+            content: "";
+            position: absolute;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+        }
+        body.dark .doughnut::after {
+            background: rgba(12, 12, 26, 0.85);
+        }
+        .doughnut .val {
+            position: relative;
+            z-index: 2;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        .specialties-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.8rem;
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        .specialties-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.4rem 0.8rem;
+            background: rgba(139, 92, 246, 0.04);
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .specialties-list li i {
+            color: #8b5cf6;
+            font-size: 1rem;
+        }
 
-        /* ===== اشعار دسته‌بندی ===== */
-        .categories-bar { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; margin-bottom: 2rem; }
-        .cat-btn { background: rgba(255,255,255,0.5); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.6); padding: 0.6rem 1.5rem; border-radius: 2rem; font-family: inherit; font-size: 0.9rem; font-weight: 600; cursor: pointer; transition: 0.2s; color: #1e2a3e; }
-        body.dark .cat-btn { background: rgba(0,0,0,0.5); border-color: rgba(255,255,255,0.2); color: #eef2ff; }
-        .cat-btn.active { background: #8b5cf6; color: white; border-color: #8b5cf6; }
-        .category-section { margin-bottom: 2.5rem; }
-        .category-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1.5rem; padding-right: 1rem; border-right: 5px solid #8b5cf6; }
-        body:not(.dark) .category-title { color: #1e2a3e; } body.dark .category-title { color: #f0f0f0; }
+        /* ===== PROFILE (Luxury & organized) ===== */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            border-radius: 2.8rem;
+            padding: 2.2rem 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-align: center;
+            transition: 0.35s;
+        }
+        body.dark .profile-card {
+            background: rgba(16, 18, 34, 0.6);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+        .profile-card .avatar {
+            width: 148px;
+            height: 148px;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+            transition: 0.3s;
+        }
+        .profile-card .avatar:hover {
+            transform: scale(1.03);
+        }
+        .profile-card .name {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+        }
+        .profile-card .title {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.1rem;
+        }
+        .profile-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .profile-details .item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(139, 92, 246, 0.05);
+            padding: 0.7rem 1rem;
+            border-radius: 1.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.06);
+        }
+        .profile-details .item i {
+            color: #8b5cf6;
+            font-size: 1rem;
+            width: 22px;
+            text-align: center;
+        }
+        .profile-details .item span {
+            opacity: 0.7;
+            font-weight: 400;
+            margin-right: 4px;
+        }
 
-        /* ===== مهاجرت ===== */
-        .immigration-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
-        .immigration-card { border-radius: 1.5rem; padding: 1.5rem; transition: all 0.3s; display: flex; justify-content: space-between; align-items: center; cursor: default; }
-        body:not(.dark) .immigration-card { background: rgba(255,255,255,0.6); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.5); }
-        body.dark .immigration-card { background: rgba(30,30,50,0.7); backdrop-filter: blur(8px); border: 1px solid rgba(255,255,255,0.1); }
-        .immigration-card:hover { transform: translateY(-3px); box-shadow: 0 8px 25px rgba(0,0,0,0.1); }
-        .immigration-info h4 { font-size: 1.05rem; font-weight: 700; margin-bottom: 0.2rem; }
-        .immigration-info .status { font-size: 0.8rem; opacity: 0.7; }
-        .immigration-info .update-date { font-size: 0.7rem; opacity: 0.5; margin-top: 0.3rem; }
-        .bell-btn { background: rgba(139,92,246,0.15); border: none; width: 44px; height: 44px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.3s; color: #8b5cf6; position: relative; }
-        .bell-btn:hover { background: #8b5cf6; color: white; transform: scale(1.1); }
-        .bell-btn svg { width: 24px; height: 24px; stroke: currentColor; fill: none; stroke-width: 2; }
-        .bell-btn .badge { position: absolute; top: -4px; right: -4px; background: #ef4444; color: white; font-size: 0.6rem; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; }
-        .bell-btn.has-notification { color: #ef4444; animation: pulse 1.5s infinite; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.15); } }
-        .notification-toast { position: fixed; top: 20px; right: 20px; background: rgba(0,0,0,0.9); color: white; padding: 12px 20px; border-radius: 1rem; z-index: 9999; max-width: 350px; direction: rtl; animation: slideDown 0.4s ease; backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.1); }
-        .notification-toast h4 { color: #8b5cf6; margin-bottom: 4px; }
-        .notification-toast p { font-size: 0.85rem; opacity: 0.9; }
-        @keyframes slideDown { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+        /* ===== POEMS CATEGORIES ===== */
+        .categories-bar {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1.8rem;
+        }
+        .cat-btn {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            padding: 0.5rem 1.6rem;
+            border-radius: 40px;
+            font-family: inherit;
+            font-size: 0.85rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+            color: #1a1a2e;
+        }
+        body.dark .cat-btn {
+            background: rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.06);
+            color: #e0e0ea;
+        }
+        .cat-btn.active {
+            background: #8b5cf6;
+            color: #fff;
+            border-color: #8b5cf6;
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
+        }
+        body.dark .cat-btn.active {
+            background: #8b5cf6;
+            color: #fff;
+        }
+        .category-section {
+            margin-bottom: 2.5rem;
+        }
+        .category-section h3 {
+            font-weight: 700;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            padding-right: 1.2rem;
+            border-right: 4px solid #8b5cf6;
+        }
 
-        /* ===== اخبار فناوری ===== */
-        .news-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr)); gap: 2rem; margin: 2rem 0 3rem; }
-        .news-card { border-radius: 2rem; overflow: hidden; transition: transform 0.25s, box-shadow 0.25s; cursor: pointer; background: rgba(255,255,255,0.7); backdrop-filter: blur(12px); border: 1px solid rgba(255,255,255,0.8); box-shadow: 0 12px 28px rgba(0,0,0,0.08); }
-        body.dark .news-card { background: rgba(20,20,30,0.85); backdrop-filter: blur(10px); border: 1px solid rgba(255,255,255,0.2); box-shadow: 0 12px 28px rgba(0,0,0,0.3); }
-        .news-card:hover { transform: translateY(-6px); box-shadow: 0 20px 35px rgba(0,0,0,0.15); }
-        .news-img { width: 100%; height: 200px; object-fit: cover; transition: transform 0.3s; }
-        .news-card:hover .news-img { transform: scale(1.02); }
-        .news-content { padding: 1.2rem; }
-        .news-title { font-size: 1.2rem; font-weight: 700; margin-bottom: 0.5rem; line-height: 1.4; }
-        body:not(.dark) .news-title { color: #1e2a3e; } body.dark .news-title { color: #f0f0f0; }
-        .news-meta { display: flex; justify-content: space-between; align-items: center; margin-top: 1rem; font-size: 0.75rem; color: #6b7280; }
-        body.dark .news-meta { color: #9ca3af; }
-        .admin-info { display: flex; align-items: center; gap: 8px; }
-        .admin-avatar { width: 32px; height: 32px; border-radius: 50%; object-fit: cover; }
+        /* ===== IMMIGRATION ===== */
+        .imm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+        .imm-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+        body.dark .imm-card {
+            background: rgba(16, 18, 34, 0.5);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        .imm-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.04);
+        }
+        .imm-card .info h4 {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .imm-card .info .status {
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+        .imm-card .info .date {
+            font-size: 0.65rem;
+            opacity: 0.4;
+            margin-top: 3px;
+        }
+        .bell-btn {
+            background: rgba(139, 92, 246, 0.08);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            color: #8b5cf6;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+        .bell-btn:hover {
+            background: #8b5cf6;
+            color: #fff;
+            transform: scale(1.08);
+        }
+        .bell-btn .badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.55rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .bell-btn.has-notification {
+            color: #ef4444;
+            animation: pulseBell 1.4s infinite;
+        }
+        @keyframes pulseBell {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
+        }
 
-        /* ===== تنظیمات ===== */
-        .settings-item { display: flex; align-items: center; justify-content: space-between; padding: 1rem 0; border-bottom: 1px solid rgba(0,0,0,0.05); flex-wrap: wrap; gap: 0.8rem; }
-        body.dark .settings-item { border-bottom-color: rgba(255,255,255,0.05); }
-        .settings-item .label { display: flex; align-items: center; gap: 12px; font-weight: 500; }
-        .settings-item .label svg { width: 24px; height: 24px; stroke: #8b5cf6; fill: none; stroke-width: 2; }
-        .toggle-switch { width: 50px; height: 28px; background: #d1d5db; border-radius: 30px; cursor: pointer; transition: 0.3s; position: relative; }
-        body.dark .toggle-switch { background: #374151; }
-        .toggle-switch.active { background: #8b5cf6; }
-        .toggle-switch .slider { width: 22px; height: 22px; background: white; border-radius: 50%; position: absolute; top: 3px; right: 3px; transition: 0.3s; box-shadow: 0 2px 6px rgba(0,0,0,0.2); }
-        .toggle-switch.active .slider { right: 25px; }
-        .lang-select-group { display: flex; gap: 0.8rem; }
-        .lang-select-group button { padding: 0.5rem 1.2rem; border-radius: 2rem; border: 2px solid #d1d5db; background: transparent; cursor: pointer; font-family: inherit; font-weight: 600; transition: 0.2s; color: inherit; }
-        .lang-select-group button.active { border-color: #8b5cf6; background: rgba(139,92,246,0.15); color: #8b5cf6; }
-        .view-btn { padding: 0.4rem 1rem; border-radius: 2rem; border: 2px solid #d1d5db; background: transparent; cursor: pointer; font-family: inherit; font-weight: 600; transition: 0.2s; color: inherit; }
-        .view-btn.active { border-color: #8b5cf6; background: rgba(139,92,246,0.15); color: #8b5cf6; }
+        /* ===== TECH NEWS ===== */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .news-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(14px);
+            border-radius: 2.2rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            cursor: pointer;
+        }
+        body.dark .news-card {
+            background: rgba(16, 18, 34, 0.5);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+        }
+        .news-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .news-card:hover img {
+            transform: scale(1.03);
+        }
+        .news-card .body {
+            padding: 1.2rem 1.5rem;
+        }
+        .news-card .body h4 {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        .news-card .body .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            margin-top: 0.6rem;
+        }
 
-        /* ===== مودال ===== */
-        .modal-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.7); backdrop-filter: blur(10px); z-index: 10001; align-items: center; justify-content: center; padding: 1rem; }
-        .modal-container { background: rgba(255,255,255,0.95); backdrop-filter: blur(20px); border-radius: 2rem; max-width: 800px; width: 100%; max-height: 85vh; overflow-y: auto; direction: rtl; padding: 1.8rem; position: relative; border: 1px solid rgba(255,255,255,0.5); box-shadow: 0 25px 50px rgba(0,0,0,0.3); }
-        body.dark .modal-container { background: rgba(0,0,0,0.85); color: #eef2ff; border-color: rgba(255,255,255,0.2); }
-        .modal-close { position: absolute; top: 1rem; left: 1rem; background: #8b5cf6; border: none; width: 36px; height: 36px; border-radius: 50%; font-size: 1.5rem; cursor: pointer; color: white; display: flex; align-items: center; justify-content: center; }
-        .modal-title { font-size: 1.6rem; font-weight: 700; margin-bottom: 1rem; padding-left: 2rem; }
-        .modal-content-text { line-height: 1.8; text-align: justify; }
+        /* ===== SETTINGS ===== */
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        body.dark .settings-row {
+            border-bottom-color: rgba(255, 255, 255, 0.04);
+        }
+        .settings-row .label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+        .settings-row .label i {
+            color: #8b5cf6;
+            font-size: 1.2rem;
+            width: 28px;
+        }
+        .toggle-switch {
+            width: 54px;
+            height: 30px;
+            background: #d1d5db;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.35s;
+            position: relative;
+        }
+        body.dark .toggle-switch {
+            background: #374151;
+        }
+        .toggle-switch.active {
+            background: #8b5cf6;
+        }
+        .toggle-switch .slider {
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+        .toggle-switch.active .slider {
+            right: 28px;
+        }
+        .lang-group,
+        .view-group {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .lang-group button,
+        .view-group button {
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            border: 2px solid #d1d5db;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+            color: inherit;
+            font-size: 0.8rem;
+        }
+        .lang-group button.active,
+        .view-group button.active {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.08);
+            color: #8b5cf6;
+        }
 
-        /* ===== نوار پایین ===== */
-        .bottom-nav-wrapper { position: fixed; bottom: 20px; left: 0; right: 0; display: flex; justify-content: center; z-index: 999; pointer-events: none; }
-        .bottom-nav { pointer-events: auto; background: rgba(255,255,255,0.92); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px); border-radius: 40px; padding: 8px 12px; box-shadow: 0 12px 40px rgba(0,0,0,0.08); display: flex; align-items: flex-end; gap: 2px; border: 1px solid rgba(255,255,255,0.5); transition: background 0.3s; max-width: 560px; width: calc(100% - 24px); justify-content: space-around; position: relative; height: 68px; overflow-x: auto; }
-        body.dark .bottom-nav { background: rgba(20,20,30,0.92); border-color: rgba(255,255,255,0.08); box-shadow: 0 12px 40px rgba(0,0,0,0.5); }
-        .nav-item { display: flex; flex-direction: column; align-items: center; justify-content: center; text-decoration: none; color: #9ca3af; font-size: 0.55rem; font-weight: 500; transition: color 0.2s; padding: 4px 6px; border-radius: 30px; min-width: 42px; cursor: pointer; background: transparent; border: none; font-family: inherit; gap: 2px; flex: 1; height: 56px; }
-        .nav-item svg { width: 22px; height: 22px; stroke: currentColor; fill: none; stroke-width: 1.8; transition: all 0.2s; display: block; }
-        .nav-item span { line-height: 1; font-size: 0.5rem; letter-spacing: 0.3px; opacity: 0.7; white-space: nowrap; }
-        .nav-item:hover { color: #6b7280; }
-        body.dark .nav-item { color: #6b7280; } body.dark .nav-item:hover { color: #9ca3af; }
-        .nav-item-home { position: relative; top: -16px; flex: 0 0 56px; height: 56px; min-width: 56px; background: #1a1a2e; border-radius: 50%; box-shadow: 0 8px 24px rgba(0,0,0,0.25); display: flex; align-items: center; justify-content: center; transition: all 0.25s; border: 2px solid rgba(255,255,255,0.8); color: #ffffff; cursor: pointer; flex-shrink: 0; }
-        body.dark .nav-item-home { background: #f0f0f0; border-color: rgba(0,0,0,0.2); box-shadow: 0 8px 24px rgba(0,0,0,0.5); color: #1a1a2e; }
-        .nav-item-home svg { width: 26px; height: 26px; stroke: currentColor; fill: none; stroke-width: 2; display: block; }
-        .nav-item-home:hover { transform: scale(1.04); box-shadow: 0 10px 30px rgba(0,0,0,0.3); }
-        .nav-item-home:active { transform: scale(0.95); }
-        .nav-item.active { color: #1f2937; } body.dark .nav-item.active { color: #e5e7eb; }
-        .nav-item.active svg { stroke-width: 2.5; }
+        /* ===== MODALS ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(16px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(28px);
+            border-radius: 3rem;
+            max-width: 720px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            padding: 2rem 2.5rem;
+            direction: rtl;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+            position: relative;
+        }
+        body.dark .modal-box {
+            background: rgba(16, 18, 34, 0.92);
+            border-color: rgba(255, 255, 255, 0.04);
+            color: #e0e0ea;
+        }
+        .modal-box .close {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.5rem;
+            background: #8b5cf6;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s;
+        }
+        .modal-box .close:hover {
+            transform: rotate(90deg);
+            background: #7c3aed;
+        }
+        .modal-box h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            padding-left: 2.8rem;
+        }
+        .modal-box .text {
+            line-height: 2;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+        .modal-box code {
+            display: inline-block;
+            background: rgba(0, 0, 0, 0.04);
+            padding: 6px 18px;
+            border-radius: 16px;
+            font-family: 'Inter', monospace;
+            font-size: 1.1rem;
+            margin: 8px 0 14px;
+        }
+        .modal-box .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 1rem;
+        }
+        .modal-box .modal-actions button {
+            padding: 8px 28px;
+            border-radius: 40px;
+            border: none;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+            font-family: inherit;
+        }
+        .modal-box .modal-actions .primary {
+            background: #8b5cf6;
+            color: #fff;
+        }
+        .modal-box .modal-actions .primary:hover {
+            background: #7c3aed;
+            transform: scale(1.04);
+        }
+        .modal-box .modal-actions .secondary {
+            background: rgba(0, 0, 0, 0.04);
+            color: inherit;
+        }
+        .modal-box .modal-actions .secondary:hover {
+            background: rgba(0, 0, 0, 0.08);
+        }
 
-        /* ===== فوتر ===== */
-        .glass-footer { margin-top: 3rem; background: rgba(231,231,231,0.35); backdrop-filter: blur(16px); border-radius: 2rem 2rem 1rem 1rem; padding: 2rem 1.5rem 1.5rem; border-top: 1px solid rgba(255,255,255,0.5); }
-        body.dark .glass-footer { background: rgba(0,0,0,0.5); border-top-color: rgba(255,255,255,0.1); }
-        .footer-content { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 1.5rem; }
-        .social-icons { display: flex; gap: 0.8rem; flex-wrap: wrap; align-items: center; }
-        .social-icons a { background: rgba(255,255,250,0.3); width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; transition: 0.2s; text-decoration: none; }
-        .social-icons a img { width: 22px; height: 22px; }
-        body.dark .social-icons a img { filter: brightness(0) invert(1); }
-        .social-icons a:hover { background: #8b5cf6; transform: translateY(-3px); }
-        .codm-icon { background: rgba(255,255,250,0.3); width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; transition: 0.2s; cursor: pointer; }
-        .codm-icon:hover { background: #8b5cf6; transform: translateY(-3px); }
-        .codm-icon img { width: 30px; height: 30px; }
-        body.dark .codm-icon img { filter: brightness(0) invert(1); }
-        .copyright { font-size: 0.7rem; opacity: 0.7; }
+        /* ===== FOOTER ===== */
+        .footer {
+            margin-top: 3rem;
+            padding: 1.5rem 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        body.dark .footer {
+            border-top-color: rgba(255, 255, 255, 0.04);
+        }
+        .footer .social {
+            display: flex;
+            gap: 0.8rem;
+            align-items: center;
+        }
+        .footer .social a {
+            width: 42px;
+            height: 42px;
+            border-radius: 50%;
+            background: rgba(0, 0, 0, 0.02);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: inherit;
+            text-decoration: none;
+            transition: 0.25s;
+            font-size: 1.1rem;
+        }
+        .footer .social a:hover {
+            background: #8b5cf6;
+            color: #fff;
+            transform: translateY(-4px);
+        }
+        .footer .copy {
+            font-size: 0.7rem;
+            opacity: 0.5;
+        }
 
-        /* ===== مودال UID ===== */
-        .glass-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.6); backdrop-filter: blur(8px); z-index: 10000; align-items: center; justify-content: center; }
-        .glass-modal-content { background: rgba(255,255,255,0.2); backdrop-filter: blur(20px); border-radius: 2rem; padding: 1.8rem; text-align: center; width: 85%; max-width: 350px; border: 1px solid rgba(255,255,255,0.3); box-shadow: 0 20px 35px rgba(0,0,0,0.2); color: #fff; }
-        body.dark .glass-modal-content { background: rgba(0,0,0,0.7); border-color: rgba(255,255,255,0.2); color: #eef2ff; }
-        .glass-modal-content code { display: inline-block; background: #2d3a4e; padding: 8px 12px; border-radius: 12px; margin: 10px 0; direction: ltr; font-size: 1rem; color: white; }
-        .modal-buttons { display: flex; gap: 1rem; justify-content: center; margin-top: 1rem; }
-        .modal-buttons button { background: #8b5cf6; border: none; padding: 8px 20px; border-radius: 2rem; color: white; cursor: pointer; }
-        .modal-buttons button:last-child { background: rgba(255,255,255,0.2); }
-        .toast-msg { position: fixed; bottom: 100px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 8px 20px; border-radius: 30px; font-size: 0.8rem; z-index: 2000; animation: fadeOut 2s ease forwards; }
-        @keyframes fadeOut { 0% { opacity: 1; } 70% { opacity: 1; } 100% { opacity: 0; visibility: hidden; } }
+        /* ===== NOTIFICATIONS ===== */
+        .toast-msg {
+            position: fixed;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            z-index: 9998;
+            animation: fadeToast 2.8s ease forwards;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+        }
+        .toast-msg i {
+            margin-left: 8px;
+        }
+        @keyframes fadeToast {
+            0%,
+            70% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+                visibility: hidden;
+            }
+        }
+        .notif-popup {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(16px);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 1.8rem;
+            max-width: 360px;
+            z-index: 9999;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .notif-popup h4 {
+            color: #8b5cf6;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+        .notif-popup p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
 
-        /* ===== ریسپانسیو ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .container { padding: 0.8rem; }
-            .bottom-nav { height: 60px; padding: 6px 8px; border-radius: 32px; bottom: 12px; }
-            .nav-item { min-width: 32px; height: 48px; padding: 2px 4px; }
-            .nav-item svg { width: 18px; height: 18px; }
-            .nav-item span { font-size: 0.4rem; }
-            .nav-item-home { flex: 0 0 46px; height: 46px; min-width: 46px; top: -12px; }
-            .nav-item-home svg { width: 22px; height: 22px; }
-            .poems-grid, .news-grid, .immigration-grid { grid-template-columns: 1fr; }
-            .specialties-list { grid-template-columns: 1fr; }
-            .skill-item, .lang-item { flex-wrap: wrap; }
-            .skill-name, .lang-name { width: 100%; }
-            .footer-content { flex-direction: column; text-align: center; }
-            .intro-english { font-size: 1.5rem; }
-            .profile-avatar { width: 100px; height: 100px; }
-            .profile-name { font-size: 1.5rem; }
+            .container {
+                padding: 1rem 0.8rem;
+            }
+            .bottom-nav {
+                height: 68px;
+                padding: 8px 8px;
+                border-radius: 36px;
+            }
+            .nav-item {
+                min-width: 38px;
+                height: 54px;
+                padding: 2px 4px;
+            }
+            .nav-item i {
+                font-size: 1.1rem;
+            }
+            .nav-item span {
+                font-size: 0.4rem;
+            }
+            .nav-item-home {
+                flex: 0 0 56px;
+                height: 56px;
+                min-width: 56px;
+                top: -14px;
+            }
+            .nav-item-home i {
+                font-size: 1.6rem;
+            }
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+            .about-intro h2 {
+                font-size: 1.8rem;
+            }
+            .doughnut {
+                width: 90px;
+                height: 90px;
+            }
+            .doughnut::after {
+                width: 64px;
+                height: 64px;
+            }
+            .imm-grid {
+                grid-template-columns: 1fr;
+            }
+            .brand-header h1 {
+                font-size: 1.4rem;
+            }
+            .brand-header img {
+                width: 56px;
+                height: 56px;
+            }
+            .modal-box {
+                padding: 1.5rem 1.2rem;
+                border-radius: 2rem;
+            }
         }
         @media (max-width: 480px) {
-            .bottom-nav { padding: 4px 4px; gap: 0; border-radius: 28px; }
-            .nav-item { min-width: 28px; padding: 2px 2px; }
-            .nav-item span { display: none; }
-            .nav-item svg { width: 20px; height: 20px; }
-            .nav-item-home { flex: 0 0 42px; height: 42px; min-width: 42px; top: -10px; }
-            .nav-item-home svg { width: 20px; height: 20px; }
+            .bottom-nav {
+                padding: 4px 4px;
+                gap: 0;
+                border-radius: 28px;
+            }
+            .nav-item {
+                min-width: 28px;
+                padding: 2px 2px;
+            }
+            .nav-item span {
+                display: none;
+            }
+            .nav-item i {
+                font-size: 1.2rem;
+            }
+            .nav-item-home {
+                flex: 0 0 46px;
+                height: 46px;
+                min-width: 46px;
+                top: -10px;
+            }
+            .nav-item-home i {
+                font-size: 1.4rem;
+            }
+            .poems-grid,
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-doughnut-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
         }
-        .bottom-nav::-webkit-scrollbar { display: none; }
-        .bottom-nav { -ms-overflow-style: none; scrollbar-width: none; }
     </style>
 </head>
-
 <body>
+
     <div class="container">
 
-        <!-- ===== صفحات (7 صفحه) ===== -->
+        <!-- ===== HEADER ===== -->
+        <header class="brand-header">
+            <img src="images/Khamoosh.jpg" alt="سرفراز خموش" onerror="this.src='https://placehold.co/72x72?text=SK'" />
+            <div>
+                <h1>Sarfraz Khamoosh</h1>
+                <span>برنامه‌نویس · طراح گرافیک · مشاور مهاجرت</span>
+            </div>
+        </header>
 
-        <!-- 1. خانه -->
+        <!-- ===== PAGES ===== -->
+
+        <!-- HOME -->
         <div class="page active" id="page-home">
-            <h2 style="text-align:center; margin-bottom:1rem;">📜 اشعار کوتاه</h2>
+            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-feather-alt" style="color:#8b5cf6;"></i> اشعار کوتاه
+            </h2>
             <div class="poems-grid" id="poemsGrid"></div>
         </div>
 
-        <!-- 2. درباره -->
+        <!-- ABOUT -->
         <div class="page" id="page-about">
-            <div class="intro-english" id="introName">Sarfraz Khamoosh</div>
-            <div class="job-titles" id="jobTitles">برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور مهاجرت | مربی فیتنس</div>
-            <div class="glass-card"><h2 id="bioTitle">📖 بیوگرافی</h2><p id="bioText">سرفراز خموش، متولد سال ۱۳۷۷ (۱۹۹۸ میلادی) در شهر مزار شریف افغانستان، از جمله متخصصان جوان و خلاق در حوزه فناوری، طراحی و توسعه دیجیتال است. وی با سال‌ها تجربه و علاقه‌مندی در زمینه‌های مختلف تکنولوژی و طراحی، توانسته است مهارت‌های متنوعی را در کنار یکدیگر توسعه دهد.</p><p id="poetryInterest" style="margin-top:1rem;color:#8b5cf6;font-weight:500;">✨ سرفراز خموش به شعر و ادبیات علاقه‌مند است و همواره از مطالعه کتاب و سرودن شعر لذت می‌برد.</p></div>
-            <div class="glass-card"><h2 id="specialtiesTitle">⚡ حوزه‌های تخصصی</h2><ul class="specialties-list" id="specialtiesList"></ul></div>
-            <div class="glass-card"><h2 id="skillsTitle">🛠️ مهارت‌های نرم‌افزاری</h2><div class="skills-grid" id="skillsGrid"></div></div>
-            <div class="glass-card"><h2 id="langTitle">💻 زبان‌های برنامه‌نویسی</h2><div class="lang-grid" id="langGrid"></div></div>
-            <div class="glass-card"><p id="quoteText" style="text-align:center;font-style:italic;">«خلاقیت، دانش و پشتکار، سه ستون اصلی موفقیت هستند.»</p></div>
+            <div class="about-intro">
+                <h2>Sarfraz Khamoosh</h2>
+                <p>برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس</p>
+            </div>
+            <div class="glass">
+                <p style="font-size:1rem; line-height:2; text-align:justify;">
+                    سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال،
+                    همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است. علاوه بر تخصص در برنامه‌نویسی و طراحی، به شعر و ادبیات
+                    علاقه‌مند است و مطالعه و سرودن شعر را بخشی از زندگی خود می‌داند.
+                </p>
+            </div>
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:0.8rem;">
+                    <i class="fas fa-code" style="color:#8b5cf6;"></i> مهارت‌های فنی
+                </h3>
+                <div class="skills-doughnut-grid" id="doughnutGrid"></div>
+            </div>
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:0.8rem;">
+                    <i class="fas fa-bolt" style="color:#8b5cf6;"></i> حوزه‌های تخصصی
+                </h3>
+                <ul class="specialties-list" id="specialtiesList"></ul>
+            </div>
         </div>
 
-        <!-- 3. اشعار -->
+        <!-- POEMS CATEGORIES -->
         <div class="page" id="page-poems">
-            <h2 style="text-align:center; margin-bottom:1rem;">📚 دسته‌بندی اشعار</h2>
+            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-book-open" style="color:#8b5cf6;"></i> دسته‌بندی اشعار
+            </h2>
             <div class="categories-bar" id="categoriesBar"></div>
             <div id="categoriesContainer"></div>
         </div>
 
-        <!-- 4. پروفایل -->
+        <!-- PROFILE -->
         <div class="page" id="page-profile">
-            <div class="glass-card" style="text-align:center;">
-                <div class="profile-header">
-                    <img class="profile-avatar" src="images/Khamoosh.jpg" alt="سرفراز خموش" onerror="this.src='https://placehold.co/150x150?text=SK'">
-                    <h1 class="profile-name">سرفراز خموش</h1>
-                    <p class="profile-title">🎨 طراح گرافیک | 💻 برنامه‌نویس | 🏋️ مربی فیتنس</p>
+            <div class="profile-layout">
+                <div class="profile-card">
+                    <img class="avatar" src="images/Khamoosh.jpg" alt="سرفراز خموش" onerror="this.src='https://placehold.co/148x148?text=SK'" />
+                    <div class="name">سرفراز خموش</div>
+                    <div class="title"><i class="fas fa-briefcase" style="margin-left:6px;"></i> طراح گرافیک · برنامه‌نویس</div>
+                    <div class="title" style="font-size:0.8rem; margin-top:2px;"><i class="fas fa-dumbbell" style="margin-left:6px;"></i> مربی فیتنس</div>
+                    <div class="profile-details">
+                        <div class="item"><i class="fas fa-calendar-alt"></i> سن <span>۲۸</span></div>
+                        <div class="item"><i class="fas fa-map-marker-alt"></i> زادگاه <span>مزار شریف</span></div>
+                        <div class="item"><i class="fas fa-location-dot"></i> موقعیت <span>ازبکستان</span></div>
+                        <div class="item"><i class="fas fa-graduation-cap"></i> مدرک <span>لیسانس</span></div>
+                    </div>
                 </div>
-                <div class="profile-info-grid">
-                    <div class="profile-info-item"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg><div><strong>سن:</strong> ۲۸ سال</div></div>
-                    <div class="profile-info-item"><svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>زادگاه:</strong> مزار شریف، افغانستان</div></div>
-                    <div class="profile-info-item"><svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg><div><strong>موقعیت فعلی:</strong> ازبکستان</div></div>
-                    <div class="profile-info-item"><svg viewBox="0 0 24 24"><path d="M4 4v16h16V4H4z"/><path d="M8 8h8v8H8z"/></svg><div><strong>وظیفه:</strong> طراح گرافیک، برنامه‌نویس</div></div>
-                    <div class="profile-info-item" style="grid-column: span 2;"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg><div><strong>مربی فیتنس:</strong> ✅ دارای مدرک مربیگری حرفه‌ای</div></div>
+                <div class="glass" style="padding:1.8rem;">
+                    <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:1.2rem;">
+                        <i class="fas fa-address-card" style="color:#8b5cf6;"></i> درباره من
+                    </h3>
+                    <p style="line-height:2; text-align:justify; font-size:0.95rem;">
+                        من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک
+                        آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم. امروز به عنوان یک توسعه‌دهنده فول‌استک و طراح
+                        خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم. همچنین به عنوان مشاور مهاجرت و مربی فیتنس
+                        فعالیت دارم. عاشق شعر، کتاب و خلق تجربه‌های دیجیتال متفاوت هستم.
+                    </p>
+                    <div style="display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;">
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> برنامه‌نویس وب
+                        </span>
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> طراح گرافیک
+                        </span>
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> مشاور مهاجرت
+                        </span>
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> مربی فیتنس
+                        </span>
+                    </div>
                 </div>
             </div>
         </div>
 
-        <!-- 5. تنظیمات -->
+        <!-- SETTINGS -->
         <div class="page" id="page-settings">
-            <div class="glass-card"><h2>⚙️ تنظیمات</h2>
-                <div class="settings-item"><div class="label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg><span>تم شب/روز</span></div><div class="toggle-switch" id="themeToggle"><div class="slider"></div></div></div>
-                <div class="settings-item"><div class="label"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg><span>زبان</span></div><div class="lang-select-group"><button class="lang-opt active" data-lang="fa">🇦🇫 دری</button><button class="lang-opt" data-lang="en">🇺🇸 English</button></div></div>
-                <div class="settings-item"><div class="label"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>حالت نمایش</span></div><div style="display:flex;gap:0.5rem;flex-wrap:wrap;"><button class="view-btn active" data-view="desktop">🖥️ دسکتاپ</button><button class="view-btn" data-view="tablet">📱 تبلت</button><button class="view-btn" data-view="mobile">📱 موبایل</button></div></div>
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:1.5rem;">
+                    <i class="fas fa-sliders-h" style="color:#8b5cf6;"></i> تنظیمات
+                </h3>
+                <div class="settings-row">
+                    <div class="label"><i class="fas fa-moon"></i> تم شب / روز</div>
+                    <div class="toggle-switch" id="themeToggle"><div class="slider"></div></div>
+                </div>
+                <div class="settings-row">
+                    <div class="label"><i class="fas fa-globe-asia"></i> زبان</div>
+                    <div class="lang-group">
+                        <button class="lang-opt active" data-lang="fa">🇦🇫 دری</button>
+                        <button class="lang-opt" data-lang="en">🇺🇸 English</button>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div class="label"><i class="fas fa-desktop"></i> حالت نمایش</div>
+                    <div class="view-group">
+                        <button class="view-btn active" data-view="desktop">دسکتاپ</button>
+                        <button class="view-btn" data-view="tablet">تبلت</button>
+                        <button class="view-btn" data-view="mobile">موبایل</button>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 6. مهاجرت -->
+        <!-- IMMIGRATION -->
         <div class="page" id="page-immigration">
-            <div class="glass-card"><h2>🛂 برنامه‌های مهاجرت آمریکا</h2><p style="opacity:0.7; margin-bottom:1rem;">آخرین به‌روزرسانی: <span id="immigrationUpdateDate">۲۵ ژوئن ۲۰۲۶</span></p><div class="immigration-grid" id="immigrationGrid"></div></div>
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700;">
+                    <i class="fas fa-passport" style="color:#8b5cf6;"></i> برنامه‌های مهاجرت آمریکا
+                </h3>
+                <p style="opacity:0.5; font-size:0.85rem; margin:0.3rem 0 1.2rem 0;">
+                    آخرین به‌روزرسانی: <span id="immigrationUpdateDate">۲۵ ژوئن ۲۰۲۶</span>
+                </p>
+                <div class="imm-grid" id="immigrationGrid"></div>
+            </div>
         </div>
 
-        <!-- 7. اخبار فناوری -->
+        <!-- TECH NEWS -->
         <div class="page" id="page-technews">
-            <h2 style="text-align:center; margin-bottom:1rem;">📰 اخبار فناوری</h2>
+            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-newspaper" style="color:#8b5cf6;"></i> اخبار فناوری
+            </h2>
             <div class="news-grid" id="newsGrid"></div>
         </div>
 
         <!-- ===== FOOTER ===== -->
-        <footer class="glass-footer">
-            <div class="footer-content">
-                <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
-                <div class="social-icons">
-                    <a href="#"><img src="images/facebook.png" alt="فیسبوک" onerror="this.src='https://placehold.co/22x22?text=f'"></a>
-                    <a href="#"><img src="images/instagram.png" alt="اینستاگرام" onerror="this.src='https://placehold.co/22x22?text=i'"></a>
-                    <a href="#"><img src="images/linkedin.png" alt="لینکدین" onerror="this.src='https://placehold.co/22x22?text=in'"></a>
-                    <a href="#"><img src="images/github.png" alt="گیت‌هاب" onerror="this.src='https://placehold.co/22x22?text=gh'"></a>
-                    <div class="codm-icon" id="codmBtn"><img src="images/call of.png" alt="CODM" onerror="this.src='https://placehold.co/30x30?text=🎮'"></div>
+        <footer class="footer">
+            <div class="copy">© 2026 سرفراز خموش · تمام حقوق محفوظ است</div>
+            <div class="social">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+                <div id="codmBtn" style="cursor:pointer; width:42px; height:42px; border-radius:50%; background:rgba(0,0,0,0.02); display:flex; align-items:center; justify-content:center; transition:0.25s;">
+                    <i class="fas fa-gamepad" style="font-size:1.2rem;"></i>
                 </div>
             </div>
         </footer>
+
     </div>
 
-    <!-- ===== مودال‌ها ===== -->
-    <div id="newsModal" class="modal-overlay"><div class="modal-container"><button class="modal-close" id="modalCloseBtn">✕</button><div id="modalContent"></div></div></div>
-    <div id="uidModal" class="glass-modal"><div class="glass-modal-content"><h3 style="font-family:Vazirmatn;margin-bottom:1rem;">🎮 کال‌آف دیوتی موبایل</h3><p>UID من :</p><code>7500139701825634305</code><div class="modal-buttons"><button id="copyUidBtn">📋 کپی UID</button><button id="closeModalBtn">بستن</button></div></div></div>
+    <!-- ===== MODALS ===== -->
+    <div id="newsModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="close" id="modalCloseBtn"><i class="fas fa-times"></i></button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
 
-    <!-- ===== نوار پایین ===== -->
+    <div id="uidModal" class="modal-overlay">
+        <div class="modal-box" style="text-align:center; max-width:420px;">
+            <button class="close" id="closeUidModal"><i class="fas fa-times"></i></button>
+            <h3 style="font-size:1.5rem; margin-bottom:0.5rem;"><i class="fas fa-gamepad" style="color:#8b5cf6;"></i> کال‌آف دیوتی موبایل</h3>
+            <p>UID من :</p>
+            <code>7500139701825634305</code>
+            <div class="modal-actions">
+                <button class="primary" id="copyUidBtn"><i class="fas fa-copy"></i> کپی</button>
+                <button class="secondary" id="closeUidModalBtn">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
     <div class="bottom-nav-wrapper">
         <nav class="bottom-nav" id="bottomNav">
-            <button class="nav-item" data-page="about" onclick="navigateTo('about')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg><span>درباره</span></button>
-            <button class="nav-item" data-page="poems" onclick="navigateTo('poems')"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><path d="M20 18l-4-4 4-4"/></svg><span>اشعار</span></button>
-            <button class="nav-item-home" onclick="navigateTo('home')" aria-label="خانه"><svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg></button>
-            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')"><svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 11l2 2 4-4"/></svg><span>پروفایل</span></button>
-            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg><span>تنظیمات</span></button>
-            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')"><svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><path d="M12 22v-7"/></svg><span>مهاجرت</span></button>
-            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')"><svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg><span>فناوری</span></button>
+            <button class="nav-item" data-page="about" onclick="navigateTo('about')">
+                <i class="fas fa-user"></i>
+                <span>درباره</span>
+            </button>
+            <button class="nav-item" data-page="poems" onclick="navigateTo('poems')">
+                <i class="fas fa-book"></i>
+                <span>اشعار</span>
+            </button>
+            <button class="nav-item-home" onclick="navigateTo('home')" aria-label="خانه">
+                <i class="fas fa-home"></i>
+            </button>
+            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')">
+                <i class="fas fa-id-card"></i>
+                <span>پروفایل</span>
+            </button>
+            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')">
+                <i class="fas fa-cog"></i>
+                <span>تنظیمات</span>
+            </button>
+            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')">
+                <i class="fas fa-plane"></i>
+                <span>مهاجرت</span>
+            </button>
+            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')">
+                <i class="fas fa-microchip"></i>
+                <span>فناوری</span>
+            </button>
         </nav>
     </div>
 
     <script>
-        // ================================================================
-        // 1. داده‌ها
-        // ================================================================
+        // ============================================================
+        // DATA
+        // ============================================================
         const poemsList = [
-            { id: 0, logo: "images/Khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
-            { id: 1, logo: "images/Khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
-            { id: 2, logo: "images/Khamoosh.jpg", typeFa: "شعر کلاسیک", typeEn: "Classical Poem", textFa: "ای درخت کهن، برگ و بارت کو؟\nروزگاری تو سایه گستری\nاکنون اما، خشکیده شاخه‌هایت\nو خزان زودرس، مهمان سفره‌ات", textEn: "O ancient tree, where are your leaves and fruits?\nOnce you spread shade\nBut now your branches are withered\nAnd premature autumn is your guest" },
-            { id: 3, logo: "images/Khamoosh.jpg", typeFa: "غزل مدرن", typeEn: "Modern Ghazal", textFa: "عشق را با سرب نوشتم بر دیوار\nتا کسی نتواند پاک کند\nبا باران که شستش\nسنگین‌تر می‌شود", textEn: "I wrote love with lead on the wall\nSo no one could erase it\nWhen washed by rain\nIt becomes heavier" },
-            { id: 4, logo: "images/Khamoosh.jpg", typeFa: "شعر فلسفی", typeEn: "Philosophical Poetry", textFa: "بین دو تا سکوت\nلحظه‌ای هست\nکه تمام هستی در آن خلاصه می‌شود\nلحظه‌ای که می‌فهمی\nهر چه داشتی\nبادی بود که گذشت", textEn: "Between two silences\nThere is a moment\nIn which all existence is summarized\nA moment when you realize\nEverything you had\nWas just wind that passed" },
-            { id: 5, logo: "images/Khamoosh.jpg", typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
+            { id: 0, typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
+            { id: 1, typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
+            { id: 2, typeFa: "شعر کلاسیک", typeEn: "Classical Poem", textFa: "ای درخت کهن، برگ و بارت کو؟\nروزگاری تو سایه گستری\nاکنون اما، خشکیده شاخه‌هایت\nو خزان زودرس، مهمان سفره‌ات", textEn: "O ancient tree, where are your leaves and fruits?\nOnce you spread shade\nBut now your branches are withered\nAnd premature autumn is your guest" },
+            { id: 3, typeFa: "غزل مدرن", typeEn: "Modern Ghazal", textFa: "عشق را با سرب نوشتم بر دیوار\nتا کسی نتواند پاک کند\nبا باران که شستش\nسنگین‌تر می‌شود", textEn: "I wrote love with lead on the wall\nSo no one could erase it\nWhen washed by rain\nIt becomes heavier" },
+            { id: 4, typeFa: "شعر فلسفی", typeEn: "Philosophical Poetry", textFa: "بین دو تا سکوت\nلحظه‌ای هست\nکه تمام هستی در آن خلاصه می‌شود\nلحظه‌ای که می‌فهمی\nهر چه داشتی\nبادی بود که گذشت", textEn: "Between two silences\nThere is a moment\nIn which all existence is summarized\nA moment when you realize\nEverything you had\nWas just wind that passed" },
+            { id: 5, typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
         ];
-        const specialtiesData = [
-            { nameFa: "برنامه‌نویسی و توسعه نرم‌افزار", nameEn: "Programming & Software Development", icon: "images/programer.png" },
-            { nameFa: "طراحی و توسعه وب‌سایت", nameEn: "Website Design & Development", icon: "images/website.png" },
-            { nameFa: "طراحی و توسعه اپلیکیشن‌های موبایل", nameEn: "Mobile App Development", icon: "images/application.png" },
-            { nameFa: "طراحی رابط و تجربه کاربری (UI/UX)", nameEn: "UI/UX Design", icon: "images/ux.png" },
-            { nameFa: "طراحی لوگو و هویت بصری برند", nameEn: "Logo & Brand Identity", icon: "images/logo.png" },
-            { nameFa: "طراحی بنرهای تبلیغاتی و گرافیک دیجیتال", nameEn: "Digital & Banner Design", icon: "images/banner.png" },
-            { nameFa: "تولید محتوای دیجیتال و مدیریت پروژه", nameEn: "Content Creation & Project Management", icon: "images/mang.png" },
-            { nameFa: "مشاوره امور مهاجرت", nameEn: "Immigration Consulting", icon: "images/imm.png" },
-            { nameFa: "مربیگری فیتنس", nameEn: "Fitness Coaching", icon: "images/fit.png" }
-        ];
-        const skillsData = [
-            { name: "Adobe Photoshop", percent: 85, icon: "images/photoshop.png" },
-            { name: "Adobe Illustrator", percent: 90, icon: "images/ill.png" },
-            { name: "Adobe InDesign", percent: 50, icon: "images/indesign.png" },
-            { name: "Adobe Lightroom", percent: 68, icon: "images/light.png" },
-            { name: "InShot", percent: 100, icon: "images/inshot.png" },
-            { name: "PicArt", percent: 80, icon: "images/pics.png" },
-            { name: "Matnegar", percent: 100, icon: "images/mtn.jpg" },
-            { name: "Alight Motion", percent: 100, icon: "images/alight.png" },
-            { name: "Adobe After Effects", percent: 30, icon: "images/after.png" },
-            { name: "Canva", percent: 80, icon: "images/conva.png" }
-        ];
-        const langsData = [
-            { name: "Python", percent: 58, icon: "images/python.png" },
-            { name: "Flutter", percent: 80, icon: "images/flutter.png" },
-            { name: "XML", percent: 60, icon: "images/xml.png" },
-            { name: "PHP", percent: 70, icon: "images/php.png" },
-            { name: "Go", percent: 90, icon: "images/go.png" },
-            { name: "JavaScript", percent: 50, icon: "images/javas.png" }
-        ];
-        const aboutTranslations = {
-            fa: { bioTitle: "📖 بیوگرافی", bioText: "سرفراز خموش، متولد سال ۱۳۷۷ (۱۹۹۸ میلادی) در شهر مزار شریف افغانستان، از جمله متخصصان جوان و خلاق در حوزه فناوری، طراحی و توسعه دیجیتال است. وی با سال‌ها تجربه و علاقه‌مندی در زمینه‌های مختلف تکنولوژی و طراحی، توانسته است مهارت‌های متنوعی را در کنار یکدیگر توسعه دهد.", poetryInterest: "✨ سرفراز خموش به شعر و ادبیات علاقه‌مند است و همواره از مطالعه کتاب و سرودن شعر لذت می‌برد.", specialtiesTitle: "⚡ حوزه‌های تخصصی", skillsTitle: "🛠️ مهارت‌های نرم‌افزاری", langTitle: "💻 زبان‌های برنامه‌نویسی", quoteText: "«خلاقیت، دانش و پشتکار، سه ستون اصلی موفقیت هستند.»", introName: "سرفراز خموش", jobTitles: "برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور مهاجرت | مربی فیتنس" },
-            en: { bioTitle: "📖 Biography", bioText: "Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, is a young and creative specialist in technology, design, and digital development. With years of experience, he has developed diverse skills across various fields.", poetryInterest: "✨ Sarfraz Khamoosh is deeply interested in poetry and literature, and always enjoys reading books and composing poetry.", specialtiesTitle: "⚡ Specialties", skillsTitle: "🛠️ Software Skills", langTitle: "💻 Programming Languages", quoteText: "«Creativity, knowledge and perseverance are the three pillars of success.»", introName: "Sarfraz Khamoosh", jobTitles: "Developer | Web & App Creator | Graphic Designer | Immigration Consultant | Fitness Coach" }
-        };
+
         const categoriesData = {
-            mystical: { fa: "اشعار عارفانه", en: "Mystical Poems" },
-            romantic: { fa: "اشعار عاشقانه", en: "Romantic Poems" },
-            oritic: { fa: "اشعار اورتیک", en: "Oritic Poems" },
-            blank: { fa: "اشعار سپید", en: "Blank Verse" },
-            heavy: { fa: "متن‌های سنگین", en: "Heavy Texts" }
+            mystical: { fa: "عارفانه", en: "Mystical" },
+            romantic: { fa: "عاشقانه", en: "Romantic" },
+            oritic: { fa: "اورتیک", en: "Oritic" },
+            blank: { fa: "سپید", en: "Blank" },
+            heavy: { fa: "متن سنگین", en: "Heavy" }
         };
         const poemsDB = {
-            mystical: [{ id: 100, textFa: "چون گل به آفتاب حقیقت گشوده شو\nوز غیر او ببند نظر، چون که او بس است", textEn: "Open like a flower to the sun of truth\nClose your eyes to others, for He is enough" }, { id: 101, textFa: "در خرابات طریقت من و دلتنگی خویش\nعشق را یافت دل از جرعه‌ای از می دوش", textEn: "In the tavern of the path, me and my sorrow\nLove found the heart from a sip of last night's wine" }],
-            romantic: [{ id: 200, textFa: "در دل شب، در هوای تو\nباد زلفت می‌وزد از سوی تو\nعشق سر می‌زد ز هر سو، ای صنم\nبی‌تو دلگیر است جان، بی‌تو وطن", textEn: "In the heart of night, in your air\nYour hair's wind blows from your side\nLove sprouts from every side, O idol\nWithout you, the soul is sad, without you, home" }, { id: 201, textFa: "نگاهت را به من بخش ای پری پیکر\nکه دلم بی‌تو اسیر شب و تنهایی", textEn: "Give your gaze to me, O fairy-like\nFor my heart without you is captive to night and loneliness" }],
-            oritic: [{ id: 300, textFa: "ای کاشکی که کوه شوم و پایدار\nیا باد که هر جا بروم بی‌قرار", textEn: "I wish I were a mountain, steadfast\nOr the wind, restless wherever I go" }, { id: 301, textFa: "در طوفان بی‌کرانِ بودن\nتنها دل است که لنگر می‌شود", textEn: "In the boundless storm of existence\nOnly the heart becomes the anchor" }],
-            blank: [{ id: 400, textFa: "سکوت شب\nپر از نجوای برگ‌های خشک\nمن مانده‌ام\nبا روایتی از باد", textEn: "The silence of the night\nFull of whispers of dry leaves\nI am left\nWith a tale of the wind" }, { id: 401, textFa: "فردا که برسد\nشاید خورشید را به گلدان اتاق بیاورم\nتا پنجره باز شود", textEn: "When tomorrow comes\nPerhaps I'll bring the sun into the room's pot\nSo the window will open" }],
-            heavy: [{ id: 500, textFa: "در دل شب سرد زمستان، که برف خاطرات می‌بارید، او تنها نشسته بود و به دیوار خاموش اتاق خیره. هیچ صدایی نیست، جز ضربان نبض تنهایی که هر لحظه سنگین‌تر می‌شود. تمام وجودش را سوالی پر کرده بود: آیا بعد از این همه راه، هنوز می‌توان به آغاز بازگشت؟", textEn: "In the cold winter night, as the snow of memories fell, he sat alone, staring at the silent wall of the room. There was no sound, except the heartbeat of loneliness growing heavier each moment. A question filled his entire being: after all this way, can one still return to the beginning?" }, { id: 501, textFa: "زندگی گاهی چون اقیانوسی طوفانی است که کرانه‌هایش در مه گم شده. آدمی میان امواج دست و پا می‌زند و تنها امیدش به تخته پاره‌ای است که شاید او را به ساحلی ناشناخته برساند. این است سرنوشت ما؛ میان جهل و امید، میان تاریکی و روشنایی.", textEn: "Life is sometimes like a stormy ocean whose shores are lost in fog. Man struggles among the waves, his only hope a piece of wood that might carry him to an unknown shore. This is our destiny; between ignorance and hope, between darkness and light." }]
+            mystical: [{ id: 100, textFa: "چون گل به آفتاب حقیقت گشوده شو\nوز غیر او ببند نظر، چون که او بس است", textEn: "Open like a flower to the sun of truth\nClose your eyes to others, for He is enough" }],
+            romantic: [{ id: 200, textFa: "در دل شب، در هوای تو\nباد زلفت می‌وزد از سوی تو\nعشق سر می‌زد ز هر سو، ای صنم\nبی‌تو دلگیر است جان، بی‌تو وطن", textEn: "In the heart of night, in your air\nYour hair's wind blows from your side\nLove sprouts from every side, O idol\nWithout you, the soul is sad, without you, home" }],
+            oritic: [{ id: 300, textFa: "ای کاشکی که کوه شوم و پایدار\nیا باد که هر جا بروم بی‌قرار", textEn: "I wish I were a mountain, steadfast\nOr the wind, restless wherever I go" }],
+            blank: [{ id: 400, textFa: "سکوت شب\nپر از نجوای برگ‌های خشک\nمن مانده‌ام\nبا روایتی از باد", textEn: "The silence of the night\nFull of whispers of dry leaves\nI am left\nWith a tale of the wind" }],
+            heavy: [{ id: 500, textFa: "در دل شب سرد زمستان، که برف خاطرات می‌بارید، او تنها نشسته بود و به دیوار خاموش اتاق خیره. هیچ صدایی نیست، جز ضربان نبض تنهایی که هر لحظه سنگین‌تر می‌شود. تمام وجودش را سوالی پر کرده بود: آیا بعد از این همه راه، هنوز می‌توان به آغاز بازگشت؟", textEn: "In the cold winter night, as the snow of memories fell, he sat alone, staring at the silent wall of the room. There was no sound, except the heartbeat of loneliness growing heavier each moment. A question filled his entire being: after all this way, can one still return to the beginning?" }]
         };
-        const newsData = [
-            { id: 1, titleFa: "گوگل ۸۵ میلیارد دلار برای توسعه هوش مصنوعی جذب سرمایه کرد", titleEn: "Google Raises $85 Billion for AI Development", date: "۳ جون ۲۰۲۶", image: "news-pic/google.jpg", fullTextFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...", fullTextEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..." },
-            { id: 2, titleFa: "استارتاپ اروپایی Lovable همکاری خود با گوگل را گسترش داد", titleEn: "European Startup Lovable Expands Partnership with Google", date: "۳ جون ۲۰۲۶", image: "news-pic/ai.jpg", fullTextFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...", fullTextEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..." },
-            { id: 3, titleFa: "متا بازی محبوب VR «Supernatural» را نجات داد", titleEn: "Meta Rescues Popular VR Game 'Supernatural'", date: "۳ جون ۲۰۲۶", image: "news-pic/meta.jpg", fullTextFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...", fullTextEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..." }
-        ];
-        const immigrationPrograms = [
-            { id: 'siv', nameFa: "برنامه SIV", nameEn: "SIV Program", status: "فعال", update: "۲۰۲۶-۰۶-۲۰" },
-            { id: 'p1', nameFa: "برنامه P1", nameEn: "P1 Program", status: "فعال", update: "۲۰۲۶-۰۶-۱۸" },
-            { id: 'p2', nameFa: "برنامه P2", nameEn: "P2 Program", status: "فعال", update: "۲۰۲۶-۰۶-۱۵" },
-            { id: 'asylum', nameFa: "برنامه Asylum", nameEn: "Asylum Program", status: "فعال", update: "۲۰۲۶-۰۶-۲۲" },
-            { id: 'parole', nameFa: "برنامه Parole", nameEn: "Parole Program", status: "در انتظار", update: "۲۰۲۶-۰۶-۱۰" },
-            { id: 'reparole', nameFa: "برنامه Re-Parole", nameEn: "Re-Parole Program", status: "فعال", update: "۲۰۲۶-۰۶-۲۵" },
-            { id: 'welcome', nameFa: "برنامه Welcome Corps", nameEn: "Welcome Corps Program", status: "فعال", update: "۲۰۲۶-۰۶-۱۴" },
-            { id: 'cr1', nameFa: "برنامه ازدواج CR1", nameEn: "CR1 Marriage Program", status: "فعال", update: "۲۰۲۶-۰۶-۱۹" },
-            { id: 'cr2', nameFa: "برنامه ازدواج CR2", nameEn: "CR2 Marriage Program", status: "فعال", update: "۲۰۲۶-۰۶-۱۷" },
-            { id: 'k1', nameFa: "برنامه ازدواج K1", nameEn: "K1 Fiancé Program", status: "فعال", update: "۲۰۲۶-۰۶-۲۱" },
-            { id: 'dv', nameFa: "برنامه DV Lottery", nameEn: "DV Lottery Program", status: "ثبت‌نام باز", update: "۲۰۲۶-۰۶-۰۱" },
-            { id: 'i130_gc', nameFa: "اسپانسری I-130 با گرین کارت", nameEn: "I-130 with Green Card", status: "فعال", update: "۲۰۲۶-۰۶-۲۳" },
-            { id: 'i130_us', nameFa: "اسپانسری I-130 با پاسپورت آمریکایی", nameEn: "I-130 with US Passport", status: "فعال", update: "۲۰۲۶-۰۶-۲۴" }
+
+        const specialties = [
+            { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev" },
+            { fa: "طراحی و توسعه وب‌سایت", en: "Web Design & Dev" },
+            { fa: "طراحی اپلیکیشن موبایل", en: "Mobile App Design" },
+            { fa: "UI/UX Design", en: "UI/UX Design" },
+            { fa: "طراحی لوگو و برند", en: "Logo & Brand Identity" },
+            { fa: "مشاوره مهاجرت", en: "Immigration Consulting" },
+            { fa: "مربیگری فیتنس", en: "Fitness Coaching" }
         ];
 
-        // ================================================================
-        // 2. متغیرهای عمومی و سئو
-        // ================================================================
+        const skillsData = [
+            { name: "Photoshop", pct: 85 },
+            { name: "Illustrator", pct: 90 },
+            { name: "Flutter", pct: 80 },
+            { name: "Python", pct: 58 },
+            { name: "PHP", pct: 70 },
+            { name: "JavaScript", pct: 50 },
+            { name: "Go", pct: 90 },
+            { name: "InDesign", pct: 50 }
+        ];
+
+        const immigrationPrograms = [
+            { id: 'siv', fa: "برنامه SIV", en: "SIV Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۰" },
+            { id: 'p1', fa: "برنامه P1", en: "P1 Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۸" },
+            { id: 'p2', fa: "برنامه P2", en: "P2 Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۵" },
+            { id: 'asylum', fa: "برنامه Asylum", en: "Asylum Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۲" },
+            { id: 'parole', fa: "برنامه Parole", en: "Parole Program", statusFa: "در انتظار", statusEn: "Pending", date: "۲۰۲۶-۰۶-۱۰" },
+            { id: 'reparole', fa: "برنامه Re-Parole", en: "Re-Parole", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۵" },
+            { id: 'welcome', fa: "برنامه Welcome Corps", en: "Welcome Corps", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۴" },
+            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۹" },
+            { id: 'cr2', fa: "برنامه CR2", en: "CR2 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۷" },
+            { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۱" },
+            { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open", date: "۲۰۲۶-۰۶-۰۱" },
+            { id: 'i130_gc', fa: "I-130 با گرین کارت", en: "I-130 with Green Card", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۳" },
+            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۴" }
+        ];
+
+        const newsData = [{
+            id: 1,
+            fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد",
+            en: "Google Raises $85B for AI",
+            date: "۳ جون ۲۰۲۶",
+            img: "news-pic/google.jpg",
+            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند؛ رقمی که از آن به‌عنوان یکی از بزرگ‌ترین جذب سرمایه‌های تاریخ بازار سهام یاد می‌شود.",
+            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion through a large stock offering to fund artificial intelligence projects — a figure described as one of the largest capital raises in stock market history."
+        }, {
+            id: 2,
+            fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد",
+            en: "Startup Lovable Expands Google Partnership",
+            date: "۳ جون ۲۰۲۶",
+            img: "news-pic/ai.jpg",
+            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است.",
+            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud."
+        }, {
+            id: 3,
+            fa: "متا بازی VR «Supernatural» را نجات داد",
+            en: "Meta Rescues VR Game 'Supernatural'",
+            date: "۳ جون ۲۰۲۶",
+            img: "news-pic/meta.jpg",
+            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد.",
+            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down but instead transferred to a new independent company."
+        }];
+
+        // ============================================================
+        // STATE
+        // ============================================================
         let currentLang = 'fa';
         let currentPage = 'home';
-        let likesData = JSON.parse(localStorage.getItem('poem_likes')) || {};
-        let poemsLikesData = JSON.parse(localStorage.getItem('poems_likes')) || {};
-        let notificationBadges = JSON.parse(localStorage.getItem('notifications')) || {};
+        let likesHome = JSON.parse(localStorage.getItem('poem_likes')) || {};
+        let likesCat = JSON.parse(localStorage.getItem('poems_likes')) || {};
+        let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
 
-        const seoData = {
-            home: {
-                titleFa: "سرفراز خموش | صفحه اصلی | Sarfraz Khamoosh",
-                titleEn: "Sarfraz Khamoosh | Home Page",
-                descFa: "سایت رسمی سرفراز خموش، شامل اشعار، اخبار فناوری، اطلاعات مهاجرت و نمونه کارها. برنامه‌نویس و طراح گرافیک اهل افغانستان.",
-                descEn: "Official website of Sarfraz Khamoosh - Poems, Tech News, Immigration Info and Portfolio. Developer & Graphic Designer from Afghanistan.",
-                keywords: "سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, طراح گرافیک, مهاجرت, افغانستان, مزار شریف"
-            },
-            about: {
-                titleFa: "درباره من | سرفراز خموش | Sarfraz Khamoosh",
-                titleEn: "About Me | Sarfraz Khamoosh",
-                descFa: "بیوگرافی، مهارت‌ها و حوزه‌های تخصصی سرفراز خموش، برنامه‌نویس و طراح گرافیک. زندگی‌نامه و سوابق کاری.",
-                descEn: "Biography, skills and specialties of Sarfraz Khamoosh - Developer & Graphic Designer. Work history and background.",
-                keywords: "بیوگرافی سرفراز خموش, Sarfraz Khamoosh biography, مهارت‌های برنامه‌نویسی, افغانستان, مزار شریف"
-            },
-            poems: {
-                titleFa: "اشعار | سرفراز خموش | Sarfraz Khamoosh",
-                titleEn: "Poems | Sarfraz Khamoosh",
-                descFa: "مجموعه اشعار عارفانه، عاشقانه و سپید از سرفراز خموش. شعرهای کوتاه و زیبای فارسی.",
-                descEn: "Collection of mystical, romantic and blank poems by Sarfraz Khamoosh. Beautiful Persian short poems.",
-                keywords: "اشعار سرفراز خموش, شعر عارفانه, شعر عاشقانه, شعر سپید, خموش"
-            },
-            profile: {
-                titleFa: "پروفایل | سرفراز خموش | Sarfraz Khamoosh",
-                titleEn: "Profile | Sarfraz Khamoosh",
-                descFa: "اطلاعات کامل پروفایل، سن، موقعیت و سوابق کاری سرفراز خموش. برنامه‌نویس، طراح و مربی فیتنس.",
-                descEn: "Complete profile, age, location and work history of Sarfraz Khamoosh. Developer, Designer and Fitness Coach.",
-                keywords: "پروفایل سرفراز خموش, Sarfraz Khamoosh profile, سن, موقعیت, ازبکستان"
-            },
-            settings: {
-                titleFa: "تنظیمات | سرفراز خموش | Sarfraz Khamoosh",
-                titleEn: "Settings | Sarfraz Khamoosh",
-                descFa: "تنظیمات تم، زبان و حالت نمایش سایت سرفراز خموش. شخصی‌سازی ظاهر و زبان.",
-                descEn: "Theme, language and display settings of Sarfraz Khamoosh website. Customize appearance and language.",
-                keywords: "تنظیمات سایت, تم شب روز, تغییر زبان, حالت نمایش"
-            },
-            immigration: {
-                titleFa: "برنامه‌های مهاجرت آمریکا | سرفراز خموش | Sarfraz Khamoosh",
-                titleEn: "US Immigration Programs | Sarfraz Khamoosh",
-                descFa: "آخرین آپدیت برنامه‌های مهاجرتی آمریکا شامل SIV، P1، P2، Asylum، DV Lottery، CR1، K1 و اسپانسری. اخبار جدید مهاجرت.",
-                descEn: "Latest updates on US immigration programs including SIV, P1, P2, Asylum, DV Lottery, CR1, K1 and Sponsorship. Immigration news.",
-                keywords: "مهاجرت به آمریکا, برنامه SIV, P1, P2, Asylum, DV Lottery, CR1, K1, اسپانسری, اپدیت مهاجرت"
-            },
-            technews: {
-                titleFa: "اخبار فناوری | سرفراز خموش | Sarfraz Khamoosh",
-                titleEn: "Tech News | Sarfraz Khamoosh",
-                descFa: "آخرین اخبار و تحولات دنیای فناوری، هوش مصنوعی، استارتاپ‌ها و گوگل. جدیدترین تکنولوژی‌های روز.",
-                descEn: "Latest news and developments in technology, AI, startups and Google. Cutting-edge tech updates.",
-                keywords: "اخبار فناوری, هوش مصنوعی, گوگل, استارتاپ, تکنولوژی, Sarfraz Khamoosh"
-            }
-        };
-
-        // ================================================================
-        // 3. توابع کمکی
-        // ================================================================
-        function showToast(msg) {
-            let existing = document.querySelector('.toast-msg');
-            if (existing) existing.remove();
-            let toast = document.createElement('div');
-            toast.className = 'toast-msg';
-            toast.textContent = msg;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2000);
+        // ============================================================
+        // HELPERS
+        // ============================================================
+        function toast(msg) {
+            let el = document.querySelector('.toast-msg');
+            if (el) el.remove();
+            let t = document.createElement('div');
+            t.className = 'toast-msg';
+            t.innerHTML = msg;
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 2800);
         }
-        function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(currentLang === 'fa' ? '✅ متن کپی شد!' : '✅ Text copied!');
-            }).catch(() => {
-                showToast(currentLang === 'fa' ? '❌ خطا در کپی' : '❌ Copy failed');
-            });
-        }
-        function sharePoem(text, type) {
-            const shareText = type + '\n\n' + text;
-            if (navigator.share) {
-                navigator.share({ title: 'اشعار سرفراز خموش', text: shareText }).catch(() => {});
-            } else {
-                copyText(shareText);
-                showToast(currentLang === 'fa' ? 'متن برای اشتراک کپی شد' : 'Text copied for sharing');
-            }
+        function copyText(t) {
+            navigator.clipboard.writeText(t).then(() => toast('✅ کپی شد!')).catch(() => toast('❌ خطا'));
         }
 
-        // ================================================================
-        // 4. سئو (SEO) - به‌روزرسانی عنوان، توضیحات و کلمات کلیدی
-        // ================================================================
-        function updateSEO(page) {
-            const data = seoData[page];
-            if (!data) return;
-            const lang = currentLang;
-            const title = lang === 'fa' ? data.titleFa : data.titleEn;
-            const desc = lang === 'fa' ? data.descFa : data.descEn;
-            const keywords = lang === 'fa' ? data.keywords : data.keywords + ", Sarfraz Khamoosh, Afghanistan, Mazar";
-
-            document.title = title;
-            document.getElementById('dynamicDescription').setAttribute('content', desc);
-            document.getElementById('dynamicKeywords').setAttribute('content', keywords);
-
-            // تغییر URL برای ایندکس شدن صفحات مختلف توسط گوگل
-            if (window.history && window.history.pushState) {
-                const url = window.location.origin + window.location.pathname + '?page=' + page;
-                window.history.pushState({ page: page }, title, url);
-            }
-        }
-
-        // ================================================================
-        // 5. ناوبری اصلی
-        // ================================================================
+        // ============================================================
+        // NAVIGATION
+        // ============================================================
         function navigateTo(page) {
-            // مخفی کردن همه صفحات
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-
-            // نمایش صفحه
             const target = document.getElementById('page-' + page);
             if (target) target.classList.add('active');
 
-            // به‌روزرسانی نوار پایین
-            document.querySelectorAll('.bottom-nav .nav-item, .bottom-nav .nav-item-home').forEach(item => {
-                item.classList.remove('active');
-                if (item.getAttribute('data-page') === page) {
-                    item.classList.add('active');
-                }
+            document.querySelectorAll('.bottom-nav .nav-item, .bottom-nav .nav-item-home').forEach(el => {
+                el.classList.remove('active');
+                if (el.getAttribute('data-page') === page) el.classList.add('active');
             });
 
-            // رندر محتوای صفحات
-            if (page === 'home') renderHomePoems();
-            if (page === 'about') renderAboutPage();
+            if (page === 'home') renderHome();
+            if (page === 'about') renderAbout();
             if (page === 'poems') renderPoemsCategories();
             if (page === 'immigration') renderImmigration();
             if (page === 'technews') renderNews();
 
-            // به‌روزرسانی سئو
-            updateSEO(page);
-
             currentPage = page;
             localStorage.setItem('currentPage', page);
+            updateSEO(page);
         }
 
-        // ================================================================
-        // 6. رندر صفحات (توابع مختصر شده برای جلوگیری از طولانی شدن)
-        // ================================================================
-        function renderHomePoems() {
+        // ============================================================
+        // SEO
+        // ============================================================
+        function updateSEO(page) {
+            const map = {
+                home: { fa: 'سرفراز خموش | صفحه اصلی', en: 'Sarfraz Khamoosh | Home' },
+                about: { fa: 'درباره من | سرفراز خموش', en: 'About | Sarfraz Khamoosh' },
+                poems: { fa: 'اشعار | سرفراز خموش', en: 'Poems | Sarfraz Khamoosh' },
+                profile: { fa: 'پروفایل | سرفراز خموش', en: 'Profile | Sarfraz Khamoosh' },
+                settings: { fa: 'تنظیمات | سرفراز خموش', en: 'Settings | Sarfraz Khamoosh' },
+                immigration: { fa: 'مهاجرت آمریکا | سرفراز خموش', en: 'US Immigration | Sarfraz Khamoosh' },
+                technews: { fa: 'اخبار فناوری | سرفراز خموش', en: 'Tech News | Sarfraz Khamoosh' }
+            };
+            const descMap = {
+                home: { fa: 'سایت رسمی سرفراز خموش، برنامه‌نویس و طراح گرافیک اهل افغانستان', en: 'Official site of Sarfraz Khamoosh, developer & graphic designer from Afghanistan' },
+                about: { fa: 'بیوگرافی، مهارت‌ها و تخصص‌های سرفراز خموش', en: 'Biography, skills & specialties of Sarfraz Khamoosh' },
+                poems: { fa: 'مجموعه اشعار عارفانه، عاشقانه و سپید', en: 'Collection of mystical, romantic & blank poems' },
+                profile: { fa: 'پروفایل کامل سرفراز خموش، برنامه‌نویس و طراح', en: 'Full profile of Sarfraz Khamoosh, developer & designer' },
+                settings: { fa: 'تنظیمات سایت سرفراز خموش', en: 'Settings of Sarfraz Khamoosh website' },
+                immigration: { fa: 'آخرین آپدیت برنامه‌های مهاجرت آمریکا', en: 'Latest US immigration program updates' },
+                technews: { fa: 'آخرین اخبار فناوری و هوش مصنوعی', en: 'Latest tech & AI news' }
+            };
+            const data = map[page];
+            const desc = descMap[page];
+            if (data) {
+                document.title = currentLang === 'fa' ? data.fa : data.en;
+                const meta = document.querySelector('meta[name="description"]');
+                if (meta) meta.setAttribute('content', currentLang === 'fa' ? desc.fa : desc.en);
+            }
+            if (window.history && window.history.pushState) {
+                const url = window.location.origin + window.location.pathname + '?page=' + page;
+                window.history.pushState({ page }, document.title, url);
+            }
+        }
+
+        // ============================================================
+        // RENDER: HOME
+        // ============================================================
+        function renderHome() {
             const grid = document.getElementById('poemsGrid');
             if (!grid) return;
-            grid.innerHTML = poemsList.map(function(p) {
+            grid.innerHTML = poemsList.map(p => {
                 const text = currentLang === 'fa' ? p.textFa : p.textEn;
                 const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
-                const likes = likesData[p.id] || 0;
-                const liked = likesData[p.id] > 0;
-                return `<div class="poem-card" data-id="${p.id}"><div class="poem-logo"><img src="${p.logo}" alt="لوگو" onerror="this.src='https://placehold.co/70x70?text=🎭'"></div><div class="poem-type">${type}</div><div class="poem-text">${text.replace(/\n/g, '<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g, '&quot;')}')"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span></button><button onclick="sharePoem('${text.replace(/"/g, '&quot;')}', '${type.replace(/"/g, '&quot;')}')"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span></button><button class="like-btn ${liked ? 'liked' : ''}" onclick="likeHomePoem(${p.id}, this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span><span class="like-count">${likes}</span></button></div></div>`;
+                const likes = likesHome[p.id] || 0;
+                const liked = likesHome[p.id] > 0;
+                return `<div class="poem-card"><div class="type">${type}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${type.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeHome(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
             }).join('');
         }
-        function likeHomePoem(id, btn) {
-            if (!likesData[id]) likesData[id] = 0;
-            const countSpan = btn.querySelector('.like-count');
-            if (btn.classList.contains('liked')) { likesData[id]--; btn.classList.remove('liked'); } else { likesData[id]++; btn.classList.add('liked'); }
-            countSpan.textContent = likesData[id];
-            localStorage.setItem('poem_likes', JSON.stringify(likesData));
+        function likeHome(id, btn) {
+            if (!likesHome[id]) likesHome[id] = 0;
+            const span = btn.querySelector('.like-count');
+            if (btn.classList.contains('liked')) { likesHome[id]--;
+                btn.classList.remove('liked'); } else { likesHome[id]++;
+                btn.classList.add('liked'); }
+            span.textContent = likesHome[id];
+            localStorage.setItem('poem_likes', JSON.stringify(likesHome));
+        }
+        function sharePoem(text, type) {
+            const s = type + '\n\n' + text;
+            if (navigator.share) navigator.share({ title: 'اشعار سرفراز خموش', text: s }).catch(() => {});
+            else { copyText(s);
+                toast('متن برای اشتراک کپی شد'); }
         }
 
-        function renderAboutPage() {
-            const t = aboutTranslations[currentLang];
-            document.getElementById('introName').innerText = t.introName;
-            document.getElementById('jobTitles').innerText = t.jobTitles;
-            document.getElementById('bioTitle').innerText = t.bioTitle;
-            document.getElementById('bioText').innerText = t.bioText;
-            document.getElementById('poetryInterest').innerText = t.poetryInterest;
-            document.getElementById('specialtiesTitle').innerText = t.specialtiesTitle;
-            document.getElementById('skillsTitle').innerText = t.skillsTitle;
-            document.getElementById('langTitle').innerText = t.langTitle;
-            document.getElementById('quoteText').innerText = t.quoteText;
-            document.getElementById('specialtiesList').innerHTML = specialtiesData.map(i => `<li><img src="${i.icon}" alt="${currentLang === 'fa' ? i.nameFa : i.nameEn}" onerror="this.src='https://placehold.co/40x40?text=🔹'"><span>${currentLang === 'fa' ? i.nameFa : i.nameEn}</span></li>`).join('');
-            document.getElementById('skillsGrid').innerHTML = skillsData.map(s => `<div class="skill-item"><img class="skill-icon" src="${s.icon}" alt="${s.name}" onerror="this.src='https://placehold.co/40x40?text=🎨'"><span class="skill-name">${s.name}</span><div class="skill-bar-container"><div class="skill-bar" data-percent="${s.percent}"></div></div><span class="skill-percent">${s.percent}%</span></div>`).join('');
-            document.getElementById('langGrid').innerHTML = langsData.map(l => `<div class="lang-item"><img class="lang-icon" src="${l.icon}" alt="${l.name}" onerror="this.src='https://placehold.co/40x40?text=💻'"><span class="lang-name">${l.name}</span><div class="lang-bar-container"><div class="lang-bar" data-percent="${l.percent}"></div></div><span class="lang-percent">${l.percent}%</span></div>`).join('');
-            animateBarsOnScroll();
-        }
-        function animateBarsOnScroll() {
-            const bars = document.querySelectorAll('.skill-bar, .lang-bar');
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) { const bar = entry.target; bar.style.width = bar.getAttribute('data-percent') + '%'; observer.unobserve(bar); }
-                });
-            }, { threshold: 0.3 });
-            bars.forEach(function(bar) { observer.observe(bar); });
+        // ============================================================
+        // RENDER: ABOUT
+        // ============================================================
+        function renderAbout() {
+            const grid = document.getElementById('doughnutGrid');
+            if (grid) {
+                grid.innerHTML = skillsData.map(s => {
+                    const pct = s.pct;
+                    return `<div class="doughnut-item"><div class="doughnut" style="--pct:${pct}%;"><span class="val">${pct}%</span></div><span class="label">${s.name}</span></div>`;
+                }).join('');
+                setTimeout(() => {
+                    document.querySelectorAll('.doughnut').forEach(el => {
+                        const pct = el.style.getPropertyValue('--pct');
+                        el.style.background = `conic-gradient(#8b5cf6 ${pct}, rgba(0,0,0,0.06) ${pct})`;
+                    });
+                }, 200);
+            }
+            const list = document.getElementById('specialtiesList');
+            if (list) {
+                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
+            }
         }
 
+        // ============================================================
+        // RENDER: POEMS CATEGORIES
+        // ============================================================
         function renderPoemsCategories() {
             const container = document.getElementById('categoriesContainer');
-            if (!container) return;
+            const bar = document.getElementById('categoriesBar');
+            if (!container || !bar) return;
             let html = '';
             for (const [key, titleObj] of Object.entries(categoriesData)) {
                 const catTitle = currentLang === 'fa' ? titleObj.fa : titleObj.en;
                 const poems = poemsDB[key];
                 if (!poems) continue;
-                html += `<div class="category-section" data-category="${key}"><h2 class="category-title">${catTitle}</h2><div class="poems-grid">`;
-                poems.forEach(function(p) {
+                html += `<div class="category-section" data-cat="${key}"><h3>${catTitle}</h3><div class="poems-grid">`;
+                poems.forEach(p => {
                     const text = currentLang === 'fa' ? p.textFa : p.textEn;
-                    const type = currentLang === 'fa' ? catTitle : categoriesData[key].en;
-                    const likes = poemsLikesData[p.id] || 0;
-                    const liked = poemsLikesData[p.id] > 0;
-                    html += `<div class="poem-card" data-id="${p.id}"><div class="poem-type">${type}</div><div class="poem-text">${text.replace(/\n/g, '<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g, '&quot;')}')"><svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg><span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span></button><button onclick="sharePoem('${text.replace(/"/g, '&quot;')}', '${type.replace(/"/g, '&quot;')}')"><svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg><span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span></button><button class="like-btn ${liked ? 'liked' : ''}" onclick="likePoemCategory(${p.id}, this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span><span class="like-count">${likes}</span></button></div></div>`;
+                    const likes = likesCat[p.id] || 0;
+                    const liked = likesCat[p.id] > 0;
+                    html += `<div class="poem-card"><div class="type">${catTitle}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${catTitle.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeCat(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
                 });
                 html += `</div></div>`;
             }
             container.innerHTML = html;
-            const bar = document.getElementById('categoriesBar');
+
             bar.innerHTML = '';
             const allBtn = document.createElement('button');
             allBtn.className = 'cat-btn active';
             allBtn.textContent = currentLang === 'fa' ? 'همه' : 'All';
-            allBtn.onclick = function() { document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active')); this.classList.add('active'); document.querySelectorAll('.category-section').forEach(s => s.style.display = 'block'); };
+            allBtn.onclick = function() {
+                document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                document.querySelectorAll('.category-section').forEach(s => s.style.display = 'block');
+            };
             bar.appendChild(allBtn);
-            Object.keys(categoriesData).forEach(function(key) {
+
+            Object.keys(categoriesData).forEach(key => {
                 const btn = document.createElement('button');
                 btn.className = 'cat-btn';
                 btn.textContent = currentLang === 'fa' ? categoriesData[key].fa : categoriesData[key].en;
                 btn.onclick = function() {
                     document.querySelectorAll('.cat-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    document.querySelectorAll('.category-section').forEach(section => {
-                        section.style.display = section.getAttribute('data-category') === key ? 'block' : 'none';
+                    document.querySelectorAll('.category-section').forEach(s => {
+                        s.style.display = s.getAttribute('data-cat') === key ? 'block' : 'none';
                     });
                 };
                 bar.appendChild(btn);
             });
         }
-        function likePoemCategory(id, btn) {
-            if (!poemsLikesData[id]) poemsLikesData[id] = 0;
-            const countSpan = btn.querySelector('.like-count');
-            if (btn.classList.contains('liked')) { poemsLikesData[id]--; btn.classList.remove('liked'); } else { poemsLikesData[id]++; btn.classList.add('liked'); }
-            countSpan.textContent = poemsLikesData[id];
-            localStorage.setItem('poems_likes', JSON.stringify(poemsLikesData));
+        function likeCat(id, btn) {
+            if (!likesCat[id]) likesCat[id] = 0;
+            const span = btn.querySelector('.like-count');
+            if (btn.classList.contains('liked')) { likesCat[id]--;
+                btn.classList.remove('liked'); } else { likesCat[id]++;
+                btn.classList.add('liked'); }
+            span.textContent = likesCat[id];
+            localStorage.setItem('poems_likes', JSON.stringify(likesCat));
         }
 
+        // ============================================================
+        // RENDER: IMMIGRATION
+        // ============================================================
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
             if (!grid) return;
-            grid.innerHTML = immigrationPrograms.map(function(prog) {
-                const name = currentLang === 'fa' ? prog.nameFa : prog.nameEn;
-                const status = currentLang === 'fa' ? prog.status : (prog.status === 'فعال' ? 'Active' : prog.status === 'در انتظار' ? 'Pending' : 'Registration Open');
-                const hasNotif = notificationBadges[prog.id] || false;
-                return `<div class="immigration-card"><div class="immigration-info"><h4>${name}</h4><div class="status">${status}</div><div class="update-date">📅 ${prog.update}</div></div><button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="checkNotification('${prog.id}', '${name.replace(/"/g, '&quot;')}', this)"><svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>${hasNotif ? '<span class="badge">1</span>' : ''}</button></div>`;
+            grid.innerHTML = immigrationPrograms.map(prog => {
+                const name = currentLang === 'fa' ? prog.fa : prog.en;
+                const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
+                const has = notifBadges[prog.id] || false;
+                return `<div class="imm-card"><div class="info"><h4>${name}</h4><div class="status">${status}</div><div class="date">📅 ${prog.date}</div></div><button class="bell-btn ${has?'has-notification':''}" onclick="checkNotif('${prog.id}','${name.replace(/"/g,'&quot;')}',this)"><i class="fas fa-bell"></i>${has?'<span class="badge">1</span>':''}</button></div>`;
             }).join('');
         }
-        function checkNotification(id, name, btn) {
-            const messages = {
-                'siv': { fa: "🔄 تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد پرونده‌ها", en: "🔄 New changes in SIV Program: Case re-prioritization" },
-                'p1': { fa: "📢 برنامه P1: مهلت ثبت‌نام تمدید شد", en: "📢 P1 Program: Registration deadline extended" },
-                'p2': { fa: "✅ برنامه P2: نتایج جدید منتشر شد", en: "✅ P2 Program: New results published" },
-                'asylum': { fa: "⚖️ تغییرات در روند رسیدگی به پناهندگی", en: "⚖️ Changes in asylum processing" },
-                'parole': { fa: "📋 برنامه Parole: دستورالعمل‌های جدید", en: "📋 Parole Program: New guidelines" },
-                'reparole': { fa: "🔄 برنامه Re-Parole: تمدید خودکار برای گروه‌های خاص", en: "🔄 Re-Parole: Auto-extension for certain groups" },
-                'welcome': { fa: "🤝 برنامه Welcome Corps: افزایش ظرفیت پذیرش", en: "🤝 Welcome Corps: Increased capacity" },
-                'cr1': { fa: "💍 برنامه CR1: کاهش زمان پردازش", en: "💍 CR1 Program: Reduced processing time" },
-                'cr2': { fa: "💍 برنامه CR2: به‌روزرسانی مدارک مورد نیاز", en: "💍 CR2 Program: Document requirements updated" },
-                'k1': { fa: "💕 برنامه K1: تغییرات در فرم‌های درخواست", en: "💕 K1 Program: Application form changes" },
-                'dv': { fa: "🎯 برنامه DV Lottery: تاریخ ثبت‌نام اعلام شد", en: "🎯 DV Lottery: Registration date announced" },
-                'i130_gc': { fa: "📄 اسپانسری I-130 با گرین کارت: افزایش تعرفه‌ها", en: "📄 I-130 with Green Card: Fee increase" },
-                'i130_us': { fa: "📄 اسپانسری I-130 با پاسپورت آمریکایی: تسریع در رسیدگی", en: "📄 I-130 with US Passport: Expedited processing" }
+        function checkNotif(id, name, btn) {
+            const msgs = {
+                siv: { fa: '🔄 تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد', en: '🔄 New SIV changes: Re-prioritization' },
+                p1: { fa: '📢 برنامه P1: مهلت ثبت‌نام تمدید شد', en: '📢 P1: Deadline extended' },
+                p2: { fa: '✅ برنامه P2: نتایج جدید منتشر شد', en: '✅ P2: New results published' },
+                asylum: { fa: '⚖️ تغییرات در روند پناهندگی', en: '⚖️ Asylum process changes' },
+                parole: { fa: '📋 برنامه Parole: دستورالعمل‌های جدید', en: '📋 Parole: New guidelines' },
+                reparole: { fa: '🔄 Re-Parole: تمدید خودکار', en: '🔄 Re-Parole: Auto-extension' },
+                welcome: { fa: '🤝 Welcome Corps: افزایش ظرفیت', en: '🤝 Welcome Corps: Capacity increased' },
+                cr1: { fa: '💍 CR1: کاهش زمان پردازش', en: '💍 CR1: Processing time reduced' },
+                cr2: { fa: '💍 CR2: به‌روزرسانی مدارک', en: '💍 CR2: Document update' },
+                k1: { fa: '💕 K1: تغییرات در فرم‌ها', en: '💕 K1: Form changes' },
+                dv: { fa: '🎯 DV Lottery: تاریخ ثبت‌نام اعلام شد', en: '🎯 DV Lottery: Registration date set' },
+                i130_gc: { fa: '📄 I-130 با گرین کارت: افزایش تعرفه', en: '📄 I-130 with GC: Fee increase' },
+                i130_us: { fa: '📄 I-130 با پاسپورت: تسریع در رسیدگی', en: '📄 I-130 with US Passport: Expedited' }
             };
-            const msg = messages[id] ? (currentLang === 'fa' ? messages[id].fa : messages[id].en) : (currentLang === 'fa' ? '📢 خبر جدید برای ' + name : '📢 New update for ' + name);
-            showNotification(name, msg);
-            if (notificationBadges[id]) {
-                notificationBadges[id] = false;
+            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? '📢 خبر جدید برای ' + name :
+                '📢 New update for ' + name);
+            showNotif(name, msg);
+            if (notifBadges[id]) {
+                notifBadges[id] = false;
                 btn.classList.remove('has-notification');
-                const badge = btn.querySelector('.badge');
-                if (badge) badge.remove();
+                const b = btn.querySelector('.badge');
+                if (b) b.remove();
             } else {
-                notificationBadges[id] = true;
+                notifBadges[id] = true;
                 btn.classList.add('has-notification');
-                if (!btn.querySelector('.badge')) { const badge = document.createElement('span');
-                    badge.className = 'badge';
-                    badge.textContent = '1';
-                    btn.appendChild(badge); }
+                if (!btn.querySelector('.badge')) {
+                    const b = document.createElement('span');
+                    b.className = 'badge';
+                    b.textContent = '1';
+                    btn.appendChild(b);
+                }
             }
-            localStorage.setItem('notifications', JSON.stringify(notificationBadges));
+            localStorage.setItem('notifications', JSON.stringify(notifBadges));
         }
-        function showNotification(title, message) {
-            const existing = document.querySelector('.notification-toast');
-            if (existing) existing.remove();
-            const toast = document.createElement('div');
-            toast.className = 'notification-toast';
-            toast.innerHTML = `<h4>🔔 ${title}</h4><p>${message}</p>`;
-            document.body.appendChild(toast);
-            setTimeout(() => { toast.style.opacity = '0';
-                toast.style.transform = 'translateY(-20px)';
-                setTimeout(() => toast.remove(), 400); }, 5000);
+        function showNotif(title, message) {
+            const old = document.querySelector('.notif-popup');
+            if (old) old.remove();
+            const el = document.createElement('div');
+            el.className = 'notif-popup';
+            el.innerHTML = `<h4><i class="fas fa-bell" style="color:#8b5cf6;"></i> ${title}</h4><p>${message}</p>`;
+            document.body.appendChild(el);
+            setTimeout(() => { el.style.opacity = '0';
+                el.style.transform = 'translateY(-20px)';
+                setTimeout(() => el.remove(), 400); }, 5000);
         }
 
+        // ============================================================
+        // RENDER: TECH NEWS
+        // ============================================================
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
-            grid.innerHTML = newsData.map(function(news) {
-                const title = currentLang === 'fa' ? news.titleFa : news.titleEn;
-                return `<div class="news-card" onclick="openNewsModal(${news.id})"><img class="news-img" src="${news.image}" alt="${title}" onerror="this.src='https://placehold.co/600x400?text=News+Image'"><div class="news-content"><div class="news-title">${title}</div><div class="news-meta"><div class="admin-info"><img class="admin-avatar" src="images/Khamoosh.jpg" alt="admin" onerror="this.src='https://placehold.co/32x32?text=SK'"><span>${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span></div><span>📅 ${news.date}</span></div></div></div>`;
+            grid.innerHTML = newsData.map(n => {
+                const title = currentLang === 'fa' ? n.fa : n.en;
+                return `<div class="news-card" onclick="openNews(${n.id})"><img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News'"><div class="body"><h4>${title}</h4><div class="meta"><span><i class="fas fa-user-circle"></i> سرفراز خموش</span><span>📅 ${n.date}</span></div></div></div>`;
             }).join('');
         }
-        function openNewsModal(id) {
-            const news = newsData.find(function(n) { return n.id === id; });
-            if (!news) return;
+        function openNews(id) {
+            const n = newsData.find(x => x.id === id);
+            if (!n) return;
             const modal = document.getElementById('newsModal');
             const content = document.getElementById('modalContent');
-            const title = currentLang === 'fa' ? news.titleFa : news.titleEn;
-            const fullText = currentLang === 'fa' ? news.fullTextFa : news.fullTextEn;
-            content.innerHTML = `<h2 class="modal-title">${title}</h2><div class="modal-meta"><div class="admin-info"><img class="admin-avatar" src="images/Khamoosh.jpg" alt="admin" onerror="this.src='https://placehold.co/32x32?text=SK'"><span>${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span></div><span>📅 ${news.date}</span></div><div class="modal-content-text">${fullText.replace(/\n/g, '<br>')}</div>`;
-            modal.style.display = 'flex';
+            const title = currentLang === 'fa' ? n.fa : n.en;
+            const text = currentLang === 'fa' ? n.fullFa : n.fullEn;
+            content.innerHTML = `<h2>${title}</h2><div class="text">${text.replace(/\n/g,'<br>')}</div>`;
+            modal.classList.add('open');
         }
-        function closeNewsModal() { document.getElementById('newsModal').style.display = 'none'; }
-
-        // ================================================================
-        // 7. تنظیمات و زبان
-        // ================================================================
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('sarfraz_lang', lang);
-            const labels = { about: { fa: 'درباره', en: 'About' }, poems: { fa: 'اشعار', en: 'Poems' }, profile: { fa: 'پروفایل', en: 'Profile' }, settings: { fa: 'تنظیمات', en: 'Settings' }, immigration: { fa: 'مهاجرت', en: 'Immigration' }, technews: { fa: 'فناوری', en: 'Tech News' } };
-            document.querySelectorAll('.bottom-nav .nav-item').forEach(function(item) {
-                const page = item.getAttribute('data-page');
-                const span = item.querySelector('span');
-                if (span && labels[page]) span.innerText = labels[page][lang];
-            });
-            document.getElementById('footerCopy').innerHTML = lang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
-            // رندر مجدد صفحه فعلی با زبان جدید
-            const activePage = document.querySelector('.page.active');
-            if (activePage) {
-                const id = activePage.id.replace('page-', '');
-                if (id === 'home') renderHomePoems();
-                if (id === 'about') renderAboutPage();
-                if (id === 'poems') renderPoemsCategories();
-                if (id === 'immigration') renderImmigration();
-                if (id === 'technews') renderNews();
-            }
-            // به‌روزرسانی سئو با زبان جدید
-            updateSEO(currentPage);
+        function closeNewsModal() {
+            document.getElementById('newsModal').classList.remove('open');
         }
 
+        // ============================================================
+        // SETTINGS
+        // ============================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
-            if (document.body.classList.contains('dark')) themeToggle.classList.add('active');
+            if (localStorage.getItem('sarfraz_theme') === 'dark') {
+                document.body.classList.add('dark');
+                themeToggle.classList.add('active');
+            }
             themeToggle.addEventListener('click', function() {
                 this.classList.toggle('active');
                 document.body.classList.toggle('dark');
                 localStorage.setItem('sarfraz_theme', document.body.classList.contains('dark') ? 'dark' : 'light');
             });
-            document.querySelectorAll('.lang-opt').forEach(function(btn) {
+
+            document.querySelectorAll('.lang-opt').forEach(btn => {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.lang-opt').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    setLanguage(this.getAttribute('data-lang'));
+                    const lang = this.getAttribute('data-lang');
+                    if (lang) setLanguage(lang);
                 });
             });
-            document.querySelectorAll('.view-btn').forEach(function(btn) {
+            document.querySelectorAll('.view-btn').forEach(btn => {
                 btn.addEventListener('click', function() {
                     document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
                     this.classList.add('active');
-                    const container = document.querySelector('.container');
                     const view = this.getAttribute('data-view');
-                    if (view === 'desktop') { container.style.maxWidth = '1300px';
-                        container.style.padding = '1.2rem'; } else if (view === 'tablet') { container.style.maxWidth = '768px';
-                        container.style.padding = '1rem'; } else { container.style.maxWidth = '480px';
-                        container.style.padding = '0.8rem'; }
+                    const c = document.querySelector('.container');
+                    if (view === 'desktop') { c.style.maxWidth = '1200px';
+                        c.style.padding = '1.5rem 1.2rem'; } else if (view === 'tablet') { c.style.maxWidth = '768px';
+                        c.style.padding = '1rem 0.8rem'; } else { c.style.maxWidth = '480px';
+                        c.style.padding = '0.8rem 0.6rem'; }
                     localStorage.setItem('viewMode', view);
                 });
             });
-            const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
-            document.querySelectorAll('.lang-opt').forEach(function(btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-lang') === savedLang);
-            });
-            const savedView = localStorage.getItem('viewMode') || 'desktop';
-            document.querySelectorAll('.view-btn').forEach(function(btn) {
-                btn.classList.toggle('active', btn.getAttribute('data-view') === savedView);
-            });
+            const sv = localStorage.getItem('viewMode') || 'desktop';
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === sv));
+            const sl = localStorage.getItem('sarfraz_lang') || 'fa';
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === sl));
         }
 
+        // ============================================================
+        // LANGUAGE
+        // ============================================================
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('sarfraz_lang', lang);
+            const labels = {
+                about: { fa: 'درباره', en: 'About' },
+                poems: { fa: 'اشعار', en: 'Poems' },
+                profile: { fa: 'پروفایل', en: 'Profile' },
+                settings: { fa: 'تنظیمات', en: 'Settings' },
+                immigration: { fa: 'مهاجرت', en: 'Immigration' },
+                technews: { fa: 'فناوری', en: 'Tech News' }
+            };
+            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
+                const p = item.getAttribute('data-page');
+                const span = item.querySelector('span');
+                if (span && labels[p]) span.textContent = labels[p][lang];
+            });
+            document.querySelector('.footer .copy').textContent = lang === 'fa' ? '© 2026 سرفراز خموش · تمام حقوق محفوظ است' :
+                '© 2026 Sarfraz Khamoosh · All Rights Reserved';
+            const active = document.querySelector('.page.active');
+            if (active) {
+                const id = active.id.replace('page-', '');
+                if (id === 'home') renderHome();
+                else if (id === 'about') renderAbout();
+                else if (id === 'poems') renderPoemsCategories();
+                else if (id === 'immigration') renderImmigration();
+                else if (id === 'technews') renderNews();
+            }
+            updateSEO(currentPage);
+        }
+
+        // ============================================================
+        // MODALS
+        // ============================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
-            const codmBtn = document.getElementById('codmBtn');
+            const openBtn = document.getElementById('codmBtn');
+            const closeBtn = document.getElementById('closeUidModal');
+            const closeBtn2 = document.getElementById('closeUidModalBtn');
             const copyBtn = document.getElementById('copyUidBtn');
-            const closeBtn = document.getElementById('closeModalBtn');
-            function open() { modal.style.display = 'flex'; }
-            function close() { modal.style.display = 'none'; }
-            function copyUid() { navigator.clipboard.writeText('7500139701825634305');
-                showToast(currentLang === 'fa' ? '✅ UID کپی شد!' : '✅ UID copied!');
-                close(); }
-            if (codmBtn) codmBtn.addEventListener('click', open);
-            if (copyBtn) copyBtn.addEventListener('click', copyUid);
+
+            function open() { modal.classList.add('open'); }
+            function close() { modal.classList.remove('open'); }
+            function copyUid() {
+                navigator.clipboard.writeText('7500139701825634305');
+                toast('✅ UID کپی شد!');
+                close();
+            }
+            if (openBtn) openBtn.addEventListener('click', open);
             if (closeBtn) closeBtn.addEventListener('click', close);
-            if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) close(); });
+            if (closeBtn2) closeBtn2.addEventListener('click', close);
+            if (copyBtn) copyBtn.addEventListener('click', copyUid);
+            if (modal) modal.addEventListener('click', function(e) { if (e.target === this) close(); });
         }
 
-        // ================================================================
-        // 8. مقداردهی اولیه
-        // ================================================================
+        // ============================================================
+        // INIT
+        // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
             setLanguage(savedLang);
-            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === savedLang));
-
-            const savedTheme = localStorage.getItem('sarfraz_theme');
-            if (savedTheme === 'dark') { document.body.classList.add('dark');
-                document.getElementById('themeToggle').classList.add('active'); }
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') ===
+                savedLang));
 
             initSettings();
             initUidModal();
+
             document.getElementById('modalCloseBtn').addEventListener('click', closeNewsModal);
-            document.getElementById('newsModal').addEventListener('click', function(e) { if (e.target === this) closeNewsModal(); });
+            document.getElementById('newsModal').addEventListener('click', function(e) {
+                if (e.target === this) closeNewsModal();
+            });
 
             const params = new URLSearchParams(window.location.search);
             const page = params.get('page') || localStorage.getItem('currentPage') || 'home';
             navigateTo(page);
         });
     </script>
-</body>
 
-</html>
+</body>
+    </html>
