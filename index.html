@@ -54,7 +54,7 @@
             background: #f0f2f8;
             color: #1a1a2e;
             min-height: 100vh;
-            padding-bottom: 120px;
+            padding-bottom: 140px;
             transition: background 0.4s, color 0.4s;
         }
         body.dark {
@@ -103,7 +103,7 @@
         }
 
         /* ============================================================
-           BOTTOM NAVIGATION (HOME BIGGER & CENTER)
+           BOTTOM NAVIGATION - HOME FIRST, BIGGER
            ============================================================ */
         .bottom-nav-wrapper {
             position: fixed;
@@ -120,18 +120,18 @@
             background: rgba(255, 255, 255, 0.88);
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
-            border-radius: 50px;
-            padding: 8px 14px;
+            border-radius: 60px;
+            padding: 12px 18px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 6px 18px rgba(0, 0, 0, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.5);
             display: flex;
-            align-items: flex-end;
+            align-items: center;
             justify-content: space-around;
-            max-width: 720px;
+            max-width: 760px;
             width: calc(100% - 32px);
-            height: 76px;
+            height: 82px;
             transition: background 0.4s, border-color 0.4s;
-            gap: 1px;
+            gap: 2px;
             position: relative;
         }
         body.dark .bottom-nav {
@@ -147,29 +147,29 @@
             justify-content: center;
             text-decoration: none;
             color: #9ca3af;
-            font-size: 0.55rem;
+            font-size: 0.6rem;
             font-weight: 500;
             transition: color 0.25s, transform 0.2s;
-            padding: 4px 8px;
+            padding: 4px 10px;
             border-radius: 30px;
-            min-width: 44px;
+            min-width: 50px;
             cursor: pointer;
             background: transparent;
             border: none;
             font-family: 'Vazirmatn', 'Inter', sans-serif;
-            gap: 3px;
+            gap: 4px;
             flex: 1;
-            height: 64px;
+            height: 68px;
             position: relative;
         }
         .nav-item i {
-            font-size: 1.2rem;
+            font-size: 1.4rem;
             transition: all 0.25s;
             display: block;
             color: currentColor;
         }
         .nav-item span {
-            font-size: 0.48rem;
+            font-size: 0.55rem;
             letter-spacing: 0.4px;
             opacity: 0.8;
             line-height: 1.2;
@@ -177,7 +177,6 @@
             white-space: nowrap;
             display: block;
         }
-        /* ===== Hover & Press Animation for Nav Items ===== */
         .nav-item:hover {
             color: #6b7280;
             transform: translateY(-3px) scale(1.02);
@@ -201,13 +200,13 @@
             transform: scale(1.08);
         }
 
-        /* ===== HOME BUTTON (bigger, purple, with hover & press animation) ===== */
+        /* ===== HOME BUTTON (bigger, purple, FIRST) ===== */
         .nav-item-home {
             position: relative;
-            top: -22px;
-            flex: 0 0 76px;
-            height: 76px;
-            min-width: 76px;
+            top: 0;
+            flex: 0 0 72px;
+            height: 72px;
+            min-width: 72px;
             background: linear-gradient(145deg, #c084fc, #8b5cf6);
             border-radius: 50%;
             box-shadow: 0 16px 38px rgba(139, 92, 246, 0.4);
@@ -220,7 +219,6 @@
             color: #ffffff;
             cursor: pointer;
             flex-shrink: 0;
-            margin-top: -8px;
             gap: 2px;
             animation: homePulse 2.5s ease-in-out infinite;
         }
@@ -238,7 +236,7 @@
             line-height: 1;
         }
         .nav-item-home span {
-            font-size: 0.48rem;
+            font-size: 0.5rem;
             letter-spacing: 0.4px;
             opacity: 0.9;
             font-weight: 600;
@@ -340,7 +338,8 @@
         }
 
         /* ============================================================
-           PAGE: ABOUT
+           ABOUT, PROFILE, POEMS CATEGORIES, IMMIGRATION, TECH NEWS, GALLERY, SETTINGS
+           (styles remain unchanged)
            ============================================================ */
         .about-intro {
             text-align: center;
@@ -433,9 +432,7 @@
             font-size: 1rem;
         }
 
-        /* ============================================================
-           PAGE: PROFILE (SOCIAL LINKS AS VERTICAL LIST WITH NAMES)
-           ============================================================ */
+        /* Profile */
         .profile-layout {
             display: grid;
             grid-template-columns: 1fr 1.8fr;
@@ -507,8 +504,6 @@
             font-weight: 400;
             margin-right: 4px;
         }
-
-        /* ===== Social Links - Vertical List with Names ===== */
         .profile-social-list {
             margin-top: 1.5rem;
             display: flex;
@@ -555,9 +550,7 @@
             transform: scale(0.95) translateX(-2px);
         }
 
-        /* ============================================================
-           PAGE: POEMS CATEGORIES
-           ============================================================ */
+        /* Poems Categories */
         .categories-bar {
             display: flex;
             flex-wrap: wrap;
@@ -606,9 +599,7 @@
             border-right: 4px solid #8b5cf6;
         }
 
-        /* ============================================================
-           PAGE: IMMIGRATION
-           ============================================================ */
+        /* Immigration */
         .imm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -690,9 +681,7 @@
             50% { transform: scale(1.12); }
         }
 
-        /* ============================================================
-           PAGE: TECH NEWS
-           ============================================================ */
+        /* Tech News */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -743,9 +732,7 @@
             margin-top: 0.6rem;
         }
 
-        /* ============================================================
-           PAGE: GALLERY
-           ============================================================ */
+        /* Gallery */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -795,9 +782,7 @@
             opacity: 1;
         }
 
-        /* ============================================================
-           PAGE: SETTINGS
-           ============================================================ */
+        /* Settings */
         .settings-row {
             display: flex;
             align-items: center;
@@ -880,9 +865,7 @@
             transform: scale(0.95);
         }
 
-        /* ============================================================
-           MODALS
-           ============================================================ */
+        /* Modals */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -952,9 +935,7 @@
             font-size: 0.95rem;
         }
 
-        /* ============================================================
-           NOTIFICATIONS
-           ============================================================ */
+        /* Notifications */
         .toast-msg {
             position: fixed;
             bottom: 110px;
@@ -1006,18 +987,16 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ============================================================
-           RESPONSIVE
-           ============================================================ */
+        /* Responsive */
         @media (max-width: 768px) {
             .container { padding: 1rem 0.8rem; }
-            .bottom-nav { height: 64px; padding: 6px 8px; border-radius: 36px; }
-            .nav-item { min-width: 34px; height: 52px; padding: 2px 4px; }
-            .nav-item i { font-size: 1rem; }
-            .nav-item span { font-size: 0.38rem; display: block !important; }
-            .nav-item-home { flex: 0 0 58px; height: 58px; min-width: 58px; top: -16px; }
-            .nav-item-home i { font-size: 1.6rem; }
-            .nav-item-home span { font-size: 0.38rem; display: block !important; }
+            .bottom-nav { height: 70px; padding: 8px 12px; border-radius: 40px; }
+            .nav-item { min-width: 38px; height: 56px; padding: 2px 6px; }
+            .nav-item i { font-size: 1.2rem; }
+            .nav-item span { font-size: 0.45rem; display: block !important; }
+            .nav-item-home { flex: 0 0 60px; height: 60px; min-width: 60px; }
+            .nav-item-home i { font-size: 1.8rem; }
+            .nav-item-home span { font-size: 0.45rem; display: block !important; }
             .profile-layout { grid-template-columns: 1fr; }
             .profile-details { grid-template-columns: 1fr; }
             .about-intro h2 { font-size: 1.8rem; }
@@ -1028,13 +1007,13 @@
             .modal-box { padding: 1.5rem 1.2rem; border-radius: 2rem; }
         }
         @media (max-width: 480px) {
-            .bottom-nav { padding: 4px 4px; gap: 0; border-radius: 28px; height: 56px; }
-            .nav-item { min-width: 26px; padding: 2px 2px; height: 46px; }
-            .nav-item i { font-size: 0.9rem; }
-            .nav-item span { font-size: 0.32rem; display: block !important; }
-            .nav-item-home { flex: 0 0 46px; height: 46px; min-width: 46px; top: -12px; }
-            .nav-item-home i { font-size: 1.4rem; }
-            .nav-item-home span { font-size: 0.32rem; display: block !important; }
+            .bottom-nav { padding: 4px 6px; gap: 0; border-radius: 32px; height: 62px; }
+            .nav-item { min-width: 30px; padding: 2px 4px; height: 50px; }
+            .nav-item i { font-size: 1rem; }
+            .nav-item span { font-size: 0.38rem; display: block !important; }
+            .nav-item-home { flex: 0 0 50px; height: 50px; min-width: 50px; }
+            .nav-item-home i { font-size: 1.6rem; }
+            .nav-item-home span { font-size: 0.38rem; display: block !important; }
             .poems-grid, .news-grid { grid-template-columns: 1fr; }
             .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
@@ -1093,7 +1072,7 @@
             <div id="categoriesContainer"></div>
         </div>
 
-        <!-- ===== PROFILE (WITH SOCIAL LINKS VERTICAL) ===== -->
+        <!-- ===== PROFILE ===== -->
         <div class="page" id="page-profile">
             <div class="profile-layout">
                 <div class="profile-card">
@@ -1107,8 +1086,6 @@
                         <div class="item"><i class="fas fa-location-dot"></i> موقعیت <span>ازبکستان</span></div>
                         <div class="item"><i class="fas fa-graduation-cap"></i> مدرک <span>لیسانس</span></div>
                     </div>
-
-                    <!-- Social Links - Vertical with Names -->
                     <div class="profile-social-list">
                         <a href="https://www.facebook.com/profile.php?id=61590217606266" target="_blank" aria-label="فیسبوک">
                             <i class="fab fa-facebook-f"></i>
@@ -1265,10 +1242,15 @@
     </div>
 
     <!-- ============================================================
-         BOTTOM NAVIGATION (HOME BIGGER & CENTER)
+         BOTTOM NAVIGATION - HOME FIRST, BIGGER
          ============================================================ -->
     <div class="bottom-nav-wrapper">
         <nav class="bottom-nav" id="bottomNav">
+            <!-- HOME (FIRST, BIGGER, PURPLE) -->
+            <button class="nav-item-home" data-page="home" onclick="navigateTo('home')" aria-label="خانه">
+                <i class="fas fa-home"></i>
+                <span id="label-home">خانه</span>
+            </button>
             <button class="nav-item" data-page="about" onclick="navigateTo('about')" aria-label="درباره">
                 <i class="fas fa-user"></i>
                 <span id="label-about">درباره</span>
@@ -1276,11 +1258,6 @@
             <button class="nav-item" data-page="poems" onclick="navigateTo('poems')" aria-label="اشعار">
                 <i class="fas fa-book"></i>
                 <span id="label-poems">اشعار</span>
-            </button>
-            <!-- HOME (bigger, center, with animation) -->
-            <button class="nav-item-home" data-page="home" onclick="navigateTo('home')" aria-label="خانه">
-                <i class="fas fa-home"></i>
-                <span id="label-home">خانه</span>
             </button>
             <button class="nav-item" data-page="profile" onclick="navigateTo('profile')" aria-label="پروفایل">
                 <i class="fas fa-id-card"></i>
@@ -1306,11 +1283,143 @@
     </div>
 
     <!-- ============================================================
-         JAVASCRIPT
+         JAVASCRIPT - FULL TRANSLATION SUPPORT
          ============================================================ -->
     <script>
         // ================================================================
-        // 1. DATA
+        // 1. DATA - All translatable texts
+        // ================================================================
+        const translations = {
+            fa: {
+                // Navigation labels
+                nav: {
+                    home: 'خانه',
+                    about: 'درباره',
+                    poems: 'اشعار',
+                    profile: 'پروفایل',
+                    settings: 'تنظیمات',
+                    immigration: 'مهاجرت',
+                    technews: 'فناوری',
+                    gallery: 'گالری'
+                },
+                // Home page
+                homeTitle: 'اشعار کوتاه',
+                // About page
+                aboutTitle: 'برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس',
+                aboutText: 'سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است. علاوه بر تخصص در برنامه‌نویسی و طراحی، به شعر و ادبیات علاقه‌مند است و مطالعه و سرودن شعر را بخشی از زندگی خود می‌داند.',
+                skillsTitle: 'مهارت‌های فنی',
+                specialtiesTitle: 'حوزه‌های تخصصی',
+                // Profile
+                profileName: 'سرفراز خموش',
+                profileTitle: 'طراح گرافیک · برنامه‌نویس',
+                profileFitness: 'مربی فیتنس',
+                profileAge: 'سن',
+                profileBirth: 'زادگاه',
+                profileLocation: 'موقعیت',
+                profileEducation: 'مدرک',
+                profileAbout: 'درباره من',
+                profileDesc: 'من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم. امروز به عنوان یک توسعه‌دهنده فول‌استک و طراح خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم. همچنین به عنوان مشاور مهاجرت و مربی فیتنس فعالیت دارم. عاشق شعر، کتاب و خلق تجربه‌های دیجیتال متفاوت هستم.',
+                // Settings
+                settingsTitle: 'تنظیمات',
+                themeLabel: 'تم شب / روز',
+                langLabel: 'زبان',
+                viewLabel: 'حالت نمایش',
+                // Immigration
+                immigrationTitle: 'برنامه‌های مهاجرت آمریکا',
+                immigrationUpdate: 'آخرین به‌روزرسانی:',
+                // Tech news
+                techTitle: 'اخبار فناوری',
+                // Gallery
+                galleryTitle: 'گالری تصاویر',
+                // Poems categories
+                categories: {
+                    mystical: 'عارفانه',
+                    romantic: 'عاشقانه',
+                    oritic: 'اورتیک',
+                    blank: 'سپید',
+                    heavy: 'متن سنگین'
+                },
+                // Poems data (already in poemsList and poemsDB)
+                // Buttons
+                copy: 'کپی',
+                share: 'اشتراک',
+                like: 'لایک',
+                // Social names
+                social: {
+                    facebook: 'فیسبوک',
+                    instagram: 'اینستاگرام',
+                    linkedin: 'لینکدین',
+                    github: 'گیت‌هاب',
+                    pinterest: 'پینترست',
+                    behance: 'بهنس',
+                    whatsapp: 'واتساپ',
+                    tiktok: 'تیک تاک',
+                    substack: 'ساب‌استک',
+                    threads: 'تردز',
+                    codm: 'کال‌آف دیوتی'
+                }
+            },
+            en: {
+                nav: {
+                    home: 'Home',
+                    about: 'About',
+                    poems: 'Poems',
+                    profile: 'Profile',
+                    settings: 'Settings',
+                    immigration: 'Immigration',
+                    technews: 'Tech News',
+                    gallery: 'Gallery'
+                },
+                homeTitle: 'Short Poems',
+                aboutTitle: 'Developer · Graphic Designer · Immigration Consultant · Fitness Coach',
+                aboutText: 'Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, with over 8 years of experience in technology, design and digital development, has always sought to create creative and practical works. In addition to his expertise in programming and design, he is interested in poetry and literature and considers reading and composing poetry as part of his life.',
+                skillsTitle: 'Technical Skills',
+                specialtiesTitle: 'Specialties',
+                profileName: 'Sarfraz Khamoosh',
+                profileTitle: 'Graphic Designer · Developer',
+                profileFitness: 'Fitness Coach',
+                profileAge: 'Age',
+                profileBirth: 'Birthplace',
+                profileLocation: 'Location',
+                profileEducation: 'Education',
+                profileAbout: 'About Me',
+                profileDesc: 'I am Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif. I started my career in graphic design in 2015 and then entered the world of programming. Today, as a full-stack developer and creative designer, I provide services to clients around the world. I also work as an immigration consultant and fitness coach. I love poetry, books and creating different digital experiences.',
+                settingsTitle: 'Settings',
+                themeLabel: 'Dark / Light Theme',
+                langLabel: 'Language',
+                viewLabel: 'Display Mode',
+                immigrationTitle: 'US Immigration Programs',
+                immigrationUpdate: 'Last update:',
+                techTitle: 'Tech News',
+                galleryTitle: 'Image Gallery',
+                categories: {
+                    mystical: 'Mystical',
+                    romantic: 'Romantic',
+                    oritic: 'Oritic',
+                    blank: 'Blank',
+                    heavy: 'Heavy'
+                },
+                copy: 'Copy',
+                share: 'Share',
+                like: 'Like',
+                social: {
+                    facebook: 'Facebook',
+                    instagram: 'Instagram',
+                    linkedin: 'LinkedIn',
+                    github: 'GitHub',
+                    pinterest: 'Pinterest',
+                    behance: 'Behance',
+                    whatsapp: 'WhatsApp',
+                    tiktok: 'TikTok',
+                    substack: 'Substack',
+                    threads: 'Threads',
+                    codm: 'Call of Duty'
+                }
+            }
+        };
+
+        // ================================================================
+        // 2. POEMS DATA (with both languages)
         // ================================================================
         const poemsList = [
             { id: 0, typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
@@ -1336,6 +1445,9 @@
             heavy: [{ id: 500, textFa: "در دل شب سرد زمستان، که برف خاطرات می‌بارید، او تنها نشسته بود و به دیوار خاموش اتاق خیره. هیچ صدایی نیست، جز ضربان نبض تنهایی که هر لحظه سنگین‌تر می‌شود. تمام وجودش را سوالی پر کرده بود: آیا بعد از این همه راه، هنوز می‌توان به آغاز بازگشت؟", textEn: "In the cold winter night, as the snow of memories fell, he sat alone, staring at the silent wall of the room. There was no sound, except the heartbeat of loneliness growing heavier each moment. A question filled his entire being: after all this way, can one still return to the beginning?" }]
         };
 
+        // ================================================================
+        // 3. OTHER DATA (specialties, skills, immigration, news)
+        // ================================================================
         const specialties = [
             { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev" },
             { fa: "طراحی و توسعه وب‌سایت", en: "Web Design & Dev" },
@@ -1364,7 +1476,7 @@
             { id: 'parole', fa: "برنامه Parole", en: "Parole Program", statusFa: "در انتظار", statusEn: "Pending", date: "۲۰۲۶-۰۶-۱۰" },
             { id: 'reparole', fa: "برنامه Re-Parole", en: "Re-Parole", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۵" },
             { id: 'welcome', fa: "برنامه Welcome Corps", en: "Welcome Corps", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۴" },
-            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-０۶-۱۹" },
+            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۹" },
             { id: 'cr2', fa: "برنامه CR2", en: "CR2 Marriage", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۷" },
             { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۱" },
             { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open", date: "۲۰۲۶-۰۶-۰۱" },
@@ -1399,7 +1511,7 @@
         }];
 
         // ================================================================
-        // 2. STATE
+        // 4. STATE
         // ================================================================
         let currentLang = 'fa';
         let currentPage = 'home';
@@ -1408,7 +1520,7 @@
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
 
         // ================================================================
-        // 3. HELPERS
+        // 5. HELPERS
         // ================================================================
         function toast(msg) {
             let el = document.querySelector('.toast-msg');
@@ -1430,7 +1542,7 @@
         }
 
         // ================================================================
-        // 4. NAVIGATION & SEO
+        // 6. NAVIGATION & SEO
         // ================================================================
         function navigateTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1450,6 +1562,8 @@
             if (page === 'immigration') renderImmigration();
             if (page === 'technews') renderNews();
             if (page === 'gallery') renderGallery();
+            if (page === 'profile') updateProfilePage();
+            if (page === 'settings') updateSettingsPage();
 
             currentPage = page;
             localStorage.setItem('currentPage', page);
@@ -1490,19 +1604,25 @@
         }
 
         // ================================================================
-        // 5. RENDER FUNCTIONS
+        // 7. RENDER FUNCTIONS (with full translation support)
         // ================================================================
+
+        // HOME
         function renderHome() {
             const grid = document.getElementById('poemsGrid');
             if (!grid) return;
+            const t = translations[currentLang];
             grid.innerHTML = poemsList.map(p => {
                 const text = currentLang === 'fa' ? p.textFa : p.textEn;
                 const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
                 const likes = likesHome[p.id] || 0;
                 const liked = likesHome[p.id] > 0;
-                return `<div class="poem-card"><div class="type">${type}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${type.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeHome(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
+                return `<div class="poem-card"><div class="type">${type}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> ${t.copy}</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${type.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> ${t.share}</button><button class="like-btn ${liked?'liked':''}" onclick="likeHome(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
             }).join('');
+            // Update page title
+            document.querySelector('#page-home h2').innerHTML = `<i class="fas fa-feather-alt" style="color:#8b5cf6;"></i> ${t.homeTitle}`;
         }
+
         function likeHome(id, btn) {
             if (!likesHome[id]) likesHome[id] = 0;
             const span = btn.querySelector('.like-count');
@@ -1511,7 +1631,9 @@
             localStorage.setItem('poem_likes', JSON.stringify(likesHome));
         }
 
+        // ABOUT
         function renderAbout() {
+            const t = translations[currentLang];
             const grid = document.getElementById('doughnutGrid');
             if (grid) {
                 grid.innerHTML = skillsData.map(s => {
@@ -1529,12 +1651,23 @@
             if (list) {
                 list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
             }
+            // Update texts
+            const introP = document.querySelector('#page-about .about-intro p');
+            if (introP) introP.textContent = t.aboutTitle;
+            const aboutTextP = document.querySelector('#page-about .glass:first-of-type p');
+            if (aboutTextP) aboutTextP.textContent = t.aboutText;
+            const skillsH3 = document.querySelector('#page-about .glass:nth-of-type(2) h3');
+            if (skillsH3) skillsH3.innerHTML = `<i class="fas fa-code" style="color:#8b5cf6;"></i> ${t.skillsTitle}`;
+            const specialtiesH3 = document.querySelector('#page-about .glass:nth-of-type(3) h3');
+            if (specialtiesH3) specialtiesH3.innerHTML = `<i class="fas fa-bolt" style="color:#8b5cf6;"></i> ${t.specialtiesTitle}`;
         }
 
+        // POEMS CATEGORIES
         function renderPoemsCategories() {
             const container = document.getElementById('categoriesContainer');
             const bar = document.getElementById('categoriesBar');
             if (!container || !bar) return;
+            const t = translations[currentLang];
             let html = '';
             for (const [key, titleObj] of Object.entries(categoriesData)) {
                 const catTitle = currentLang === 'fa' ? titleObj.fa : titleObj.en;
@@ -1545,7 +1678,7 @@
                     const text = currentLang === 'fa' ? p.textFa : p.textEn;
                     const likes = likesCat[p.id] || 0;
                     const liked = likesCat[p.id] > 0;
-                    html += `<div class="poem-card"><div class="type">${catTitle}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${catTitle.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeCat(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
+                    html += `<div class="poem-card"><div class="type">${catTitle}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> ${t.copy}</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${catTitle.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> ${t.share}</button><button class="like-btn ${liked?'liked':''}" onclick="likeCat(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
                 });
                 html += `</div></div>`;
             }
@@ -1575,6 +1708,7 @@
                 bar.appendChild(btn);
             });
         }
+
         function likeCat(id, btn) {
             if (!likesCat[id]) likesCat[id] = 0;
             const span = btn.querySelector('.like-count');
@@ -1583,9 +1717,79 @@
             localStorage.setItem('poems_likes', JSON.stringify(likesCat));
         }
 
+        // PROFILE
+        function updateProfilePage() {
+            const t = translations[currentLang];
+            const card = document.querySelector('.profile-card');
+            if (card) {
+                const nameEl = card.querySelector('.name');
+                if (nameEl) nameEl.textContent = t.profileName;
+                const titleEls = card.querySelectorAll('.title');
+                if (titleEls.length >= 2) {
+                    titleEls[0].innerHTML = `<i class="fas fa-briefcase" style="margin-left:6px;"></i> ${t.profileTitle}`;
+                    titleEls[1].innerHTML = `<i class="fas fa-dumbbell" style="margin-left:6px;"></i> ${t.profileFitness}`;
+                }
+                const items = card.querySelectorAll('.profile-details .item');
+                if (items.length >= 4) {
+                    items[0].innerHTML = `<i class="fas fa-calendar-alt"></i> ${t.profileAge} <span>۲۸</span>`;
+                    items[1].innerHTML = `<i class="fas fa-map-marker-alt"></i> ${t.profileBirth} <span>مزار شریف</span>`;
+                    items[2].innerHTML = `<i class="fas fa-location-dot"></i> ${t.profileLocation} <span>ازبکستان</span>`;
+                    items[3].innerHTML = `<i class="fas fa-graduation-cap"></i> ${t.profileEducation} <span>لیسانس</span>`;
+                }
+                // Social links names
+                const socialLinks = card.querySelectorAll('.profile-social-list a');
+                const socialMap = {
+                    'فیسبوک': t.social.facebook,
+                    'اینستاگرام': t.social.instagram,
+                    'لینکدین': t.social.linkedin,
+                    'گیت‌هاب': t.social.github,
+                    'پینترست': t.social.pinterest,
+                    'بهنس': t.social.behance,
+                    'واتساپ': t.social.whatsapp,
+                    'تیک تاک': t.social.tiktok,
+                    'ساب‌استک': t.social.substack,
+                    'تردز': t.social.threads,
+                    'کال‌آف دیوتی': t.social.codm
+                };
+                socialLinks.forEach(a => {
+                    const span = a.querySelector('.sname');
+                    if (span && socialMap[span.textContent]) {
+                        span.textContent = socialMap[span.textContent];
+                    }
+                });
+            }
+            // About section in profile
+            const aboutH3 = document.querySelector('#page-profile .glass h3');
+            if (aboutH3) aboutH3.innerHTML = `<i class="fas fa-address-card" style="color:#8b5cf6;"></i> ${t.profileAbout}`;
+            const aboutP = document.querySelector('#page-profile .glass p');
+            if (aboutP) aboutP.textContent = t.profileDesc;
+        }
+
+        // SETTINGS
+        function updateSettingsPage() {
+            const t = translations[currentLang];
+            const h3 = document.querySelector('#page-settings .glass h3');
+            if (h3) h3.innerHTML = `<i class="fas fa-sliders-h" style="color:#8b5cf6;"></i> ${t.settingsTitle}`;
+            const rows = document.querySelectorAll('#page-settings .settings-row');
+            if (rows.length >= 3) {
+                const labels = rows[0].querySelector('.label span');
+                if (labels) labels.textContent = t.themeLabel;
+                const labels2 = rows[1].querySelector('.label span');
+                if (labels2) labels2.textContent = t.langLabel;
+                const labels3 = rows[2].querySelector('.label span');
+                if (labels3) labels3.textContent = t.viewLabel;
+            }
+        }
+
+        // IMMIGRATION
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
             if (!grid) return;
+            const t = translations[currentLang];
+            const updateSpan = document.getElementById('immigrationUpdateDate');
+            if (updateSpan) updateSpan.textContent = t.immigrationUpdate + ' ۲۵ ژوئن ۲۰۲۶';
+            const titleH3 = document.querySelector('#page-immigration .glass h3');
+            if (titleH3) titleH3.innerHTML = `<i class="fas fa-passport" style="color:#8b5cf6;"></i> ${t.immigrationTitle}`;
             grid.innerHTML = immigrationPrograms.map(prog => {
                 const name = currentLang === 'fa' ? prog.fa : prog.en;
                 const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
@@ -1593,6 +1797,7 @@
                 return `<div class="imm-card"><div class="info"><h4>${name}</h4><div class="status">${status}</div><div class="date">${prog.date}</div></div><button class="bell-btn ${has?'has-notification':''}" onclick="checkNotif('${prog.id}','${name.replace(/"/g,'&quot;')}',this)"><i class="fas fa-bell"></i>${has?'<span class="badge">1</span>':''}</button></div>`;
             }).join('');
         }
+
         function checkNotif(id, name, btn) {
             const msgs = {
                 siv: { fa: 'تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد', en: 'New SIV changes: Re-prioritization' },
@@ -1628,6 +1833,7 @@
             }
             localStorage.setItem('notifications', JSON.stringify(notifBadges));
         }
+
         function showNotif(title, message) {
             const old = document.querySelector('.notif-popup');
             if (old) old.remove();
@@ -1638,9 +1844,13 @@
             setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(-20px)'; setTimeout(() => el.remove(), 400); }, 5000);
         }
 
+        // TECH NEWS
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
+            const t = translations[currentLang];
+            const titleH2 = document.querySelector('#page-technews h2');
+            if (titleH2) titleH2.innerHTML = `<i class="fas fa-newspaper" style="color:#8b5cf6;"></i> ${t.techTitle}`;
             grid.innerHTML = newsData.map(n => {
                 const title = currentLang === 'fa' ? n.fa : n.en;
                 return `<div class="news-card" onclick="openNews(${n.id})">
@@ -1648,13 +1858,14 @@
                             <div class="body">
                                 <h4>${title}</h4>
                                 <div class="meta">
-                                    <span><i class="fas fa-user-circle"></i> سرفراز خموش</span>
+                                    <span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span>
                                     <span>${n.date}</span>
                                 </div>
                             </div>
                         </div>`;
             }).join('');
         }
+
         function openNews(id) {
             const n = newsData.find(x => x.id === id);
             if (!n) return;
@@ -1665,13 +1876,18 @@
             content.innerHTML = `<h2>${title}</h2><div class="text">${text.replace(/\n/g,'<br>')}</div>`;
             modal.classList.add('open');
         }
+
         function closeNewsModal() {
             document.getElementById('newsModal').classList.remove('open');
         }
 
+        // GALLERY
         function renderGallery() {
             const grid = document.getElementById('galleryGrid');
             if (!grid) return;
+            const t = translations[currentLang];
+            const titleH2 = document.querySelector('#page-gallery h2');
+            if (titleH2) titleH2.innerHTML = `<i class="fas fa-images" style="color:#8b5cf6;"></i> ${t.galleryTitle}`;
             const imageNames = [
                 'Khamoosh.jpg', 'Kham.png', 'programer.png', 'website.png',
                 'application.png', 'ux.png', 'logo.png', 'banner.png',
@@ -1687,7 +1903,7 @@
                 return validExts.includes(ext);
             });
             if (validImages.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">هیچ تصویری در پوشه images یافت نشد.</p>`;
+                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">${currentLang === 'fa' ? 'هیچ تصویری در پوشه images یافت نشد.' : 'No images found in images folder.'}</p>`;
                 return;
             }
             grid.innerHTML = validImages.map(name => {
@@ -1701,7 +1917,54 @@
         }
 
         // ================================================================
-        // 6. SETTINGS & LANGUAGE
+        // 8. LANGUAGE SWITCHER (full update)
+        // ================================================================
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('sarfraz_lang', lang);
+
+            // Update navigation labels
+            const t = translations[lang];
+            const labelMap = {
+                'label-home': t.nav.home,
+                'label-about': t.nav.about,
+                'label-poems': t.nav.poems,
+                'label-profile': t.nav.profile,
+                'label-settings': t.nav.settings,
+                'label-immigration': t.nav.immigration,
+                'label-technews': t.nav.technews,
+                'label-gallery': t.nav.gallery
+            };
+            Object.keys(labelMap).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = labelMap[id];
+            });
+
+            // Update settings language buttons
+            const langBtns = document.querySelectorAll('.lang-opt');
+            langBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            });
+
+            // Re-render current page with new language
+            const active = document.querySelector('.page.active');
+            if (active) {
+                const id = active.id.replace('page-', '');
+                if (id === 'home') renderHome();
+                else if (id === 'about') renderAbout();
+                else if (id === 'poems') renderPoemsCategories();
+                else if (id === 'immigration') renderImmigration();
+                else if (id === 'technews') renderNews();
+                else if (id === 'gallery') renderGallery();
+                else if (id === 'profile') updateProfilePage();
+                else if (id === 'settings') updateSettingsPage();
+            }
+            updateSEO(currentPage);
+        }
+
+        // ================================================================
+        // 9. SETTINGS INIT
         // ================================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
@@ -1717,8 +1980,6 @@
 
             document.querySelectorAll('.lang-opt').forEach(btn => {
                 btn.addEventListener('click', function() {
-                    document.querySelectorAll('.lang-opt').forEach(b => b.classList.remove('active'));
-                    this.classList.add('active');
                     const lang = this.getAttribute('data-lang');
                     if (lang) setLanguage(lang);
                 });
@@ -1739,39 +2000,8 @@
             document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === sl));
         }
 
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('sarfraz_lang', lang);
-            const labelMap = {
-                'label-about': { fa: 'درباره', en: 'About' },
-                'label-poems': { fa: 'اشعار', en: 'Poems' },
-                'label-home': { fa: 'خانه', en: 'Home' },
-                'label-profile': { fa: 'پروفایل', en: 'Profile' },
-                'label-settings': { fa: 'تنظیمات', en: 'Settings' },
-                'label-immigration': { fa: 'مهاجرت', en: 'Immigration' },
-                'label-technews': { fa: 'فناوری', en: 'Tech News' },
-                'label-gallery': { fa: 'گالری', en: 'Gallery' }
-            };
-            Object.keys(labelMap).forEach(id => {
-                const el = document.getElementById(id);
-                if (el) el.textContent = labelMap[id][lang];
-            });
-
-            const active = document.querySelector('.page.active');
-            if (active) {
-                const id = active.id.replace('page-', '');
-                if (id === 'home') renderHome();
-                else if (id === 'about') renderAbout();
-                else if (id === 'poems') renderPoemsCategories();
-                else if (id === 'immigration') renderImmigration();
-                else if (id === 'technews') renderNews();
-                else if (id === 'gallery') renderGallery();
-            }
-            updateSEO(currentPage);
-        }
-
         // ================================================================
-        // 7. MODALS
+        // 10. MODALS
         // ================================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
@@ -1794,7 +2024,7 @@
         }
 
         // ================================================================
-        // 8. INIT
+        // 11. INIT
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
@@ -1816,4 +2046,4 @@
     </script>
 
 </body>
-    </html>
+                            </html>
