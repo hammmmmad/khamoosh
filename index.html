@@ -8,16 +8,10 @@
     <meta name="description" content="Sarfraz Khamoosh - Digital Media, Technology and Creative Content">
     <meta name="robots" content="index,follow">
     <link rel="icon" type="image/png" href="images/Kham.png">
-    <meta property="og:title" content="Sarfraz Khamoosh">
-    <meta property="og:description" content="Digital Media and Creative Content">
-    <meta property="og:image" content="https://khamoosh.abrdns.com/images/Kham.png">
-    <meta property="og:url" content="https://khamoosh.abrdns.com">
-    <meta name="author" content="Sarfraz Khamoosh">
-    <meta name="theme-color" content="#000000">
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
     <style>
-        /* ===== فونت اختصاصی ===== */
+        /* ===== فونت ===== */
         @font-face {
             font-family: 'Ignogito';
             src: url('fonts/ignogito.otf') format('opentype');
@@ -42,7 +36,7 @@
         }
 
         body.dark {
-            background: #000000;
+            background: #0a0a0f;
             color: #eef2ff;
         }
 
@@ -50,222 +44,6 @@
             max-width: 1300px;
             margin: 0 auto;
             padding: 1.2rem;
-        }
-
-        /* ===== هدر شیشه‌ای ===== */
-        .glass-header {
-            position: sticky;
-            top: 20px;
-            z-index: 1000;
-            background: rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(16px);
-            border-radius: 2rem;
-            padding: 0.7rem 1.5rem;
-            margin-bottom: 2rem;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s;
-        }
-
-        body.dark .glass-header {
-            background: rgba(0, 0, 0, 0.6);
-            border-color: rgba(255, 255, 255, 0.2);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
-        }
-
-        .navbar {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .logo-area {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            cursor: pointer;
-        }
-
-        .logo-img {
-            width: 70px;
-            height: 70px;
-            border-radius: 50%;
-            border: 2px solid white;
-            object-fit: cover;
-        }
-
-        .site-name h1 {
-            font-family: 'Ignogito', 'Vazirmatn', sans-serif;
-            font-size: 1.6rem;
-            font-weight: 800;
-            letter-spacing: 1px;
-        }
-
-        .site-name p {
-            font-size: 0.65rem;
-            opacity: 0.8;
-        }
-
-        .hamburger {
-            display: none;
-            background: rgba(255, 255, 240, 0.3);
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 30px;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .hamburger svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .nav-menu a {
-            text-decoration: none;
-            color: inherit;
-            font-weight: 500;
-            padding: 0.5rem 1rem;
-            border-radius: 2rem;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            transition: 0.2s;
-            font-size: 0.9rem;
-            cursor: pointer;
-        }
-
-        .nav-menu a:hover {
-            background: rgba(59, 130, 246, 0.2);
-        }
-
-        .nav-menu a svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        body:not(.dark) .nav-menu a svg,
-        body:not(.dark) .hamburger svg {
-            stroke: #1e2a3e;
-        }
-
-        body.dark .nav-menu a svg,
-        body.dark .hamburger svg {
-            stroke: #eef2ff;
-        }
-
-        .nav-menu a.active {
-            background: rgba(139, 92, 246, 0.2);
-        }
-
-        .nav-actions {
-            display: flex;
-            gap: 0.6rem;
-            align-items: center;
-        }
-
-        .theme-btn {
-            background: rgba(255, 255, 240, 0.3);
-            border: none;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: inherit;
-        }
-
-        .theme-btn svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .lang-selector {
-            position: relative;
-        }
-
-        .lang-btn {
-            background: rgba(255, 255, 240, 0.3);
-            border: none;
-            border-radius: 2rem;
-            padding: 0 1rem;
-            height: 44px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            cursor: pointer;
-            backdrop-filter: blur(8px);
-            font-family: inherit;
-            font-size: 0.9rem;
-            color: inherit;
-        }
-
-        .lang-btn svg {
-            width: 20px;
-            height: 20px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-        }
-
-        .lang-dropdown {
-            position: absolute;
-            top: 110%;
-            right: 0;
-            background: rgba(255, 255, 255, 0.96);
-            backdrop-filter: blur(12px);
-            border-radius: 1rem;
-            min-width: 130px;
-            display: none;
-            z-index: 200;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            border: 1px solid rgba(0, 0, 0, 0.1);
-        }
-
-        body.dark .lang-dropdown {
-            background: rgba(20, 30, 55, 0.96);
-            border-color: rgba(255, 255, 255, 0.2);
-            color: #eef2ff;
-        }
-
-        .lang-selector.open .lang-dropdown {
-            display: block;
-        }
-
-        .lang-option {
-            padding: 8px 15px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: 0.2s;
-            border-radius: 0.5rem;
-        }
-
-        .lang-option:hover {
-            background: rgba(59, 130, 246, 0.2);
         }
 
         /* ===== صفحات ===== */
@@ -287,6 +65,79 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+
+        /* ===== کارت‌های شیشه‌ای ===== */
+        .glass-card {
+            border-radius: 2rem;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, backdrop-filter 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        body:not(.dark) .glass-card {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+        }
+
+        body.dark .glass-card {
+            background: rgba(20, 20, 30, 0.85);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
+        }
+
+        .glass-card::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
+            background-repeat: repeat;
+            opacity: 0.3;
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
+        }
+
+        .glass-card h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-right: 4px solid #8b5cf6;
+            padding-right: 1rem;
+        }
+
+        body:not(.dark) .glass-card h2 {
+            color: #1e2a3e;
+        }
+
+        body.dark .glass-card h2 {
+            color: #f0f0f0;
+        }
+
+        .glass-card p,
+        .glass-card li {
+            line-height: 1.8;
+        }
+
+        body:not(.dark) .glass-card p,
+        body:not(.dark) .glass-card li {
+            color: #2d3a4e;
+        }
+
+        body.dark .glass-card p,
+        body.dark .glass-card li {
+            color: #e0e0e0;
         }
 
         /* ===== صفحه خانه ===== */
@@ -438,78 +289,6 @@
             color: #9ca3af;
         }
 
-        .glass-card {
-            border-radius: 2rem;
-            padding: 1.8rem;
-            margin-bottom: 2rem;
-            transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s, backdrop-filter 0.3s;
-            position: relative;
-            overflow: hidden;
-        }
-
-        body:not(.dark) .glass-card {
-            background: rgba(255, 255, 255, 0.7);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(255, 255, 255, 0.8);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
-        }
-
-        body.dark .glass-card {
-            background: rgba(20, 20, 30, 0.85);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.2);
-            box-shadow: 0 12px 28px rgba(0, 0, 0, 0.3);
-        }
-
-        .glass-card::before {
-            content: "";
-            position: absolute;
-            inset: 0;
-            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.1'/%3E%3C/svg%3E");
-            background-repeat: repeat;
-            opacity: 0.3;
-            pointer-events: none;
-            mix-blend-mode: overlay;
-        }
-
-        .glass-card:hover {
-            transform: translateY(-6px);
-            box-shadow: 0 20px 35px rgba(0, 0, 0, 0.15);
-        }
-
-        .glass-card h2 {
-            font-size: 1.5rem;
-            margin-bottom: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            border-right: 4px solid #8b5cf6;
-            padding-right: 1rem;
-        }
-
-        body:not(.dark) .glass-card h2 {
-            color: #1e2a3e;
-        }
-
-        body.dark .glass-card h2 {
-            color: #f0f0f0;
-        }
-
-        .glass-card p,
-        .glass-card li {
-            line-height: 1.8;
-        }
-
-        body:not(.dark) .glass-card p,
-        body:not(.dark) .glass-card li {
-            color: #2d3a4e;
-        }
-
-        body.dark .glass-card p,
-        body.dark .glass-card li {
-            color: #e0e0e0;
-        }
-
         .specialties-list {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
@@ -598,6 +377,57 @@
             font-weight: 600;
         }
 
+        /* ===== صفحه پروفایل ===== */
+        .profile-header {
+            text-align: center;
+            padding: 2rem 0;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.3);
+        }
+
+        .profile-name {
+            font-size: 2rem;
+            font-weight: 800;
+        }
+
+        .profile-title {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 0.3rem;
+        }
+
+        .profile-info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1rem;
+            margin-top: 1.5rem;
+        }
+
+        .profile-info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.8rem 1rem;
+            border-radius: 1rem;
+            background: rgba(139, 92, 246, 0.08);
+        }
+
+        .profile-info-item svg {
+            width: 24px;
+            height: 24px;
+            stroke: #8b5cf6;
+            fill: none;
+            stroke-width: 2;
+        }
+
         /* ===== صفحه اشعار ===== */
         .categories-bar {
             display: flex;
@@ -653,7 +483,156 @@
             color: #f0f0f0;
         }
 
-        /* ===== صفحه اخبار ===== */
+        /* ===== صفحه مهاجرت ===== */
+        .immigration-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .immigration-card {
+            border-radius: 1.5rem;
+            padding: 1.5rem;
+            transition: all 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            cursor: default;
+        }
+
+        body:not(.dark) .immigration-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+        }
+
+        body.dark .immigration-card {
+            background: rgba(30, 30, 50, 0.7);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .immigration-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        .immigration-info h4 {
+            font-size: 1.05rem;
+            font-weight: 700;
+            margin-bottom: 0.2rem;
+        }
+
+        .immigration-info .status {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+
+        .immigration-info .update-date {
+            font-size: 0.7rem;
+            opacity: 0.5;
+            margin-top: 0.3rem;
+        }
+
+        .bell-btn {
+            background: rgba(139, 92, 246, 0.15);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            color: #8b5cf6;
+            position: relative;
+        }
+
+        .bell-btn:hover {
+            background: #8b5cf6;
+            color: white;
+            transform: scale(1.1);
+        }
+
+        .bell-btn svg {
+            width: 24px;
+            height: 24px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .bell-btn .badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.6rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+
+        .bell-btn.has-notification {
+            color: #ef4444;
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.15);
+            }
+        }
+
+        .notification-toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: rgba(0, 0, 0, 0.9);
+            color: white;
+            padding: 12px 20px;
+            border-radius: 1rem;
+            z-index: 9999;
+            max-width: 350px;
+            direction: rtl;
+            animation: slideDown 0.4s ease;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .notification-toast h4 {
+            color: #8b5cf6;
+            margin-bottom: 4px;
+        }
+
+        .notification-toast p {
+            font-size: 0.85rem;
+            opacity: 0.9;
+        }
+
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== صفحه اخبار فناوری ===== */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
@@ -734,13 +713,106 @@
         }
 
         .admin-avatar {
-            width: 65px;
-            height: 65px;
+            width: 32px;
+            height: 32px;
             border-radius: 50%;
             object-fit: cover;
-            border: 2px solid #ddd;
-            background: #ffffff;
-            box-shadow: #666666 0px 2px 10px;
+        }
+
+        /* ===== صفحه تنظیمات ===== */
+        .settings-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+            flex-wrap: wrap;
+            gap: 0.8rem;
+        }
+
+        body.dark .settings-item {
+            border-bottom-color: rgba(255, 255, 255, 0.05);
+        }
+
+        .settings-item .label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+
+        .settings-item .label svg {
+            width: 24px;
+            height: 24px;
+            stroke: #8b5cf6;
+            fill: none;
+            stroke-width: 2;
+        }
+
+        .toggle-switch {
+            width: 50px;
+            height: 28px;
+            background: #d1d5db;
+            border-radius: 30px;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+        }
+
+        body.dark .toggle-switch {
+            background: #374151;
+        }
+
+        .toggle-switch.active {
+            background: #8b5cf6;
+        }
+
+        .toggle-switch .slider {
+            width: 22px;
+            height: 22px;
+            background: white;
+            border-radius: 50%;
+            position: absolute;
+            top: 3px;
+            right: 3px;
+            transition: 0.3s;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .toggle-switch.active .slider {
+            right: 25px;
+        }
+
+        .lang-select-group {
+            display: flex;
+            gap: 0.8rem;
+        }
+
+        .lang-select-group button {
+            padding: 0.5rem 1.2rem;
+            border-radius: 2rem;
+            border: 2px solid #d1d5db;
+            background: transparent;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: 0.2s;
+            color: inherit;
+        }
+
+        .lang-select-group button.active {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.15);
+            color: #8b5cf6;
+        }
+
+        body.dark .lang-select-group button {
+            border-color: #4b5563;
+        }
+
+        body.dark .lang-select-group button.active {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.2);
         }
 
         /* ===== مودال ===== */
@@ -804,47 +876,158 @@
             padding-left: 2rem;
         }
 
-        .modal-meta {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 1.5rem;
-            font-size: 0.8rem;
-            color: #6b7280;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-        }
-
         .modal-content-text {
             line-height: 1.8;
             text-align: justify;
         }
 
-        .toast-msg {
+        /* ===== نوار پایین ===== */
+        .bottom-nav-wrapper {
             position: fixed;
-            bottom: 100px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #333;
-            color: white;
-            padding: 8px 20px;
-            border-radius: 30px;
-            font-size: 0.8rem;
-            z-index: 2000;
-            animation: fadeOut 2s ease forwards;
+            bottom: 20px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 999;
+            pointer-events: none;
         }
 
-        @keyframes fadeOut {
-            0% {
-                opacity: 1;
-            }
-            70% {
-                opacity: 1;
-            }
-            100% {
-                opacity: 0;
-                visibility: hidden;
-            }
+        .bottom-nav {
+            pointer-events: auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            border-radius: 40px;
+            padding: 8px 12px;
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
+            display: flex;
+            align-items: flex-end;
+            gap: 2px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
+            max-width: 560px;
+            width: calc(100% - 24px);
+            justify-content: space-around;
+            position: relative;
+            height: 68px;
+            overflow-x: auto;
+        }
+
+        body.dark .bottom-nav {
+            background: rgba(20, 20, 30, 0.92);
+            border-color: rgba(255, 255, 255, 0.08);
+            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: #9ca3af;
+            font-size: 0.55rem;
+            font-weight: 500;
+            transition: color 0.2s;
+            position: relative;
+            padding: 4px 6px;
+            border-radius: 30px;
+            min-width: 42px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-family: inherit;
+            gap: 2px;
+            flex: 1;
+            height: 56px;
+        }
+
+        .nav-item svg {
+            width: 22px;
+            height: 22px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 1.8;
+            transition: all 0.2s;
+            display: block;
+        }
+
+        .nav-item span {
+            line-height: 1;
+            font-size: 0.5rem;
+            letter-spacing: 0.3px;
+            opacity: 0.7;
+            transition: opacity 0.2s;
+            white-space: nowrap;
+        }
+
+        .nav-item:hover {
+            color: #6b7280;
+        }
+
+        body.dark .nav-item {
+            color: #6b7280;
+        }
+        body.dark .nav-item:hover {
+            color: #9ca3af;
+        }
+
+        .nav-item-home {
+            position: relative;
+            top: -16px;
+            flex: 0 0 56px;
+            height: 56px;
+            min-width: 56px;
+            background: #1a1a2e;
+            border-radius: 50%;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.25s ease;
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            color: #ffffff;
+            cursor: pointer;
+            text-decoration: none;
+            margin-top: -4px;
+            flex-shrink: 0;
+        }
+
+        body.dark .nav-item-home {
+            background: #f0f0f0;
+            border-color: rgba(0, 0, 0, 0.2);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+            color: #1a1a2e;
+        }
+
+        .nav-item-home svg {
+            width: 26px;
+            height: 26px;
+            stroke: currentColor;
+            fill: none;
+            stroke-width: 2;
+            display: block;
+        }
+
+        .nav-item-home:hover {
+            transform: scale(1.04);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-item-home:active {
+            transform: scale(0.95);
+        }
+
+        .nav-item.active {
+            color: #1f2937;
+        }
+        body.dark .nav-item.active {
+            color: #e5e7eb;
+        }
+
+        .nav-item.active svg {
+            stroke-width: 2.5;
         }
 
         /* ===== فوتر ===== */
@@ -872,15 +1055,15 @@
 
         .social-icons {
             display: flex;
-            gap: 1rem;
+            gap: 0.8rem;
             flex-wrap: wrap;
             align-items: center;
         }
 
         .social-icons a {
             background: rgba(255, 255, 250, 0.3);
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -890,8 +1073,8 @@
         }
 
         .social-icons a img {
-            width: 24px;
-            height: 24px;
+            width: 22px;
+            height: 22px;
         }
 
         body.dark .social-icons a img {
@@ -905,8 +1088,8 @@
 
         .codm-icon {
             background: rgba(255, 255, 250, 0.3);
-            width: 44px;
-            height: 44px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: inline-flex;
             align-items: center;
@@ -921,8 +1104,8 @@
         }
 
         .codm-icon img {
-            width: 35px;
-            height: 35px;
+            width: 30px;
+            height: 30px;
         }
 
         body.dark .codm-icon img {
@@ -930,154 +1113,8 @@
         }
 
         .copyright {
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             opacity: 0.7;
-        }
-
-        /* ===== نوار پایین ===== */
-        .bottom-nav-wrapper {
-            position: fixed;
-            bottom: 24px;
-            left: 0;
-            right: 0;
-            display: flex;
-            justify-content: center;
-            z-index: 999;
-            pointer-events: none;
-        }
-
-        .bottom-nav {
-            pointer-events: auto;
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            border-radius: 40px;
-            padding: 8px 16px;
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.08), 0 4px 12px rgba(0, 0, 0, 0.03);
-            display: flex;
-            align-items: flex-end;
-            gap: 4px;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            transition: background 0.3s, border-color 0.3s, box-shadow 0.3s;
-            max-width: 480px;
-            width: calc(100% - 32px);
-            justify-content: space-around;
-            position: relative;
-            height: 68px;
-        }
-
-        body.dark .bottom-nav {
-            background: rgba(20, 20, 30, 0.92);
-            border-color: rgba(255, 255, 255, 0.08);
-            box-shadow: 0 12px 40px rgba(0, 0, 0, 0.5);
-        }
-
-        .nav-item {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            color: #9ca3af;
-            font-size: 0.6rem;
-            font-weight: 500;
-            transition: color 0.2s;
-            position: relative;
-            padding: 4px 6px;
-            border-radius: 30px;
-            min-width: 48px;
-            cursor: pointer;
-            background: transparent;
-            border: none;
-            font-family: inherit;
-            gap: 2px;
-            flex: 1;
-            height: 56px;
-        }
-
-        .nav-item svg {
-            width: 24px;
-            height: 24px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 1.8;
-            transition: all 0.2s;
-            display: block;
-        }
-
-        .nav-item span {
-            line-height: 1;
-            font-size: 0.55rem;
-            letter-spacing: 0.3px;
-            opacity: 0.7;
-            transition: opacity 0.2s;
-        }
-
-        .nav-item:hover {
-            color: #6b7280;
-        }
-
-        body.dark .nav-item {
-            color: #6b7280;
-        }
-        body.dark .nav-item:hover {
-            color: #9ca3af;
-        }
-
-        .nav-item-home {
-            position: relative;
-            top: -18px;
-            flex: 0 0 60px;
-            height: 60px;
-            min-width: 60px;
-            background: #1a1a2e;
-            border-radius: 50%;
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.25s ease;
-            border: 2px solid rgba(255, 255, 255, 0.8);
-            color: #ffffff;
-            cursor: pointer;
-            text-decoration: none;
-            margin-top: -6px;
-        }
-
-        body.dark .nav-item-home {
-            background: #f0f0f0;
-            border-color: rgba(0, 0, 0, 0.2);
-            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-            color: #1a1a2e;
-        }
-
-        .nav-item-home svg {
-            width: 28px;
-            height: 28px;
-            stroke: currentColor;
-            fill: none;
-            stroke-width: 2;
-            display: block;
-        }
-
-        .nav-item-home:hover {
-            transform: scale(1.04);
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-        }
-
-        .nav-item-home:active {
-            transform: scale(0.95);
-        }
-
-        .nav-item.active {
-            color: #1f2937;
-        }
-        body.dark .nav-item.active {
-            color: #e5e7eb;
-        }
-
-        .nav-item.active svg {
-            stroke-width: 2.5;
         }
 
         /* ===== مودال UID ===== */
@@ -1122,6 +1159,7 @@
             margin: 10px 0;
             direction: ltr;
             font-size: 1rem;
+            color: white;
         }
 
         .modal-buttons {
@@ -1144,55 +1182,76 @@
             background: rgba(255, 255, 255, 0.2);
         }
 
+        /* ===== Toast ===== */
+        .toast-msg {
+            position: fixed;
+            bottom: 100px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #333;
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            z-index: 2000;
+            animation: fadeOut 2s ease forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {
+                opacity: 1;
+            }
+            70% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
         /* ===== ریسپانسیو ===== */
         @media (max-width: 768px) {
             .container {
                 padding: 0.8rem;
             }
-            .navbar {
-                position: relative;
+            .bottom-nav {
+                height: 60px;
+                padding: 6px 8px;
+                border-radius: 32px;
+                bottom: 12px;
             }
-            .hamburger {
-                display: flex;
+            .nav-item {
+                min-width: 32px;
+                height: 48px;
+                padding: 2px 4px;
             }
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: calc(100% + 10px);
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.97);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                align-items: stretch;
-                gap: 0.3rem;
-                padding: 1rem;
-                border-radius: 1.5rem;
-                z-index: 9999;
-                box-shadow: 0 20px 30px rgba(0, 0, 0, 0.2);
-                border: 1px solid rgba(0, 0, 0, 0.1);
+            .nav-item svg {
+                width: 18px;
+                height: 18px;
             }
-            body.dark .nav-menu {
-                background: rgba(0, 0, 0, 0.95);
-                border-color: rgba(255, 255, 255, 0.2);
-                color: white;
+            .nav-item span {
+                font-size: 0.4rem;
             }
-            .nav-menu.open {
-                display: flex;
+            .nav-item-home {
+                flex: 0 0 46px;
+                height: 46px;
+                min-width: 46px;
+                top: -12px;
             }
-            .nav-menu a {
-                justify-content: center;
-                padding: 0.7rem;
-            }
-            .lang-btn span:not(.lang-text) {
-                display: none;
-            }
-            .lang-btn {
-                padding: 0 0.9rem;
+            .nav-item-home svg {
+                width: 22px;
+                height: 22px;
             }
             .poems-grid {
                 grid-template-columns: 1fr;
                 gap: 1.5rem;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .immigration-grid {
+                grid-template-columns: 1fr;
             }
             .specialties-list {
                 grid-template-columns: 1fr;
@@ -1210,121 +1269,67 @@
                 text-align: center;
             }
             .social-icons {
-                flex-direction: row;
                 justify-content: center;
-                flex-wrap: wrap;
-                gap: 0.8rem;
             }
             .intro-english {
                 font-size: 1.5rem;
             }
+            .profile-avatar {
+                width: 100px;
+                height: 100px;
+            }
+            .profile-name {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
             .bottom-nav {
-                height: 60px;
-                padding: 6px 10px;
-                border-radius: 32px;
-                bottom: 16px;
+                padding: 4px 4px;
+                gap: 0;
+                border-radius: 28px;
             }
             .nav-item {
-                min-width: 36px;
-                height: 48px;
-                padding: 2px 4px;
+                min-width: 28px;
+                padding: 2px 2px;
+            }
+            .nav-item span {
+                display: none;
             }
             .nav-item svg {
                 width: 20px;
                 height: 20px;
             }
-            .nav-item span {
-                font-size: 0.45rem;
-            }
             .nav-item-home {
-                flex: 0 0 50px;
-                height: 50px;
-                min-width: 50px;
-                top: -14px;
+                flex: 0 0 42px;
+                height: 42px;
+                min-width: 42px;
+                top: -10px;
             }
             .nav-item-home svg {
-                width: 24px;
-                height: 24px;
+                width: 20px;
+                height: 20px;
             }
         }
 
-        @media (max-width: 380px) {
-            .bottom-nav {
-                padding: 4px 6px;
-                gap: 0;
-            }
-            .nav-item {
-                min-width: 30px;
-            }
-            .nav-item span {
-                display: none;
-            }
+        /* ===== اسکرول ===== */
+        .bottom-nav::-webkit-scrollbar {
+            display: none;
+        }
+        .bottom-nav {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
         }
     </style>
 </head>
 
 <body>
     <div class="container">
-        <!-- ===== HEADER ===== -->
-        <header class="glass-header">
-            <div class="navbar">
-                <div class="logo-area" onclick="navigateTo('home')">
-                    <img class="logo-img" src="images/Khamoosh.jpg" alt="لوگو" onerror="this.src='https://placehold.co/70x70?text=SK'">
-                    <div class="site-name">
-                        <h1>Sarfraz Khamoosh</h1>
-                        <p class="site-tag" data-fa="شعرهای کوتاه" data-en="Short Poems">شعرهای کوتاه</p>
-                    </div>
-                </div>
-
-                <button class="hamburger" id="hamburgerBtn">
-                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-                        <line x1="3" y1="6" x2="21" y2="6" />
-                        <line x1="3" y1="12" x2="21" y2="12" />
-                        <line x1="3" y1="18" x2="21" y2="18" />
-                    </svg>
-                </button>
-
-                <div class="nav-menu" id="navMenu">
-                    <a data-page="home" onclick="navigateTo('home')" class="active">
-                        <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-                        <span>خانه</span>
-                    </a>
-                    <a data-page="about" onclick="navigateTo('about')">
-                        <svg viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                        <span>درباره</span>
-                    </a>
-                    <a data-page="poems" onclick="navigateTo('poems')">
-                        <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><path d="M20 18l-4-4 4-4"/></svg>
-                        <span>اشعار</span>
-                    </a>
-                    <a data-page="news" onclick="navigateTo('news')">
-                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
-                        <span>اخبار</span>
-                    </a>
-                </div>
-
-                <div class="nav-actions">
-                    <div class="lang-selector" id="langSelector">
-                        <button class="lang-btn" id="langBtn">
-                            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 014 10 15.3 15.3 0 01-4 10 15.3 15.3 0 01-4-10 15.3 15.3 0 014-10z"/></svg>
-                            <span id="currentLangLabel">فارسی</span>
-                            <span class="lang-text">▼</span>
-                        </button>
-                        <div class="lang-dropdown">
-                            <div class="lang-option" data-lang="fa"><span>🇦🇫</span> فارسی</div>
-                            <div class="lang-option" data-lang="en"><span>🇺🇸</span> English</div>
-                        </div>
-                    </div>
-                    <button class="theme-btn" id="themeBtn">
-                        <svg id="themeIcon" viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
-                    </button>
-                </div>
-            </div>
-        </header>
-
         <!-- ===== صفحات ===== -->
+
         <!-- صفحه خانه -->
         <div class="page active" id="page-home">
+            <h2 style="text-align:center; margin-bottom:1rem;">📜 اشعار کوتاه</h2>
             <div class="poems-grid" id="poemsGrid"></div>
         </div>
 
@@ -1361,12 +1366,97 @@
 
         <!-- صفحه اشعار -->
         <div class="page" id="page-poems">
+            <h2 style="text-align:center; margin-bottom:1rem;">📚 دسته‌بندی اشعار</h2>
             <div class="categories-bar" id="categoriesBar"></div>
             <div id="categoriesContainer"></div>
         </div>
 
-        <!-- صفحه اخبار -->
-        <div class="page" id="page-news">
+        <!-- صفحه پروفایل -->
+        <div class="page" id="page-profile">
+            <div class="glass-card" style="text-align:center;">
+                <div class="profile-header">
+                    <img class="profile-avatar" src="images/Khamoosh.jpg" alt="سرفراز خموش" onerror="this.src='https://placehold.co/150x150?text=SK'">
+                    <h1 class="profile-name">سرفراز خموش</h1>
+                    <p class="profile-title">🎨 طراح گرافیک | 💻 برنامه‌نویس | 🏋️ مربی فیتنس</p>
+                </div>
+
+                <div class="profile-info-grid">
+                    <div class="profile-info-item">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
+                        <div><strong>سن:</strong> ۲۸ سال</div>
+                    </div>
+                    <div class="profile-info-item">
+                        <svg viewBox="0 0 24 24"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <div><strong>زادگاه:</strong> مزار شریف، افغانستان</div>
+                    </div>
+                    <div class="profile-info-item">
+                        <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 2a8 8 0 0 1 8 8.2c0 7.3-8 11.8-8 11.8z"/><circle cx="12" cy="10" r="3"/></svg>
+                        <div><strong>موقعیت فعلی:</strong> ازبکستان</div>
+                    </div>
+                    <div class="profile-info-item">
+                        <svg viewBox="0 0 24 24"><path d="M4 4v16h16V4H4z"/><path d="M8 8h8v8H8z"/></svg>
+                        <div><strong>وظیفه:</strong> طراح گرافیک، برنامه‌نویس</div>
+                    </div>
+                    <div class="profile-info-item" style="grid-column: span 2;">
+                        <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                        <div><strong>مربی فیتنس:</strong> ✅ دارای مدرک مربیگری حرفه‌ای</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه تنظیمات -->
+        <div class="page" id="page-settings">
+            <div class="glass-card">
+                <h2>⚙️ تنظیمات</h2>
+
+                <div class="settings-item">
+                    <div class="label">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        <span>تم شب/روز</span>
+                    </div>
+                    <div class="toggle-switch" id="themeToggle">
+                        <div class="slider"></div>
+                    </div>
+                </div>
+
+                <div class="settings-item">
+                    <div class="label">
+                        <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+                        <span>زبان</span>
+                    </div>
+                    <div class="lang-select-group">
+                        <button class="lang-opt active" data-lang="fa">🇦🇫 دری</button>
+                        <button class="lang-opt" data-lang="en">🇺🇸 English</button>
+                    </div>
+                </div>
+
+                <div class="settings-item">
+                    <div class="label">
+                        <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                        <span>حالت نمایش</span>
+                    </div>
+                    <div style="display:flex; gap:0.5rem; flex-wrap:wrap;">
+                        <button class="view-btn active" data-view="desktop" style="padding:0.4rem 1rem;border-radius:2rem;border:2px solid #d1d5db;background:transparent;cursor:pointer;font-family:inherit;font-weight:600;transition:0.2s;color:inherit;">🖥️ دسکتاپ</button>
+                        <button class="view-btn" data-view="tablet" style="padding:0.4rem 1rem;border-radius:2rem;border:2px solid #d1d5db;background:transparent;cursor:pointer;font-family:inherit;font-weight:600;transition:0.2s;color:inherit;">📱 تبلت</button>
+                        <button class="view-btn" data-view="mobile" style="padding:0.4rem 1rem;border-radius:2rem;border:2px solid #d1d5db;background:transparent;cursor:pointer;font-family:inherit;font-weight:600;transition:0.2s;color:inherit;">📱 موبایل</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- صفحه مهاجرت -->
+        <div class="page" id="page-immigration">
+            <div class="glass-card">
+                <h2>🛂 برنامه‌های مهاجرت آمریکا</h2>
+                <p style="opacity:0.7; margin-bottom:1rem;">آخرین به‌روزرسانی: <span id="immigrationUpdateDate">۲۵ ژوئن ۲۰۲۶</span></p>
+                <div class="immigration-grid" id="immigrationGrid"></div>
+            </div>
+        </div>
+
+        <!-- صفحه اخبار فناوری -->
+        <div class="page" id="page-technews">
+            <h2 style="text-align:center; margin-bottom:1rem;">📰 اخبار فناوری</h2>
             <div class="news-grid" id="newsGrid"></div>
         </div>
 
@@ -1375,18 +1465,12 @@
             <div class="footer-content">
                 <div class="copyright" id="footerCopy">© 2026 سرفراز خموش | تمام حقوق محفوظ است</div>
                 <div class="social-icons">
-                    <a href="https://www.facebook.com/profile.php?id=61590217606266"><img src="images/facebook.png" alt="فیسبوک"></a>
-                    <a href="https://www.instagram.com/admin_khamoosh"><img src="images/instagram.png" alt="اینستاگرام"></a>
-                    <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228"><img src="images/linkedin.png" alt="لینکدین"></a>
-                    <a href="https://pin.it/WY1aeKX2a"><img src="images/pinterest.png" alt="پینترست"></a>
-                    <a href="https://www.behance.net/merlinsarfraz"><img src="images/ben.png" alt="بهنس"></a>
-                    <a href="https://wa.me/qr/E2RLH5T72CSFE1"><img src="images/whatsapp.png" alt="واتساپ"></a>
-                    <a href="https://www.tiktok.com/@sarfraz_khamoosh"><img src="images/tik.png" alt="تیک تاک"></a>
-                    <a href="https://khamoooooosh675.substack.com"><img src="images/substack.png" alt="ساب‌استک"></a>
-                    <a href="https://github.com/hammmmmad"><img src="images/github.png" alt="گیت‌هاب"></a>
-                    <a href="https://www.threads.com/@sarfraz_khamoosh23"><img src="images/threads.png" alt="تردز"></a>
+                    <a href="#"><img src="images/facebook.png" alt="فیسبوک" onerror="this.src='https://placehold.co/22x22?text=f'"></a>
+                    <a href="#"><img src="images/instagram.png" alt="اینستاگرام" onerror="this.src='https://placehold.co/22x22?text=i'"></a>
+                    <a href="#"><img src="images/linkedin.png" alt="لینکدین" onerror="this.src='https://placehold.co/22x22?text=in'"></a>
+                    <a href="#"><img src="images/github.png" alt="گیت‌هاب" onerror="this.src='https://placehold.co/22x22?text=gh'"></a>
                     <div class="codm-icon" id="codmBtn">
-                        <img src="images/call of.png" alt="CODM" onerror="this.src='https://placehold.co/35x35?text=🎮'">
+                        <img src="images/call of.png" alt="CODM" onerror="this.src='https://placehold.co/30x30?text=🎮'">
                     </div>
                 </div>
             </div>
@@ -1418,27 +1502,37 @@
     <div class="bottom-nav-wrapper">
         <nav class="bottom-nav" id="bottomNav" role="navigation" aria-label="ناوبری اصلی">
             <button class="nav-item" data-page="about" onclick="navigateTo('about')">
-                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
                 <span>درباره</span>
             </button>
 
             <button class="nav-item" data-page="poems" onclick="navigateTo('poems')">
-                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h10M4 18h6"/><path d="M20 18l-4-4 4-4"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h10M4 18h6"/><path d="M20 18l-4-4 4-4"/></svg>
                 <span>اشعار</span>
             </button>
 
             <button class="nav-item-home" onclick="navigateTo('home')" aria-label="خانه">
-                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
+                <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
             </button>
 
-            <button class="nav-item" data-page="profile" onclick="navigateTo('about')">
-                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 11l2 2 4-4"/></svg>
+            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')">
+                <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/><path d="M16 11l2 2 4-4"/></svg>
                 <span>پروفایل</span>
             </button>
 
-            <button class="nav-item" data-page="settings" onclick="navigateTo('about')">
-                <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
                 <span>تنظیمات</span>
+            </button>
+
+            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')">
+                <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/><path d="M12 22v-7"/></svg>
+                <span>مهاجرت</span>
+            </button>
+
+            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')">
+                <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                <span>فناوری</span>
             </button>
         </nav>
     </div>
@@ -1447,6 +1541,8 @@
         // ================================================================
         // 1. داده‌ها
         // ================================================================
+
+        // اشعار صفحه خانه
         const poemsList = [
             { id: 0, logo: "images/Khamoosh.jpg", typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
             { id: 1, logo: "images/Khamoosh.jpg", typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
@@ -1456,635 +1552,9 @@
             { id: 5, logo: "images/Khamoosh.jpg", typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
         ];
 
+        // درباره
         const specialtiesData = [
             { nameFa: "برنامه‌نویسی و توسعه نرم‌افزار", nameEn: "Programming & Software Development", icon: "images/programer.png" },
             { nameFa: "طراحی و توسعه وب‌سایت", nameEn: "Website Design & Development", icon: "images/website.png" },
             { nameFa: "طراحی و توسعه اپلیکیشن‌های موبایل", nameEn: "Mobile App Development", icon: "images/application.png" },
-            { nameFa: "طراحی رابط و تجربه کاربری (UI/UX)", nameEn: "UI/UX Design", icon: "images/ux.png" },
-            { nameFa: "طراحی لوگو و هویت بصری برند", nameEn: "Logo & Brand Identity", icon: "images/logo.png" },
-            { nameFa: "طراحی بنرهای تبلیغاتی و گرافیک دیجیتال", nameEn: "Digital & Banner Design", icon: "images/banner.png" },
-            { nameFa: "تولید محتوای دیجیتال و مدیریت پروژه", nameEn: "Content Creation & Project Management", icon: "images/mang.png" },
-            { nameFa: "مشاوره امور مهاجرت", nameEn: "Immigration Consulting", icon: "images/imm.png" },
-            { nameFa: "مربیگری فیتنس", nameEn: "Fitness Coaching", icon: "images/fit.png" }
-        ];
-
-        const skillsData = [
-            { name: "Adobe Photoshop", percent: 85, icon: "images/photoshop.png" },
-            { name: "Adobe Illustrator", percent: 90, icon: "images/ill.png" },
-            { name: "Adobe InDesign", percent: 50, icon: "images/indesign.png" },
-            { name: "Adobe Lightroom", percent: 68, icon: "images/light.png" },
-            { name: "InShot", percent: 100, icon: "images/inshot.png" },
-            { name: "PicArt", percent: 80, icon: "images/pics.png" },
-            { name: "Matnegar", percent: 100, icon: "images/mtn.jpg" },
-            { name: "Alight Motion", percent: 100, icon: "images/alight.png" },
-            { name: "Adobe After Effects", percent: 30, icon: "images/after.png" },
-            { name: "Canva", percent: 80, icon: "images/conva.png" }
-        ];
-
-        const langsData = [
-            { name: "Python", percent: 58, icon: "images/python.png" },
-            { name: "Flutter", percent: 80, icon: "images/flutter.png" },
-            { name: "XML", percent: 60, icon: "images/xml.png" },
-            { name: "PHP", percent: 70, icon: "images/php.png" },
-            { name: "Go", percent: 90, icon: "images/go.png" },
-            { name: "JavaScript", percent: 50, icon: "images/javas.png" }
-        ];
-
-        const categoriesData = {
-            mystical: { fa: "اشعار عارفانه", en: "Mystical Poems" },
-            romantic: { fa: "اشعار عاشقانه", en: "Romantic Poems" },
-            oritic: { fa: "اشعار اورتیک", en: "Oritic Poems" },
-            blank: { fa: "اشعار سپید", en: "Blank Verse" },
-            heavy: { fa: "متن‌های سنگین", en: "Heavy Texts" }
-        };
-
-        const poemsDB = {
-            mystical: [
-                { id: 100, textFa: "چون گل به آفتاب حقیقت گشوده شو\nوز غیر او ببند نظر، چون که او بس است", textEn: "Open like a flower to the sun of truth\nClose your eyes to others, for He is enough" },
-                { id: 101, textFa: "در خرابات طریقت من و دلتنگی خویش\nعشق را یافت دل از جرعه‌ای از می دوش", textEn: "In the tavern of the path, me and my sorrow\nLove found the heart from a sip of last night's wine" }
-            ],
-            romantic: [
-                { id: 200, textFa: "در دل شب، در هوای تو\nباد زلفت می‌وزد از سوی تو\nعشق سر می‌زد ز هر سو، ای صنم\nبی‌تو دلگیر است جان، بی‌تو وطن", textEn: "In the heart of night, in your air\nYour hair's wind blows from your side\nLove sprouts from every side, O idol\nWithout you, the soul is sad, without you, home" },
-                { id: 201, textFa: "نگاهت را به من بخش ای پری پیکر\nکه دلم بی‌تو اسیر شب و تنهایی", textEn: "Give your gaze to me, O fairy-like\nFor my heart without you is captive to night and loneliness" }
-            ],
-            oritic: [
-                { id: 300, textFa: "ای کاشکی که کوه شوم و پایدار\nیا باد که هر جا بروم بی‌قرار", textEn: "I wish I were a mountain, steadfast\nOr the wind, restless wherever I go" },
-                { id: 301, textFa: "در طوفان بی‌کرانِ بودن\nتنها دل است که لنگر می‌شود", textEn: "In the boundless storm of existence\nOnly the heart becomes the anchor" }
-            ],
-            blank: [
-                { id: 400, textFa: "سکوت شب\nپر از نجوای برگ‌های خشک\nمن مانده‌ام\nبا روایتی از باد", textEn: "The silence of the night\nFull of whispers of dry leaves\nI am left\nWith a tale of the wind" },
-                { id: 401, textFa: "فردا که برسد\nشاید خورشید را به گلدان اتاق بیاورم\nتا پنجره باز شود", textEn: "When tomorrow comes\nPerhaps I'll bring the sun into the room's pot\nSo the window will open" }
-            ],
-            heavy: [
-                { id: 500, textFa: "در دل شب سرد زمستان، که برف خاطرات می‌بارید، او تنها نشسته بود و به دیوار خاموش اتاق خیره. هیچ صدایی نیست، جز ضربان نبض تنهایی که هر لحظه سنگین‌تر می‌شود. تمام وجودش را سوالی پر کرده بود: آیا بعد از این همه راه، هنوز می‌توان به آغاز بازگشت؟", textEn: "In the cold winter night, as the snow of memories fell, he sat alone, staring at the silent wall of the room. There was no sound, except the heartbeat of loneliness growing heavier each moment. A question filled his entire being: after all this way, can one still return to the beginning?" },
-                { id: 501, textFa: "زندگی گاهی چون اقیانوسی طوفانی است که کرانه‌هایش در مه گم شده. آدمی میان امواج دست و پا می‌زند و تنها امیدش به تخته پاره‌ای است که شاید او را به ساحلی ناشناخته برساند. این است سرنوشت ما؛ میان جهل و امید، میان تاریکی و روشنایی.", textEn: "Life is sometimes like a stormy ocean whose shores are lost in fog. Man struggles among the waves, his only hope a piece of wood that might carry him to an unknown shore. This is our destiny; between ignorance and hope, between darkness and light." }
-            ]
-        };
-
-        const newsData = [
-            {
-                id: 1,
-                titleFa: "گوگل ۸۵ میلیارد دلار برای توسعه هوش مصنوعی جذب سرمایه کرد",
-                titleEn: "Google Raises $85 Billion for AI Development",
-                date: "۳ جون ۲۰۲۶",
-                image: "news-pic/google.jpg",
-                fullTextFa: `شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند؛ رقمی که از آن به‌عنوان یکی از بزرگ‌ترین جذب سرمایه‌های تاریخ بازار سهام یاد می‌شود.\n\nبر اساس گزارش منتشرشده، این شرکت در ابتدا قصد داشت ۴۰ میلیارد دلار سهام عرضه کند، اما استقبال گسترده سرمایه‌گذاران باعث شد میزان سرمایه جذب‌شده در مرحله نخست به ۴۵ میلیارد دلار افزایش یابد. آلفابت همچنین اعلام کرده است که قصد دارد در سه‌ماهه آینده ۴۰ میلیارد دلار دیگر نیز از طریق فروش سهام جذب کند.`,
-                fullTextEn: `Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion through a large stock offering to fund artificial intelligence projects — a figure described as one of the largest capital raises in stock market history.\n\nAccording to the report, the company initially planned to offer $40 billion in shares, but strong investor demand increased the first-phase raise to $45 billion. Alphabet also announced it intends to raise another $40 billion through stock sales in the next quarter.`
-            },
-            {
-                id: 2,
-                titleFa: "استارتاپ اروپایی Lovable همکاری خود با گوگل را گسترش داد",
-                titleEn: "European Startup Lovable Expands Partnership with Google",
-                date: "۳ جون ۲۰۲۶",
-                image: "news-pic/ai.jpg",
-                fullTextFa: `استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است. بر اساس این توافق، میزان استفاده Lovable از زیرساخت‌های ابری و خدمات هوش مصنوعی گوگل تا پنج برابر افزایش خواهد یافت.\n\nهرچند ارزش مالی این قرارداد اعلام نشده، اما منابع آگاه به TechCrunch گفته‌اند که Lovable دسترسی گسترده‌تری به مدل‌های هوش مصنوعی Anthropic، از جمله مدل Claude، و همچنین مدل‌های Gemini گوگل دریافت خواهد کرد.`,
-                fullTextEn: `Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud. Under the deal, Lovable's use of Google's cloud infrastructure and AI services will increase up to fivefold.\n\nAlthough the financial value was not disclosed, sources told TechCrunch that Lovable will gain broader access to Anthropic's AI models, including Claude, as well as Google's Gemini models.`
-            },
-            {
-                id: 3,
-                titleFa: "متا بازی محبوب VR «Supernatural» را نجات داد",
-                titleEn: "Meta Rescues Popular VR Game 'Supernatural'",
-                date: "۳ جون ۲۰۲۶",
-                image: "news-pic/meta.jpg",
-                fullTextFa: `شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد.\n\nمتا در سال ۲۰۲۳ استودیوی Within، سازنده Supernatural، را پس از یک نبرد حقوقی طولانی با نهادهای ضدانحصار خریداری کرده بود. ارزش این معامله حدود ۴۰۰ میلیون دلار برآورد شده بود.\n\nبا این حال، متا در اوایل سال جاری بخش بزرگی از تیم واقعیت مجازی خود را تعدیل کرد و اعلام نمود که دیگر محتوای جدیدی برای Supernatural تولید نخواهد شد.`,
-                fullTextEn: `Meta has announced that the virtual reality fitness app Supernatural will not be shut down but instead transferred to a new independent company.\n\nMeta had acquired Within, the studio behind Supernatural, in 2023 after a long antitrust battle. The deal was valued at around $400 million.\n\nHowever, early this year, Meta laid off a large part of its VR team and said it would no longer produce new content for Supernatural.`
-            }
-        ];
-
-        // ================================================================
-        // 2. متغیرهای عمومی
-        // ================================================================
-        let currentLang = 'fa';
-        let likesData = JSON.parse(localStorage.getItem('poem_likes')) || {};
-        let poemsLikesData = JSON.parse(localStorage.getItem('poems_likes')) || {};
-
-        // ================================================================
-        // 3. توابع کمکی
-        // ================================================================
-        function showToast(msg) {
-            let existing = document.querySelector('.toast-msg');
-            if (existing) existing.remove();
-            let toast = document.createElement('div');
-            toast.className = 'toast-msg';
-            toast.textContent = msg;
-            document.body.appendChild(toast);
-            setTimeout(() => toast.remove(), 2000);
-        }
-
-        function copyText(text) {
-            navigator.clipboard.writeText(text).then(() => {
-                showToast(currentLang === 'fa' ? '✅ متن کپی شد!' : '✅ Text copied!');
-            }).catch(() => {
-                showToast(currentLang === 'fa' ? '❌ خطا در کپی' : '❌ Copy failed');
-            });
-        }
-
-        // ================================================================
-        // 4. صفحه خانه - اشعار
-        // ================================================================
-        function renderHomePoems() {
-            const grid = document.getElementById('poemsGrid');
-            if (!grid) return;
-            grid.innerHTML = poemsList.map(function(p) {
-                const text = currentLang === 'fa' ? p.textFa : p.textEn;
-                const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
-                const likes = likesData[p.id] || 0;
-                const liked = likesData[p.id] > 0;
-                return `
-                    <div class="poem-card" data-id="${p.id}">
-                        <div class="poem-logo"><img src="${p.logo}" alt="لوگو" onerror="this.src='https://placehold.co/70x70?text=🎭'"></div>
-                        <div class="poem-type">${type}</div>
-                        <div class="poem-text">${text.replace(/\n/g, '<br>')}</div>
-                        <div class="card-actions">
-                            <button class="copy-btn" onclick="copyText('${text.replace(/"/g, '&quot;')}')">
-                                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                <span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span>
-                            </button>
-                            <button class="share-btn" onclick="sharePoem('${text.replace(/"/g, '&quot;')}', '${type.replace(/"/g, '&quot;')}')">
-                                <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                                <span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span>
-                            </button>
-                            <button class="like-btn ${liked ? 'liked' : ''}" onclick="likeHomePoem(${p.id}, this)">
-                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                                <span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span>
-                                <span class="like-count">${likes}</span>
-                            </button>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function likeHomePoem(id, btn) {
-            if (!likesData[id]) likesData[id] = 0;
-            const countSpan = btn.querySelector('.like-count');
-            if (btn.classList.contains('liked')) {
-                likesData[id]--;
-                btn.classList.remove('liked');
-            } else {
-                likesData[id]++;
-                btn.classList.add('liked');
-            }
-            countSpan.textContent = likesData[id];
-            localStorage.setItem('poem_likes', JSON.stringify(likesData));
-        }
-
-        function sharePoem(text, type) {
-            const shareText = type + '\n\n' + text;
-            if (navigator.share) {
-                navigator.share({ title: 'اشعار سرفراز خموش', text: shareText }).catch(() => {});
-            } else {
-                copyText(shareText);
-                showToast(currentLang === 'fa' ? 'متن برای اشتراک کپی شد' : 'Text copied for sharing');
-            }
-        }
-
-        // ================================================================
-        // 5. صفحه درباره
-        // ================================================================
-        const aboutTranslations = {
-            fa: {
-                bioTitle: "📖 بیوگرافی",
-                bioText: "سرفراز خموش، متولد سال ۱۳۷۷ (۱۹۹۸ میلادی) در شهر مزار شریف افغانستان، از جمله متخصصان جوان و خلاق در حوزه فناوری، طراحی و توسعه دیجیتال است. وی با سال‌ها تجربه و علاقه‌مندی در زمینه‌های مختلف تکنولوژی و طراحی، توانسته است مهارت‌های متنوعی را در کنار یکدیگر توسعه دهد.",
-                poetryInterest: "✨ سرفراز خموش به شعر و ادبیات علاقه‌مند است و همواره از مطالعه کتاب و سرودن شعر لذت می‌برد.",
-                specialtiesTitle: "⚡ حوزه‌های تخصصی",
-                skillsTitle: "🛠️ مهارت‌های نرم‌افزاری",
-                langTitle: "💻 زبان‌های برنامه‌نویسی",
-                quoteText: "«خلاقیت، دانش و پشتکار، سه ستون اصلی موفقیت هستند.»",
-                introName: "سرفراز خموش",
-                jobTitles: "برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور مهاجرت | مربی فیتنس"
-            },
-            en: {
-                bioTitle: "📖 Biography",
-                bioText: "Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, is a young and creative specialist in technology, design, and digital development. With years of experience, he has developed diverse skills across various fields.",
-                poetryInterest: "✨ Sarfraz Khamoosh is deeply interested in poetry and literature, and always enjoys reading books and composing poetry.",
-                specialtiesTitle: "⚡ Specialties",
-                skillsTitle: "🛠️ Software Skills",
-                langTitle: "💻 Programming Languages",
-                quoteText: "«Creativity, knowledge and perseverance are the three pillars of success.»",
-                introName: "Sarfraz Khamoosh",
-                jobTitles: "Developer | Web & App Creator | Graphic Designer | Immigration Consultant | Fitness Coach"
-            }
-        };
-
-        function renderSpecialties() {
-            const container = document.getElementById('specialtiesList');
-            if (!container) return;
-            container.innerHTML = specialtiesData.map(function(item) {
-                return '<li><img src="' + item.icon + '" alt="' + (currentLang === 'fa' ? item.nameFa : item.nameEn) + '" onerror="this.src=\'https://placehold.co/40x40?text=🔹\'"><span>' + (currentLang === 'fa' ? item.nameFa : item.nameEn) + '</span></li>';
-            }).join('');
-        }
-
-        function renderSkills() {
-            const container = document.getElementById('skillsGrid');
-            if (!container) return;
-            container.innerHTML = skillsData.map(function(skill) {
-                return '<div class="skill-item"><img class="skill-icon" src="' + skill.icon + '" alt="' + skill.name + '" onerror="this.src=\'https://placehold.co/40x40?text=🎨\'"><span class="skill-name">' + skill.name + '</span><div class="skill-bar-container"><div class="skill-bar" data-percent="' + skill.percent + '"></div></div><span class="skill-percent">' + skill.percent + '%</span></div>';
-            }).join('');
-        }
-
-        function renderLangs() {
-            const container = document.getElementById('langGrid');
-            if (!container) return;
-            container.innerHTML = langsData.map(function(lang) {
-                return '<div class="lang-item"><img class="lang-icon" src="' + lang.icon + '" alt="' + lang.name + '" onerror="this.src=\'https://placehold.co/40x40?text=💻\'"><span class="lang-name">' + lang.name + '</span><div class="lang-bar-container"><div class="lang-bar" data-percent="' + lang.percent + '"></div></div><span class="lang-percent">' + lang.percent + '%</span></div>';
-            }).join('');
-        }
-
-        function updateAboutPage() {
-            const t = aboutTranslations[currentLang];
-            document.getElementById('introName').innerText = t.introName;
-            document.getElementById('jobTitles').innerText = t.jobTitles;
-            document.getElementById('bioTitle').innerText = t.bioTitle;
-            document.getElementById('bioText').innerText = t.bioText;
-            document.getElementById('poetryInterest').innerText = t.poetryInterest;
-            document.getElementById('specialtiesTitle').innerText = t.specialtiesTitle;
-            document.getElementById('skillsTitle').innerText = t.skillsTitle;
-            document.getElementById('langTitle').innerText = t.langTitle;
-            document.getElementById('quoteText').innerText = t.quoteText;
-            renderSpecialties();
-            renderSkills();
-            renderLangs();
-            animateBarsOnScroll();
-        }
-
-        function animateBarsOnScroll() {
-            const bars = document.querySelectorAll('.skill-bar, .lang-bar');
-            const observer = new IntersectionObserver(function(entries) {
-                entries.forEach(function(entry) {
-                    if (entry.isIntersecting) {
-                        const bar = entry.target;
-                        const percent = bar.getAttribute('data-percent');
-                        bar.style.width = percent + '%';
-                        observer.unobserve(bar);
-                    }
-                });
-            }, { threshold: 0.3 });
-            bars.forEach(function(bar) { observer.observe(bar); });
-        }
-
-        // ================================================================
-        // 6. صفحه اشعار
-        // ================================================================
-        function renderPoemsCategories() {
-            const container = document.getElementById('categoriesContainer');
-            if (!container) return;
-            let html = '';
-            for (const [key, titleObj] of Object.entries(categoriesData)) {
-                const catTitle = currentLang === 'fa' ? titleObj.fa : titleObj.en;
-                const poems = poemsDB[key];
-                if (!poems) continue;
-                html += `
-                    <div class="category-section" data-category="${key}">
-                        <h2 class="category-title">${catTitle}</h2>
-                        <div class="poems-grid">
-                            ${poems.map(function(p) {
-                                const text = currentLang === 'fa' ? p.textFa : p.textEn;
-                                const type = currentLang === 'fa' ? catTitle : categoriesData[key].en;
-                                const likes = poemsLikesData[p.id] || 0;
-                                const liked = poemsLikesData[p.id] > 0;
-                                return `
-                                    <div class="poem-card" data-id="${p.id}">
-                                        <div class="poem-type">${type}</div>
-                                        <div class="poem-text">${text.replace(/\n/g, '<br>')}</div>
-                                        <div class="card-actions">
-                                            <button class="copy-btn" onclick="copyText('${text.replace(/"/g, '&quot;')}')">
-                                                <svg viewBox="0 0 24 24"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-                                                <span>${currentLang === 'fa' ? 'کپی' : 'Copy'}</span>
-                                            </button>
-                                            <button class="share-btn" onclick="sharePoem('${text.replace(/"/g, '&quot;')}', '${type.replace(/"/g, '&quot;')}')">
-                                                <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><line x1="8.59" y1="13.51" x2="15.42" y2="17.49"/><line x1="15.41" y1="6.51" x2="8.59" y2="10.49"/></svg>
-                                                <span>${currentLang === 'fa' ? 'اشتراک' : 'Share'}</span>
-                                            </button>
-                                            <button class="like-btn ${liked ? 'liked' : ''}" onclick="likePoemCategory(${p.id}, this)">
-                                                <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
-                                                <span>${currentLang === 'fa' ? 'لایک' : 'Like'}</span>
-                                                <span class="like-count">${likes}</span>
-                                            </button>
-                                        </div>
-                                    </div>
-                                `;
-                            }).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-            container.innerHTML = html;
-            initCategoryFilters();
-        }
-
-        function likePoemCategory(id, btn) {
-            if (!poemsLikesData[id]) poemsLikesData[id] = 0;
-            const countSpan = btn.querySelector('.like-count');
-            if (btn.classList.contains('liked')) {
-                poemsLikesData[id]--;
-                btn.classList.remove('liked');
-            } else {
-                poemsLikesData[id]++;
-                btn.classList.add('liked');
-            }
-            countSpan.textContent = poemsLikesData[id];
-            localStorage.setItem('poems_likes', JSON.stringify(poemsLikesData));
-        }
-
-        function initCategoryFilters() {
-            const bar = document.getElementById('categoriesBar');
-            if (!bar) return;
-            bar.innerHTML = '';
-            const categories = Object.keys(categoriesData);
-
-            const allBtn = document.createElement('button');
-            allBtn.className = 'cat-btn active';
-            allBtn.textContent = currentLang === 'fa' ? 'همه' : 'All';
-            allBtn.onclick = function() {
-                document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
-                this.classList.add('active');
-                document.querySelectorAll('.category-section').forEach(function(s) { s.style.display = 'block'; });
-            };
-            bar.appendChild(allBtn);
-
-            categories.forEach(function(key) {
-                const btn = document.createElement('button');
-                btn.className = 'cat-btn';
-                btn.setAttribute('data-cat', key);
-                btn.textContent = currentLang === 'fa' ? categoriesData[key].fa : categoriesData[key].en;
-                btn.onclick = function() {
-                    document.querySelectorAll('.cat-btn').forEach(function(b) { b.classList.remove('active'); });
-                    this.classList.add('active');
-                    document.querySelectorAll('.category-section').forEach(function(section) {
-                        if (section.getAttribute('data-category') === key) {
-                            section.style.display = 'block';
-                        } else {
-                            section.style.display = 'none';
-                        }
-                    });
-                };
-                bar.appendChild(btn);
-            });
-        }
-
-        // ================================================================
-        // 7. صفحه اخبار
-        // ================================================================
-        function renderNews() {
-            const grid = document.getElementById('newsGrid');
-            if (!grid) return;
-            grid.innerHTML = newsData.map(function(news) {
-                const title = currentLang === 'fa' ? news.titleFa : news.titleEn;
-                return `
-                    <div class="news-card" onclick="openNewsModal(${news.id})">
-                        <img class="news-img" src="${news.image}" alt="${title}" onerror="this.src='https://placehold.co/600x400?text=News+Image'">
-                        <div class="news-content">
-                            <div class="news-title">${title}</div>
-                            <div class="news-meta">
-                                <div class="admin-info">
-                                    <img class="admin-avatar" src="images/Khamoosh.jpg" alt="admin" onerror="this.src='https://placehold.co/32x32?text=SK'">
-                                    <span>${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span>
-                                </div>
-                                <span>📅 ${news.date}</span>
-                            </div>
-                        </div>
-                    </div>
-                `;
-            }).join('');
-        }
-
-        function openNewsModal(id) {
-            const news = newsData.find(function(n) { return n.id === id; });
-            if (!news) return;
-            const modal = document.getElementById('newsModal');
-            const content = document.getElementById('modalContent');
-            const title = currentLang === 'fa' ? news.titleFa : news.titleEn;
-            const fullText = currentLang === 'fa' ? news.fullTextFa : news.fullTextEn;
-            content.innerHTML = `
-                <h2 class="modal-title">${title}</h2>
-                <div class="modal-meta">
-                    <div class="admin-info">
-                        <img class="admin-avatar" src="images/Khamoosh.jpg" alt="admin" onerror="this.src='https://placehold.co/32x32?text=SK'">
-                        <span>${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span>
-                    </div>
-                    <span>📅 ${news.date}</span>
-                </div>
-                <div class="modal-content-text">${fullText.replace(/\n/g, '<br>')}</div>
-            `;
-            modal.style.display = 'flex';
-        }
-
-        function closeNewsModal() {
-            document.getElementById('newsModal').style.display = 'none';
-        }
-
-        // ================================================================
-        // 8. ناوبری بین صفحات
-        // ================================================================
-        function navigateTo(page) {
-            // مخفی کردن همه صفحات
-            document.querySelectorAll('.page').forEach(function(p) { p.classList.remove('active'); });
-
-            // نمایش صفحه مورد نظر
-            const target = document.getElementById('page-' + page);
-            if (target) target.classList.add('active');
-
-            // به‌روزرسانی منوی بالا
-            document.querySelectorAll('.nav-menu a').forEach(function(link) {
-                link.classList.remove('active');
-                if (link.getAttribute('data-page') === page) {
-                    link.classList.add('active');
-                }
-            });
-
-            // به‌روزرسانی نوار پایین
-            document.querySelectorAll('.bottom-nav .nav-item').forEach(function(item) {
-                item.classList.remove('active');
-                if (item.getAttribute('data-page') === page) {
-                    item.classList.add('active');
-                }
-            });
-
-            // بستن منوی موبایل
-            document.getElementById('navMenu').classList.remove('open');
-
-            // رندر محتوای صفحات در صورت نیاز
-            if (page === 'home') renderHomePoems();
-            if (page === 'about') updateAboutPage();
-            if (page === 'poems') renderPoemsCategories();
-            if (page === 'news') renderNews();
-
-            // ذخیره در localStorage
-            localStorage.setItem('currentPage', page);
-        }
-
-        // ================================================================
-        // 9. تم و زبان
-        // ================================================================
-        function initTheme() {
-            const saved = localStorage.getItem('sarfraz_theme');
-            const body = document.body;
-            const themeIcon = document.getElementById('themeIcon');
-            if (saved === 'dark') {
-                body.classList.add('dark');
-                themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
-            } else {
-                body.classList.remove('dark');
-                themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-            }
-        }
-
-        function toggleTheme() {
-            const body = document.body;
-            const themeIcon = document.getElementById('themeIcon');
-            if (body.classList.contains('dark')) {
-                body.classList.remove('dark');
-                themeIcon.innerHTML = '<circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>';
-                localStorage.setItem('sarfraz_theme', 'light');
-            } else {
-                body.classList.add('dark');
-                themeIcon.innerHTML = '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>';
-                localStorage.setItem('sarfraz_theme', 'dark');
-            }
-        }
-
-        function setLanguage(lang) {
-            currentLang = lang;
-            localStorage.setItem('sarfraz_lang', lang);
-
-            // به‌روزرسانی برچسب زبان
-            document.getElementById('currentLangLabel').innerText = lang === 'fa' ? 'فارسی' : 'English';
-
-            // به‌روزرسانی منو
-            document.querySelectorAll('.nav-menu a').forEach(function(link) {
-                const span = link.querySelector('span');
-                if (span) {
-                    span.innerText = lang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
-                }
-            });
-
-            // به‌روزرسانی برچسب کنار لوگو
-            const tag = document.querySelector('.site-tag');
-            if (tag) {
-                tag.innerText = lang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
-            }
-
-            // به‌روزرسانی فوتر
-            document.getElementById('footerCopy').innerHTML = lang === 'fa' ? '© 2026 سرفراز خموش | تمام حقوق محفوظ است' : '© 2026 Sarfraz Khamoosh | All Rights Reserved';
-
-            // به‌روزرسانی نوار پایین
-            document.querySelectorAll('.bottom-nav .nav-item span').forEach(function(span) {
-                const parent = span.closest('.nav-item');
-                const page = parent.getAttribute('data-page');
-                const labels = { about: { fa: 'درباره', en: 'About' }, poems: { fa: 'اشعار', en: 'Poems' }, profile: { fa: 'پروفایل', en: 'Profile' }, settings: { fa: 'تنظیمات', en: 'Settings' } };
-                if (labels[page]) {
-                    span.innerText = labels[page][lang];
-                }
-            });
-
-            // رندر مجدد محتوای صفحات
-            const activePage = document.querySelector('.page.active');
-            if (activePage) {
-                const id = activePage.id.replace('page-', '');
-                if (id === 'home') renderHomePoems();
-                if (id === 'about') updateAboutPage();
-                if (id === 'poems') renderPoemsCategories();
-                if (id === 'news') renderNews();
-            }
-        }
-
-        // ================================================================
-        // 10. منوی موبایل
-        // ================================================================
-        function initMobileMenu() {
-            const hamburger = document.getElementById('hamburgerBtn');
-            const navMenu = document.getElementById('navMenu');
-            if (!hamburger || !navMenu) return;
-            hamburger.addEventListener('click', function(e) {
-                e.stopPropagation();
-                navMenu.classList.toggle('open');
-            });
-            document.addEventListener('click', function(e) {
-                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) {
-                    navMenu.classList.remove('open');
-                }
-            });
-        }
-
-        // ================================================================
-        // 11. انتخاب زبان
-        // ================================================================
-        function initLanguage() {
-            const selector = document.getElementById('langSelector');
-            const btn = document.getElementById('langBtn');
-            if (!selector || !btn) return;
-            btn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                selector.classList.toggle('open');
-            });
-            document.addEventListener('click', function(e) {
-                if (!selector.contains(e.target)) selector.classList.remove('open');
-            });
-            document.querySelectorAll('.lang-option').forEach(function(opt) {
-                opt.addEventListener('click', function() {
-                    const lang = this.getAttribute('data-lang');
-                    if (lang) setLanguage(lang);
-                    selector.classList.remove('open');
-                });
-            });
-        }
-
-        // ================================================================
-        // 12. مودال UID
-        // ================================================================
-        function initUidModal() {
-            const modal = document.getElementById('uidModal');
-            const codmBtn = document.getElementById('codmBtn');
-            const copyUidBtn = document.getElementById('copyUidBtn');
-            const closeModalBtn = document.getElementById('closeModalBtn');
-
-            function openModal() { modal.style.display = 'flex'; }
-            function closeModal() { modal.style.display = 'none'; }
-            function copyUid() {
-                navigator.clipboard.writeText('7500139701825634305');
-                showToast(currentLang === 'fa' ? '✅ UID کپی شد!' : '✅ UID copied!');
-                closeModal();
-            }
-
-            if (codmBtn) codmBtn.addEventListener('click', openModal);
-            if (copyUidBtn) copyUidBtn.addEventListener('click', copyUid);
-            if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
-            if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
-        }
-
-        // ================================================================
-        // 13. مقداردهی اولیه
-        // ================================================================
-        document.addEventListener('DOMContentLoaded', function() {
-            // زبان
-            const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
-            setLanguage(savedLang);
-
-            // تم
-            initTheme();
-
-            // منو
-            initMobileMenu();
-            initLanguage();
-
-            // مودال‌ها
-            initUidModal();
-
-            // دکمه تم
-            document.getElementById('themeBtn').addEventListener('click', toggleTheme);
-
-            // بستن مودال اخبار
-            document.getElementById('modalCloseBtn').addEventListener('click', closeNewsModal);
-            document.getElementById('newsModal').addEventListener('click', function(e) {
-                if (e.target === this) closeNewsModal();
-            });
-
-            // صفحه ذخیره‌شده یا پیش‌فرض
-            const savedPage = localStorage.getItem('currentPage') || 'home';
-            navigateTo(savedPage);
-        });
-    </script>
-</body>
-
-    </html>
+            { nameFa: "طراحی رابط و تجربه کاربری (UI/UX)", nameEn: "UI/UX Design", icon: "i
