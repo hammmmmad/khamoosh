@@ -4,13 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سرفراز خموش | Sarfraz Khamoosh</title>
-
-    <!-- Font Awesome 6 (آیکون‌های حرفه‌ای) -->
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Google Fonts (وزیرمتن + اینتر) -->
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-
-    <!-- ===== متا تگ‌های سئو ===== -->
+    <!-- SEO Meta -->
     <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
     <meta name="keywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, مهاجرت, اشعار, افغانستان, مزار شریف" />
     <meta name="author" content="سرفراز خموش" />
@@ -21,8 +19,7 @@
     <meta property="og:url" content="https://khamoosh.abrdns.com" />
     <meta name="theme-color" content="#8b5cf6" />
     <link rel="icon" type="image/png" href="images/Kham.png" />
-
-    <!-- ===== داده‌های ساختاریافته (JSON-LD) ===== -->
+    <!-- Schema.org -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -45,9 +42,8 @@
             ]
         }
     </script>
-
     <style>
-        /* ===== ریست و پایه ===== */
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -71,7 +67,7 @@
             padding: 1.5rem 1.2rem;
         }
 
-        /* ===== کارت شیشه‌ای ===== */
+        /* ===== GLASS CARD ===== */
         .glass {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(18px);
@@ -93,45 +89,7 @@
             box-shadow: 0 28px 60px rgba(0, 0, 0, 0.07);
         }
 
-        /* ===== هدر ===== */
-        .brand-header {
-            display: flex;
-            align-items: center;
-            gap: 1.2rem;
-            margin-bottom: 2rem;
-            cursor: default;
-        }
-        .brand-header img {
-            width: 72px;
-            height: 72px;
-            border-radius: 50%;
-            border: 3px solid #8b5cf6;
-            object-fit: cover;
-            box-shadow: 0 8px 28px rgba(139, 92, 246, 0.25);
-            transition: 0.3s;
-        }
-        .brand-header img:hover {
-            transform: scale(1.04) rotate(-2deg);
-        }
-        .brand-header h1 {
-            font-family: 'Inter', sans-serif;
-            font-weight: 800;
-            font-size: 2rem;
-            letter-spacing: -0.5px;
-            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
-        .brand-header span {
-            font-size: 0.85rem;
-            opacity: 0.6;
-            font-weight: 300;
-            display: block;
-            -webkit-text-fill-color: initial;
-            color: inherit;
-        }
-
-        /* ===== صفحات ===== */
+        /* ===== PAGES ===== */
         .page {
             display: none;
             animation: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -144,9 +102,9 @@
             100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* ================================================================
-           نوار ناوبری پایین (با نام زیر آیکن‌ها، خانه بزرگ و گلابی)
-           ================================================================ */
+        /* ============================================================
+           BOTTOM NAVIGATION (8 ITEMS, HOME BIGGER PURPLE WITH ANIMATION)
+           ============================================================ */
         .bottom-nav-wrapper {
             position: fixed;
             bottom: 24px;
@@ -163,17 +121,17 @@
             backdrop-filter: blur(24px);
             -webkit-backdrop-filter: blur(24px);
             border-radius: 50px;
-            padding: 10px 18px;
+            padding: 8px 14px;
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08), 0 6px 18px rgba(0, 0, 0, 0.02);
             border: 1px solid rgba(255, 255, 255, 0.5);
             display: flex;
             align-items: flex-end;
             justify-content: space-around;
-            max-width: 640px;
+            max-width: 720px;
             width: calc(100% - 32px);
-            height: 82px;
+            height: 76px;
             transition: background 0.4s, border-color 0.4s;
-            gap: 2px;
+            gap: 1px;
             position: relative;
         }
         body.dark .bottom-nav {
@@ -195,24 +153,24 @@
             transition: color 0.25s, transform 0.2s;
             padding: 4px 8px;
             border-radius: 30px;
-            min-width: 48px;
+            min-width: 44px;
             cursor: pointer;
             background: transparent;
             border: none;
             font-family: 'Vazirmatn', 'Inter', sans-serif;
             gap: 3px;
             flex: 1;
-            height: 68px;
+            height: 64px;
             position: relative;
         }
         .nav-item i {
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: all 0.25s;
             display: block;
             color: currentColor;
         }
         .nav-item span {
-            font-size: 0.5rem;
+            font-size: 0.48rem;
             letter-spacing: 0.4px;
             opacity: 0.8;
             line-height: 1.2;
@@ -242,13 +200,13 @@
             transform: scale(0.92);
         }
 
-        /* ===== دکمه خانه (بزرگ‌تر، رنگ گلابی، افکت نرم) ===== */
+        /* ===== دکمه خانه (بزرگ‌تر، رنگ گلابی، انیمیشن نرم) ===== */
         .nav-item-home {
             position: relative;
             top: -22px;
-            flex: 0 0 80px;
-            height: 80px;
-            min-width: 80px;
+            flex: 0 0 76px;
+            height: 76px;
+            min-width: 76px;
             background: linear-gradient(145deg, #c084fc, #8b5cf6);
             border-radius: 50%;
             box-shadow: 0 16px 38px rgba(139, 92, 246, 0.4);
@@ -263,6 +221,7 @@
             flex-shrink: 0;
             margin-top: -8px;
             gap: 2px;
+            animation: homePulse 2.5s ease-in-out infinite;
         }
         body.dark .nav-item-home {
             background: linear-gradient(145deg, #a78bfa, #7c3aed);
@@ -271,14 +230,14 @@
             color: #ffffff;
         }
         .nav-item-home i {
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             display: block;
             color: inherit;
             transition: 0.3s;
             line-height: 1;
         }
         .nav-item-home span {
-            font-size: 0.5rem;
+            font-size: 0.48rem;
             letter-spacing: 0.4px;
             opacity: 0.9;
             font-weight: 600;
@@ -290,13 +249,21 @@
         .nav-item-home:hover {
             transform: scale(1.08) translateY(-3px);
             box-shadow: 0 22px 48px rgba(139, 92, 246, 0.5);
+            animation: none;
         }
         .nav-item-home:active {
             transform: scale(0.92);
             box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
         }
 
-        /* ===== صفحه خانه (اشعار) ===== */
+        @keyframes homePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        /* ============================================================
+           PAGE: HOME (POEMS)
+           ============================================================ */
         .poems-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -335,14 +302,14 @@
             color: #e0e0ea;
             margin-bottom: 1rem;
         }
-        .poem-card .actions {
+        .card-actions {
             display: flex;
             gap: 1rem;
             margin-top: 0.2rem;
             flex-wrap: wrap;
             justify-content: center;
         }
-        .poem-card .actions button {
+        .card-actions button {
             background: rgba(255, 255, 255, 0.05);
             border: none;
             padding: 6px 16px;
@@ -356,12 +323,12 @@
             cursor: pointer;
             transition: 0.25s;
         }
-        .poem-card .actions button:hover {
+        .card-actions button:hover {
             background: rgba(139, 92, 246, 0.25);
             color: #fff;
             transform: translateY(-2px);
         }
-        .poem-card .actions button i {
+        .card-actions button i {
             font-size: 0.9rem;
         }
         .like-btn.liked {
@@ -369,7 +336,9 @@
             color: #f87171 !important;
         }
 
-        /* ===== درباره ===== */
+        /* ============================================================
+           PAGE: ABOUT
+           ============================================================ */
         .about-intro {
             text-align: center;
             margin-bottom: 2rem;
@@ -461,7 +430,9 @@
             font-size: 1rem;
         }
 
-        /* ===== پروفایل ===== */
+        /* ============================================================
+           PAGE: PROFILE (با لینک‌های اجتماعی)
+           ============================================================ */
         .profile-layout {
             display: grid;
             grid-template-columns: 1fr 1.8fr;
@@ -533,8 +504,37 @@
             font-weight: 400;
             margin-right: 4px;
         }
+        /* لینک‌های اجتماعی در پروفایل (جایگزین فوتر) */
+        .profile-social {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .profile-social a {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: inherit;
+            font-size: 1.2rem;
+            transition: 0.25s;
+            text-decoration: none;
+            border: 1px solid rgba(139, 92, 246, 0.1);
+        }
+        .profile-social a:hover {
+            background: #8b5cf6;
+            color: #fff;
+            transform: translateY(-4px);
+        }
 
-        /* ===== دسته‌بندی اشعار ===== */
+        /* ============================================================
+           PAGE: POEMS CATEGORIES
+           ============================================================ */
         .categories-bar {
             display: flex;
             flex-wrap: wrap;
@@ -576,7 +576,9 @@
             border-right: 4px solid #8b5cf6;
         }
 
-        /* ===== مهاجرت ===== */
+        /* ============================================================
+           PAGE: IMMIGRATION
+           ============================================================ */
         .imm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -655,7 +657,9 @@
             50% { transform: scale(1.12); }
         }
 
-        /* ===== اخبار فناوری ===== */
+        /* ============================================================
+           PAGE: TECH NEWS
+           ============================================================ */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -703,7 +707,58 @@
             margin-top: 0.6rem;
         }
 
-        /* ===== تنظیمات ===== */
+        /* ============================================================
+           PAGE: GALLERY
+           ============================================================ */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            border-radius: 1.8rem;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            transition: 0.35s;
+            border: 2px solid transparent;
+            background: rgba(0,0,0,0.02);
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: #8b5cf6;
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            padding: 1rem;
+            color: #fff;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* ============================================================
+           PAGE: SETTINGS
+           ============================================================ */
         .settings-row {
             display: flex;
             align-items: center;
@@ -779,7 +834,9 @@
             color: #8b5cf6;
         }
 
-        /* ===== مودال‌ها ===== */
+        /* ============================================================
+           MODALS
+           ============================================================ */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -802,11 +859,11 @@
             width: 100%;
             max-height: 85vh;
             overflow-y: auto;
-            padding: 2rem 2.5rem;
             direction: rtl;
             border: 1px solid rgba(255, 255, 255, 0.4);
             box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
             position: relative;
+            padding: 2rem 2.5rem;
         }
         body.dark .modal-box {
             background: rgba(16, 18, 34, 0.92);
@@ -845,86 +902,10 @@
             text-align: justify;
             font-size: 0.95rem;
         }
-        .modal-box code {
-            display: inline-block;
-            background: rgba(0, 0, 0, 0.04);
-            padding: 6px 18px;
-            border-radius: 16px;
-            font-family: 'Inter', monospace;
-            font-size: 1.1rem;
-            margin: 8px 0 14px;
-        }
-        .modal-box .modal-actions {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            margin-top: 1rem;
-        }
-        .modal-box .modal-actions button {
-            padding: 8px 28px;
-            border-radius: 40px;
-            border: none;
-            font-weight: 600;
-            cursor: pointer;
-            transition: 0.25s;
-            font-family: inherit;
-        }
-        .modal-box .modal-actions .primary {
-            background: #8b5cf6;
-            color: #fff;
-        }
-        .modal-box .modal-actions .primary:hover {
-            background: #7c3aed;
-            transform: scale(1.04);
-        }
-        .modal-box .modal-actions .secondary {
-            background: rgba(0, 0, 0, 0.04);
-            color: inherit;
-        }
 
-        /* ===== فوتر ===== */
-        .footer {
-            margin-top: 3rem;
-            padding: 1.5rem 0;
-            border-top: 1px solid rgba(0, 0, 0, 0.04);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
-        }
-        body.dark .footer {
-            border-top-color: rgba(255, 255, 255, 0.04);
-        }
-        .footer .social {
-            display: flex;
-            gap: 0.8rem;
-            align-items: center;
-        }
-        .footer .social a {
-            width: 42px;
-            height: 42px;
-            border-radius: 50%;
-            background: rgba(0, 0, 0, 0.02);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: inherit;
-            text-decoration: none;
-            transition: 0.25s;
-            font-size: 1.1rem;
-        }
-        .footer .social a:hover {
-            background: #8b5cf6;
-            color: #fff;
-            transform: translateY(-4px);
-        }
-        .footer .copy {
-            font-size: 0.7rem;
-            opacity: 0.5;
-        }
-
-        /* ===== اعلان‌ها ===== */
+        /* ============================================================
+           NOTIFICATIONS
+           ============================================================ */
         .toast-msg {
             position: fixed;
             bottom: 110px;
@@ -976,36 +957,38 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== واکنش‌گرایی ===== */
+        /* ============================================================
+           RESPONSIVE
+           ============================================================ */
         @media (max-width: 768px) {
             .container { padding: 1rem 0.8rem; }
-            .bottom-nav { height: 68px; padding: 6px 8px; border-radius: 36px; }
-            .nav-item { min-width: 38px; height: 56px; padding: 2px 4px; }
-            .nav-item i { font-size: 1.1rem; }
-            .nav-item span { font-size: 0.4rem; display: block !important; }
-            .nav-item-home { flex: 0 0 62px; height: 62px; min-width: 62px; top: -16px; }
-            .nav-item-home i { font-size: 1.8rem; }
-            .nav-item-home span { font-size: 0.4rem; display: block !important; }
+            .bottom-nav { height: 64px; padding: 6px 8px; border-radius: 36px; }
+            .nav-item { min-width: 34px; height: 52px; padding: 2px 4px; }
+            .nav-item i { font-size: 1rem; }
+            .nav-item span { font-size: 0.38rem; display: block !important; }
+            .nav-item-home { flex: 0 0 58px; height: 58px; min-width: 58px; top: -16px; }
+            .nav-item-home i { font-size: 1.6rem; }
+            .nav-item-home span { font-size: 0.38rem; display: block !important; }
             .profile-layout { grid-template-columns: 1fr; }
             .profile-details { grid-template-columns: 1fr; }
             .about-intro h2 { font-size: 1.8rem; }
             .doughnut { width: 90px; height: 90px; }
             .doughnut::after { width: 64px; height: 64px; }
             .imm-grid { grid-template-columns: 1fr; }
-            .brand-header h1 { font-size: 1.4rem; }
-            .brand-header img { width: 56px; height: 56px; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
             .modal-box { padding: 1.5rem 1.2rem; border-radius: 2rem; }
         }
         @media (max-width: 480px) {
-            .bottom-nav { padding: 4px 4px; gap: 0; border-radius: 28px; height: 60px; }
-            .nav-item { min-width: 28px; padding: 2px 2px; height: 48px; }
-            .nav-item i { font-size: 1.2rem; }
-            .nav-item span { font-size: 0.35rem; display: block !important; }
-            .nav-item-home { flex: 0 0 50px; height: 50px; min-width: 50px; top: -12px; }
-            .nav-item-home i { font-size: 1.6rem; }
-            .nav-item-home span { font-size: 0.35rem; display: block !important; }
+            .bottom-nav { padding: 4px 4px; gap: 0; border-radius: 28px; height: 56px; }
+            .nav-item { min-width: 26px; padding: 2px 2px; height: 46px; }
+            .nav-item i { font-size: 0.9rem; }
+            .nav-item span { font-size: 0.32rem; display: block !important; }
+            .nav-item-home { flex: 0 0 46px; height: 46px; min-width: 46px; top: -12px; }
+            .nav-item-home i { font-size: 1.4rem; }
+            .nav-item-home span { font-size: 0.32rem; display: block !important; }
             .poems-grid, .news-grid { grid-template-columns: 1fr; }
             .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
         }
     </style>
 </head>
@@ -1013,18 +996,11 @@
 
     <div class="container">
 
-        <!-- ===== HEADER ===== -->
-        <header class="brand-header">
-            <img src="images/Khamoosh.jpg" alt="سرفراز خموش" onerror="this.src='https://placehold.co/72x72?text=SK'" />
-            <div>
-                <h1>Sarfraz Khamoosh</h1>
-                <span>برنامه‌نویس · طراح گرافیک · مشاور مهاجرت</span>
-            </div>
-        </header>
+        <!-- ============================================================
+             PAGES
+             ============================================================ -->
 
-        <!-- ===== صفحات ===== -->
-
-        <!-- خانه -->
+        <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-feather-alt" style="color:#8b5cf6;"></i> اشعار کوتاه
@@ -1032,7 +1008,7 @@
             <div class="poems-grid" id="poemsGrid"></div>
         </div>
 
-        <!-- درباره -->
+        <!-- ===== ABOUT ===== -->
         <div class="page" id="page-about">
             <div class="about-intro">
                 <h2>Sarfraz Khamoosh</h2>
@@ -1059,7 +1035,7 @@
             </div>
         </div>
 
-        <!-- اشعار دسته‌بندی -->
+        <!-- ===== POEMS CATEGORIES ===== -->
         <div class="page" id="page-poems">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-book-open" style="color:#8b5cf6;"></i> دسته‌بندی اشعار
@@ -1068,7 +1044,7 @@
             <div id="categoriesContainer"></div>
         </div>
 
-        <!-- پروفایل -->
+        <!-- ===== PROFILE (با لینک‌های اجتماعی) ===== -->
         <div class="page" id="page-profile">
             <div class="profile-layout">
                 <div class="profile-card">
@@ -1081,6 +1057,22 @@
                         <div class="item"><i class="fas fa-map-marker-alt"></i> زادگاه <span>مزار شریف</span></div>
                         <div class="item"><i class="fas fa-location-dot"></i> موقعیت <span>ازبکستان</span></div>
                         <div class="item"><i class="fas fa-graduation-cap"></i> مدرک <span>لیسانس</span></div>
+                    </div>
+                    <!-- لینک‌های اجتماعی (جایگزین فوتر) -->
+                    <div class="profile-social">
+                        <a href="https://www.facebook.com/profile.php?id=61590217606266" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.instagram.com/admin_khamoosh" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://github.com/hammmmmad" target="_blank"><i class="fab fa-github"></i></a>
+                        <a href="https://pin.it/WY1aeKX2a" target="_blank"><i class="fab fa-pinterest"></i></a>
+                        <a href="https://www.behance.net/merlinsarfraz" target="_blank"><i class="fab fa-behance"></i></a>
+                        <a href="https://wa.me/qr/E2RLH5T72CSFE1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                        <a href="https://www.tiktok.com/@sarfraz_khamoosh" target="_blank"><i class="fab fa-tiktok"></i></a>
+                        <a href="https://khamoooooosh675.substack.com" target="_blank"><i class="fas fa-newspaper"></i></a>
+                        <a href="https://www.threads.com/@sarfraz_khamoosh23" target="_blank"><i class="fab fa-threads"></i></a>
+                        <div id="codmBtn" style="cursor:pointer; width:44px; height:44px; border-radius:50%; background:rgba(255,255,255,0.2); display:flex; align-items:center; justify-content:center; font-size:1.2rem; transition:0.25s; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-gamepad" style="color:#8b5cf6;"></i>
+                        </div>
                     </div>
                 </div>
                 <div class="glass" style="padding:1.8rem;">
@@ -1111,7 +1103,7 @@
             </div>
         </div>
 
-        <!-- تنظیمات -->
+        <!-- ===== SETTINGS ===== -->
         <div class="page" id="page-settings">
             <div class="glass">
                 <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:1.5rem;">
@@ -1139,7 +1131,7 @@
             </div>
         </div>
 
-        <!-- مهاجرت -->
+        <!-- ===== IMMIGRATION ===== -->
         <div class="page" id="page-immigration">
             <div class="glass">
                 <h3 style="display:flex; align-items:center; gap:12px; font-weight:700;">
@@ -1152,7 +1144,7 @@
             </div>
         </div>
 
-        <!-- اخبار فناوری -->
+        <!-- ===== TECH NEWS ===== -->
         <div class="page" id="page-technews">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-newspaper" style="color:#8b5cf6;"></i> اخبار فناوری
@@ -1160,23 +1152,17 @@
             <div class="news-grid" id="newsGrid"></div>
         </div>
 
-        <!-- ===== FOOTER ===== -->
-        <footer class="footer">
-            <div class="copy">© 2026 سرفراز خموش · تمام حقوق محفوظ است</div>
-            <div class="social">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fab fa-linkedin-in"></i></a>
-                <a href="#"><i class="fab fa-github"></i></a>
-                <div id="codmBtn" style="cursor:pointer; width:42px; height:42px; border-radius:50%; background:rgba(0,0,0,0.02); display:flex; align-items:center; justify-content:center; transition:0.25s;">
-                    <i class="fas fa-gamepad" style="font-size:1.2rem;"></i>
-                </div>
-            </div>
-        </footer>
+        <!-- ===== GALLERY ===== -->
+        <div class="page" id="page-gallery">
+            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-images" style="color:#8b5cf6;"></i> گالری تصاویر
+            </h2>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
 
-    </div>
+    </div> <!-- end container -->
 
-    <!-- ===== مودال‌ها ===== -->
+    <!-- ===== MODALS ===== -->
     <div id="newsModal" class="modal-overlay">
         <div class="modal-box">
             <button class="close" id="modalCloseBtn"><i class="fas fa-times"></i></button>
@@ -1189,15 +1175,17 @@
             <button class="close" id="closeUidModal"><i class="fas fa-times"></i></button>
             <h3 style="font-size:1.5rem; margin-bottom:0.5rem;"><i class="fas fa-gamepad" style="color:#8b5cf6;"></i> کال‌آف دیوتی موبایل</h3>
             <p>UID من :</p>
-            <code>7500139701825634305</code>
-            <div class="modal-actions">
-                <button class="primary" id="copyUidBtn"><i class="fas fa-copy"></i> کپی</button>
-                <button class="secondary" id="closeUidModalBtn">بستن</button>
+            <code style="display:inline-block; background:rgba(0,0,0,0.04); padding:6px 18px; border-radius:16px; font-family:'Inter',monospace; font-size:1.1rem; margin:8px 0 14px;">7500139701825634305</code>
+            <div class="modal-actions" style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
+                <button class="primary" id="copyUidBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:#8b5cf6; color:#fff; transition:0.25s; font-family:inherit;">📋 کپی</button>
+                <button class="secondary" id="closeUidModalBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:rgba(0,0,0,0.04); color:inherit; transition:0.25s; font-family:inherit;">بستن</button>
             </div>
         </div>
     </div>
 
-    <!-- ===== نوار ناوبری پایین (نام‌دار، خانه گلابی بزرگ) ===== -->
+    <!-- ============================================================
+         BOTTOM NAVIGATION (8 ITEMS, HOME BIGGER & CENTER with data-page)
+         ============================================================ -->
     <div class="bottom-nav-wrapper">
         <nav class="bottom-nav" id="bottomNav">
             <button class="nav-item" data-page="about" onclick="navigateTo('about')">
@@ -1208,12 +1196,11 @@
                 <i class="fas fa-book"></i>
                 <span id="label-poems">اشعار</span>
             </button>
-
-            <button class="nav-item-home" onclick="navigateTo('home')" aria-label="خانه">
+            <!-- خانه با data-page="home" برای active شدن -->
+            <button class="nav-item-home" data-page="home" onclick="navigateTo('home')" aria-label="خانه">
                 <i class="fas fa-home"></i>
                 <span id="label-home">خانه</span>
             </button>
-
             <button class="nav-item" data-page="profile" onclick="navigateTo('profile')">
                 <i class="fas fa-id-card"></i>
                 <span id="label-profile">پروفایل</span>
@@ -1230,13 +1217,22 @@
                 <i class="fas fa-microchip"></i>
                 <span id="label-technews">فناوری</span>
             </button>
+            <button class="nav-item" data-page="gallery" onclick="navigateTo('gallery')">
+                <i class="fas fa-images"></i>
+                <span id="label-gallery">گالری</span>
+            </button>
         </nav>
     </div>
 
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
     <script>
-        // ============================================================
-        // 1. داده‌ها
-        // ============================================================
+        // ================================================================
+        // 1. DATA
+        // ================================================================
+
+        // اشعار صفحه خانه
         const poemsList = [
             { id: 0, typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
             { id: 1, typeFa: "شعر نو", typeEn: "Modern Poetry", textFa: "پرنده‌ای در قفس سینه‌ام\nبال می‌زند برای پرواز\nاما آسمان این دیار\nدیگر آبی نیست", textEn: "A bird in the cage of my chest\nFlutters its wings for flight\nBut the sky of this land\nIs no longer blue" },
@@ -1246,6 +1242,7 @@
             { id: 5, typeFa: "رباعی معاصر", typeEn: "Contemporary Rubai", textFa: "می‌سوزم اما از سوختن پشیمان نیستم\nپروانه صفت گرد تو گردان نیستم\nمن شمعم و شب، تمام شب\nتا صبح اگر بسوزم\nبه یک لبخند تو\nارزان نیستم", textEn: "I burn but do not regret burning\nI am not a moth circling around you\nI am a candle, and the night, all night\nIf I burn until dawn\nFor one smile of yours\nI am not cheap" }
         ];
 
+        // دسته‌بندی اشعار
         const categoriesData = {
             mystical: { fa: "عارفانه", en: "Mystical" },
             romantic: { fa: "عاشقانه", en: "Romantic" },
@@ -1261,6 +1258,7 @@
             heavy: [{ id: 500, textFa: "در دل شب سرد زمستان، که برف خاطرات می‌بارید، او تنها نشسته بود و به دیوار خاموش اتاق خیره. هیچ صدایی نیست، جز ضربان نبض تنهایی که هر لحظه سنگین‌تر می‌شود. تمام وجودش را سوالی پر کرده بود: آیا بعد از این همه راه، هنوز می‌توان به آغاز بازگشت؟", textEn: "In the cold winter night, as the snow of memories fell, he sat alone, staring at the silent wall of the room. There was no sound, except the heartbeat of loneliness growing heavier each moment. A question filled his entire being: after all this way, can one still return to the beginning?" }]
         };
 
+        // درباره
         const specialties = [
             { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev" },
             { fa: "طراحی و توسعه وب‌سایت", en: "Web Design & Dev" },
@@ -1270,7 +1268,6 @@
             { fa: "مشاوره مهاجرت", en: "Immigration Consulting" },
             { fa: "مربیگری فیتنس", en: "Fitness Coaching" }
         ];
-
         const skillsData = [
             { name: "Photoshop", pct: 85 },
             { name: "Illustrator", pct: 90 },
@@ -1282,6 +1279,7 @@
             { name: "InDesign", pct: 50 }
         ];
 
+        // مهاجرت
         const immigrationPrograms = [
             { id: 'siv', fa: "برنامه SIV", en: "SIV Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۰" },
             { id: 'p1', fa: "برنامه P1", en: "P1 Program", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۱۸" },
@@ -1298,44 +1296,45 @@
             { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال", statusEn: "Active", date: "۲۰۲۶-۰۶-۲۴" }
         ];
 
+        // اخبار فناوری (کامل)
         const newsData = [{
             id: 1,
             fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد",
             en: "Google Raises $85B for AI",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/google.jpg",
-            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...",
-            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..."
+            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند؛ رقمی که از آن به‌عنوان یکی از بزرگ‌ترین جذب سرمایه‌های تاریخ بازار سهام یاد می‌شود. بر اساس گزارش منتشرشده، این شرکت در ابتدا قصد داشت ۴۰ میلیارد دلار سهام عرضه کند، اما استقبال گسترده سرمایه‌گذاران باعث شد میزان سرمایه جذب‌شده در مرحله نخست به ۴۵ میلیارد دلار افزایش یابد. آلفابت همچنین اعلام کرده است که قصد دارد در سه‌ماهه آینده ۴۰ میلیارد دلار دیگر نیز از طریق فروش سهام جذب کند. Sundar Pichai، مدیرعامل گوگل، اعلام کرده است که این سرمایه بخشی از برنامه چندساله شرکت برای توسعه زیرساخت‌های هوش مصنوعی و پاسخ به افزایش تقاضای کاربران و شرکت‌ها برای خدمات مبتنی بر AI خواهد بود. گوگل پیش‌تر در کنفرانس سالانه خود اعلام کرده بود که تا پایان سال ۲۰۲۶ بین ۱۸۰ تا ۱۹۰ میلیارد دلار در بخش زیرساخت‌های هوش مصنوعی، مراکز داده و توان پردازشی سرمایه‌گذاری خواهد کرد. تحلیلگران معتقدند این جذب سرمایه بی‌سابقه نشان می‌دهد که اعتماد سرمایه‌گذاران به آینده صنعت هوش مصنوعی همچنان بسیار بالا است.",
+            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion through a large stock offering to fund artificial intelligence projects — a figure described as one of the largest capital raises in stock market history. According to the report, the company initially planned to offer $40 billion in shares, but strong investor demand increased the first-phase raise to $45 billion. Alphabet also announced it intends to raise another $40 billion through stock sales in the next quarter. Sundar Pichai, Google's CEO, stated that this capital is part of the company's multi-year plan to develop AI infrastructure and meet growing user and business demand for AI-powered services. Earlier at its annual conference, Google had announced it would invest between $180 billion and $190 billion by the end of 2026 in AI infrastructure, data centers, and computing power. Analysts believe this unprecedented capital raise shows that investor confidence in the future of the AI industry remains very high."
         }, {
             id: 2,
             fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد",
             en: "Startup Lovable Expands Google Partnership",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/ai.jpg",
-            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...",
-            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..."
+            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است. بر اساس این توافق، میزان استفاده Lovable از زیرساخت‌های ابری و خدمات هوش مصنوعی گوگل تا پنج برابر افزایش خواهد یافت. هرچند ارزش مالی این قرارداد اعلام نشده، اما منابع آگاه به TechCrunch گفته‌اند که Lovable دسترسی گسترده‌تری به مدل‌های هوش مصنوعی Anthropic، از جمله مدل Claude، و همچنین مدل‌های Gemini گوگل دریافت خواهد کرد. Lovable یکی از سریع‌ترین شرکت‌های در حال رشد اروپا محسوب می‌شود. این شرکت اعلام کرده است که در ماه فبروری سال جاری درآمد سالانه آن به بیش از ۴۰۰ میلیون دلار رسیده و تنها در یک ماه ۱۰۰ میلیون دلار به درآمد خود افزوده است.",
+            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud. Under the deal, Lovable's use of Google's cloud infrastructure and AI services will increase up to fivefold. Although the financial value was not disclosed, sources told TechCrunch that Lovable will gain broader access to Anthropic's AI models, including Claude, as well as Google's Gemini models. Lovable is one of Europe's fastest-growing companies. It announced that its annual recurring revenue exceeded $400 million in February of this year, adding $100 million in just one month — achieved with only 146 employees."
         }, {
             id: 3,
             fa: "متا بازی VR «Supernatural» را نجات داد",
             en: "Meta Rescues VR Game 'Supernatural'",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/meta.jpg",
-            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...",
-            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..."
+            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد. متا در سال ۲۰۲۳ استودیوی Within، سازنده Supernatural، را پس از یک نبرد حقوقی طولانی با نهادهای ضدانحصار خریداری کرده بود. ارزش این معامله حدود ۴۰۰ میلیون دلار برآورد شده بود. با این حال، متا در اوایل سال جاری بخش بزرگی از تیم واقعیت مجازی خود را تعدیل کرد و اعلام نمود که دیگر محتوای جدیدی برای Supernatural تولید نخواهد شد. این تصمیم با واکنش منفی کاربران مواجه شد و بسیاری از طرفداران نگران تعطیلی کامل این برنامه بودند. اکنون متا تصمیم گرفته است مالکیت و توسعه این اپلیکیشن را به شرکت تازه‌تأسیس Supernatural Health واگذار کند.",
+            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down but instead transferred to a new independent company. Meta had acquired Within, the studio behind Supernatural, in 2023 after a long antitrust battle. The deal was valued at around $400 million. However, early this year, Meta laid off a large part of its VR team and said it would no longer produce new content for Supernatural. The decision was met with backlash from users, who feared the app would be completely discontinued. Now Meta has decided to transfer ownership and development of the app to a newly formed company, Supernatural Health."
         }];
 
-        // ============================================================
-        // 2. وضعیت
-        // ============================================================
+        // ================================================================
+        // 2. STATE
+        // ================================================================
         let currentLang = 'fa';
         let currentPage = 'home';
         let likesHome = JSON.parse(localStorage.getItem('poem_likes')) || {};
         let likesCat = JSON.parse(localStorage.getItem('poems_likes')) || {};
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
 
-        // ============================================================
-        // 3. توابع کمکی
-        // ============================================================
+        // ================================================================
+        // 3. HELPERS
+        // ================================================================
         function toast(msg) {
             let el = document.querySelector('.toast-msg');
             if (el) el.remove();
@@ -1355,17 +1354,20 @@
                 toast('متن برای اشتراک کپی شد'); }
         }
 
-        // ============================================================
-        // 4. ناوبری و سئو
-        // ============================================================
+        // ================================================================
+        // 4. NAVIGATION & SEO
+        // ================================================================
         function navigateTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
             if (target) target.classList.add('active');
 
+            // به‌روزرسانی active در نوار ناوبری (برای دکمه خانه هم کار می‌کند چون data-page دارد)
             document.querySelectorAll('.bottom-nav .nav-item, .bottom-nav .nav-item-home').forEach(el => {
                 el.classList.remove('active');
-                if (el.getAttribute('data-page') === page) el.classList.add('active');
+                if (el.getAttribute('data-page') === page) {
+                    el.classList.add('active');
+                }
             });
 
             if (page === 'home') renderHome();
@@ -1373,6 +1375,7 @@
             if (page === 'poems') renderPoemsCategories();
             if (page === 'immigration') renderImmigration();
             if (page === 'technews') renderNews();
+            if (page === 'gallery') renderGallery();
 
             currentPage = page;
             localStorage.setItem('currentPage', page);
@@ -1380,26 +1383,28 @@
         }
 
         function updateSEO(page) {
-            const map = {
+            const titles = {
                 home: { fa: 'سرفراز خموش | صفحه اصلی', en: 'Sarfraz Khamoosh | Home' },
                 about: { fa: 'درباره من | سرفراز خموش', en: 'About | Sarfraz Khamoosh' },
                 poems: { fa: 'اشعار | سرفراز خموش', en: 'Poems | Sarfraz Khamoosh' },
                 profile: { fa: 'پروفایل | سرفراز خموش', en: 'Profile | Sarfraz Khamoosh' },
                 settings: { fa: 'تنظیمات | سرفراز خموش', en: 'Settings | Sarfraz Khamoosh' },
                 immigration: { fa: 'مهاجرت آمریکا | سرفراز خموش', en: 'US Immigration | Sarfraz Khamoosh' },
-                technews: { fa: 'اخبار فناوری | سرفراز خموش', en: 'Tech News | Sarfraz Khamoosh' }
+                technews: { fa: 'اخبار فناوری | سرفراز خموش', en: 'Tech News | Sarfraz Khamoosh' },
+                gallery: { fa: 'گالری | سرفراز خموش', en: 'Gallery | Sarfraz Khamoosh' }
             };
-            const descMap = {
-                home: { fa: 'سایت رسمی سرفراز خموش، برنامه‌نویس و طراح گرافیک', en: 'Official site of Sarfraz Khamoosh, developer & graphic designer' },
+            const descs = {
+                home: { fa: 'سایت رسمی سرفراز خموش، برنامه‌نویس و طراح گرافیک', en: 'Official site of Sarfraz Khamoosh, developer & designer' },
                 about: { fa: 'بیوگرافی و تخصص‌های سرفراز خموش', en: 'Biography & specialties of Sarfraz Khamoosh' },
                 poems: { fa: 'مجموعه اشعار عارفانه و عاشقانه', en: 'Collection of mystical & romantic poems' },
-                profile: { fa: 'پروفایل کامل سرفراز خموش', en: 'Full profile of Sarfraz Khamoosh' },
+                profile: { fa: 'پروفایل کامل سرفراز خموش با لینک‌های اجتماعی', en: 'Full profile of Sarfraz Khamoosh with social links' },
                 settings: { fa: 'تنظیمات سایت سرفراز خموش', en: 'Settings of Sarfraz Khamoosh' },
                 immigration: { fa: 'آخرین اخبار مهاجرت آمریکا', en: 'Latest US immigration news' },
-                technews: { fa: 'آخرین اخبار فناوری و هوش مصنوعی', en: 'Latest tech & AI news' }
+                technews: { fa: 'آخرین اخبار فناوری و هوش مصنوعی', en: 'Latest tech & AI news' },
+                gallery: { fa: 'گالری تصاویر سرفراز خموش', en: 'Image gallery of Sarfraz Khamoosh' }
             };
-            const data = map[page];
-            const desc = descMap[page];
+            const data = titles[page];
+            const desc = descs[page];
             if (data) {
                 document.title = currentLang === 'fa' ? data.fa : data.en;
                 const meta = document.querySelector('meta[name="description"]');
@@ -1410,9 +1415,11 @@
             }
         }
 
-        // ============================================================
-        // 5. رندر صفحات
-        // ============================================================
+        // ================================================================
+        // 5. RENDER FUNCTIONS
+        // ================================================================
+
+        // HOME
         function renderHome() {
             const grid = document.getElementById('poemsGrid');
             if (!grid) return;
@@ -1421,7 +1428,7 @@
                 const type = currentLang === 'fa' ? p.typeFa : p.typeEn;
                 const likes = likesHome[p.id] || 0;
                 const liked = likesHome[p.id] > 0;
-                return `<div class="poem-card"><div class="type">${type}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${type.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeHome(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
+                return `<div class="poem-card"><div class="type">${type}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${type.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeHome(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
             }).join('');
         }
         function likeHome(id, btn) {
@@ -1432,6 +1439,7 @@
             localStorage.setItem('poem_likes', JSON.stringify(likesHome));
         }
 
+        // ABOUT
         function renderAbout() {
             const grid = document.getElementById('doughnutGrid');
             if (grid) {
@@ -1452,6 +1460,7 @@
             }
         }
 
+        // POEMS CATEGORIES
         function renderPoemsCategories() {
             const container = document.getElementById('categoriesContainer');
             const bar = document.getElementById('categoriesBar');
@@ -1466,7 +1475,7 @@
                     const text = currentLang === 'fa' ? p.textFa : p.textEn;
                     const likes = likesCat[p.id] || 0;
                     const liked = likesCat[p.id] > 0;
-                    html += `<div class="poem-card"><div class="type">${catTitle}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${catTitle.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeCat(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
+                    html += `<div class="poem-card"><div class="type">${catTitle}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> کپی</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${catTitle.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> اشتراک</button><button class="like-btn ${liked?'liked':''}" onclick="likeCat(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
                 });
                 html += `</div></div>`;
             }
@@ -1504,6 +1513,7 @@
             localStorage.setItem('poems_likes', JSON.stringify(likesCat));
         }
 
+        // IMMIGRATION
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
             if (!grid) return;
@@ -1516,21 +1526,21 @@
         }
         function checkNotif(id, name, btn) {
             const msgs = {
-                siv: { fa: '🔄 تغییرات جدید در برنامه SIV', en: '🔄 New SIV changes' },
+                siv: { fa: '🔄 تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد', en: '🔄 New SIV changes: Re-prioritization' },
                 p1: { fa: '📢 برنامه P1: مهلت ثبت‌نام تمدید شد', en: '📢 P1: Deadline extended' },
-                p2: { fa: '✅ برنامه P2: نتایج جدید منتشر شد', en: '✅ P2: New results' },
-                asylum: { fa: '⚖️ تغییرات در روند پناهندگی', en: '⚖️ Asylum changes' },
-                parole: { fa: '📋 برنامه Parole: دستورالعمل جدید', en: '📋 Parole: New guidelines' },
+                p2: { fa: '✅ برنامه P2: نتایج جدید منتشر شد', en: '✅ P2: New results published' },
+                asylum: { fa: '⚖️ تغییرات در روند پناهندگی', en: '⚖️ Asylum process changes' },
+                parole: { fa: '📋 برنامه Parole: دستورالعمل‌های جدید', en: '📋 Parole: New guidelines' },
                 reparole: { fa: '🔄 Re-Parole: تمدید خودکار', en: '🔄 Re-Parole: Auto-extension' },
-                welcome: { fa: '🤝 Welcome Corps: افزایش ظرفیت', en: '🤝 Welcome Corps: Capacity up' },
-                cr1: { fa: '💍 CR1: کاهش زمان پردازش', en: '💍 CR1: Faster processing' },
+                welcome: { fa: '🤝 Welcome Corps: افزایش ظرفیت', en: '🤝 Welcome Corps: Capacity increased' },
+                cr1: { fa: '💍 CR1: کاهش زمان پردازش', en: '💍 CR1: Processing time reduced' },
                 cr2: { fa: '💍 CR2: به‌روزرسانی مدارک', en: '💍 CR2: Document update' },
                 k1: { fa: '💕 K1: تغییرات در فرم‌ها', en: '💕 K1: Form changes' },
-                dv: { fa: '🎯 DV Lottery: تاریخ ثبت‌نام', en: '🎯 DV Lottery: Date set' },
-                i130_gc: { fa: '📄 I-130 با گرین کارت: افزایش تعرفه', en: '📄 I-130 with GC: Fee up' },
-                i130_us: { fa: '📄 I-130 با پاسپورت: تسریع', en: '📄 I-130 with US: Expedited' }
+                dv: { fa: '🎯 DV Lottery: تاریخ ثبت‌نام اعلام شد', en: '🎯 DV Lottery: Registration date set' },
+                i130_gc: { fa: '📄 I-130 با گرین کارت: افزایش تعرفه', en: '📄 I-130 with GC: Fee increase' },
+                i130_us: { fa: '📄 I-130 با پاسپورت: تسریع در رسیدگی', en: '📄 I-130 with US Passport: Expedited' }
             };
-            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? '📢 خبر جدید' : '📢 New update');
+            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? '📢 خبر جدید برای ' + name : '📢 New update for ' + name);
             showNotif(name, msg);
             if (notifBadges[id]) {
                 notifBadges[id] = false;
@@ -1556,17 +1566,25 @@
             el.className = 'notif-popup';
             el.innerHTML = `<h4><i class="fas fa-bell" style="color:#8b5cf6;"></i> ${title}</h4><p>${message}</p>`;
             document.body.appendChild(el);
-            setTimeout(() => { el.style.opacity = '0';
-                el.style.transform = 'translateY(-20px)';
-                setTimeout(() => el.remove(), 400); }, 5000);
+            setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(-20px)'; setTimeout(() => el.remove(), 400); }, 5000);
         }
 
+        // TECH NEWS
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
             grid.innerHTML = newsData.map(n => {
                 const title = currentLang === 'fa' ? n.fa : n.en;
-                return `<div class="news-card" onclick="openNews(${n.id})"><img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News'"><div class="body"><h4>${title}</h4><div class="meta"><span><i class="fas fa-user-circle"></i> سرفراز خموش</span><span>📅 ${n.date}</span></div></div></div>`;
+                return `<div class="news-card" onclick="openNews(${n.id})">
+                            <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
+                            <div class="body">
+                                <h4>${title}</h4>
+                                <div class="meta">
+                                    <span><i class="fas fa-user-circle"></i> سرفراز خموش</span>
+                                    <span>📅 ${n.date}</span>
+                                </div>
+                            </div>
+                        </div>`;
             }).join('');
         }
         function openNews(id) {
@@ -1583,9 +1601,46 @@
             document.getElementById('newsModal').classList.remove('open');
         }
 
-        // ============================================================
-        // 6. تنظیمات و زبان (با به‌روزرسانی نام نوار ناوبری)
-        // ============================================================
+        // GALLERY (با تصاویر پروفایل و لوگو)
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+            // لیست تصاویر از پوشه images (شامل Khamoosh.jpg و Kham.png)
+            const imageNames = [
+                'Khamoosh.jpg', 'Kham.png', 'programer.png', 'website.png',
+                'application.png', 'ux.png', 'logo.png', 'banner.png',
+                'mang.png', 'imm.png', 'fit.png', 'photoshop.png',
+                'ill.png', 'indesign.png', 'light.png', 'inshot.png',
+                'pics.png', 'mtn.jpg', 'alight.png', 'after.png',
+                'conva.png', 'python.png', 'flutter.png', 'xml.png',
+                'php.png', 'go.png', 'javas.png'
+            ];
+            // فیلتر فقط تصاویر با پسوند معتبر
+            const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
+            const validImages = imageNames.filter(name => {
+                const ext = name.split('.').pop().toLowerCase();
+                return validExts.includes(ext);
+            });
+
+            if (validImages.length === 0) {
+                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">هیچ تصویری در پوشه images یافت نشد.</p>`;
+                return;
+            }
+
+            // نمایش تصاویر با placeholder در صورت خطا
+            grid.innerHTML = validImages.map(name => {
+                const path = 'images/' + name;
+                const label = name.replace(/\.[^/.]+$/, ""); // حذف پسوند برای نام
+                return `<div class="gallery-item" onclick="window.open('${path}','_blank')">
+                            <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
+                            <div class="overlay">${label}</div>
+                        </div>`;
+            }).join('');
+        }
+
+        // ================================================================
+        // 6. SETTINGS & LANGUAGE
+        // ================================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
             if (localStorage.getItem('sarfraz_theme') === 'dark') {
@@ -1612,10 +1667,7 @@
                     this.classList.add('active');
                     const view = this.getAttribute('data-view');
                     const c = document.querySelector('.container');
-                    if (view === 'desktop') { c.style.maxWidth = '1200px';
-                        c.style.padding = '1.5rem 1.2rem'; } else if (view === 'tablet') { c.style.maxWidth = '768px';
-                        c.style.padding = '1rem 0.8rem'; } else { c.style.maxWidth = '480px';
-                        c.style.padding = '0.8rem 0.6rem'; }
+                    if (view === 'desktop') { c.style.maxWidth = '1200px'; c.style.padding = '1.5rem 1.2rem'; } else if (view === 'tablet') { c.style.maxWidth = '768px'; c.style.padding = '1rem 0.8rem'; } else { c.style.maxWidth = '480px'; c.style.padding = '0.8rem 0.6rem'; }
                     localStorage.setItem('viewMode', view);
                 });
             });
@@ -1629,7 +1681,7 @@
             currentLang = lang;
             localStorage.setItem('sarfraz_lang', lang);
 
-            // ===== به‌روزرسانی نام صفحات در نوار ناوبری =====
+            // برچسب‌های نوار ناوبری
             const labelMap = {
                 'label-about': { fa: 'درباره', en: 'About' },
                 'label-poems': { fa: 'اشعار', en: 'Poems' },
@@ -1637,16 +1689,13 @@
                 'label-profile': { fa: 'پروفایل', en: 'Profile' },
                 'label-settings': { fa: 'تنظیمات', en: 'Settings' },
                 'label-immigration': { fa: 'مهاجرت', en: 'Immigration' },
-                'label-technews': { fa: 'فناوری', en: 'Tech News' }
+                'label-technews': { fa: 'فناوری', en: 'Tech News' },
+                'label-gallery': { fa: 'گالری', en: 'Gallery' }
             };
             Object.keys(labelMap).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.textContent = labelMap[id][lang];
             });
-
-            // فوتر و بقیه
-            document.querySelector('.footer .copy').textContent = lang === 'fa' ? '© 2026 سرفراز خموش · تمام حقوق محفوظ است' :
-                '© 2026 Sarfraz Khamoosh · All Rights Reserved';
 
             // رندر مجدد صفحات
             const active = document.querySelector('.page.active');
@@ -1657,13 +1706,14 @@
                 else if (id === 'poems') renderPoemsCategories();
                 else if (id === 'immigration') renderImmigration();
                 else if (id === 'technews') renderNews();
+                else if (id === 'gallery') renderGallery();
             }
             updateSEO(currentPage);
         }
 
-        // ============================================================
-        // 7. مودال UID
-        // ============================================================
+        // ================================================================
+        // 7. MODALS
+        // ================================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
             const openBtn = document.getElementById('codmBtn');
@@ -1684,14 +1734,13 @@
             if (modal) modal.addEventListener('click', function(e) { if (e.target === this) close(); });
         }
 
-        // ============================================================
-        // 8. اجرای اولیه
-        // ============================================================
+        // ================================================================
+        // 8. INIT
+        // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
             setLanguage(savedLang);
-            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') ===
-                savedLang));
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === savedLang));
 
             initSettings();
             initUidModal();
