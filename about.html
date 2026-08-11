@@ -846,4 +846,186 @@
                 skillsTitle: "🛠️ مهارت‌های نرم‌افزاری",
                 langTitle: "💻 زبان‌های برنامه‌نویسی",
                 quoteText: "«خلاقیت، دانش و پشتکار، سه ستون اصلی موفقیت هستند.»",
-                footerCopy: "© 2026 سرفراز خموش |
+                footerCopy: "© 2026 سرفراز خموش | تمام حقوق محفوظ است",
+                introName: "سرفراز خموش",
+                jobTitles: "برنامه‌نویس | توسعه‌دهنده وب و اپلیکیشن | گرافیک دیزاینر | مشاور امور مهاجرت | مربی فیتنس"
+            },
+            en: {
+                bioTitle: "📖 Biography",
+                bioText: "Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, is a young and creative specialist in technology, design, and digital development. With years of experience, he has developed diverse skills across various fields.",
+                poetryInterest: "✨ Sarfraz Khamoosh is deeply interested in poetry and literature, and always enjoys reading books and composing poetry.",
+                specialtiesTitle: "⚡ Specialties",
+                skillsTitle: "🛠️ Software Skills",
+                langTitle: "💻 Programming Languages",
+                quoteText: "«Creativity, knowledge and perseverance are the three pillars of success.»",
+                footerCopy: "© 2026 Sarfraz Khamoosh | All Rights Reserved",
+                introName: "Sarfraz Khamoosh",
+                jobTitles: "Developer | Web & App Creator | Graphic Designer | Immigration Consultant | Fitness Coach"
+            }
+        };
+
+        function renderSpecialties() {
+            const container = document.getElementById('specialtiesList');
+            container.innerHTML = specialtiesData.map(function(item) {
+                return '<li><img src="' + item.icon + '" alt="' + (currentLang === 'fa' ? item.nameFa : item.nameEn) + '" onerror="this.src=\'https://placehold.co/40x40?text=🔹\'"><span>' + (currentLang === 'fa' ? item.nameFa : item.nameEn) + '</span></li>';
+            }).join('');
+        }
+
+        function renderSkills() {
+            const container = document.getElementById('skillsGrid');
+            container.innerHTML = skillsData.map(function(skill) {
+                return '<div class="skill-item"><img class="skill-icon" src="' + skill.icon + '" alt="' + skill.name + '" onerror="this.src=\'https://placehold.co/40x40?text=🎨\'"><span class="skill-name">' + skill.name + '</span><div class="skill-bar-container"><div class="skill-bar" data-percent="' + skill.percent + '"></div></div><span class="skill-percent">' + skill.percent + '%</span></div>';
+            }).join('');
+        }
+
+        function renderLangs() {
+            const container = document.getElementById('langGrid');
+            container.innerHTML = langsData.map(function(lang) {
+                return '<div class="lang-item"><img class="lang-icon" src="' + lang.icon + '" alt="' + lang.name + '" onerror="this.src=\'https://placehold.co/40x40?text=💻\'"><span class="lang-name">' + lang.name + '</span><div class="lang-bar-container"><div class="lang-bar" data-percent="' + lang.percent + '"></div></div><span class="lang-percent">' + lang.percent + '%</span></div>';
+            }).join('');
+        }
+
+        function animateBarsOnScroll() {
+            const bars = document.querySelectorAll('.skill-bar, .lang-bar');
+            const observer = new IntersectionObserver(function(entries) {
+                entries.forEach(function(entry) {
+                    if (entry.isIntersecting) {
+                        const bar = entry.target;
+                        const percent = bar.getAttribute('data-percent');
+                        bar.style.width = percent + '%';
+                        observer.unobserve(bar);
+                    }
+                });
+            }, { threshold: 0.3 });
+            bars.forEach(function(bar) { observer.observe(bar); });
+        }
+
+        function updateTexts() {
+            const t = translations[currentLang];
+            document.getElementById('bioTitle').innerText = t.bioTitle;
+            document.getElementById('bioText').innerText = t.bioText;
+            document.getElementById('poetryInterest').innerText = t.poetryInterest;
+            document.getElementById('specialtiesTitle').innerText = t.specialtiesTitle;
+            document.getElementById('skillsTitle').innerText = t.skillsTitle;
+            document.getElementById('langTitle').innerText = t.langTitle;
+            document.getElementById('quoteText').innerText = t.quoteText;
+            document.getElementById('footerCopy').innerHTML = t.footerCopy;
+            document.getElementById('introName').innerText = t.introName;
+            document.getElementById('jobTitles').innerText = t.jobTitles;
+
+            document.querySelectorAll('.nav-menu a').forEach(function(link) {
+                const span = link.querySelector('span');
+                if (span) {
+                    span.innerText = currentLang === 'fa' ? link.getAttribute('data-fa') : link.getAttribute('data-en');
+                }
+            });
+            const tag = document.querySelector('.site-tag');
+            if (tag) tag.innerText = currentLang === 'fa' ? tag.getAttribute('data-fa') : tag.getAttribute('data-en');
+            document.getElementById('currentLangLabel').innerText = currentLang === 'fa' ? 'فارسی' : 'English';
+            renderSpecialties();
+        }
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            updateTexts();
+            localStorage.setItem('sarfraz_lang', lang);
+        }
+
+        function initTheme() {
+            const saved = localStorage.getItem('sarfraz_theme');
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (saved === 'dark') {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+            } else {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+            }
+        }
+
+        function toggleTheme() {
+            const body = document.body;
+            const themeIcon = document.getElementById('themeIcon');
+            if (body.classList.contains('dark')) {
+                body.classList.remove('dark');
+                themeIcon.src = 'images/night.png';
+                localStorage.setItem('sarfraz_theme', 'light');
+            } else {
+                body.classList.add('dark');
+                themeIcon.src = 'images/day.png';
+                localStorage.setItem('sarfraz_theme', 'dark');
+            }
+        }
+
+        function initMobileMenu() {
+            const hamburger = document.getElementById('hamburgerBtn');
+            const navMenu = document.getElementById('navMenu');
+            hamburger.addEventListener('click', function(e) {
+                e.stopPropagation();
+                navMenu.classList.toggle('open');
+            });
+            document.addEventListener('click', function(e) {
+                if (!navMenu.contains(e.target) && !hamburger.contains(e.target)) navMenu.classList.remove('open');
+            });
+            navMenu.querySelectorAll('a').forEach(function(link) {
+                link.addEventListener('click', function() { navMenu.classList.remove('open'); });
+            });
+        }
+
+        function initLanguage() {
+            const selector = document.getElementById('langSelector');
+            const btn = document.getElementById('langBtn');
+            btn.addEventListener('click', function(e) { e.stopPropagation();
+                selector.classList.toggle('open'); });
+            document.addEventListener('click', function(e) { if (!selector.contains(e.target)) selector.classList.remove('open'); });
+            document.querySelectorAll('.lang-option').forEach(function(opt) {
+                opt.addEventListener('click', function() {
+                    setLanguage(this.getAttribute('data-lang'));
+                    selector.classList.remove('open');
+                });
+            });
+        }
+
+        const modal = document.getElementById('uidModal');
+        const codmBtn = document.getElementById('codmBtn');
+        const copyUidBtn = document.getElementById('copyUidBtn');
+        const closeModalBtn = document.getElementById('closeModalBtn');
+
+        function showToast(msg) {
+            let toast = document.createElement('div');
+            toast.className = 'toast-msg';
+            toast.textContent = msg;
+            document.body.appendChild(toast);
+            setTimeout(function() { toast.remove(); }, 2000);
+        }
+
+        function openModal() { modal.style.display = 'flex'; }
+        function closeModal() { modal.style.display = 'none'; }
+
+        function copyUid() {
+            navigator.clipboard.writeText('7500139701825634305');
+            showToast(currentLang === 'fa' ? '✅ UID کپی شد!' : '✅ UID copied!');
+            closeModal();
+        }
+        if (codmBtn) codmBtn.addEventListener('click', openModal);
+        if (copyUidBtn) copyUidBtn.addEventListener('click', copyUid);
+        if (closeModalBtn) closeModalBtn.addEventListener('click', closeModal);
+        if (modal) modal.addEventListener('click', function(e) { if (e.target === modal) closeModal(); });
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
+            currentLang = savedLang;
+            renderSkills();
+            renderLangs();
+            renderSpecialties();
+            updateTexts();
+            initTheme();
+            initMobileMenu();
+            initLanguage();
+            animateBarsOnScroll();
+            document.getElementById('themeBtn').addEventListener('click', toggleTheme);
+        });
+    </script>
+</body>
+</html>
