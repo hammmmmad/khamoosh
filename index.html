@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سرفراز خموش | Sarfraz Khamoosh</title>
-    <!-- Font Awesome 6 -->
+
+    <!-- Font Awesome 6 (آیکون‌های حرفه‌ای) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    <!-- Google Fonts -->
+    <!-- Google Fonts (وزیرمتن + اینتر) -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-    <!-- SEO Meta -->
-    <meta name="msvalidate.01" content="F8815BB557D224088507B7506360FD92" />
+
+    <!-- ===== متا تگ‌های سئو ===== -->
     <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
     <meta name="keywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, مهاجرت, اشعار, افغانستان, مزار شریف" />
     <meta name="author" content="سرفراز خموش" />
@@ -20,7 +21,8 @@
     <meta property="og:url" content="https://khamoosh.abrdns.com" />
     <meta name="theme-color" content="#8b5cf6" />
     <link rel="icon" type="image/png" href="images/Kham.png" />
-    <!-- Schema.org -->
+
+    <!-- ===== داده‌های ساختاریافته (JSON-LD) ===== -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -43,8 +45,9 @@
             ]
         }
     </script>
+
     <style>
-        /* ===== RESET & BASE ===== */
+        /* ===== ریست و پایه ===== */
         * {
             margin: 0;
             padding: 0;
@@ -55,7 +58,7 @@
             background: #f0f2f8;
             color: #1a1a2e;
             min-height: 100vh;
-            padding-bottom: 110px;
+            padding-bottom: 120px;
             transition: background 0.4s, color 0.4s;
         }
         body.dark {
@@ -68,7 +71,7 @@
             padding: 1.5rem 1.2rem;
         }
 
-        /* ===== GLASS CARD ===== */
+        /* ===== کارت شیشه‌ای ===== */
         .glass {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(18px);
@@ -90,7 +93,7 @@
             box-shadow: 0 28px 60px rgba(0, 0, 0, 0.07);
         }
 
-        /* ===== HEADER ===== */
+        /* ===== هدر ===== */
         .brand-header {
             display: flex;
             align-items: center;
@@ -128,7 +131,7 @@
             color: inherit;
         }
 
-        /* ===== PAGES ===== */
+        /* ===== صفحات ===== */
         .page {
             display: none;
             animation: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
@@ -137,17 +140,13 @@
             display: block;
         }
         @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== BOTTOM NAVIGATION ===== */
+        /* ================================================================
+           نوار ناوبری پایین (با نام زیر آیکن‌ها، خانه بزرگ و گلابی)
+           ================================================================ */
         .bottom-nav-wrapper {
             position: fixed;
             bottom: 24px;
@@ -172,9 +171,10 @@
             justify-content: space-around;
             max-width: 640px;
             width: calc(100% - 32px);
-            height: 80px;
+            height: 82px;
             transition: background 0.4s, border-color 0.4s;
             gap: 2px;
+            position: relative;
         }
         body.dark .bottom-nav {
             background: rgba(16, 18, 34, 0.92);
@@ -182,6 +182,7 @@
             box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
         }
 
+        /* آیتم‌های معمولی */
         .nav-item {
             display: flex;
             flex-direction: column;
@@ -189,19 +190,19 @@
             justify-content: center;
             text-decoration: none;
             color: #9ca3af;
-            font-size: 0.6rem;
+            font-size: 0.55rem;
             font-weight: 500;
-            transition: color 0.25s;
+            transition: color 0.25s, transform 0.2s;
             padding: 4px 8px;
             border-radius: 30px;
-            min-width: 52px;
+            min-width: 48px;
             cursor: pointer;
             background: transparent;
             border: none;
             font-family: 'Vazirmatn', 'Inter', sans-serif;
-            gap: 4px;
+            gap: 3px;
             flex: 1;
-            height: 64px;
+            height: 68px;
             position: relative;
         }
         .nav-item i {
@@ -213,10 +214,11 @@
         .nav-item span {
             font-size: 0.5rem;
             letter-spacing: 0.4px;
-            opacity: 0.75;
+            opacity: 0.8;
             line-height: 1.2;
             font-weight: 600;
             white-space: nowrap;
+            display: block;
         }
         .nav-item:hover {
             color: #6b7280;
@@ -236,18 +238,22 @@
         .nav-item.active i {
             transform: scale(1.08);
         }
+        .nav-item:active {
+            transform: scale(0.92);
+        }
 
-        /* Home button (bigger, center) */
+        /* ===== دکمه خانه (بزرگ‌تر، رنگ گلابی، افکت نرم) ===== */
         .nav-item-home {
             position: relative;
-            top: -18px;
-            flex: 0 0 70px;
-            height: 70px;
-            min-width: 70px;
-            background: #1a1a2e;
+            top: -22px;
+            flex: 0 0 80px;
+            height: 80px;
+            min-width: 80px;
+            background: linear-gradient(145deg, #c084fc, #8b5cf6);
             border-radius: 50%;
-            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.28);
+            box-shadow: 0 16px 38px rgba(139, 92, 246, 0.4);
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
@@ -256,28 +262,41 @@
             cursor: pointer;
             flex-shrink: 0;
             margin-top: -8px;
+            gap: 2px;
         }
         body.dark .nav-item-home {
-            background: #f0f0f5;
-            border-color: rgba(0, 0, 0, 0.12);
-            box-shadow: 0 14px 34px rgba(0, 0, 0, 0.5);
-            color: #1a1a2e;
+            background: linear-gradient(145deg, #a78bfa, #7c3aed);
+            border-color: rgba(0, 0, 0, 0.15);
+            box-shadow: 0 16px 38px rgba(139, 92, 246, 0.5);
+            color: #ffffff;
         }
         .nav-item-home i {
-            font-size: 2.2rem;
+            font-size: 2.4rem;
             display: block;
             color: inherit;
             transition: 0.3s;
+            line-height: 1;
+        }
+        .nav-item-home span {
+            font-size: 0.5rem;
+            letter-spacing: 0.4px;
+            opacity: 0.9;
+            font-weight: 600;
+            color: inherit;
+            line-height: 1.2;
+            white-space: nowrap;
+            display: block;
         }
         .nav-item-home:hover {
             transform: scale(1.08) translateY(-3px);
-            box-shadow: 0 20px 44px rgba(0, 0, 0, 0.35);
+            box-shadow: 0 22px 48px rgba(139, 92, 246, 0.5);
         }
         .nav-item-home:active {
             transform: scale(0.92);
+            box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
         }
 
-        /* ===== HOME - POEMS ===== */
+        /* ===== صفحه خانه (اشعار) ===== */
         .poems-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -289,7 +308,7 @@
             border-radius: 2.2rem;
             padding: 1.8rem 1.5rem;
             border: 1px solid rgba(255, 255, 255, 0.06);
-            transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: 0.35s;
             color: #f0f0f5;
             display: flex;
             flex-direction: column;
@@ -308,7 +327,6 @@
             color: #b8a5f0;
             font-weight: 700;
             margin-bottom: 0.8rem;
-            letter-spacing: 0.3px;
         }
         .poem-card .text {
             font-size: 0.95rem;
@@ -351,7 +369,7 @@
             color: #f87171 !important;
         }
 
-        /* ===== ABOUT ===== */
+        /* ===== درباره ===== */
         .about-intro {
             text-align: center;
             margin-bottom: 2rem;
@@ -369,10 +387,7 @@
             opacity: 0.7;
             font-size: 1rem;
             margin-top: 0.2rem;
-            font-weight: 400;
         }
-
-        /* Doughnut skills */
         .skills-doughnut-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
@@ -446,7 +461,7 @@
             font-size: 1rem;
         }
 
-        /* ===== PROFILE (Luxury & organized) ===== */
+        /* ===== پروفایل ===== */
         .profile-layout {
             display: grid;
             grid-template-columns: 1fr 1.8fr;
@@ -519,7 +534,7 @@
             margin-right: 4px;
         }
 
-        /* ===== POEMS CATEGORIES ===== */
+        /* ===== دسته‌بندی اشعار ===== */
         .categories-bar {
             display: flex;
             flex-wrap: wrap;
@@ -550,10 +565,6 @@
             border-color: #8b5cf6;
             box-shadow: 0 6px 20px rgba(139, 92, 246, 0.25);
         }
-        body.dark .cat-btn.active {
-            background: #8b5cf6;
-            color: #fff;
-        }
         .category-section {
             margin-bottom: 2.5rem;
         }
@@ -565,7 +576,7 @@
             border-right: 4px solid #8b5cf6;
         }
 
-        /* ===== IMMIGRATION ===== */
+        /* ===== مهاجرت ===== */
         .imm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -640,16 +651,11 @@
             animation: pulseBell 1.4s infinite;
         }
         @keyframes pulseBell {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.12);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
         }
 
-        /* ===== TECH NEWS ===== */
+        /* ===== اخبار فناوری ===== */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -661,7 +667,7 @@
             border-radius: 2.2rem;
             overflow: hidden;
             border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+            transition: 0.35s;
             cursor: pointer;
         }
         body.dark .news-card {
@@ -697,7 +703,7 @@
             margin-top: 0.6rem;
         }
 
-        /* ===== SETTINGS ===== */
+        /* ===== تنظیمات ===== */
         .settings-row {
             display: flex;
             align-items: center;
@@ -750,14 +756,12 @@
         .toggle-switch.active .slider {
             right: 28px;
         }
-        .lang-group,
-        .view-group {
+        .lang-group, .view-group {
             display: flex;
             gap: 0.6rem;
             flex-wrap: wrap;
         }
-        .lang-group button,
-        .view-group button {
+        .lang-group button, .view-group button {
             padding: 0.4rem 1.2rem;
             border-radius: 40px;
             border: 2px solid #d1d5db;
@@ -769,14 +773,13 @@
             color: inherit;
             font-size: 0.8rem;
         }
-        .lang-group button.active,
-        .view-group button.active {
+        .lang-group button.active, .view-group button.active {
             border-color: #8b5cf6;
             background: rgba(139, 92, 246, 0.08);
             color: #8b5cf6;
         }
 
-        /* ===== MODALS ===== */
+        /* ===== مودال‌ها ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -878,11 +881,8 @@
             background: rgba(0, 0, 0, 0.04);
             color: inherit;
         }
-        .modal-box .modal-actions .secondary:hover {
-            background: rgba(0, 0, 0, 0.08);
-        }
 
-        /* ===== FOOTER ===== */
+        /* ===== فوتر ===== */
         .footer {
             margin-top: 3rem;
             padding: 1.5rem 0;
@@ -924,7 +924,7 @@
             opacity: 0.5;
         }
 
-        /* ===== NOTIFICATIONS ===== */
+        /* ===== اعلان‌ها ===== */
         .toast-msg {
             position: fixed;
             bottom: 110px;
@@ -944,16 +944,8 @@
             margin-left: 8px;
         }
         @keyframes fadeToast {
-            0%,
-            70% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(20px);
-                visibility: hidden;
-            }
+            0%, 70% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
         }
         .notif-popup {
             position: fixed;
@@ -980,111 +972,40 @@
             opacity: 0.85;
         }
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== واکنش‌گرایی ===== */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem 0.8rem;
-            }
-            .bottom-nav {
-                height: 68px;
-                padding: 8px 8px;
-                border-radius: 36px;
-            }
-            .nav-item {
-                min-width: 38px;
-                height: 54px;
-                padding: 2px 4px;
-            }
-            .nav-item i {
-                font-size: 1.1rem;
-            }
-            .nav-item span {
-                font-size: 0.4rem;
-            }
-            .nav-item-home {
-                flex: 0 0 56px;
-                height: 56px;
-                min-width: 56px;
-                top: -14px;
-            }
-            .nav-item-home i {
-                font-size: 1.6rem;
-            }
-            .profile-layout {
-                grid-template-columns: 1fr;
-            }
-            .profile-details {
-                grid-template-columns: 1fr;
-            }
-            .about-intro h2 {
-                font-size: 1.8rem;
-            }
-            .doughnut {
-                width: 90px;
-                height: 90px;
-            }
-            .doughnut::after {
-                width: 64px;
-                height: 64px;
-            }
-            .imm-grid {
-                grid-template-columns: 1fr;
-            }
-            .brand-header h1 {
-                font-size: 1.4rem;
-            }
-            .brand-header img {
-                width: 56px;
-                height: 56px;
-            }
-            .modal-box {
-                padding: 1.5rem 1.2rem;
-                border-radius: 2rem;
-            }
+            .container { padding: 1rem 0.8rem; }
+            .bottom-nav { height: 68px; padding: 6px 8px; border-radius: 36px; }
+            .nav-item { min-width: 38px; height: 56px; padding: 2px 4px; }
+            .nav-item i { font-size: 1.1rem; }
+            .nav-item span { font-size: 0.4rem; display: block !important; }
+            .nav-item-home { flex: 0 0 62px; height: 62px; min-width: 62px; top: -16px; }
+            .nav-item-home i { font-size: 1.8rem; }
+            .nav-item-home span { font-size: 0.4rem; display: block !important; }
+            .profile-layout { grid-template-columns: 1fr; }
+            .profile-details { grid-template-columns: 1fr; }
+            .about-intro h2 { font-size: 1.8rem; }
+            .doughnut { width: 90px; height: 90px; }
+            .doughnut::after { width: 64px; height: 64px; }
+            .imm-grid { grid-template-columns: 1fr; }
+            .brand-header h1 { font-size: 1.4rem; }
+            .brand-header img { width: 56px; height: 56px; }
+            .modal-box { padding: 1.5rem 1.2rem; border-radius: 2rem; }
         }
         @media (max-width: 480px) {
-            .bottom-nav {
-                padding: 4px 4px;
-                gap: 0;
-                border-radius: 28px;
-            }
-            .nav-item {
-                min-width: 28px;
-                padding: 2px 2px;
-            }
-            .nav-item span {
-                display: none;
-            }
-            .nav-item i {
-                font-size: 1.2rem;
-            }
-            .nav-item-home {
-                flex: 0 0 46px;
-                height: 46px;
-                min-width: 46px;
-                top: -10px;
-            }
-            .nav-item-home i {
-                font-size: 1.4rem;
-            }
-            .poems-grid,
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            .skills-doughnut-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
+            .bottom-nav { padding: 4px 4px; gap: 0; border-radius: 28px; height: 60px; }
+            .nav-item { min-width: 28px; padding: 2px 2px; height: 48px; }
+            .nav-item i { font-size: 1.2rem; }
+            .nav-item span { font-size: 0.35rem; display: block !important; }
+            .nav-item-home { flex: 0 0 50px; height: 50px; min-width: 50px; top: -12px; }
+            .nav-item-home i { font-size: 1.6rem; }
+            .nav-item-home span { font-size: 0.35rem; display: block !important; }
+            .poems-grid, .news-grid { grid-template-columns: 1fr; }
+            .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
         }
     </style>
 </head>
@@ -1101,9 +1022,9 @@
             </div>
         </header>
 
-        <!-- ===== PAGES ===== -->
+        <!-- ===== صفحات ===== -->
 
-        <!-- HOME -->
+        <!-- خانه -->
         <div class="page active" id="page-home">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-feather-alt" style="color:#8b5cf6;"></i> اشعار کوتاه
@@ -1111,7 +1032,7 @@
             <div class="poems-grid" id="poemsGrid"></div>
         </div>
 
-        <!-- ABOUT -->
+        <!-- درباره -->
         <div class="page" id="page-about">
             <div class="about-intro">
                 <h2>Sarfraz Khamoosh</h2>
@@ -1138,7 +1059,7 @@
             </div>
         </div>
 
-        <!-- POEMS CATEGORIES -->
+        <!-- اشعار دسته‌بندی -->
         <div class="page" id="page-poems">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-book-open" style="color:#8b5cf6;"></i> دسته‌بندی اشعار
@@ -1147,7 +1068,7 @@
             <div id="categoriesContainer"></div>
         </div>
 
-        <!-- PROFILE -->
+        <!-- پروفایل -->
         <div class="page" id="page-profile">
             <div class="profile-layout">
                 <div class="profile-card">
@@ -1190,7 +1111,7 @@
             </div>
         </div>
 
-        <!-- SETTINGS -->
+        <!-- تنظیمات -->
         <div class="page" id="page-settings">
             <div class="glass">
                 <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:1.5rem;">
@@ -1218,7 +1139,7 @@
             </div>
         </div>
 
-        <!-- IMMIGRATION -->
+        <!-- مهاجرت -->
         <div class="page" id="page-immigration">
             <div class="glass">
                 <h3 style="display:flex; align-items:center; gap:12px; font-weight:700;">
@@ -1231,7 +1152,7 @@
             </div>
         </div>
 
-        <!-- TECH NEWS -->
+        <!-- اخبار فناوری -->
         <div class="page" id="page-technews">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-newspaper" style="color:#8b5cf6;"></i> اخبار فناوری
@@ -1255,7 +1176,7 @@
 
     </div>
 
-    <!-- ===== MODALS ===== -->
+    <!-- ===== مودال‌ها ===== -->
     <div id="newsModal" class="modal-overlay">
         <div class="modal-box">
             <button class="close" id="modalCloseBtn"><i class="fas fa-times"></i></button>
@@ -1276,42 +1197,45 @@
         </div>
     </div>
 
-    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <!-- ===== نوار ناوبری پایین (نام‌دار، خانه گلابی بزرگ) ===== -->
     <div class="bottom-nav-wrapper">
         <nav class="bottom-nav" id="bottomNav">
             <button class="nav-item" data-page="about" onclick="navigateTo('about')">
                 <i class="fas fa-user"></i>
-                <span>درباره</span>
+                <span id="label-about">درباره</span>
             </button>
             <button class="nav-item" data-page="poems" onclick="navigateTo('poems')">
                 <i class="fas fa-book"></i>
-                <span>اشعار</span>
+                <span id="label-poems">اشعار</span>
             </button>
+
             <button class="nav-item-home" onclick="navigateTo('home')" aria-label="خانه">
                 <i class="fas fa-home"></i>
+                <span id="label-home">خانه</span>
             </button>
+
             <button class="nav-item" data-page="profile" onclick="navigateTo('profile')">
                 <i class="fas fa-id-card"></i>
-                <span>پروفایل</span>
+                <span id="label-profile">پروفایل</span>
             </button>
             <button class="nav-item" data-page="settings" onclick="navigateTo('settings')">
                 <i class="fas fa-cog"></i>
-                <span>تنظیمات</span>
+                <span id="label-settings">تنظیمات</span>
             </button>
             <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')">
                 <i class="fas fa-plane"></i>
-                <span>مهاجرت</span>
+                <span id="label-immigration">مهاجرت</span>
             </button>
             <button class="nav-item" data-page="technews" onclick="navigateTo('technews')">
                 <i class="fas fa-microchip"></i>
-                <span>فناوری</span>
+                <span id="label-technews">فناوری</span>
             </button>
         </nav>
     </div>
 
     <script>
         // ============================================================
-        // DATA
+        // 1. داده‌ها
         // ============================================================
         const poemsList = [
             { id: 0, typeFa: "شعر سپید", typeEn: "Blank Verse", textFa: "چقدر تنهایم در این شب بی‌ستاره\nباد از گذرگاه خاطرات می‌وزد\nو من مانده‌ام با سوالی که\nپاسخش را فقط تو می‌دانی", textEn: "How lonely I am in this starless night\nThe wind blows through the passage of memories\nAnd I am left with a question whose answer\nOnly you know" },
@@ -1380,28 +1304,28 @@
             en: "Google Raises $85B for AI",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/google.jpg",
-            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند؛ رقمی که از آن به‌عنوان یکی از بزرگ‌ترین جذب سرمایه‌های تاریخ بازار سهام یاد می‌شود.",
-            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion through a large stock offering to fund artificial intelligence projects — a figure described as one of the largest capital raises in stock market history."
+            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...",
+            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..."
         }, {
             id: 2,
             fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد",
             en: "Startup Lovable Expands Google Partnership",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/ai.jpg",
-            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است.",
-            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud."
+            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...",
+            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..."
         }, {
             id: 3,
             fa: "متا بازی VR «Supernatural» را نجات داد",
             en: "Meta Rescues VR Game 'Supernatural'",
             date: "۳ جون ۲۰۲۶",
             img: "news-pic/meta.jpg",
-            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد.",
-            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down but instead transferred to a new independent company."
+            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...",
+            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..."
         }];
 
         // ============================================================
-        // STATE
+        // 2. وضعیت
         // ============================================================
         let currentLang = 'fa';
         let currentPage = 'home';
@@ -1410,7 +1334,7 @@
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
 
         // ============================================================
-        // HELPERS
+        // 3. توابع کمکی
         // ============================================================
         function toast(msg) {
             let el = document.querySelector('.toast-msg');
@@ -1424,9 +1348,15 @@
         function copyText(t) {
             navigator.clipboard.writeText(t).then(() => toast('✅ کپی شد!')).catch(() => toast('❌ خطا'));
         }
+        function sharePoem(text, type) {
+            const s = type + '\n\n' + text;
+            if (navigator.share) navigator.share({ title: 'اشعار سرفراز خموش', text: s }).catch(() => {});
+            else { copyText(s);
+                toast('متن برای اشتراک کپی شد'); }
+        }
 
         // ============================================================
-        // NAVIGATION
+        // 4. ناوبری و سئو
         // ============================================================
         function navigateTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
@@ -1449,9 +1379,6 @@
             updateSEO(page);
         }
 
-        // ============================================================
-        // SEO
-        // ============================================================
         function updateSEO(page) {
             const map = {
                 home: { fa: 'سرفراز خموش | صفحه اصلی', en: 'Sarfraz Khamoosh | Home' },
@@ -1463,12 +1390,12 @@
                 technews: { fa: 'اخبار فناوری | سرفراز خموش', en: 'Tech News | Sarfraz Khamoosh' }
             };
             const descMap = {
-                home: { fa: 'سایت رسمی سرفراز خموش، برنامه‌نویس و طراح گرافیک اهل افغانستان', en: 'Official site of Sarfraz Khamoosh, developer & graphic designer from Afghanistan' },
-                about: { fa: 'بیوگرافی، مهارت‌ها و تخصص‌های سرفراز خموش', en: 'Biography, skills & specialties of Sarfraz Khamoosh' },
-                poems: { fa: 'مجموعه اشعار عارفانه، عاشقانه و سپید', en: 'Collection of mystical, romantic & blank poems' },
-                profile: { fa: 'پروفایل کامل سرفراز خموش، برنامه‌نویس و طراح', en: 'Full profile of Sarfraz Khamoosh, developer & designer' },
-                settings: { fa: 'تنظیمات سایت سرفراز خموش', en: 'Settings of Sarfraz Khamoosh website' },
-                immigration: { fa: 'آخرین آپدیت برنامه‌های مهاجرت آمریکا', en: 'Latest US immigration program updates' },
+                home: { fa: 'سایت رسمی سرفراز خموش، برنامه‌نویس و طراح گرافیک', en: 'Official site of Sarfraz Khamoosh, developer & graphic designer' },
+                about: { fa: 'بیوگرافی و تخصص‌های سرفراز خموش', en: 'Biography & specialties of Sarfraz Khamoosh' },
+                poems: { fa: 'مجموعه اشعار عارفانه و عاشقانه', en: 'Collection of mystical & romantic poems' },
+                profile: { fa: 'پروفایل کامل سرفراز خموش', en: 'Full profile of Sarfraz Khamoosh' },
+                settings: { fa: 'تنظیمات سایت سرفراز خموش', en: 'Settings of Sarfraz Khamoosh' },
+                immigration: { fa: 'آخرین اخبار مهاجرت آمریکا', en: 'Latest US immigration news' },
                 technews: { fa: 'آخرین اخبار فناوری و هوش مصنوعی', en: 'Latest tech & AI news' }
             };
             const data = map[page];
@@ -1479,13 +1406,12 @@
                 if (meta) meta.setAttribute('content', currentLang === 'fa' ? desc.fa : desc.en);
             }
             if (window.history && window.history.pushState) {
-                const url = window.location.origin + window.location.pathname + '?page=' + page;
-                window.history.pushState({ page }, document.title, url);
+                window.history.pushState({ page }, document.title, window.location.origin + window.location.pathname + '?page=' + page);
             }
         }
 
         // ============================================================
-        // RENDER: HOME
+        // 5. رندر صفحات
         // ============================================================
         function renderHome() {
             const grid = document.getElementById('poemsGrid');
@@ -1501,22 +1427,11 @@
         function likeHome(id, btn) {
             if (!likesHome[id]) likesHome[id] = 0;
             const span = btn.querySelector('.like-count');
-            if (btn.classList.contains('liked')) { likesHome[id]--;
-                btn.classList.remove('liked'); } else { likesHome[id]++;
-                btn.classList.add('liked'); }
+            if (btn.classList.contains('liked')) { likesHome[id]--; btn.classList.remove('liked'); } else { likesHome[id]++; btn.classList.add('liked'); }
             span.textContent = likesHome[id];
             localStorage.setItem('poem_likes', JSON.stringify(likesHome));
         }
-        function sharePoem(text, type) {
-            const s = type + '\n\n' + text;
-            if (navigator.share) navigator.share({ title: 'اشعار سرفراز خموش', text: s }).catch(() => {});
-            else { copyText(s);
-                toast('متن برای اشتراک کپی شد'); }
-        }
 
-        // ============================================================
-        // RENDER: ABOUT
-        // ============================================================
         function renderAbout() {
             const grid = document.getElementById('doughnutGrid');
             if (grid) {
@@ -1537,9 +1452,6 @@
             }
         }
 
-        // ============================================================
-        // RENDER: POEMS CATEGORIES
-        // ============================================================
         function renderPoemsCategories() {
             const container = document.getElementById('categoriesContainer');
             const bar = document.getElementById('categoriesBar');
@@ -1570,7 +1482,6 @@
                 document.querySelectorAll('.category-section').forEach(s => s.style.display = 'block');
             };
             bar.appendChild(allBtn);
-
             Object.keys(categoriesData).forEach(key => {
                 const btn = document.createElement('button');
                 btn.className = 'cat-btn';
@@ -1588,16 +1499,11 @@
         function likeCat(id, btn) {
             if (!likesCat[id]) likesCat[id] = 0;
             const span = btn.querySelector('.like-count');
-            if (btn.classList.contains('liked')) { likesCat[id]--;
-                btn.classList.remove('liked'); } else { likesCat[id]++;
-                btn.classList.add('liked'); }
+            if (btn.classList.contains('liked')) { likesCat[id]--; btn.classList.remove('liked'); } else { likesCat[id]++; btn.classList.add('liked'); }
             span.textContent = likesCat[id];
             localStorage.setItem('poems_likes', JSON.stringify(likesCat));
         }
 
-        // ============================================================
-        // RENDER: IMMIGRATION
-        // ============================================================
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
             if (!grid) return;
@@ -1610,22 +1516,21 @@
         }
         function checkNotif(id, name, btn) {
             const msgs = {
-                siv: { fa: '🔄 تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد', en: '🔄 New SIV changes: Re-prioritization' },
+                siv: { fa: '🔄 تغییرات جدید در برنامه SIV', en: '🔄 New SIV changes' },
                 p1: { fa: '📢 برنامه P1: مهلت ثبت‌نام تمدید شد', en: '📢 P1: Deadline extended' },
-                p2: { fa: '✅ برنامه P2: نتایج جدید منتشر شد', en: '✅ P2: New results published' },
-                asylum: { fa: '⚖️ تغییرات در روند پناهندگی', en: '⚖️ Asylum process changes' },
-                parole: { fa: '📋 برنامه Parole: دستورالعمل‌های جدید', en: '📋 Parole: New guidelines' },
+                p2: { fa: '✅ برنامه P2: نتایج جدید منتشر شد', en: '✅ P2: New results' },
+                asylum: { fa: '⚖️ تغییرات در روند پناهندگی', en: '⚖️ Asylum changes' },
+                parole: { fa: '📋 برنامه Parole: دستورالعمل جدید', en: '📋 Parole: New guidelines' },
                 reparole: { fa: '🔄 Re-Parole: تمدید خودکار', en: '🔄 Re-Parole: Auto-extension' },
-                welcome: { fa: '🤝 Welcome Corps: افزایش ظرفیت', en: '🤝 Welcome Corps: Capacity increased' },
-                cr1: { fa: '💍 CR1: کاهش زمان پردازش', en: '💍 CR1: Processing time reduced' },
+                welcome: { fa: '🤝 Welcome Corps: افزایش ظرفیت', en: '🤝 Welcome Corps: Capacity up' },
+                cr1: { fa: '💍 CR1: کاهش زمان پردازش', en: '💍 CR1: Faster processing' },
                 cr2: { fa: '💍 CR2: به‌روزرسانی مدارک', en: '💍 CR2: Document update' },
                 k1: { fa: '💕 K1: تغییرات در فرم‌ها', en: '💕 K1: Form changes' },
-                dv: { fa: '🎯 DV Lottery: تاریخ ثبت‌نام اعلام شد', en: '🎯 DV Lottery: Registration date set' },
-                i130_gc: { fa: '📄 I-130 با گرین کارت: افزایش تعرفه', en: '📄 I-130 with GC: Fee increase' },
-                i130_us: { fa: '📄 I-130 با پاسپورت: تسریع در رسیدگی', en: '📄 I-130 with US Passport: Expedited' }
+                dv: { fa: '🎯 DV Lottery: تاریخ ثبت‌نام', en: '🎯 DV Lottery: Date set' },
+                i130_gc: { fa: '📄 I-130 با گرین کارت: افزایش تعرفه', en: '📄 I-130 with GC: Fee up' },
+                i130_us: { fa: '📄 I-130 با پاسپورت: تسریع', en: '📄 I-130 with US: Expedited' }
             };
-            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? '📢 خبر جدید برای ' + name :
-                '📢 New update for ' + name);
+            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? '📢 خبر جدید' : '📢 New update');
             showNotif(name, msg);
             if (notifBadges[id]) {
                 notifBadges[id] = false;
@@ -1656,9 +1561,6 @@
                 setTimeout(() => el.remove(), 400); }, 5000);
         }
 
-        // ============================================================
-        // RENDER: TECH NEWS
-        // ============================================================
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
@@ -1682,7 +1584,7 @@
         }
 
         // ============================================================
-        // SETTINGS
+        // 6. تنظیمات و زبان (با به‌روزرسانی نام نوار ناوبری)
         // ============================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
@@ -1723,27 +1625,30 @@
             document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === sl));
         }
 
-        // ============================================================
-        // LANGUAGE
-        // ============================================================
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('sarfraz_lang', lang);
-            const labels = {
-                about: { fa: 'درباره', en: 'About' },
-                poems: { fa: 'اشعار', en: 'Poems' },
-                profile: { fa: 'پروفایل', en: 'Profile' },
-                settings: { fa: 'تنظیمات', en: 'Settings' },
-                immigration: { fa: 'مهاجرت', en: 'Immigration' },
-                technews: { fa: 'فناوری', en: 'Tech News' }
+
+            // ===== به‌روزرسانی نام صفحات در نوار ناوبری =====
+            const labelMap = {
+                'label-about': { fa: 'درباره', en: 'About' },
+                'label-poems': { fa: 'اشعار', en: 'Poems' },
+                'label-home': { fa: 'خانه', en: 'Home' },
+                'label-profile': { fa: 'پروفایل', en: 'Profile' },
+                'label-settings': { fa: 'تنظیمات', en: 'Settings' },
+                'label-immigration': { fa: 'مهاجرت', en: 'Immigration' },
+                'label-technews': { fa: 'فناوری', en: 'Tech News' }
             };
-            document.querySelectorAll('.bottom-nav .nav-item').forEach(item => {
-                const p = item.getAttribute('data-page');
-                const span = item.querySelector('span');
-                if (span && labels[p]) span.textContent = labels[p][lang];
+            Object.keys(labelMap).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = labelMap[id][lang];
             });
+
+            // فوتر و بقیه
             document.querySelector('.footer .copy').textContent = lang === 'fa' ? '© 2026 سرفراز خموش · تمام حقوق محفوظ است' :
                 '© 2026 Sarfraz Khamoosh · All Rights Reserved';
+
+            // رندر مجدد صفحات
             const active = document.querySelector('.page.active');
             if (active) {
                 const id = active.id.replace('page-', '');
@@ -1757,7 +1662,7 @@
         }
 
         // ============================================================
-        // MODALS
+        // 7. مودال UID
         // ============================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
@@ -1765,7 +1670,6 @@
             const closeBtn = document.getElementById('closeUidModal');
             const closeBtn2 = document.getElementById('closeUidModalBtn');
             const copyBtn = document.getElementById('copyUidBtn');
-
             function open() { modal.classList.add('open'); }
             function close() { modal.classList.remove('open'); }
             function copyUid() {
@@ -1781,7 +1685,7 @@
         }
 
         // ============================================================
-        // INIT
+        // 8. اجرای اولیه
         // ============================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
