@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>آقای خموش • در حال بروزرسانی</title>
-  <!-- فونت وزیرمتن – معماری مدرن و خوانا -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>سیستم · آپدیت</title>
+  <!-- فونت وزیرمتن برای خوانایی -->
   <link href="https://cdn.fontsource.org/fonts/vazirmatn:vf@latest" rel="stylesheet" />
   <style>
+    /* ===== RESET & BASE ===== */
     * {
       margin: 0;
       padding: 0;
@@ -18,172 +19,165 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      background: linear-gradient(145deg, #f9f7f4 0%, #f0ede8 100%);
+      background: #0b0d15;
       font-family: 'Vazirmatn', 'Segoe UI', system-ui, sans-serif;
       padding: 1.5rem;
+      /* شبکه سایبری پس‌زمینه */
+      background-image:
+        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
     }
 
-    .card {
-      max-width: 720px;
+    /* ===== کارت اصلی ===== */
+    .cyber-card {
+      max-width: 700px;
       width: 100%;
-      background: rgba(255, 252, 248, 0.75);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-radius: 56px 56px 56px 56px;
-      box-shadow: 0 30px 60px -20px rgba(0, 0, 0, 0.2),
-                  0 0 0 1px rgba(255, 248, 235, 0.6) inset;
-      padding: 3rem 2.5rem;
-      transition: all 0.3s ease;
-      border: 1px solid rgba(220, 200, 180, 0.25);
-      text-align: center;
-    }
-
-    /* هدر با آواتار و نام */
-    .profile {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      margin-bottom: 2rem;
-    }
-
-    .avatar {
-      width: 110px;
-      height: 110px;
-      background: linear-gradient(135deg, #c0a48a, #b08a6e);
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 3.8rem;
-      font-weight: 400;
-      color: #fff8f0;
-      box-shadow: 0 16px 30px -8px rgba(80, 60, 40, 0.25);
-      margin-bottom: 1.2rem;
-      transition: 0.2s;
-      border: 3px solid #f3ede7;
-      user-select: none;
-    }
-
-    .avatar span {
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
-    }
-
-    h1 {
-      font-size: 2.4rem;
-      font-weight: 650;
-      letter-spacing: -0.01em;
-      color: #32281e;
-      margin-bottom: 0.2rem;
-    }
-
-    .subhead {
-      font-size: 1.1rem;
-      font-weight: 400;
-      color: #6f5e4c;
-      background: rgba(200, 175, 155, 0.15);
-      padding: 0.3rem 1.4rem;
-      border-radius: 60px;
-      display: inline-block;
-      backdrop-filter: blur(4px);
-      border: 1px solid rgba(200, 175, 155, 0.2);
-    }
-
-    /* بخش بروزرسانی – قلب پیام */
-    .update-section {
-      background: rgba(235, 220, 205, 0.25);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
+      background: rgba(12, 16, 28, 0.85);
+      backdrop-filter: blur(16px) saturate(1.2);
+      -webkit-backdrop-filter: blur(16px) saturate(1.2);
       border-radius: 48px;
-      padding: 2rem 1.8rem;
-      margin: 2rem 0 2.2rem;
-      border: 1px solid rgba(210, 185, 165, 0.3);
-      transition: 0.2s;
+      padding: 3rem 2.5rem;
+      border: 1px solid rgba(0, 255, 255, 0.25);
+      box-shadow: 0 0 50px rgba(0, 180, 255, 0.08),
+                  inset 0 0 60px rgba(0, 200, 255, 0.03);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: 0.3s;
     }
 
-    .update-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      background: #423528;
-      color: #f5ede5;
-      padding: 0.45rem 1.6rem;
-      border-radius: 80px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      letter-spacing: 0.3px;
-      margin-bottom: 1.4rem;
-      box-shadow: 0 4px 10px rgba(40, 30, 20, 0.15);
+    /* خطوط نئون متحرک (جلوه سایبری) */
+    .cyber-card::before {
+      content: '';
+      position: absolute;
+      top: -2px;
+      left: -2px;
+      right: -2px;
+      bottom: -2px;
+      background: conic-gradient(from 0deg, transparent, rgba(0, 255, 255, 0.2), transparent, rgba(150, 0, 255, 0.2), transparent);
+      border-radius: 50px;
+      z-index: -1;
+      animation: spin-border 8s linear infinite;
+      filter: blur(1px);
     }
 
-    .update-badge .dot {
-      display: inline-block;
-      width: 12px;
-      height: 12px;
-      background: #bedb9b;
-      border-radius: 50%;
-      animation: pulse-dot 1.8s infinite ease-in-out;
-      box-shadow: 0 0 0 2px rgba(190, 219, 155, 0.3);
+    @keyframes spin-border {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
     }
 
-    @keyframes pulse-dot {
-      0% { transform: scale(0.9); opacity: 0.7; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(0.9); opacity: 0.7; }
-    }
-
-    .update-message {
-      font-size: 1.65rem;
-      font-weight: 500;
-      color: #2e241b;
-      line-height: 1.5;
-      margin-bottom: 0.4rem;
-    }
-
-    .update-message strong {
+    /* ===== متن اصلی ===== */
+    .main-title {
+      font-size: 2.8rem;
       font-weight: 700;
-      color: #1f160f;
-      background: linear-gradient(120deg, #c6aa8e, #b28d70);
-      background-clip: text;
+      letter-spacing: 2px;
+      color: #d6f0ff;
+      text-shadow: 0 0 20px rgba(0, 200, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2);
+      margin-bottom: 0.5rem;
+      background: linear-gradient(135deg, #b0f0ff, #7aa9ff);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
-      text-shadow: 0 2px 8px rgba(150, 110, 80, 0.1);
+      background-clip: text;
     }
 
-    .update-description {
+    .sub-cyber {
       font-size: 1rem;
-      color: #564838;
-      opacity: 0.85;
-      margin-top: 0.6rem;
-      font-weight: 350;
-      border-top: 1px dashed #dac9ba;
-      padding-top: 1.2rem;
-      max-width: 80%;
-      margin-left: auto;
-      margin-right: auto;
+      color: rgba(160, 200, 255, 0.5);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      font-weight: 300;
+      border-bottom: 1px solid rgba(0, 200, 255, 0.15);
+      display: inline-block;
+      padding-bottom: 0.4rem;
+      margin-bottom: 1.8rem;
     }
 
-    /* نوار پیشرفت ساختگی */
-    .progress-container {
-      background: #ddd0c2;
-      height: 8px;
-      border-radius: 20px;
+    /* ===== تایمر ===== */
+    .timer-container {
+      background: rgba(0, 20, 40, 0.5);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border-radius: 60px;
+      padding: 1.6rem 1.8rem;
       margin: 1.8rem 0 2rem;
+      border: 1px solid rgba(0, 255, 255, 0.15);
+      box-shadow: 0 0 40px rgba(0, 150, 255, 0.05);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 0.4rem 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .timer-item {
+      display: flex;
+      align-items: baseline;
+      gap: 4px;
+      font-weight: 450;
+      color: #b0d8ff;
+    }
+
+    .timer-item .number {
+      font-size: 2.6rem;
+      font-weight: 700;
+      font-variant-numeric: tabular-nums;
+      min-width: 3.6rem;
+      text-align: center;
+      background: rgba(0, 180, 255, 0.06);
+      padding: 0.1rem 0.6rem;
+      border-radius: 20px;
+      color: #a0f0ff;
+      text-shadow: 0 0 30px rgba(0, 200, 255, 0.3);
+      letter-spacing: 2px;
+      border: 1px solid rgba(0, 200, 255, 0.08);
+    }
+
+    .timer-item .label {
+      font-size: 0.9rem;
+      color: rgba(160, 200, 255, 0.5);
+      font-weight: 300;
+      margin-right: 2px;
+    }
+
+    .timer-separator {
+      font-size: 2.2rem;
+      font-weight: 200;
+      color: rgba(0, 200, 255, 0.25);
+      line-height: 1;
+      margin: 0 2px;
+    }
+
+    .timer-status {
+      font-size: 0.9rem;
+      color: rgba(160, 200, 255, 0.4);
+      letter-spacing: 1px;
+      margin-top: -0.2rem;
+    }
+
+    /* ===== نوار پیشرفت ===== */
+    .progress-container {
+      background: rgba(0, 40, 70, 0.4);
+      height: 6px;
+      border-radius: 30px;
+      margin: 2rem 0 1.4rem;
       width: 100%;
       overflow: hidden;
-      box-shadow: inset 0 1px 4px rgba(0,0,0,0.05);
+      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6);
+      border: 1px solid rgba(0, 200, 255, 0.05);
     }
 
     .progress-bar {
       width: 68%;
       height: 100%;
-      background: linear-gradient(90deg, #b28d70, #a77b5e, #b28d70);
+      background: linear-gradient(90deg, #00c8ff, #9f7aff, #00c8ff);
       background-size: 200% 100%;
-      border-radius: 20px;
-      animation: shimmer 2.8s infinite linear;
-      box-shadow: 0 0 10px rgba(160, 120, 90, 0.2);
+      border-radius: 30px;
+      animation: shimmer-cyber 3s infinite linear;
+      box-shadow: 0 0 25px rgba(0, 180, 255, 0.3);
     }
 
-    @keyframes shimmer {
+    @keyframes shimmer-cyber {
       0% { background-position: 0% 0%; }
       100% { background-position: 200% 0%; }
     }
@@ -191,195 +185,213 @@
     .progress-label {
       display: flex;
       justify-content: space-between;
-      font-size: 0.9rem;
-      color: #5f4e3c;
-      font-weight: 350;
-      margin-top: -0.5rem;
+      font-size: 0.8rem;
+      color: rgba(160, 200, 255, 0.3);
+      font-weight: 300;
       padding: 0 0.2rem;
+      letter-spacing: 1px;
     }
 
     .progress-label span:last-child {
-      font-weight: 450;
-      background: #dacfc4;
-      padding: 0 12px;
+      color: #7ac7ff;
+      background: rgba(0, 180, 255, 0.08);
+      padding: 0 14px;
       border-radius: 30px;
-      font-size: 0.8rem;
-      color: #32281e;
+      border: 1px solid rgba(0, 200, 255, 0.1);
     }
 
-    /* دکمه‌ها / لینک‌های اجتماعی */
+    /* ===== دکمه‌های اجتماعی (سایبری) ===== */
     .social-links {
       display: flex;
       flex-wrap: wrap;
       align-items: center;
       justify-content: center;
       gap: 0.8rem 1.2rem;
-      margin-top: 2.2rem;
+      margin-top: 2.4rem;
     }
 
     .social-item {
       display: inline-flex;
       align-items: center;
       gap: 8px;
-      background: rgba(235, 225, 215, 0.5);
+      background: rgba(0, 40, 70, 0.3);
       backdrop-filter: blur(6px);
       -webkit-backdrop-filter: blur(6px);
-      padding: 0.5rem 1.4rem;
+      padding: 0.5rem 1.6rem;
       border-radius: 60px;
-      border: 1px solid rgba(200, 175, 155, 0.2);
-      color: #3a2e22;
+      border: 1px solid rgba(0, 200, 255, 0.12);
+      color: #a0d0ff;
       text-decoration: none;
-      font-weight: 450;
-      font-size: 0.95rem;
-      transition: 0.2s;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.02);
+      font-weight: 400;
+      font-size: 0.9rem;
+      transition: 0.25s ease;
+      box-shadow: 0 0 20px rgba(0, 150, 255, 0.02);
+      letter-spacing: 0.5px;
     }
 
     .social-item:hover {
-      background: rgba(210, 185, 165, 0.45);
-      border-color: #bea188;
-      transform: translateY(-3px);
-      box-shadow: 0 12px 24px -10px rgba(80, 60, 40, 0.15);
+      background: rgba(0, 180, 255, 0.1);
+      border-color: #00ccff;
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 0 40px rgba(0, 180, 255, 0.15);
+      color: #d0f0ff;
     }
 
     .social-item .icon {
-      font-size: 1.3rem;
-      line-height: 1;
+      font-size: 1.2rem;
+      filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.2));
     }
 
-    /* footnote */
-    .footer-note {
-      margin-top: 2.5rem;
-      font-size: 0.85rem;
-      color: #897a6a;
-      letter-spacing: 0.2px;
-      border-top: 1px solid rgba(200, 175, 155, 0.2);
+    /* ===== فوتر ===== */
+    .footer-cyber {
+      margin-top: 2.8rem;
+      font-size: 0.75rem;
+      color: rgba(100, 150, 200, 0.25);
+      letter-spacing: 2px;
+      border-top: 1px solid rgba(0, 200, 255, 0.06);
       padding-top: 1.8rem;
       display: flex;
       justify-content: center;
-      gap: 2rem;
+      gap: 2.5rem;
       flex-wrap: wrap;
+      text-transform: uppercase;
     }
 
-    .footer-note span {
-      opacity: 0.7;
-    }
-
-    .footer-note .heart {
-      color: #bc7f5a;
+    .footer-cyber .heart {
+      color: #ff5e8a;
       display: inline-block;
-      animation: pulse-heart 1.6s infinite;
+      animation: pulse-cyber 1.6s infinite;
+      text-shadow: 0 0 20px rgba(255, 80, 120, 0.3);
     }
 
-    @keyframes pulse-heart {
-      0% { transform: scale(1); }
-      50% { transform: scale(1.25); }
-      100% { transform: scale(1); }
+    @keyframes pulse-cyber {
+      0% { transform: scale(1); opacity: 0.7; }
+      50% { transform: scale(1.3); opacity: 1; }
+      100% { transform: scale(1); opacity: 0.7; }
     }
 
-    /* واکنش‌گرایی */
-    @media (max-width: 550px) {
-      .card {
-        padding: 2rem 1.5rem;
-        border-radius: 40px;
-      }
-      h1 {
-        font-size: 2rem;
-      }
-      .update-message {
-        font-size: 1.3rem;
-      }
-      .update-description {
-        max-width: 100%;
-        font-size: 0.9rem;
-      }
-      .avatar {
-        width: 85px;
-        height: 85px;
-        font-size: 3rem;
-      }
-      .social-item {
-        padding: 0.4rem 1.2rem;
-        font-size: 0.85rem;
-      }
+    /* ===== واکنش‌گرایی ===== */
+    @media (max-width: 600px) {
+      .cyber-card { padding: 2rem 1.5rem; border-radius: 36px; }
+      .main-title { font-size: 2rem; }
+      .timer-item .number { font-size: 2rem; min-width: 2.6rem; }
+      .timer-separator { font-size: 1.6rem; }
+      .timer-container { padding: 1rem 1.2rem; gap: 0.2rem 0.8rem; }
+      .social-item { padding: 0.4rem 1.2rem; font-size: 0.8rem; }
     }
 
-    @media (max-width: 400px) {
-      .update-badge {
-        font-size: 0.75rem;
-        padding: 0.3rem 1.2rem;
-      }
-      .progress-label {
-        font-size: 0.75rem;
-        flex-direction: column;
-        align-items: center;
-        gap: 4px;
-      }
-    }
-
-    /* خنثی‌سازی استایل‌های پیش‌فرض */
-    a {
-      text-decoration: none;
+    @media (max-width: 420px) {
+      .timer-item .number { font-size: 1.5rem; min-width: 2rem; padding: 0 0.3rem; }
+      .timer-separator { font-size: 1.2rem; }
+      .main-title { font-size: 1.6rem; }
     }
   </style>
 </head>
 <body>
-  <div class="card">
-    
-    <!-- بخش شناسه آقای خموش -->
-    <div class="profile">
-      <div class="avatar">
-        <span>🕊️</span>
-      </div>
-      <h1>آقای خموش</h1>
-      <div class="subhead">طراح · توسعه‌دهنده · مینیمالیست</div>
-    </div>
+  <div class="cyber-card">
 
-    <!-- پیام اصلی بروزرسانی -->
-    <div class="update-section">
-      <div class="update-badge">
-        <span class="dot"></span>
-        <span>در حال بروزرسانی</span>
+    <!-- بدون لوگو / آواتار – فقط متن سایبری -->
+    <div class="main-title">صفحه در حال آپدیت</div>
+    <div class="sub-cyber">◈ سیستم بروزرسانی ◈</div>
+
+    <!-- ===== تایمر ===== -->
+    <div class="timer-container" id="timerContainer">
+      <div class="timer-item">
+        <span class="number" id="daysDisplay">۰</span>
+        <span class="label">روز</span>
       </div>
-      <div class="update-message">
-        <strong>آقای خموش</strong> در حال بروزرسانی است
+      <span class="timer-separator">:</span>
+      <div class="timer-item">
+        <span class="number" id="hoursDisplay">۰۰</span>
+        <span class="label">ساعت</span>
       </div>
-      <div class="update-description">
-        صفحه‌ی جدید به‌زودی با امکانات بیشتر و طراحی تازه
+      <span class="timer-separator">:</span>
+      <div class="timer-item">
+        <span class="number" id="minutesDisplay">۰۰</span>
+        <span class="label">دقیقه</span>
+      </div>
+      <span class="timer-separator">:</span>
+      <div class="timer-item">
+        <span class="number" id="secondsDisplay">۰۰</span>
+        <span class="label">ثانیه</span>
       </div>
     </div>
+    <div class="timer-status" id="countdownStatus">⏳ تا پایان بروزرسانی · ۱۵ آگوست ۲۰۲۶</div>
 
-    <!-- نوار پیشرفت (نمادین) -->
+    <!-- نوار پیشرفت سایبری -->
     <div class="progress-container">
       <div class="progress-bar"></div>
     </div>
     <div class="progress-label">
-      <span>بارگذاری</span>
+      <span>پردازش</span>
       <span>۶۸٪</span>
     </div>
 
-    <!-- ارتباطات (شبکه‌های مجازی) -->
+    <!-- شبکه‌های اجتماعی با استایل سایبری -->
     <div class="social-links">
-      <a href="#" class="social-item" aria-label="اینستاگرام">
-        <span class="icon">📸</span> اینستاگرام
-      </a>
-      <a href="#" class="social-item" aria-label="تلگرام">
-        <span class="icon">✈️</span> تلگرام
-      </a>
-      <a href="#" class="social-item" aria-label="گیت‌هاب">
-        <span class="icon">💻</span> گیت‌هاب
-      </a>
-      <a href="#" class="social-item" aria-label="ایمیل">
-        <span class="icon">✉️</span> تماس
-      </a>
+      <a href="#" class="social-item"><span class="icon">📡</span> اینستاگرام</a>
+      <a href="#" class="social-item"><span class="icon">⚡</span> تلگرام</a>
+      <a href="#" class="social-item"><span class="icon">🖥️</span> گیت‌هاب</a>
+      <a href="#" class="social-item"><span class="icon">✉</span> تماس</a>
     </div>
 
-    <!-- پانویس -->
-    <div class="footer-note">
-      <span>© ۱۴۰۵ — آقای خموش</span>
-      <span>ساخته شده با <span class="heart">❤️</span> و صبر</span>
-      <span>نسخه‌ی ۲.۰</span>
+    <div class="footer-cyber">
+      <span>© ۱۴۰۵ · آقای خموش</span>
+      <span>سایبر <span class="heart">❤</span> کد</span>
+      <span>نسخه ۲.۰</span>
     </div>
   </div>
+
+  <script>
+    (function() {
+      // هدف: ۱۵ آگوست ۲۰۲۶، ساعت ۰۰:۰۰:۰۰ (به وقت محلی)
+      const targetDate = new Date(2026, 7, 15, 0, 0, 0);
+
+      const daysEl = document.getElementById('daysDisplay');
+      const hoursEl = document.getElementById('hoursDisplay');
+      const minutesEl = document.getElementById('minutesDisplay');
+      const secondsEl = document.getElementById('secondsDisplay');
+      const statusEl = document.getElementById('countdownStatus');
+
+      function padZero(num) {
+        return String(num).padStart(2, '0');
+      }
+
+      // تبدیل عدد به فارسی (برای نمایش زیباتر)
+      function toPersian(num) {
+        return num.toLocaleString('fa-IR', { useGrouping: false });
+      }
+
+      function updateTimer() {
+        const now = new Date();
+        let diff = targetDate.getTime() - now.getTime();
+
+        if (diff < 0) {
+          diff = 0;
+          if (statusEl) {
+            statusEl.textContent = '✅ بروزرسانی کامل شد · صفحه جدید فعال';
+          }
+        } else {
+          if (statusEl) {
+            statusEl.textContent = '⏳ تا پایان بروزرسانی · ۱۵ آگوست ۲۰۲۶';
+          }
+        }
+
+        const totalSec = Math.floor(diff / 1000);
+        const days = Math.floor(totalSec / 86400);
+        const hours = Math.floor((totalSec % 86400) / 3600);
+        const minutes = Math.floor((totalSec % 3600) / 60);
+        const seconds = totalSec % 60;
+
+        if (daysEl) daysEl.textContent = toPersian(days);
+        if (hoursEl) hoursEl.textContent = toPersian(hours);
+        if (minutesEl) minutesEl.textContent = toPersian(minutes);
+        if (secondsEl) secondsEl.textContent = toPersian(seconds);
+      }
+
+      updateTimer();
+      setInterval(updateTimer, 1000);
+    })();
+  </script>
 </body>
 </html>
