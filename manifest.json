@@ -1,12 +1,43 @@
 {
-  "name": "Sarfraz Khamoosh Immigration News",
-  "short_name": "Khamoosh",
-  "start_url": "/",
+  "name": "سرفراز خموش | Sarfraz Khamoosh",
+  "short_name": "سرفراز خموش",
+  "description": "سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر",
+  "start_url": "/?page=home",
   "display": "standalone",
-  "background_color": "#eff6ff",
-  "theme_color": "#2563eb",
+  "background_color": "#0a0a12",
+  "theme_color": "#8b5cf6",
+  "orientation": "portrait",
+  "dir": "rtl",
+  "lang": "fa",
   "icons": [
-    { "src": "icon-192.png", "sizes": "192x192", "type": "image/png" },
-    { "src": "icon-512.png", "sizes": "512x512", "type": "image/png" }
+    {
+      "src": "/images/Kham.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/images/Kham.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ],
+  "categories": ["education", "productivity", "news"],
+  "shortcuts": [
+    {
+      "name": "اشعار",
+      "short_name": "اشعار",
+      "description": "مشاهده اشعار",
+      "url": "/?page=poems",
+      "icons": [{ "src": "/images/Kham.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "مهاجرت",
+      "short_name": "مهاجرت",
+      "description": "برنامه‌های مهاجرت",
+      "url": "/?page=immigration",
+      "icons": [{ "src": "/images/Kham.png", "sizes": "192x192" }]
+    }
   ]
 }
