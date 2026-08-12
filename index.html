@@ -4,10 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سرفراز خموش | Sarfraz Khamoosh</title>
+    
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    
     <!-- SEO Meta -->
     <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
     <meta name="keywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, مهاجرت, اشعار, افغانستان, مزار شریف" />
@@ -19,6 +22,12 @@
     <meta property="og:url" content="https://khamoosh.abrdns.com" />
     <meta name="theme-color" content="#8b5cf6" />
     <link rel="icon" type="image/png" href="images/Kham.png" />
+    
+    <!-- PWA / Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
     <!-- Schema.org -->
     <script type="application/ld+json">
         {
@@ -42,6 +51,16 @@
             ]
         }
     </script>
+    
+    <!-- Pre‑register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('✅ SW registered:', reg))
+                .catch(err => console.log('❌ SW registration failed:', err));
+        }
+    </script>
+    
     <style>
         /* ===== RESET & BASE ===== */
         * {
@@ -339,7 +358,6 @@
 
         /* ============================================================
            ABOUT, PROFILE, POEMS CATEGORIES, IMMIGRATION, TECH NEWS, GALLERY, SETTINGS
-           (styles remain unchanged)
            ============================================================ */
         .about-intro {
             text-align: center;
@@ -865,7 +883,205 @@
             transform: scale(0.95);
         }
 
-        /* Modals */
+        /* ===== NOTIFICATION CENTER (NEW) ===== */
+        .notification-center {
+            position: fixed;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 400px;
+            max-width: calc(100% - 32px);
+            max-height: 60vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .notification-center.open {
+            display: flex;
+            transform: translateX(-50%) translateY(0);
+        }
+        body.dark .notification-center {
+            background: rgba(16, 18, 34, 0.95);
+            border-color: rgba(255, 255, 255, 0.06);
+            color: #e8e8f0;
+        }
+
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            flex-shrink: 0;
+        }
+        body.dark .notification-header {
+            border-bottom-color: rgba(255, 255, 255, 0.04);
+        }
+        .notification-header h3 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notification-header h3 i {
+            color: #8b5cf6;
+        }
+        .notif-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: inherit;
+            opacity: 0.5;
+            padding: 4px 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .notif-close-btn:hover {
+            opacity: 1;
+            background: rgba(0,0,0,0.04);
+        }
+
+        .notification-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.5rem 0;
+            max-height: 40vh;
+        }
+        .notification-list .empty-notif {
+            text-align: center;
+            padding: 2rem 1rem;
+            opacity: 0.5;
+        }
+
+        .notif-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        body.dark .notif-item {
+            border-bottom-color: rgba(255, 255, 255, 0.03);
+        }
+        .notif-item:hover {
+            background: rgba(139, 92, 246, 0.04);
+        }
+        .notif-item.unread {
+            border-right: 3px solid #8b5cf6;
+        }
+        .notif-item.read {
+            opacity: 0.6;
+        }
+        .notif-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #8b5cf6;
+        }
+        .notif-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .notif-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .notif-body {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 2px;
+            word-break: break-word;
+        }
+        .notif-time {
+            font-size: 0.65rem;
+            opacity: 0.4;
+            margin-top: 4px;
+        }
+        .notif-delete-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            opacity: 0.2;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+        .notif-delete-btn:hover {
+            opacity: 1;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.06);
+        }
+
+        .notification-footer {
+            padding: 0.8rem 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        body.dark .notification-footer {
+            border-top-color: rgba(255, 255, 255, 0.04);
+        }
+        .notif-clear-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-size: 0.8rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+        .notif-clear-btn:hover {
+            opacity: 1;
+            background: rgba(239, 68, 68, 0.04);
+        }
+
+        /* ===== NOTIFICATION BELL BUTTON (NEW) ===== */
+        .notif-bell-btn {
+            position: relative;
+        }
+        .notif-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.5rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            animation: pulseBell 1.4s infinite;
+        }
+        .notif-bell-btn.has-notif {
+            color: #8b5cf6;
+        }
+
+        /* ===== MODALS ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -935,7 +1151,7 @@
             font-size: 0.95rem;
         }
 
-        /* Notifications */
+        /* ===== TOAST ===== */
         .toast-msg {
             position: fixed;
             bottom: 110px;
@@ -958,6 +1174,8 @@
             0%, 70% { opacity: 1; transform: translateX(-50%) translateY(0); }
             100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
         }
+
+        /* ===== NOTIF POPUP ===== */
         .notif-popup {
             position: fixed;
             top: 24px;
@@ -987,7 +1205,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        /* Responsive */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container { padding: 1rem 0.8rem; }
             .bottom-nav { height: 70px; padding: 8px 12px; border-radius: 40px; }
@@ -1005,6 +1223,13 @@
             .imm-grid { grid-template-columns: 1fr; }
             .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
             .modal-box { padding: 1.5rem 1.2rem; border-radius: 2rem; }
+            .notification-center {
+                width: calc(100% - 16px);
+                bottom: 80px;
+                border-radius: 1.5rem;
+            }
+            .notification-header { padding: 0.8rem 1rem; }
+            .notif-item { padding: 0.6rem 1rem; }
         }
         @media (max-width: 480px) {
             .bottom-nav { padding: 4px 6px; gap: 0; border-radius: 32px; height: 62px; }
@@ -1283,7 +1508,7 @@
     </div>
 
     <!-- ============================================================
-         JAVASCRIPT - FULL TRANSLATION SUPPORT
+         JAVASCRIPT - FULL TRANSLATION SUPPORT + NOTIFICATION SYSTEM
          ============================================================ -->
     <script>
         // ================================================================
@@ -1291,7 +1516,6 @@
         // ================================================================
         const translations = {
             fa: {
-                // Navigation labels
                 nav: {
                     home: 'خانه',
                     about: 'درباره',
@@ -1302,14 +1526,11 @@
                     technews: 'فناوری',
                     gallery: 'گالری'
                 },
-                // Home page
                 homeTitle: 'اشعار کوتاه',
-                // About page
                 aboutTitle: 'برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس',
                 aboutText: 'سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است. علاوه بر تخصص در برنامه‌نویسی و طراحی، به شعر و ادبیات علاقه‌مند است و مطالعه و سرودن شعر را بخشی از زندگی خود می‌داند.',
                 skillsTitle: 'مهارت‌های فنی',
                 specialtiesTitle: 'حوزه‌های تخصصی',
-                // Profile
                 profileName: 'سرفراز خموش',
                 profileTitle: 'طراح گرافیک · برنامه‌نویس',
                 profileFitness: 'مربی فیتنس',
@@ -1319,19 +1540,14 @@
                 profileEducation: 'مدرک',
                 profileAbout: 'درباره من',
                 profileDesc: 'من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم. امروز به عنوان یک توسعه‌دهنده فول‌استک و طراح خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم. همچنین به عنوان مشاور مهاجرت و مربی فیتنس فعالیت دارم. عاشق شعر، کتاب و خلق تجربه‌های دیجیتال متفاوت هستم.',
-                // Settings
                 settingsTitle: 'تنظیمات',
                 themeLabel: 'تم شب / روز',
                 langLabel: 'زبان',
                 viewLabel: 'حالت نمایش',
-                // Immigration
                 immigrationTitle: 'برنامه‌های مهاجرت آمریکا',
                 immigrationUpdate: 'آخرین به‌روزرسانی:',
-                // Tech news
                 techTitle: 'اخبار فناوری',
-                // Gallery
                 galleryTitle: 'گالری تصاویر',
-                // Poems categories
                 categories: {
                     mystical: 'عارفانه',
                     romantic: 'عاشقانه',
@@ -1339,12 +1555,9 @@
                     blank: 'سپید',
                     heavy: 'متن سنگین'
                 },
-                // Poems data (already in poemsList and poemsDB)
-                // Buttons
                 copy: 'کپی',
                 share: 'اشتراک',
                 like: 'لایک',
-                // Social names
                 social: {
                     facebook: 'فیسبوک',
                     instagram: 'اینستاگرام',
@@ -1619,7 +1832,6 @@
                 const liked = likesHome[p.id] > 0;
                 return `<div class="poem-card"><div class="type">${type}</div><div class="text">${text.replace(/\n/g,'<br>')}</div><div class="card-actions"><button onclick="copyText('${text.replace(/"/g,'&quot;')}')"><i class="fas fa-copy"></i> ${t.copy}</button><button onclick="sharePoem('${text.replace(/"/g,'&quot;')}','${type.replace(/"/g,'&quot;')}')"><i class="fas fa-share-alt"></i> ${t.share}</button><button class="like-btn ${liked?'liked':''}" onclick="likeHome(${p.id},this)"><i class="fas fa-heart"></i> <span class="like-count">${likes}</span></button></div></div>`;
             }).join('');
-            // Update page title
             document.querySelector('#page-home h2').innerHTML = `<i class="fas fa-feather-alt" style="color:#8b5cf6;"></i> ${t.homeTitle}`;
         }
 
@@ -1651,7 +1863,6 @@
             if (list) {
                 list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
             }
-            // Update texts
             const introP = document.querySelector('#page-about .about-intro p');
             if (introP) introP.textContent = t.aboutTitle;
             const aboutTextP = document.querySelector('#page-about .glass:first-of-type p');
@@ -1736,7 +1947,6 @@
                     items[2].innerHTML = `<i class="fas fa-location-dot"></i> ${t.profileLocation} <span>ازبکستان</span>`;
                     items[3].innerHTML = `<i class="fas fa-graduation-cap"></i> ${t.profileEducation} <span>لیسانس</span>`;
                 }
-                // Social links names
                 const socialLinks = card.querySelectorAll('.profile-social-list a');
                 const socialMap = {
                     'فیسبوک': t.social.facebook,
@@ -1758,7 +1968,6 @@
                     }
                 });
             }
-            // About section in profile
             const aboutH3 = document.querySelector('#page-profile .glass h3');
             if (aboutH3) aboutH3.innerHTML = `<i class="fas fa-address-card" style="color:#8b5cf6;"></i> ${t.profileAbout}`;
             const aboutP = document.querySelector('#page-profile .glass p');
@@ -1781,7 +1990,9 @@
             }
         }
 
-        // IMMIGRATION
+        // ================================================================
+        // 8. IMMIGRATION with NOTIFICATION SYSTEM
+        // ================================================================
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
             if (!grid) return;
@@ -1790,61 +2001,66 @@
             if (updateSpan) updateSpan.textContent = t.immigrationUpdate + ' ۲۵ ژوئن ۲۰۲۶';
             const titleH3 = document.querySelector('#page-immigration .glass h3');
             if (titleH3) titleH3.innerHTML = `<i class="fas fa-passport" style="color:#8b5cf6;"></i> ${t.immigrationTitle}`;
+            
             grid.innerHTML = immigrationPrograms.map(prog => {
                 const name = currentLang === 'fa' ? prog.fa : prog.en;
                 const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
-                const has = notifBadges[prog.id] || false;
-                return `<div class="imm-card"><div class="info"><h4>${name}</h4><div class="status">${status}</div><div class="date">${prog.date}</div></div><button class="bell-btn ${has?'has-notification':''}" onclick="checkNotif('${prog.id}','${name.replace(/"/g,'&quot;')}',this)"><i class="fas fa-bell"></i>${has?'<span class="badge">1</span>':''}</button></div>`;
+                const hasNotif = notifBadges[prog.id] || false;
+                
+                return `<div class="imm-card" data-program="${prog.id}">
+                    <div class="info">
+                        <h4>${name}</h4>
+                        <div class="status">${status}</div>
+                        <div class="date">${prog.date}</div>
+                    </div>
+                    <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" 
+                            onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
+                        <i class="fas fa-bell"></i>
+                        ${hasNotif ? '<span class="badge">1</span>' : ''}
+                    </button>
+                </div>`;
             }).join('');
         }
 
-        function checkNotif(id, name, btn) {
-            const msgs = {
-                siv: { fa: 'تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد', en: 'New SIV changes: Re-prioritization' },
-                p1: { fa: 'برنامه P1: مهلت ثبت‌نام تمدید شد', en: 'P1: Deadline extended' },
-                p2: { fa: 'برنامه P2: نتایج جدید منتشر شد', en: 'P2: New results published' },
-                asylum: { fa: 'تغییرات در روند پناهندگی', en: 'Asylum process changes' },
-                parole: { fa: 'برنامه Parole: دستورالعمل‌های جدید', en: 'Parole: New guidelines' },
-                reparole: { fa: 'Re-Parole: تمدید خودکار', en: 'Re-Parole: Auto-extension' },
-                welcome: { fa: 'Welcome Corps: افزایش ظرفیت', en: 'Welcome Corps: Capacity increased' },
-                cr1: { fa: 'CR1: کاهش زمان پردازش', en: 'CR1: Processing time reduced' },
-                cr2: { fa: 'CR2: به‌روزرسانی مدارک', en: 'CR2: Document update' },
-                k1: { fa: 'K1: تغییرات در فرم‌ها', en: 'K1: Form changes' },
-                dv: { fa: 'DV Lottery: تاریخ ثبت‌نام اعلام شد', en: 'DV Lottery: Registration date set' },
-                i130_gc: { fa: 'I-130 با گرین کارت: افزایش تعرفه', en: 'I-130 with GC: Fee increase' },
-                i130_us: { fa: 'I-130 با پاسپورت: تسریع در رسیدگی', en: 'I-130 with US Passport: Expedited' }
-            };
-            const msg = msgs[id] ? (currentLang === 'fa' ? msgs[id].fa : msgs[id].en) : (currentLang === 'fa' ? 'خبر جدید برای ' + name : 'New update for ' + name);
-            showNotif(name, msg);
-            if (notifBadges[id]) {
-                notifBadges[id] = false;
-                btn.classList.remove('has-notification');
-                const b = btn.querySelector('.badge');
-                if (b) b.remove();
-            } else {
-                notifBadges[id] = true;
-                btn.classList.add('has-notification');
-                if (!btn.querySelector('.badge')) {
-                    const b = document.createElement('span');
-                    b.className = 'badge';
-                    b.textContent = '1';
-                    btn.appendChild(b);
+        // ===== NEW: Handle Notification for Immigration Programs =====
+        async function handleNotification(programId, programName, btn) {
+            if (typeof window.pushManager !== 'undefined') {
+                // Send notification via pushManager
+                await window.pushManager.notifyProgram(programId, programName);
+                
+                // Toggle badge
+                const hasNotif = notifBadges[programId] || false;
+                if (hasNotif) {
+                    notifBadges[programId] = false;
+                    btn.classList.remove('has-notification');
+                    const badge = btn.querySelector('.badge');
+                    if (badge) badge.remove();
+                } else {
+                    notifBadges[programId] = true;
+                    btn.classList.add('has-notification');
+                    if (!btn.querySelector('.badge')) {
+                        const b = document.createElement('span');
+                        b.className = 'badge';
+                        b.textContent = '1';
+                        btn.appendChild(b);
+                    }
                 }
+                localStorage.setItem('notifications', JSON.stringify(notifBadges));
+                
+                // Update bell badge in nav
+                if (window.pushManager) {
+                    await window.pushManager.updateBellBadge();
+                }
+                
+                toast(`✅ اعلان برای برنامه ${programName} ارسال شد`);
+            } else {
+                toast(`⏳ سیستم اعلان در حال بارگذاری... لطفاً صفحه را مجدداً بارگذاری کنید`);
             }
-            localStorage.setItem('notifications', JSON.stringify(notifBadges));
         }
 
-        function showNotif(title, message) {
-            const old = document.querySelector('.notif-popup');
-            if (old) old.remove();
-            const el = document.createElement('div');
-            el.className = 'notif-popup';
-            el.innerHTML = `<h4><i class="fas fa-bell" style="color:#8b5cf6;"></i> ${title}</h4><p>${message}</p>`;
-            document.body.appendChild(el);
-            setTimeout(() => { el.style.opacity = '0'; el.style.transform = 'translateY(-20px)'; setTimeout(() => el.remove(), 400); }, 5000);
-        }
-
-        // TECH NEWS
+        // ================================================================
+        // 9. TECH NEWS
+        // ================================================================
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
@@ -1881,7 +2097,9 @@
             document.getElementById('newsModal').classList.remove('open');
         }
 
-        // GALLERY
+        // ================================================================
+        // 10. GALLERY
+        // ================================================================
         function renderGallery() {
             const grid = document.getElementById('galleryGrid');
             if (!grid) return;
@@ -1917,13 +2135,12 @@
         }
 
         // ================================================================
-        // 8. LANGUAGE SWITCHER (full update)
+        // 11. LANGUAGE SWITCHER
         // ================================================================
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('sarfraz_lang', lang);
 
-            // Update navigation labels
             const t = translations[lang];
             const labelMap = {
                 'label-home': t.nav.home,
@@ -1940,14 +2157,12 @@
                 if (el) el.textContent = labelMap[id];
             });
 
-            // Update settings language buttons
             const langBtns = document.querySelectorAll('.lang-opt');
             langBtns.forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
             });
 
-            // Re-render current page with new language
             const active = document.querySelector('.page.active');
             if (active) {
                 const id = active.id.replace('page-', '');
@@ -1964,7 +2179,7 @@
         }
 
         // ================================================================
-        // 9. SETTINGS INIT
+        // 12. SETTINGS INIT
         // ================================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
@@ -2001,7 +2216,7 @@
         }
 
         // ================================================================
-        // 10. MODALS
+        // 13. MODALS
         // ================================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
@@ -2024,7 +2239,7 @@
         }
 
         // ================================================================
-        // 11. INIT
+        // 14. INIT
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
@@ -2042,8 +2257,18 @@
             const params = new URLSearchParams(window.location.search);
             const page = params.get('page') || localStorage.getItem('currentPage') || 'home';
             navigateTo(page);
+            
+            // Highlight program if needed
+            const highlight = params.get('highlight');
+            if (highlight && window.pushManager) {
+                setTimeout(() => {
+                    window.pushManager.highlightProgram(highlight);
+                }, 1000);
+            }
         });
     </script>
 
+    <!-- ===== PUSH NOTIFICATION SYSTEM ===== -->
+    <script src="/push-notification.js"></script>
 </body>
-                            </html>
+</html>
