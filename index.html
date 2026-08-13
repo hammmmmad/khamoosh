@@ -38,17 +38,7 @@
             "url": "https://khamoosh.abrdns.com",
             "image": "https://khamoosh.abrdns.com/images/Khamoosh.jpg",
             "jobTitle": "برنامه‌نویس و طراح گرافیک",
-            "description": "سرفراز خموش، متخصص در برنامه‌نویسی، طراحی گرافیک و مشاوره مهاجرت",
-            "address": {
-                "@type": "PostalAddress",
-                "addressLocality": "مزار شریف",
-                "addressCountry": "افغانستان"
-            },
-            "sameAs": [
-                "https://www.instagram.com/admin_khamoosh",
-                "https://www.linkedin.com/in/sarfraz-khamoosh-766277228",
-                "https://github.com/hammmmmad"
-            ]
+            "description": "سرفراز خموش، متخصص در برنامه‌نویسی، طراحی گرافیک و مشاوره مهاجرت"
         }
     </script>
     
@@ -268,60 +258,81 @@
             50% { transform: scale(1.03); }
         }
 
-        /* ===== HOME - LOGO GRID ===== */
-        .logo-grid {
+        /* ============================================================
+           HOME - PROFILE CARDS (فقط عکس پروفایل)
+           ============================================================ */
+        .profile-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
             gap: 2rem;
             margin-top: 1rem;
         }
-        .logo-card {
+        .profile-card-home {
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(14px);
             border-radius: 2rem;
-            padding: 1.5rem;
+            padding: 1.5rem 1.5rem 1.2rem;
             border: 1px solid rgba(255, 255, 255, 0.3);
             transition: 0.35s;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            cursor: pointer;
+            cursor: default;
         }
-        body.dark .logo-card {
+        body.dark .profile-card-home {
             background: rgba(16, 18, 34, 0.5);
             border-color: rgba(255, 255, 255, 0.04);
         }
-        .logo-card:hover {
+        .profile-card-home:hover {
             transform: translateY(-8px) scale(1.02);
             box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
             border-color: #8b5cf6;
         }
-        .logo-card:active {
-            transform: scale(0.95);
-        }
-        .logo-card img {
-            width: 100%;
-            aspect-ratio: 1 / 1;
-            object-fit: contain;
-            border-radius: 1.5rem;
-            background: rgba(255, 255, 255, 0.05);
-            padding: 0.5rem;
+        .profile-card-home .avatar-home {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            object-fit: cover;
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
             transition: 0.3s;
         }
-        .logo-card:hover img {
+        .profile-card-home:hover .avatar-home {
             transform: scale(1.05);
+            border-color: #a78bfa;
         }
-        .logo-card .logo-name {
-            margin-top: 0.8rem;
-            font-weight: 600;
-            font-size: 0.9rem;
-            opacity: 0.7;
+        .profile-card-home .home-name {
+            margin-top: 1rem;
+            font-weight: 700;
+            font-size: 1.1rem;
         }
-        .logo-card .logo-tag {
-            font-size: 0.65rem;
-            opacity: 0.4;
+        .profile-card-home .home-title {
+            font-size: 0.75rem;
+            opacity: 0.6;
             margin-top: 2px;
+        }
+        .profile-card-home .home-desc {
+            font-size: 0.7rem;
+            opacity: 0.4;
+            margin-top: 6px;
+            line-height: 1.5;
+        }
+        .profile-card-home .home-tag {
+            margin-top: 0.6rem;
+            display: flex;
+            gap: 0.5rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .profile-card-home .home-tag span {
+            background: rgba(139, 92, 246, 0.08);
+            padding: 2px 12px;
+            border-radius: 40px;
+            font-size: 0.6rem;
+            font-weight: 600;
+            color: #8b5cf6;
+            border: 1px solid rgba(139, 92, 246, 0.06);
         }
 
         /* ===== ABOUT ===== */
@@ -831,7 +842,6 @@
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
         }
 
-        /* ===== ADMIN ARCHIVE ===== */
         #adminArchive {
             margin-top: 1.5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.04);
@@ -1267,7 +1277,7 @@
             }
             .notification-header { padding: 0.8rem 1rem; }
             .notif-item { padding: 0.6rem 1rem; }
-            .logo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+            .profile-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
         }
         @media (max-width: 480px) {
             .bottom-nav { padding: 4px 6px; gap: 0; border-radius: 32px; height: 62px; }
@@ -1277,7 +1287,7 @@
             .nav-item-home { flex: 0 0 50px; height: 50px; min-width: 50px; }
             .nav-item-home i { font-size: 1.6rem; }
             .nav-item-home span { font-size: 0.38rem; display: block !important; }
-            .logo-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.8rem; }
+            .profile-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.8rem; }
             .news-grid { grid-template-columns: 1fr; }
             .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
@@ -1288,13 +1298,17 @@
 
     <div class="container">
 
-        <!-- ===== HOME (ACTIVE) - LOGO GALLERY ===== -->
+        <!-- ============================================================
+             PAGES
+             ============================================================ -->
+
+        <!-- ===== HOME (ACTIVE) - PROFILE CARDS ===== -->
         <div class="page active" id="page-home">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
-                <i class="fas fa-images" style="color:#8b5cf6;"></i> 
-                <span id="homeTitle">آرشیو تصاویر</span>
+                <i class="fas fa-user-circle" style="color:#8b5cf6;"></i> 
+                <span id="homeTitle">پروفایل‌ها</span>
             </h2>
-            <div class="logo-grid" id="homeLogoGrid"></div>
+            <div class="profile-grid" id="homeProfileGrid"></div>
         </div>
 
         <!-- ===== ABOUT ===== -->
@@ -1429,7 +1443,6 @@
                         <span>🔑 <span id="adminStatus">وضعیت: آماده</span></span>
                     </div>
 
-                    <!-- ===== ARCHIVE SECTION ===== -->
                     <div id="adminArchive">
                         <h4><i class="fas fa-archive"></i> <span id="archiveTitle">آرشیو پیام‌ها</span></h4>
                         <div id="archiveList"></div>
@@ -1530,8 +1543,9 @@
         // ================================================================
         const translations = {
             fa: {
-                nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', immigration: 'مهاجرت', technews: 'فناوری', gallery: 'گالری' },
-                homeTitle: 'آرشیو تصاویر',
+                nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', immigration: 'مهاجرت',
+                    technews: 'فناوری', gallery: 'گالری' },
+                homeTitle: 'پروفایل‌ها',
                 aboutTitle: 'برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس',
                 aboutText: 'سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.',
                 skillsTitle: 'مهارت‌های فنی',
@@ -1563,11 +1577,14 @@
                 statusDelivered: 'تحویل داده شده',
                 statusPending: 'در انتظار',
                 statusFailed: 'ناموفق',
-                social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب', pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک', substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
+                social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب',
+                    pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک',
+                substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
             },
             en: {
-                nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', immigration: 'Immigration', technews: 'Tech News', gallery: 'Gallery' },
-                homeTitle: 'Image Archive',
+                nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', immigration: 'Immigration',
+                    technews: 'Tech News', gallery: 'Gallery' },
+                homeTitle: 'Profiles',
                 aboutTitle: 'Developer · Graphic Designer · Immigration Consultant · Fitness Coach',
                 aboutText: 'Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, with over 8 years of experience in technology, design and digital development.',
                 skillsTitle: 'Technical Skills',
@@ -1599,39 +1616,26 @@
                 statusDelivered: 'Delivered',
                 statusPending: 'Pending',
                 statusFailed: 'Failed',
-                social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub', pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok', substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
+                social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub',
+                    pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok',
+                substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
             }
         };
 
-        // ===== LOGO DATA =====
-        const logoImages = [
-            { name: 'Kham.png', label: 'لوگو اصلی' },
-            { name: 'Khamoosh.jpg', label: 'پروفایل' },
-            { name: 'programer.png', label: 'برنامه‌نویسی' },
-            { name: 'website.png', label: 'طراحی وب' },
-            { name: 'application.png', label: 'اپلیکیشن' },
-            { name: 'ux.png', label: 'تجربه کاربری' },
-            { name: 'logo.png', label: 'طراحی لوگو' },
-            { name: 'banner.png', label: 'بنر' },
-            { name: 'mang.png', label: 'منگا' },
-            { name: 'imm.png', label: 'مهاجرت' },
-            { name: 'fit.png', label: 'فیتنس' },
-            { name: 'photoshop.png', label: 'فتوشاپ' },
-            { name: 'ill.png', label: 'ایلستریتور' },
-            { name: 'indesign.png', label: 'ایندیزاین' },
-            { name: 'light.png', label: 'لایتروم' },
-            { name: 'inshot.png', label: 'اینشات' },
-            { name: 'pics.png', label: 'پیکس' },
-            { name: 'mtn.jpg', label: 'کوهستان' },
-            { name: 'alight.png', label: 'الایت' },
-            { name: 'after.png', label: 'افترافکت' },
-            { name: 'conva.png', label: 'کانوا' },
-            { name: 'python.png', label: 'پایتون' },
-            { name: 'flutter.png', label: 'فلاتر' },
-            { name: 'xml.png', label: 'XML' },
-            { name: 'php.png', label: 'PHP' },
-            { name: 'go.png', label: 'Go' },
-            { name: 'javas.png', label: 'جاوااسکریپت' }
+        // ===== PROFILE CARDS DATA (برای صفحه خانه) =====
+        const profileCards = [
+            { id: 1, name: 'سرفراز خموش', title: 'برنامه‌نویس و طراح گرافیک', desc: 'متخصص در توسعه وب و طراحی رابط کاربری',
+                tags: ['برنامه‌نویسی', 'طراحی', 'UI/UX'] },
+            { id: 2, name: 'سرفراز خموش', title: 'مشاور مهاجرت', desc: 'راهنمایی در زمینه مهاجرت به آمریکا و کانادا',
+                tags: ['مهاجرت', 'مشاوره'] },
+            { id: 3, name: 'سرفراز خموش', title: 'مربی فیتنس', desc: 'مربی بدنسازی و تناسب اندام با متدهای روز دنیا',
+                tags: ['فیتنس', 'بدنسازی'] },
+            { id: 4, name: 'سرفراز خموش', title: 'شاعر و نویسنده', desc: 'نویسنده اشعار عارفانه و عاشقانه با سبک مدرن',
+                tags: ['شعر', 'ادبیات'] },
+            { id: 5, name: 'سرفراز خموش', title: 'طراح لوگو و برند', desc: 'طراحی هویت بصری و لوگو برای برندهای مختلف',
+                tags: ['لوگو', 'برندینگ'] },
+            { id: 6, name: 'سرفراز خموش', title: 'توسعه‌دهنده فول‌استک', desc: 'توسعه وب‌سایت و اپلیکیشن با React و Node.js',
+                tags: ['React', 'Node.js'] }
         ];
 
         // ===== OTHER DATA =====
@@ -1668,7 +1672,8 @@
             { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", statusFa: "فعال", statusEn: "Active" },
             { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open" },
             { id: 'i130_gc', fa: "I-130 با گرین کارت", en: "I-130 with Green Card", statusFa: "فعال", statusEn: "Active" },
-            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال", statusEn: "Active" }
+            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال",
+            statusEn: "Active" }
         ];
 
         const newsData = [{
@@ -1701,7 +1706,7 @@
         let currentLang = 'fa';
         let currentPage = 'home';
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
-        const WORKER_URL = 'https://your-worker-name.workers.dev'; // 🔑 CHANGE THIS
+        const WORKER_URL = 'https://khamoosh-push.workers.dev'; // 🔑 CHANGE THIS
 
         // ===== HELPERS =====
         function toast(msg) {
@@ -1757,25 +1762,43 @@
 
         // ===== RENDER FUNCTIONS =====
         function renderHome() {
-            const grid = document.getElementById('homeLogoGrid');
+            const grid = document.getElementById('homeProfileGrid');
             if (!grid) return;
             const t = translations[currentLang];
             document.querySelector('#page-home h2 span').textContent = t.homeTitle;
 
-            const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
-            const validImages = logoImages.filter(item => validExts.includes(item.name.split('.').pop().toLowerCase()));
-
-            if (validImages.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">هیچ تصویری یافت نشد</p>`;
-                return;
-            }
-
-            grid.innerHTML = validImages.map(item => {
-                const path = 'images/' + item.name;
-                return `<div class="logo-card" onclick="window.open('${path}','_blank')">
-                            <img src="${path}" alt="${item.label}" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=Not+Found&bg=8b5cf6&text_color=fff'">
-                            <div class="logo-name">${item.label}</div>
-                            <div class="logo-tag">${item.name}</div>
+            grid.innerHTML = profileCards.map((card, index) => {
+                const name = currentLang === 'fa' ? card.name : 'Sarfraz Khamoosh';
+                const title = currentLang === 'fa' ? card.title : card.title.replace(/برنامه‌نویس/g, 'Developer').replace(
+                    /طراح گرافیک/g, 'Graphic Designer');
+                const desc = currentLang === 'fa' ? card.desc : card.desc.replace(/برنامه‌نویسی/g, 'Programming')
+                    .replace(/طراحی/g, 'Design').replace(/رابط کاربری/g, 'UI').replace(/مهاجرت/g, 'Immigration')
+                    .replace(/مشاوره/g, 'Consulting').replace(/بدنسازی/g, 'Bodybuilding').replace(/تناسب اندام/g,
+                        'Fitness');
+                const tags = currentLang === 'fa' ? card.tags : card.tags.map(t => {
+                    const map = {
+                        'برنامه‌نویسی': 'Programming',
+                        'طراحی': 'Design',
+                        'UI/UX': 'UI/UX',
+                        'مهاجرت': 'Immigration',
+                        'مشاوره': 'Consulting',
+                        'فیتنس': 'Fitness',
+                        'بدنسازی': 'Bodybuilding',
+                        'شعر': 'Poetry',
+                        'ادبیات': 'Literature',
+                        'لوگو': 'Logo',
+                        'برندینگ': 'Branding',
+                        'React': 'React',
+                        'Node.js': 'Node.js'
+                    };
+                    return map[t] || t;
+                });
+                return `<div class="profile-card-home">
+                            <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
+                            <div class="home-name">${name}</div>
+                            <div class="home-title">${title}</div>
+                            <div class="home-desc">${desc}</div>
+                            <div class="home-tag">${tags.map(t => `<span>#${t}</span>`).join('')}</div>
                         </div>`;
             }).join('');
         }
@@ -1802,7 +1825,9 @@
             }
             const list = document.getElementById('specialtiesList');
             if (list) {
-                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
+                list.innerHTML = specialties.map(s =>
+                    `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join(
+                '');
             }
         }
 
@@ -1949,7 +1974,8 @@
             const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
             const validImages = imageNames.filter(name => validExts.includes(name.split('.').pop().toLowerCase()));
             if (validImages.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">${currentLang === 'fa' ? 'هیچ تصویری یافت نشد' : 'No images found'}</p>`;
+                grid.innerHTML =
+                    `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">${currentLang === 'fa' ? 'هیچ تصویری یافت نشد' : 'No images found'}</p>`;
                 return;
             }
             grid.innerHTML = validImages.map(name => {
@@ -2169,16 +2195,19 @@
                     const view = this.getAttribute('data-view');
                     const c = document.querySelector('.container');
                     if (view === 'desktop') { c.style.maxWidth = '1200px';
-                        c.style.padding = '1.5rem 1.2rem'; } else if (view === 'tablet') { c.style.maxWidth = '768px';
+                        c.style.padding = '1.5rem 1.2rem'; } else if (view === 'tablet') { c.style.maxWidth =
+                            '768px';
                         c.style.padding = '1rem 0.8rem'; } else { c.style.maxWidth = '480px';
                         c.style.padding = '0.8rem 0.6rem'; }
                     localStorage.setItem('viewMode', view);
                 });
             });
             const sv = localStorage.getItem('viewMode') || 'desktop';
-            document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === sv));
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-view') ===
+                sv));
             const sl = localStorage.getItem('sarfraz_lang') || 'fa';
-            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === sl));
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') ===
+                sl));
         }
 
         // ===== MODALS =====
@@ -2188,8 +2217,11 @@
             const closeBtn = document.getElementById('closeUidModal');
             const closeBtn2 = document.getElementById('closeUidModalBtn');
             const copyBtn = document.getElementById('copyUidBtn');
+
             function open() { modal.classList.add('open'); }
+
             function close() { modal.classList.remove('open'); }
+
             function copyUid() {
                 navigator.clipboard.writeText('7500139701825634305');
                 toast('UID کپی شد!');
@@ -2206,7 +2238,8 @@
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
             setLanguage(savedLang);
-            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === savedLang));
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') ===
+                savedLang));
 
             initSettings();
             initUidModal();
@@ -2230,4 +2263,4 @@
     <!-- ===== PUSH NOTIFICATION SYSTEM ===== -->
     <script src="/push-notification.js"></script>
 </body>
-                                                                                                                                     </html>
+</html>
