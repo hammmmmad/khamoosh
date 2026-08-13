@@ -45,11 +45,7 @@
 
     <style>
         /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Vazirmatn', 'Inter', sans-serif;
             background: #f0f2f8;
@@ -99,14 +95,8 @@
             display: block;
         }
         @keyframes fadeUp {
-            0% {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            100% {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
         }
 
         /* ===== BOTTOM NAVIGATION ===== */
@@ -256,16 +246,11 @@
             transform: scale(0.92) translateY(2px);
         }
         @keyframes homePulse {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.03);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
         }
 
-        /* ===== HOME - PROFILE CARDS (با کاهش padding و لوگوی زیبا) ===== */
+        /* ===== HOME - PROFILE CARDS ===== */
         .profile-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -276,16 +261,13 @@
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(14px);
             border-radius: 2rem;
-            padding: 1rem 1rem 1rem;
-            /* کاهش padding */
+            padding: 1rem;
             border: 1px solid rgba(255, 255, 255, 0.15);
-            /* border نازک‌تر */
             transition: 0.35s;
             display: flex;
             flex-direction: column;
             align-items: center;
             text-align: center;
-            cursor: default;
         }
         body.dark .profile-card-home {
             background: rgba(16, 18, 34, 0.5);
@@ -303,7 +285,6 @@
             border: 4px solid #8b5cf6;
             object-fit: cover;
             box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
-            /* سایه زیبا */
             transition: 0.3s;
         }
         .profile-card-home:hover .avatar-home {
@@ -609,7 +590,6 @@
         .bell-btn:active {
             transform: scale(0.92);
         }
-        /* حالت سبز بعد از کلیک موفق */
         .bell-btn.success {
             background: #22c55e !important;
             color: #fff !important;
@@ -617,17 +597,10 @@
             animation: bellSuccess 0.6s ease;
         }
         @keyframes bellSuccess {
-            0% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.2);
-            }
-            100% {
-                transform: scale(1);
-            }
+            0% { transform: scale(1); }
+            50% { transform: scale(1.2); }
+            100% { transform: scale(1); }
         }
-
         .bell-btn .badge {
             position: absolute;
             top: -4px;
@@ -648,13 +621,8 @@
             animation: pulseBell 1.4s infinite;
         }
         @keyframes pulseBell {
-            0%,
-            100% {
-                transform: scale(1);
-            }
-            50% {
-                transform: scale(1.12);
-            }
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
         }
 
         /* ===== TECH NEWS ===== */
@@ -811,14 +779,12 @@
         .toggle-switch.active .slider {
             right: 28px;
         }
-        .lang-group,
-        .view-group {
+        .lang-group, .view-group {
             display: flex;
             gap: 0.6rem;
             flex-wrap: wrap;
         }
-        .lang-group button,
-        .view-group button {
+        .lang-group button, .view-group button {
             padding: 0.4rem 1.2rem;
             border-radius: 40px;
             border: 2px solid #d1d5db;
@@ -830,19 +796,16 @@
             color: inherit;
             font-size: 0.8rem;
         }
-        .lang-group button.active,
-        .view-group button.active {
+        .lang-group button.active, .view-group button.active {
             border-color: #8b5cf6;
             background: rgba(139, 92, 246, 0.08);
             color: #8b5cf6;
         }
-        .lang-group button:hover,
-        .view-group button:hover {
+        .lang-group button:hover, .view-group button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
         }
-        .lang-group button:active,
-        .view-group button:active {
+        .lang-group button:active, .view-group button:active {
             transform: scale(0.95);
         }
 
@@ -859,23 +822,17 @@
             font-size: 1.1rem;
             margin-bottom: 0.8rem;
         }
-        #adminPanel select,
-        #adminPanel input,
-        #adminPanel textarea {
+        #adminPanel select, #adminPanel input, #adminPanel textarea {
             background: rgba(255, 255, 255, 0.3);
             border: 1px solid rgba(139, 92, 246, 0.1);
             transition: 0.3s;
         }
-        body.dark #adminPanel select,
-        body.dark #adminPanel input,
-        body.dark #adminPanel textarea {
+        body.dark #adminPanel select, body.dark #adminPanel input, body.dark #adminPanel textarea {
             background: rgba(0, 0, 0, 0.2);
             border-color: rgba(255, 255, 255, 0.04);
             color: #e8e8f0;
         }
-        #adminPanel select:focus,
-        #adminPanel input:focus,
-        #adminPanel textarea:focus {
+        #adminPanel select:focus, #adminPanel input:focus, #adminPanel textarea:focus {
             outline: none;
             border-color: #8b5cf6;
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
@@ -1255,7 +1212,6 @@
             backdrop-filter: blur(8px);
             box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
         }
-        /* Toast ویژه با تایمر ۱۵ ثانیه */
         .toast-msg.special {
             background: #8b5cf6;
             color: #fff;
@@ -1264,36 +1220,16 @@
             animation: fadeToastSpecial 15s ease forwards;
         }
         @keyframes fadeToastSpecial {
-            0%,
-            10% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            90% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(20px);
-                visibility: hidden;
-            }
+            0%, 10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
         }
-
         .toast-msg i {
             margin-left: 8px;
         }
         @keyframes fadeToast {
-            0%,
-            70% {
-                opacity: 1;
-                transform: translateX(-50%) translateY(0);
-            }
-            100% {
-                opacity: 0;
-                transform: translateX(-50%) translateY(20px);
-                visibility: hidden;
-            }
+            0%, 70% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
         }
 
         .notif-popup {
@@ -1321,139 +1257,45 @@
             opacity: 0.85;
         }
         @keyframes slideDown {
-            from {
-                opacity: 0;
-                transform: translateY(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .container {
-                padding: 1rem 0.8rem;
-            }
-            .bottom-nav {
-                height: 70px;
-                padding: 8px 12px;
-                border-radius: 40px;
-                max-width: 100%;
-            }
-            .nav-item {
-                min-width: 38px;
-                height: 56px;
-                padding: 2px 6px;
-            }
-            .nav-item i {
-                font-size: 1.2rem;
-            }
-            .nav-item span {
-                font-size: 0.45rem;
-                display: block !important;
-            }
-            .nav-item-home {
-                flex: 0 0 60px;
-                height: 60px;
-                min-width: 60px;
-            }
-            .nav-item-home i {
-                font-size: 1.8rem;
-            }
-            .nav-item-home span {
-                font-size: 0.45rem;
-                display: block !important;
-            }
-            .profile-layout {
-                grid-template-columns: 1fr;
-            }
-            .profile-details {
-                grid-template-columns: 1fr;
-            }
-            .about-intro h2 {
-                font-size: 1.8rem;
-            }
-            .doughnut {
-                width: 90px;
-                height: 90px;
-            }
-            .doughnut::after {
-                width: 64px;
-                height: 64px;
-            }
-            .imm-grid {
-                grid-template-columns: 1fr;
-            }
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
-            }
-            .modal-box {
-                padding: 1.5rem 1.2rem;
-                border-radius: 2rem;
-            }
-            .notification-center {
-                width: calc(100% - 16px);
-                bottom: 80px;
-                border-radius: 1.5rem;
-            }
-            .notification-header {
-                padding: 0.8rem 1rem;
-            }
-            .notif-item {
-                padding: 0.6rem 1rem;
-            }
-            .profile-grid {
-                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
-                gap: 1rem;
-            }
+            .container { padding: 1rem 0.8rem; }
+            .bottom-nav { height: 70px; padding: 8px 12px; border-radius: 40px; max-width: 100%; }
+            .nav-item { min-width: 38px; height: 56px; padding: 2px 6px; }
+            .nav-item i { font-size: 1.2rem; }
+            .nav-item span { font-size: 0.45rem; display: block !important; }
+            .nav-item-home { flex: 0 0 60px; height: 60px; min-width: 60px; }
+            .nav-item-home i { font-size: 1.8rem; }
+            .nav-item-home span { font-size: 0.45rem; display: block !important; }
+            .profile-layout { grid-template-columns: 1fr; }
+            .profile-details { grid-template-columns: 1fr; }
+            .about-intro h2 { font-size: 1.8rem; }
+            .doughnut { width: 90px; height: 90px; }
+            .doughnut::after { width: 64px; height: 64px; }
+            .imm-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .modal-box { padding: 1.5rem 1.2rem; border-radius: 2rem; }
+            .notification-center { width: calc(100% - 16px); bottom: 80px; border-radius: 1.5rem; }
+            .notification-header { padding: 0.8rem 1rem; }
+            .notif-item { padding: 0.6rem 1rem; }
+            .profile-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
         }
         @media (max-width: 480px) {
-            .bottom-nav {
-                padding: 4px 6px;
-                gap: 0;
-                border-radius: 32px;
-                height: 62px;
-            }
-            .nav-item {
-                min-width: 30px;
-                padding: 2px 4px;
-                height: 50px;
-            }
-            .nav-item i {
-                font-size: 1rem;
-            }
-            .nav-item span {
-                font-size: 0.38rem;
-                display: block !important;
-            }
-            .nav-item-home {
-                flex: 0 0 50px;
-                height: 50px;
-                min-width: 50px;
-            }
-            .nav-item-home i {
-                font-size: 1.6rem;
-            }
-            .nav-item-home span {
-                font-size: 0.38rem;
-                display: block !important;
-            }
-            .profile-grid {
-                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
-                gap: 0.8rem;
-            }
-            .news-grid {
-                grid-template-columns: 1fr;
-            }
-            .skills-doughnut-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 1.5rem;
-            }
-            .gallery-grid {
-                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
-            }
+            .bottom-nav { padding: 4px 6px; gap: 0; border-radius: 32px; height: 62px; }
+            .nav-item { min-width: 30px; padding: 2px 4px; height: 50px; }
+            .nav-item i { font-size: 1rem; }
+            .nav-item span { font-size: 0.38rem; display: block !important; }
+            .nav-item-home { flex: 0 0 50px; height: 50px; min-width: 50px; }
+            .nav-item-home i { font-size: 1.6rem; }
+            .nav-item-home span { font-size: 0.38rem; display: block !important; }
+            .profile-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.8rem; }
+            .news-grid { grid-template-columns: 1fr; }
+            .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
         }
     </style>
 </head>
@@ -1873,11 +1715,8 @@
             t.className = 'toast-msg' + (isSpecial ? ' special' : '');
             t.innerHTML = msg;
             document.body.appendChild(t);
-            // حذف خودکار بعد از ۱۵ ثانیه برای پیام ویژه، و ۲.۸ ثانیه برای معمولی
             const duration = isSpecial ? 15000 : 2800;
-            setTimeout(() => {
-                if (t.parentNode) t.remove();
-            }, duration);
+            setTimeout(() => { if (t.parentNode) t.remove(); }, duration);
         }
 
         // ===== NAVIGATION =====
@@ -2015,52 +1854,47 @@
             document.getElementById('archiveTitle').textContent = t.archiveTitle;
         }
 
-        function renderImmigration() {
-            const grid = document.getElementById('immigrationGrid');
-            if (!grid) return;
-            const t = translations[currentLang];
-            document.getElementById('immigrationTitle').textContent = t.immigrationTitle;
-
-            grid.innerHTML = immigrationPrograms.map(prog => {
-                const name = currentLang === 'fa' ? prog.fa : prog.en;
-                const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
-                const hasNotif = notifBadges[prog.id] || false;
-                return `<div class="imm-card" data-program="${prog.id}">
-                                <div class="info">
-                                    <h4>${name}</h4>
-                                    <div class="status">${status}</div>
-                                </div>
-                                <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
-                                    <i class="fas fa-bell"></i>
-                                    ${hasNotif ? '<span class="badge">1</span>' : ''}
-                                </button>
-                            </div>`;
-            }).join('');
+        // ===== اصلاح شده: ارسال با JSON به Ntfy =====
+        async function sendNtfy(topic, title, body, programId) {
+            try {
+                const response = await fetch(`https://ntfy.sh/${topic}`, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        topic: topic,
+                        title: title,
+                        message: body,
+                        priority: 'high',
+                        tags: ['bell'],
+                        click: `https://sarfraz.abrdns.com/?page=immigration&highlight=${programId}`
+                    })
+                });
+                return response.ok;
+            } catch (error) {
+                console.error('Ntfy error:', error);
+                return false;
+            }
         }
 
-        // ===== تابع اصلی مدیریت زنگوله با پیام ویژه و سبز شدن =====
+        // ===== اصلاح شده: تابع handleNotification =====
         async function handleNotification(programId, programName, btn) {
-            if (typeof window.notificationManager !== 'undefined') {
-                if (Notification.permission === 'default') {
-                    await Notification.requestPermission();
-                }
+            const topic = `sarfraz_${programId}`;
+            const title = `📢 برنامه ${programName}`;
+            const body = `✅ خبر مربوط به برنامه "${programName}" برای شما اعلان و ویژه توسط آقای خموش ارسال میشود. این یک تکنولوژی ویژه برای شما خواهد بود.`;
 
-                const success = await window.notificationManager.notifyProgram(programId, programName);
+            try {
+                const success = await sendNtfy(topic, title, body, programId);
 
                 if (success) {
-                    // ۱. دکمه را سبز کن
+                    // پیام ویژه ۱۵ ثانیه
+                    toast(body, true);
+                    // سبز کردن دکمه
                     btn.classList.add('success');
-                    // بعد از ۱۵ ثانیه سبزی را برداریم (اختیاری)
-                    setTimeout(() => {
-                        btn.classList.remove('success');
-                    }, 15000);
+                    setTimeout(() => btn.classList.remove('success'), 15000);
 
-                    // ۲. نمایش پیام ویژه به مدت ۱۵ ثانیه
-                    const message =
-                        `✅ خبر مربوط به برنامه "${programName}" برای شما اعلان و ویژه توسط آقای خموش ارسال میشود. این یک تکنولوژی ویژه برای شما خواهد بود.`;
-                    toast(message, true); // true = special (۱۵ ثانیه)
-
-                    // ۳. به‌روزرسانی نشانگر
+                    // به‌روزرسانی نشانگر
                     const hasNotif = notifBadges[programId] || false;
                     if (hasNotif) {
                         notifBadges[programId] = false;
@@ -2083,12 +1917,37 @@
                         await window.notificationManager.updateBellBadge();
                     }
 
+                    toast(`✅ اعلان برای برنامه ${programName} ارسال شد`);
                 } else {
                     toast('❌ خطا در ارسال اعلان');
                 }
-            } else {
-                toast('⏳ سیستم اعلان در حال بارگذاری...');
+            } catch (error) {
+                console.error('Error:', error);
+                toast('❌ خطا در ارسال اعلان');
             }
+        }
+
+        function renderImmigration() {
+            const grid = document.getElementById('immigrationGrid');
+            if (!grid) return;
+            const t = translations[currentLang];
+            document.getElementById('immigrationTitle').textContent = t.immigrationTitle;
+
+            grid.innerHTML = immigrationPrograms.map(prog => {
+                const name = currentLang === 'fa' ? prog.fa : prog.en;
+                const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
+                const hasNotif = notifBadges[prog.id] || false;
+                return `<div class="imm-card" data-program="${prog.id}">
+                                <div class="info">
+                                    <h4>${name}</h4>
+                                    <div class="status">${status}</div>
+                                </div>
+                                <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
+                                    <i class="fas fa-bell"></i>
+                                    ${hasNotif ? '<span class="badge">1</span>' : ''}
+                                </button>
+                            </div>`;
+            }).join('');
         }
 
         function renderNews() {
@@ -2366,4 +2225,4 @@
     <!-- ===== NTIFY SYSTEM ===== -->
     <script src="/ntfy.js"></script>
 </body>
-                    </html>
+            </html>
