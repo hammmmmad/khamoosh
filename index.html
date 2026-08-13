@@ -4,14 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سرفراز خموش | Sarfraz Khamoosh</title>
-    
-    <!-- Font Awesome 6 -->
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
-    
-    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
-    
-    <!-- SEO Meta -->
+
     <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
     <meta name="keywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, مهاجرت, افغانستان, مزار شریف" />
     <meta name="author" content="سرفراز خموش" />
@@ -22,13 +18,11 @@
     <meta property="og:url" content="https://sarfraz.abrdns.com" />
     <meta name="theme-color" content="#8b5cf6" />
     <link rel="icon" type="image/png" href="images/Kham.png" />
-    
-    <!-- PWA / Manifest -->
+
     <link rel="manifest" href="/manifest.json" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-    
-    <!-- Schema.org -->
+
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -40,8 +34,7 @@
             "jobTitle": "برنامه‌نویس و طراح گرافیک"
         }
     </script>
-    
-    <!-- Pre‑register Service Worker -->
+
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
@@ -49,10 +42,14 @@
                 .catch(err => console.log('❌ SW registration failed:', err));
         }
     </script>
-    
+
     <style>
         /* ===== RESET & BASE ===== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
         body {
             font-family: 'Vazirmatn', 'Inter', sans-serif;
             background: #f0f2f8;
@@ -102,8 +99,14 @@
             display: block;
         }
         @keyframes fadeUp {
-            0% { opacity: 0; transform: translateY(30px); }
-            100% { opacity: 1; transform: translateY(0); }
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== BOTTOM NAVIGATION ===== */
@@ -253,11 +256,16 @@
             transform: scale(0.92) translateY(2px);
         }
         @keyframes homePulse {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.03); }
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.03);
+            }
         }
 
-        /* ===== HOME - PROFILE CARDS ===== */
+        /* ===== HOME - PROFILE CARDS (با کاهش padding و لوگوی زیبا) ===== */
         .profile-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -268,8 +276,10 @@
             background: rgba(255, 255, 255, 0.3);
             backdrop-filter: blur(14px);
             border-radius: 2rem;
-            padding: 1.5rem 1.5rem 1.2rem;
-            border: 1px solid rgba(255, 255, 255, 0.3);
+            padding: 1rem 1rem 1rem;
+            /* کاهش padding */
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            /* border نازک‌تر */
             transition: 0.35s;
             display: flex;
             flex-direction: column;
@@ -292,15 +302,17 @@
             border-radius: 50%;
             border: 4px solid #8b5cf6;
             object-fit: cover;
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.2);
+            box-shadow: 0 0 30px rgba(139, 92, 246, 0.4);
+            /* سایه زیبا */
             transition: 0.3s;
         }
         .profile-card-home:hover .avatar-home {
             transform: scale(1.05);
             border-color: #a78bfa;
+            box-shadow: 0 0 50px rgba(139, 92, 246, 0.6);
         }
         .profile-card-home .home-name {
-            margin-top: 1rem;
+            margin-top: 0.8rem;
             font-weight: 700;
             font-size: 1.1rem;
         }
@@ -575,6 +587,7 @@
             font-size: 0.7rem;
             opacity: 0.6;
         }
+
         .bell-btn {
             background: rgba(139, 92, 246, 0.08);
             border: none;
@@ -596,6 +609,25 @@
         .bell-btn:active {
             transform: scale(0.92);
         }
+        /* حالت سبز بعد از کلیک موفق */
+        .bell-btn.success {
+            background: #22c55e !important;
+            color: #fff !important;
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+            animation: bellSuccess 0.6s ease;
+        }
+        @keyframes bellSuccess {
+            0% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.2);
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
         .bell-btn .badge {
             position: absolute;
             top: -4px;
@@ -616,8 +648,13 @@
             animation: pulseBell 1.4s infinite;
         }
         @keyframes pulseBell {
-            0%, 100% { transform: scale(1); }
-            50% { transform: scale(1.12); }
+            0%,
+            100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.12);
+            }
         }
 
         /* ===== TECH NEWS ===== */
@@ -685,7 +722,7 @@
             cursor: pointer;
             transition: 0.35s;
             border: 2px solid transparent;
-            background: rgba(0,0,0,0.02);
+            background: rgba(0, 0, 0, 0.02);
         }
         .gallery-item:hover {
             transform: scale(1.03);
@@ -709,7 +746,7 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            background: linear-gradient(transparent, rgba(0, 0, 0, 0.5));
             padding: 1rem;
             color: #fff;
             font-size: 0.7rem;
@@ -774,12 +811,14 @@
         .toggle-switch.active .slider {
             right: 28px;
         }
-        .lang-group, .view-group {
+        .lang-group,
+        .view-group {
             display: flex;
             gap: 0.6rem;
             flex-wrap: wrap;
         }
-        .lang-group button, .view-group button {
+        .lang-group button,
+        .view-group button {
             padding: 0.4rem 1.2rem;
             border-radius: 40px;
             border: 2px solid #d1d5db;
@@ -791,16 +830,19 @@
             color: inherit;
             font-size: 0.8rem;
         }
-        .lang-group button.active, .view-group button.active {
+        .lang-group button.active,
+        .view-group button.active {
             border-color: #8b5cf6;
             background: rgba(139, 92, 246, 0.08);
             color: #8b5cf6;
         }
-        .lang-group button:hover, .view-group button:hover {
+        .lang-group button:hover,
+        .view-group button:hover {
             transform: translateY(-2px);
             box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
         }
-        .lang-group button:active, .view-group button:active {
+        .lang-group button:active,
+        .view-group button:active {
             transform: scale(0.95);
         }
 
@@ -995,7 +1037,7 @@
         }
         .notif-close-btn:hover {
             opacity: 1;
-            background: rgba(0,0,0,0.04);
+            background: rgba(0, 0, 0, 0.04);
         }
 
         .notification-list {
@@ -1213,12 +1255,45 @@
             backdrop-filter: blur(8px);
             box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
         }
+        /* Toast ویژه با تایمر ۱۵ ثانیه */
+        .toast-msg.special {
+            background: #8b5cf6;
+            color: #fff;
+            font-weight: 600;
+            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
+            animation: fadeToastSpecial 15s ease forwards;
+        }
+        @keyframes fadeToastSpecial {
+            0%,
+            10% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            90% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+                visibility: hidden;
+            }
+        }
+
         .toast-msg i {
             margin-left: 8px;
         }
         @keyframes fadeToast {
-            0%, 70% { opacity: 1; transform: translateX(-50%) translateY(0); }
-            100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
+            0%,
+            70% {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+            100% {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+                visibility: hidden;
+            }
         }
 
         .notif-popup {
@@ -1246,49 +1321,139 @@
             opacity: 0.85;
         }
         @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
-            .container { padding: 1rem 0.8rem; }
-            .bottom-nav { height: 70px; padding: 8px 12px; border-radius: 40px; max-width: 100%; }
-            .nav-item { min-width: 38px; height: 56px; padding: 2px 6px; }
-            .nav-item i { font-size: 1.2rem; }
-            .nav-item span { font-size: 0.45rem; display: block !important; }
-            .nav-item-home { flex: 0 0 60px; height: 60px; min-width: 60px; }
-            .nav-item-home i { font-size: 1.8rem; }
-            .nav-item-home span { font-size: 0.45rem; display: block !important; }
-            .profile-layout { grid-template-columns: 1fr; }
-            .profile-details { grid-template-columns: 1fr; }
-            .about-intro h2 { font-size: 1.8rem; }
-            .doughnut { width: 90px; height: 90px; }
-            .doughnut::after { width: 64px; height: 64px; }
-            .imm-grid { grid-template-columns: 1fr; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
-            .modal-box { padding: 1.5rem 1.2rem; border-radius: 2rem; }
+            .container {
+                padding: 1rem 0.8rem;
+            }
+            .bottom-nav {
+                height: 70px;
+                padding: 8px 12px;
+                border-radius: 40px;
+                max-width: 100%;
+            }
+            .nav-item {
+                min-width: 38px;
+                height: 56px;
+                padding: 2px 6px;
+            }
+            .nav-item i {
+                font-size: 1.2rem;
+            }
+            .nav-item span {
+                font-size: 0.45rem;
+                display: block !important;
+            }
+            .nav-item-home {
+                flex: 0 0 60px;
+                height: 60px;
+                min-width: 60px;
+            }
+            .nav-item-home i {
+                font-size: 1.8rem;
+            }
+            .nav-item-home span {
+                font-size: 0.45rem;
+                display: block !important;
+            }
+            .profile-layout {
+                grid-template-columns: 1fr;
+            }
+            .profile-details {
+                grid-template-columns: 1fr;
+            }
+            .about-intro h2 {
+                font-size: 1.8rem;
+            }
+            .doughnut {
+                width: 90px;
+                height: 90px;
+            }
+            .doughnut::after {
+                width: 64px;
+                height: 64px;
+            }
+            .imm-grid {
+                grid-template-columns: 1fr;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+            }
+            .modal-box {
+                padding: 1.5rem 1.2rem;
+                border-radius: 2rem;
+            }
             .notification-center {
                 width: calc(100% - 16px);
                 bottom: 80px;
                 border-radius: 1.5rem;
             }
-            .notification-header { padding: 0.8rem 1rem; }
-            .notif-item { padding: 0.6rem 1rem; }
-            .profile-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 1rem; }
+            .notification-header {
+                padding: 0.8rem 1rem;
+            }
+            .notif-item {
+                padding: 0.6rem 1rem;
+            }
+            .profile-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
         }
         @media (max-width: 480px) {
-            .bottom-nav { padding: 4px 6px; gap: 0; border-radius: 32px; height: 62px; }
-            .nav-item { min-width: 30px; padding: 2px 4px; height: 50px; }
-            .nav-item i { font-size: 1rem; }
-            .nav-item span { font-size: 0.38rem; display: block !important; }
-            .nav-item-home { flex: 0 0 50px; height: 50px; min-width: 50px; }
-            .nav-item-home i { font-size: 1.6rem; }
-            .nav-item-home span { font-size: 0.38rem; display: block !important; }
-            .profile-grid { grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 0.8rem; }
-            .news-grid { grid-template-columns: 1fr; }
-            .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
-            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+            .bottom-nav {
+                padding: 4px 6px;
+                gap: 0;
+                border-radius: 32px;
+                height: 62px;
+            }
+            .nav-item {
+                min-width: 30px;
+                padding: 2px 4px;
+                height: 50px;
+            }
+            .nav-item i {
+                font-size: 1rem;
+            }
+            .nav-item span {
+                font-size: 0.38rem;
+                display: block !important;
+            }
+            .nav-item-home {
+                flex: 0 0 50px;
+                height: 50px;
+                min-width: 50px;
+            }
+            .nav-item-home i {
+                font-size: 1.6rem;
+            }
+            .nav-item-home span {
+                font-size: 0.38rem;
+                display: block !important;
+            }
+            .profile-grid {
+                grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+                gap: 0.8rem;
+            }
+            .news-grid {
+                grid-template-columns: 1fr;
+            }
+            .skills-doughnut-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+            }
         }
     </style>
 </head>
@@ -1296,10 +1461,10 @@
 
     <div class="container">
 
-        <!-- ===== HOME (ACTIVE) - PROFILE CARDS ===== -->
+        <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
-                <i class="fas fa-user-circle" style="color:#8b5cf6;"></i> 
+                <i class="fas fa-user-circle" style="color:#8b5cf6;"></i>
                 <span id="homeTitle">پروفایل‌ها</span>
             </h2>
             <div class="profile-grid" id="homeProfileGrid"></div>
@@ -1412,10 +1577,10 @@
                     </div>
                 </div>
 
-                <!-- ===== ADMIN PANEL + ARCHIVE ===== -->
+                <!-- ===== ADMIN PANEL ===== -->
                 <div id="adminPanel">
                     <h4 style="color:#8b5cf6; width:100%; margin:0 0 1rem 0;">
-                        <i class="fas fa-crown"></i> 
+                        <i class="fas fa-crown"></i>
                         <span id="adminPanelTitle">پنل مدیریت</span>
                     </h4>
                     <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; align-items:center;">
@@ -1435,6 +1600,7 @@
                         <span>🔑 <span id="adminStatus">وضعیت: آماده</span></span>
                     </div>
 
+                    <!-- ===== ARCHIVE ===== -->
                     <div id="adminArchive">
                         <h4><i class="fas fa-archive"></i> <span id="archiveTitle">آرشیو پیام‌ها</span></h4>
                         <div id="archiveList"></div>
@@ -1527,8 +1693,8 @@
     </div>
 
     <!-- ============================================================
-         JAVASCRIPT
-         ============================================================ -->
+    JAVASCRIPT
+    ============================================================ -->
     <script>
         // ================================================================
         // 1. DATA
@@ -1571,7 +1737,7 @@
                 statusFailed: '❌ ناموفق',
                 social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب',
                     pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک',
-                substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
+                    substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
             },
             en: {
                 nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', immigration: 'Immigration',
@@ -1610,11 +1776,11 @@
                 statusFailed: '❌ Failed',
                 social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub',
                     pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok',
-                substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
+                    substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
             }
         };
 
-        // ===== PROFILE CARDS DATA =====
+        // ===== PROFILE CARDS =====
         const profileCards = [
             { id: 1, name: 'سرفراز خموش', title: 'برنامه‌نویس و طراح گرافیک', desc: 'متخصص در توسعه وب و طراحی رابط کاربری',
                 tags: ['برنامه‌نویسی', 'طراحی', 'UI/UX'] },
@@ -1665,7 +1831,7 @@
             { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open" },
             { id: 'i130_gc', fa: "I-130 با گرین کارت", en: "I-130 with Green Card", statusFa: "فعال", statusEn: "Active" },
             { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال",
-            statusEn: "Active" }
+                statusEn: "Active" }
         ];
 
         const newsData = [{
@@ -1700,14 +1866,18 @@
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
 
         // ===== HELPERS =====
-        function toast(msg) {
+        function toast(msg, isSpecial = false) {
             let el = document.querySelector('.toast-msg');
             if (el) el.remove();
             let t = document.createElement('div');
-            t.className = 'toast-msg';
+            t.className = 'toast-msg' + (isSpecial ? ' special' : '');
             t.innerHTML = msg;
             document.body.appendChild(t);
-            setTimeout(() => t.remove(), 2800);
+            // حذف خودکار بعد از ۱۵ ثانیه برای پیام ویژه، و ۲.۸ ثانیه برای معمولی
+            const duration = isSpecial ? 15000 : 2800;
+            setTimeout(() => {
+                if (t.parentNode) t.remove();
+            }, duration);
         }
 
         // ===== NAVIGATION =====
@@ -1764,12 +1934,12 @@
                 const desc = currentLang === 'fa' ? card.desc : card.desc;
                 const tags = currentLang === 'fa' ? card.tags : card.tags;
                 return `<div class="profile-card-home">
-                            <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
-                            <div class="home-name">${name}</div>
-                            <div class="home-title">${title}</div>
-                            <div class="home-desc">${desc}</div>
-                            <div class="home-tag">${tags.map(t => `<span>#${t}</span>`).join('')}</div>
-                        </div>`;
+                                <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
+                                <div class="home-name">${name}</div>
+                                <div class="home-title">${title}</div>
+                                <div class="home-desc">${desc}</div>
+                                <div class="home-tag">${tags.map(t => `<span>#${t}</span>`).join('')}</div>
+                            </div>`;
             }).join('');
         }
 
@@ -1797,7 +1967,7 @@
             if (list) {
                 list.innerHTML = specialties.map(s =>
                     `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join(
-                '');
+                    '');
             }
         }
 
@@ -1856,27 +2026,41 @@
                 const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
                 const hasNotif = notifBadges[prog.id] || false;
                 return `<div class="imm-card" data-program="${prog.id}">
-                            <div class="info">
-                                <h4>${name}</h4>
-                                <div class="status">${status}</div>
-                            </div>
-                            <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
-                                <i class="fas fa-bell"></i>
-                                ${hasNotif ? '<span class="badge">1</span>' : ''}
-                            </button>
-                        </div>`;
+                                <div class="info">
+                                    <h4>${name}</h4>
+                                    <div class="status">${status}</div>
+                                </div>
+                                <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
+                                    <i class="fas fa-bell"></i>
+                                    ${hasNotif ? '<span class="badge">1</span>' : ''}
+                                </button>
+                            </div>`;
             }).join('');
         }
 
+        // ===== تابع اصلی مدیریت زنگوله با پیام ویژه و سبز شدن =====
         async function handleNotification(programId, programName, btn) {
             if (typeof window.notificationManager !== 'undefined') {
                 if (Notification.permission === 'default') {
                     await Notification.requestPermission();
                 }
-                
+
                 const success = await window.notificationManager.notifyProgram(programId, programName);
-                
+
                 if (success) {
+                    // ۱. دکمه را سبز کن
+                    btn.classList.add('success');
+                    // بعد از ۱۵ ثانیه سبزی را برداریم (اختیاری)
+                    setTimeout(() => {
+                        btn.classList.remove('success');
+                    }, 15000);
+
+                    // ۲. نمایش پیام ویژه به مدت ۱۵ ثانیه
+                    const message =
+                        `✅ خبر مربوط به برنامه "${programName}" برای شما اعلان و ویژه توسط آقای خموش ارسال میشود. این یک تکنولوژی ویژه برای شما خواهد بود.`;
+                    toast(message, true); // true = special (۱۵ ثانیه)
+
+                    // ۳. به‌روزرسانی نشانگر
                     const hasNotif = notifBadges[programId] || false;
                     if (hasNotif) {
                         notifBadges[programId] = false;
@@ -1894,12 +2078,11 @@
                         }
                     }
                     localStorage.setItem('notifications', JSON.stringify(notifBadges));
-                    
+
                     if (window.notificationManager) {
                         await window.notificationManager.updateBellBadge();
                     }
-                    
-                    toast(`✅ اعلان برای برنامه ${programName} ارسال شد`);
+
                 } else {
                     toast('❌ خطا در ارسال اعلان');
                 }
@@ -1916,12 +2099,12 @@
             grid.innerHTML = newsData.map(n => {
                 const title = currentLang === 'fa' ? n.fa : n.en;
                 return `<div class="news-card" onclick="openNews(${n.id})">
-                            <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
-                            <div class="body">
-                                <h4>${title}</h4>
-                                <div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span><span>${n.date}</span></div>
-                            </div>
-                        </div>`;
+                                <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
+                                <div class="body">
+                                    <h4>${title}</h4>
+                                    <div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span><span>${n.date}</span></div>
+                                </div>
+                            </div>`;
             }).join('');
         }
 
@@ -1965,14 +2148,14 @@
                 const path = 'images/' + name;
                 const label = name.replace(/\.[^/.]+$/, "");
                 return `<div class="gallery-item" onclick="window.open('${path}','_blank')">
-                            <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
-                            <div class="overlay">${label}</div>
-                        </div>`;
+                                <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
+                                <div class="overlay">${label}</div>
+                            </div>`;
             }).join('');
         }
 
         // ================================================================
-        // 8. ADMIN PANEL FUNCTIONS (با Ntfy)
+        // ADMIN PANEL FUNCTIONS
         // ================================================================
 
         async function loadUsers() {
@@ -1996,8 +2179,7 @@
                 if (countSpan) countSpan.textContent = users.length;
                 document.getElementById('adminStatus').textContent = '✅ آماده ارسال';
                 document.getElementById('adminPanel').style.display = 'block';
-                
-                // بارگذاری آرشیو
+
                 if (window.notificationManager) {
                     await window.notificationManager.renderArchive();
                 }
@@ -2045,7 +2227,7 @@
         }
 
         // ================================================================
-        // 9. LANGUAGE
+        // LANGUAGE
         // ================================================================
         function setLanguage(lang) {
             currentLang = lang;
@@ -2085,7 +2267,7 @@
         }
 
         // ================================================================
-        // 10. SETTINGS INIT
+        // SETTINGS INIT
         // ================================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
@@ -2128,7 +2310,7 @@
         }
 
         // ================================================================
-        // 11. MODALS
+        // MODALS
         // ================================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
@@ -2154,7 +2336,7 @@
         }
 
         // ================================================================
-        // 12. INIT
+        // INIT
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
@@ -2181,7 +2363,7 @@
         });
     </script>
 
-    <!-- ===== NTIFY NOTIFICATION SYSTEM ===== -->
+    <!-- ===== NTIFY SYSTEM ===== -->
     <script src="/ntfy.js"></script>
 </body>
-                                                                                     </html>
+                    </html>
