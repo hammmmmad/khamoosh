@@ -2,8 +2,8 @@
 // ntfy.js - سیستم کامل Notification با Ntfy + آرشیو
 // ============================================================
 
-const NTFY_TOPIC_PREFIX = 'khamoosh';
-const SITE_URL = 'https://khamoosh.abrdns.com';
+const NTFY_TOPIC_PREFIX = 'sarfraz';
+const SITE_URL = 'https://sarfraz.abrdns.com';
 
 class NotificationManager {
     constructor() {
@@ -18,7 +18,7 @@ class NotificationManager {
     // ============ IndexedDB برای آرشیو ============
     async initDB() {
         return new Promise((resolve) => {
-            const request = indexedDB.open('KhamooshNotifDB', 1);
+            const request = indexedDB.open('SarfrazNotifDB', 1);
             request.onupgradeneeded = (event) => {
                 const db = event.target.result;
                 if (!db.objectStoreNames.contains('notifications')) {
@@ -474,4 +474,4 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initNotificationManager);
 } else {
     initNotificationManager();
-              }
+            }
