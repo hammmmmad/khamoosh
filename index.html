@@ -2321,13 +2321,7 @@
                     this.updateBellBadge();
                     this.renderArchive();
 
-                    if (typeof Notification !== 'undefined' && Notification.permission === 'granted') {
-                        new Notification(title, {
-                            body: body,
-                            icon: '/images/Kham.png',
-                            badge: '/images/Kham.png'
-                        });
-                    }
+                    this.showLocalNotification(title, body);
 
                     return true;
                 }
@@ -2335,6 +2329,35 @@
             } catch (error) {
                 console.error('Ntfy error:', error);
                 return false;
+            }
+        }
+
+        // نمایش نوتیفیکیشن محلی — هرگز نباید باعث شکست ارسال شود
+        // در موبایل (Chrome/Android) باید از طریق Service Worker نمایش داده شود،
+        // چون new Notification() مستقیم آنجا "Illegal constructor" می‌دهد.
+        showLocalNotification(title, body) {
+            try {
+                if (typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
+
+                if ('serviceWorker' in navigator) {
+                    navigator.serviceWorker.ready.then((reg) => {
+                        if (reg && reg.showNotification) {
+                            reg.showNotification(title, {
+                                body: body,
+                                icon: '/images/Kham.png',
+                                badge: '/images/Kham.png'
+                            }).catch((err) => console.warn('showNotification skipped:', err));
+                        }
+                    }).catch((err) => console.warn('SW not ready, notification skipped:', err));
+                } else {
+                    new Notification(title, {
+                        body: body,
+                        icon: '/images/Kham.png',
+                        badge: '/images/Kham.png'
+                    });
+                }
+            } catch (err) {
+                console.warn('Local notification display skipped:', err);
             }
         }
 
