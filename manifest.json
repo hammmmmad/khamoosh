@@ -10,14 +10,34 @@
     "dir": "rtl",
     "lang": "fa",
     "icons": [
-        { "src": "/images/Kham.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable" },
-        { "src": "/images/Kham.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable" }
+        {
+            "src": "/images/Kham.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "any maskable"
+        },
+        {
+            "src": "/images/Kham.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any maskable"
+        }
     ],
     "categories": ["education", "productivity", "news"],
     "shortcuts": [
-        { "name": "مهاجرت", "short_name": "مهاجرت", "description": "برنامه‌های مهاجرت", "url": "/?page=immigration",
-            "icons": [{ "src": "/images/Kham.png", "sizes": "192x192" }] },
-        { "name": "گالری", "short_name": "گالری", "description": "گالری تصاویر", "url": "/?page=gallery",
-            "icons": [{ "src": "/images/Kham.png", "sizes": "192x192" }] }
+        {
+            "name": "مهاجرت",
+            "short_name": "مهاجرت",
+            "description": "برنامه‌های مهاجرت",
+            "url": "/?page=immigration",
+            "icons": [{ "src": "/images/Kham.png", "sizes": "192x192" }]
+        },
+        {
+            "name": "گالری",
+            "short_name": "گالری",
+            "description": "گالری تصاویر",
+            "url": "/?page=gallery",
+            "icons": [{ "src": "/images/Kham.png", "sizes": "192x192" }]
+        }
     ]
 }
