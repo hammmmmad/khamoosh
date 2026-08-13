@@ -1,5 +1,5 @@
 // ============================================================
-// ntfy.js - سیستم کامل Notification با Ntfy + آرشیو
+// ntfy.js - سیستم Notification با Ntfy + آرشیو
 // ============================================================
 
 const NTFY_TOPIC_PREFIX = 'sarfraz';
@@ -15,16 +15,16 @@ class NotificationManager {
         this.updateBellBadge();
     }
 
-    // ============ IndexedDB برای آرشیو ============
+    // ============ IndexedDB ============
     async initDB() {
         return new Promise((resolve) => {
             const request = indexedDB.open('SarfrazNotifDB', 1);
             request.onupgradeneeded = (event) => {
                 const db = event.target.result;
                 if (!db.objectStoreNames.contains('notifications')) {
-                    const store = db.createObjectStore('notifications', { 
-                        keyPath: 'id', 
-                        autoIncrement: true 
+                    const store = db.createObjectStore('notifications', {
+                        keyPath: 'id',
+                        autoIncrement: true
                     });
                     store.createIndex('programId', 'programId', { unique: false });
                     store.createIndex('timestamp', 'timestamp', { unique: false });
@@ -102,10 +102,10 @@ class NotificationManager {
         this.renderArchive();
     }
 
-    // ============ ارسال Notification با Ntfy ============
+    // ============ ارسال با Ntfy ============
     async sendNotification(title, body, programId, userId = null) {
         const topic = `${NTFY_TOPIC_PREFIX}_${programId}`;
-        
+
         try {
             const response = await fetch(`https://ntfy.sh/${topic}`, {
                 method: 'POST',
@@ -117,25 +117,25 @@ class NotificationManager {
                     'Click': `${SITE_URL}/?page=immigration&highlight=${programId}`
                 }
             });
-            
+
             if (response.ok) {
-                const notification = { 
-                    title, 
-                    body, 
-                    programId, 
+                const notification = {
+                    title,
+                    body,
+                    programId,
                     userId: userId || 'همه کاربران',
                     status: 'delivered',
                     topic: topic
                 };
                 await this.saveNotification(notification);
-                this.notifications.unshift({ 
-                    ...notification, 
-                    timestamp: Date.now(), 
-                    isRead: false 
+                this.notifications.unshift({
+                    ...notification,
+                    timestamp: Date.now(),
+                    isRead: false
                 });
                 this.updateBellBadge();
                 this.renderArchive();
-                
+
                 if (Notification.permission === 'granted') {
                     new Notification(title, {
                         body: body,
@@ -143,7 +143,7 @@ class NotificationManager {
                         badge: '/images/Kham.png'
                     });
                 }
-                
+
                 return true;
             }
             return false;
@@ -156,7 +156,7 @@ class NotificationManager {
     // ============ ارسال به کاربر خاص ============
     async sendToUser(userId, title, body, programId = 'admin') {
         const topic = `${NTFY_TOPIC_PREFIX}_${programId}`;
-        
+
         try {
             const response = await fetch(`https://ntfy.sh/${topic}`, {
                 method: 'POST',
@@ -168,10 +168,10 @@ class NotificationManager {
                     'Click': `${SITE_URL}/?page=immigration`
                 }
             });
-            
+
             if (response.ok) {
-                const notification = { 
-                    title: `🔔 ${title}`, 
+                const notification = {
+                    title: `🔔 ${title}`,
                     body: `📨 ${body}`,
                     programId: programId,
                     userId: userId,
@@ -179,10 +179,10 @@ class NotificationManager {
                     topic: topic
                 };
                 await this.saveNotification(notification);
-                this.notifications.unshift({ 
-                    ...notification, 
-                    timestamp: Date.now(), 
-                    isRead: false 
+                this.notifications.unshift({
+                    ...notification,
+                    timestamp: Date.now(),
+                    isRead: false
                 });
                 this.updateBellBadge();
                 this.renderArchive();
@@ -203,15 +203,15 @@ class NotificationManager {
         const center = document.createElement('div');
         center.className = 'notification-center';
         center.innerHTML = `
-            <div class="notification-header">
-                <h3><i class="fas fa-bell"></i> اعلان‌ها</h3>
-                <button class="notif-close-btn"><i class="fas fa-times"></i></button>
-            </div>
-            <div class="notification-list"></div>
-            <div class="notification-footer">
-                <button class="notif-clear-btn">پاک کردن همه</button>
-            </div>
-        `;
+                <div class="notification-header">
+                    <h3><i class="fas fa-bell"></i> اعلان‌ها</h3>
+                    <button class="notif-close-btn"><i class="fas fa-times"></i></button>
+                </div>
+                <div class="notification-list"></div>
+                <div class="notification-footer">
+                    <button class="notif-clear-btn">پاک کردن همه</button>
+                </div>
+            `;
 
         document.body.appendChild(center);
 
@@ -230,8 +230,8 @@ class NotificationManager {
         });
 
         document.addEventListener('click', (e) => {
-            if (center.classList.contains('open') && 
-                !center.contains(e.target) && 
+            if (center.classList.contains('open') &&
+                !center.contains(e.target) &&
                 !e.target.closest('.notif-bell-btn')) {
                 center.classList.remove('open');
             }
@@ -256,17 +256,17 @@ class NotificationManager {
         }
 
         list.innerHTML = notifications.map(notif => `
-            <div class="notif-item ${notif.isRead ? 'read' : 'unread'}" data-id="${notif.id}">
-                <div class="notif-icon"><i class="fas fa-bell"></i></div>
-                <div class="notif-content">
-                    <div class="notif-title">${notif.title}</div>
-                    <div class="notif-body">${notif.body}</div>
-                    <div class="notif-time">${this.formatTime(notif.timestamp)}</div>
-                    <div style="font-size:0.6rem; opacity:0.3;">👤 ${notif.userId || 'همه'}</div>
+                <div class="notif-item ${notif.isRead ? 'read' : 'unread'}" data-id="${notif.id}">
+                    <div class="notif-icon"><i class="fas fa-bell"></i></div>
+                    <div class="notif-content">
+                        <div class="notif-title">${notif.title}</div>
+                        <div class="notif-body">${notif.body}</div>
+                        <div class="notif-time">${this.formatTime(notif.timestamp)}</div>
+                        <div style="font-size:0.6rem; opacity:0.3;">👤 ${notif.userId || 'همه'}</div>
+                    </div>
+                    <button class="notif-delete-btn" data-id="${notif.id}"><i class="fas fa-trash"></i></button>
                 </div>
-                <button class="notif-delete-btn" data-id="${notif.id}"><i class="fas fa-trash"></i></button>
-            </div>
-        `).join('');
+            `).join('');
 
         list.querySelectorAll('.notif-delete-btn').forEach(btn => {
             btn.addEventListener('click', async (e) => {
@@ -354,37 +354,37 @@ class NotificationManager {
         this.updateBellBadge();
     }
 
-    // ============ آرشیو در پنل مدیریت ============
+    // ============ آرشیو ============
     async renderArchive() {
         const container = document.getElementById('archiveList');
         if (!container) return;
 
         const notifications = await this.getNotifications();
-        
+
         if (notifications.length === 0) {
             container.innerHTML = `<div class="archive-empty">هنوز پیامی ارسال نشده است</div>`;
             return;
         }
 
         container.innerHTML = notifications.map(notif => `
-            <div class="archive-item">
-                <div class="info">
-                    <div class="title">${notif.title}</div>
-                    <div class="body">${notif.body}</div>
-                    <div class="meta">
-                        <span>👤 ${notif.userId || 'همه کاربران'}</span>
-                        <span>🕐 ${this.formatTime(notif.timestamp)}</span>
-                        <span>📌 ${notif.programId || 'admin'}</span>
+                <div class="archive-item">
+                    <div class="info">
+                        <div class="title">${notif.title}</div>
+                        <div class="body">${notif.body}</div>
+                        <div class="meta">
+                            <span>👤 ${notif.userId || 'همه کاربران'}</span>
+                            <span>🕐 ${this.formatTime(notif.timestamp)}</span>
+                            <span>📌 ${notif.programId || 'admin'}</span>
+                        </div>
                     </div>
+                    <span class="status ${notif.status === 'delivered' ? 'delivered' : 'pending'}">
+                        ${notif.status === 'delivered' ? '✅ تحویل داده شده' : '⏳ در انتظار'}
+                    </span>
+                    <button class="delete-archive" onclick="window.deleteArchiveItem(${notif.id})">
+                        <i class="fas fa-trash"></i>
+                    </button>
                 </div>
-                <span class="status ${notif.status === 'delivered' ? 'delivered' : 'pending'}">
-                    ${notif.status === 'delivered' ? '✅ تحویل داده شده' : '⏳ در انتظار'}
-                </span>
-                <button class="delete-archive" onclick="window.deleteArchiveItem(${notif.id})">
-                    <i class="fas fa-trash"></i>
-                </button>
-            </div>
-        `).join('');
+            `).join('');
     }
 
     // ============ برنامه‌های مهاجرت ============
@@ -407,13 +407,13 @@ class NotificationManager {
 
         const title = `📢 برنامه ${programName}`;
         const body = messages[programId] || 'به‌روزرسانی جدید برای این برنامه موجود است';
-        
+
         const result = await this.sendNotification(title, body, programId);
         this.updateBellBadge();
         return result;
     }
 
-    // ============ دریافت لیست کاربران ============
+    // ============ کاربران ============
     async getUsers() {
         const storedUsers = JSON.parse(localStorage.getItem('ntfy_users') || '[]');
         if (storedUsers.length === 0) {
@@ -435,7 +435,7 @@ class NotificationManager {
         this.updateBellBadge();
     }
 
-    // ============ هایلایت برنامه ============
+    // ============ هایلایت ============
     highlightProgram(programId) {
         const cards = document.querySelectorAll('.imm-card');
         cards.forEach(card => {
@@ -474,4 +474,4 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initNotificationManager);
 } else {
     initNotificationManager();
-            }
+}
