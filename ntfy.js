@@ -1,9 +1,10 @@
 // ============================================================
-// ntfy.js - سیستم Notification با Ntfy + آرشیو
+// ntfy.js - سیستم Notification با Ntfy + آرشیو (اصلاح شده)
 // ============================================================
 
 const NTFY_TOPIC_PREFIX = 'sarfraz';
 const SITE_URL = 'https://sarfraz.abrdns.com';
+const NTFY_SERVER = 'https://ntfy.sh'; // می‌توانید به سرور شخصی تغییر دهید
 
 class NotificationManager {
     constructor() {
@@ -102,20 +103,25 @@ class NotificationManager {
         this.renderArchive();
     }
 
-    // ============ ارسال با Ntfy ============
+    // ============ ارسال با Ntfy (با JSON) ============
     async sendNotification(title, body, programId, userId = null) {
         const topic = `${NTFY_TOPIC_PREFIX}_${programId}`;
+        const payload = {
+            topic: topic,
+            title: title,
+            message: body,
+            priority: 'high',
+            tags: ['bell'],
+            click: `${SITE_URL}/?page=immigration&highlight=${programId}`
+        };
 
         try {
-            const response = await fetch(`https://ntfy.sh/${topic}`, {
+            const response = await fetch(`${NTFY_SERVER}/${topic}`, {
                 method: 'POST',
-                body: body,
                 headers: {
-                    'Title': title,
-                    'Priority': 'high',
-                    'Tags': 'bell',
-                    'Click': `${SITE_URL}/?page=immigration&highlight=${programId}`
-                }
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
             });
 
             if (response.ok) {
@@ -153,20 +159,25 @@ class NotificationManager {
         }
     }
 
-    // ============ ارسال به کاربر خاص ============
+    // ============ ارسال به کاربر خاص (با JSON) ============
     async sendToUser(userId, title, body, programId = 'admin') {
         const topic = `${NTFY_TOPIC_PREFIX}_${programId}`;
+        const payload = {
+            topic: topic,
+            title: `🔔 ${title}`,
+            message: `📨 ${body}`,
+            priority: 'high',
+            tags: ['envelope'],
+            click: `${SITE_URL}/?page=immigration`
+        };
 
         try {
-            const response = await fetch(`https://ntfy.sh/${topic}`, {
+            const response = await fetch(`${NTFY_SERVER}/${topic}`, {
                 method: 'POST',
-                body: `📨 ${body}`,
                 headers: {
-                    'Title': `🔔 ${title}`,
-                    'Priority': 'high',
-                    'Tags': 'envelope',
-                    'Click': `${SITE_URL}/?page=immigration`
-                }
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(payload)
             });
 
             if (response.ok) {
@@ -474,4 +485,4 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initNotificationManager);
 } else {
     initNotificationManager();
-}
+                                     }
