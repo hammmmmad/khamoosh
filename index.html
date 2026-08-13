@@ -1,397 +1,2233 @@
 <!DOCTYPE html>
 <html lang="fa" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>سیستم · آپدیت</title>
-  <!-- فونت وزیرمتن برای خوانایی -->
-  <link href="https://cdn.fontsource.org/fonts/vazirmatn:vf@latest" rel="stylesheet" />
-  <style>
-    /* ===== RESET & BASE ===== */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    body {
-      min-height: 100vh;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: #0b0d15;
-      font-family: 'Vazirmatn', 'Segoe UI', system-ui, sans-serif;
-      padding: 1.5rem;
-      /* شبکه سایبری پس‌زمینه */
-      background-image:
-        linear-gradient(rgba(0, 255, 255, 0.03) 1px, transparent 1px),
-        linear-gradient(90deg, rgba(0, 255, 255, 0.03) 1px, transparent 1px);
-      background-size: 40px 40px;
-    }
-
-    /* ===== کارت اصلی ===== */
-    .cyber-card {
-      max-width: 700px;
-      width: 100%;
-      background: rgba(12, 16, 28, 0.85);
-      backdrop-filter: blur(16px) saturate(1.2);
-      -webkit-backdrop-filter: blur(16px) saturate(1.2);
-      border-radius: 48px;
-      padding: 3rem 2.5rem;
-      border: 1px solid rgba(0, 255, 255, 0.25);
-      box-shadow: 0 0 50px rgba(0, 180, 255, 0.08),
-                  inset 0 0 60px rgba(0, 200, 255, 0.03);
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-      transition: 0.3s;
-    }
-
-    /* خطوط نئون متحرک (جلوه سایبری) */
-    .cyber-card::before {
-      content: '';
-      position: absolute;
-      top: -2px;
-      left: -2px;
-      right: -2px;
-      bottom: -2px;
-      background: conic-gradient(from 0deg, transparent, rgba(0, 255, 255, 0.2), transparent, rgba(150, 0, 255, 0.2), transparent);
-      border-radius: 50px;
-      z-index: -1;
-      animation: spin-border 8s linear infinite;
-      filter: blur(1px);
-    }
-
-    @keyframes spin-border {
-      0% { transform: rotate(0deg); }
-      100% { transform: rotate(360deg); }
-    }
-
-    /* ===== متن اصلی ===== */
-    .main-title {
-      font-size: 2.8rem;
-      font-weight: 700;
-      letter-spacing: 2px;
-      color: #d6f0ff;
-      text-shadow: 0 0 20px rgba(0, 200, 255, 0.4), 0 0 60px rgba(0, 150, 255, 0.2);
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #b0f0ff, #7aa9ff);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-      background-clip: text;
-    }
-
-    .sub-cyber {
-      font-size: 1rem;
-      color: rgba(160, 200, 255, 0.5);
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      font-weight: 300;
-      border-bottom: 1px solid rgba(0, 200, 255, 0.15);
-      display: inline-block;
-      padding-bottom: 0.4rem;
-      margin-bottom: 1.8rem;
-    }
-
-    /* ===== تایمر ===== */
-    .timer-container {
-      background: rgba(0, 20, 40, 0.5);
-      backdrop-filter: blur(8px);
-      -webkit-backdrop-filter: blur(8px);
-      border-radius: 60px;
-      padding: 1.6rem 1.8rem;
-      margin: 1.8rem 0 2rem;
-      border: 1px solid rgba(0, 255, 255, 0.15);
-      box-shadow: 0 0 40px rgba(0, 150, 255, 0.05);
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      gap: 0.4rem 1.2rem;
-      flex-wrap: wrap;
-    }
-
-    .timer-item {
-      display: flex;
-      align-items: baseline;
-      gap: 4px;
-      font-weight: 450;
-      color: #b0d8ff;
-    }
-
-    .timer-item .number {
-      font-size: 2.6rem;
-      font-weight: 700;
-      font-variant-numeric: tabular-nums;
-      min-width: 3.6rem;
-      text-align: center;
-      background: rgba(0, 180, 255, 0.06);
-      padding: 0.1rem 0.6rem;
-      border-radius: 20px;
-      color: #a0f0ff;
-      text-shadow: 0 0 30px rgba(0, 200, 255, 0.3);
-      letter-spacing: 2px;
-      border: 1px solid rgba(0, 200, 255, 0.08);
-    }
-
-    .timer-item .label {
-      font-size: 0.9rem;
-      color: rgba(160, 200, 255, 0.5);
-      font-weight: 300;
-      margin-right: 2px;
-    }
-
-    .timer-separator {
-      font-size: 2.2rem;
-      font-weight: 200;
-      color: rgba(0, 200, 255, 0.25);
-      line-height: 1;
-      margin: 0 2px;
-    }
-
-    .timer-status {
-      font-size: 0.9rem;
-      color: rgba(160, 200, 255, 0.4);
-      letter-spacing: 1px;
-      margin-top: -0.2rem;
-    }
-
-    /* ===== نوار پیشرفت ===== */
-    .progress-container {
-      background: rgba(0, 40, 70, 0.4);
-      height: 6px;
-      border-radius: 30px;
-      margin: 2rem 0 1.4rem;
-      width: 100%;
-      overflow: hidden;
-      box-shadow: inset 0 0 12px rgba(0, 0, 0, 0.6);
-      border: 1px solid rgba(0, 200, 255, 0.05);
-    }
-
-    .progress-bar {
-      width: 68%;
-      height: 100%;
-      background: linear-gradient(90deg, #00c8ff, #9f7aff, #00c8ff);
-      background-size: 200% 100%;
-      border-radius: 30px;
-      animation: shimmer-cyber 3s infinite linear;
-      box-shadow: 0 0 25px rgba(0, 180, 255, 0.3);
-    }
-
-    @keyframes shimmer-cyber {
-      0% { background-position: 0% 0%; }
-      100% { background-position: 200% 0%; }
-    }
-
-    .progress-label {
-      display: flex;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      color: rgba(160, 200, 255, 0.3);
-      font-weight: 300;
-      padding: 0 0.2rem;
-      letter-spacing: 1px;
-    }
-
-    .progress-label span:last-child {
-      color: #7ac7ff;
-      background: rgba(0, 180, 255, 0.08);
-      padding: 0 14px;
-      border-radius: 30px;
-      border: 1px solid rgba(0, 200, 255, 0.1);
-    }
-
-    /* ===== دکمه‌های اجتماعی (سایبری) ===== */
-    .social-links {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      justify-content: center;
-      gap: 0.8rem 1.2rem;
-      margin-top: 2.4rem;
-    }
-
-    .social-item {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: rgba(0, 40, 70, 0.3);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      padding: 0.5rem 1.6rem;
-      border-radius: 60px;
-      border: 1px solid rgba(0, 200, 255, 0.12);
-      color: #a0d0ff;
-      text-decoration: none;
-      font-weight: 400;
-      font-size: 0.9rem;
-      transition: 0.25s ease;
-      box-shadow: 0 0 20px rgba(0, 150, 255, 0.02);
-      letter-spacing: 0.5px;
-    }
-
-    .social-item:hover {
-      background: rgba(0, 180, 255, 0.1);
-      border-color: #00ccff;
-      transform: translateY(-4px) scale(1.02);
-      box-shadow: 0 0 40px rgba(0, 180, 255, 0.15);
-      color: #d0f0ff;
-    }
-
-    .social-item .icon {
-      font-size: 1.2rem;
-      filter: drop-shadow(0 0 6px rgba(0, 200, 255, 0.2));
-    }
-
-    /* ===== فوتر ===== */
-    .footer-cyber {
-      margin-top: 2.8rem;
-      font-size: 0.75rem;
-      color: rgba(100, 150, 200, 0.25);
-      letter-spacing: 2px;
-      border-top: 1px solid rgba(0, 200, 255, 0.06);
-      padding-top: 1.8rem;
-      display: flex;
-      justify-content: center;
-      gap: 2.5rem;
-      flex-wrap: wrap;
-      text-transform: uppercase;
-    }
-
-    .footer-cyber .heart {
-      color: #ff5e8a;
-      display: inline-block;
-      animation: pulse-cyber 1.6s infinite;
-      text-shadow: 0 0 20px rgba(255, 80, 120, 0.3);
-    }
-
-    @keyframes pulse-cyber {
-      0% { transform: scale(1); opacity: 0.7; }
-      50% { transform: scale(1.3); opacity: 1; }
-      100% { transform: scale(1); opacity: 0.7; }
-    }
-
-    /* ===== واکنش‌گرایی ===== */
-    @media (max-width: 600px) {
-      .cyber-card { padding: 2rem 1.5rem; border-radius: 36px; }
-      .main-title { font-size: 2rem; }
-      .timer-item .number { font-size: 2rem; min-width: 2.6rem; }
-      .timer-separator { font-size: 1.6rem; }
-      .timer-container { padding: 1rem 1.2rem; gap: 0.2rem 0.8rem; }
-      .social-item { padding: 0.4rem 1.2rem; font-size: 0.8rem; }
-    }
-
-    @media (max-width: 420px) {
-      .timer-item .number { font-size: 1.5rem; min-width: 2rem; padding: 0 0.3rem; }
-      .timer-separator { font-size: 1.2rem; }
-      .main-title { font-size: 1.6rem; }
-    }
-  </style>
-</head>
-<body>
-  <div class="cyber-card">
-
-    <!-- بدون لوگو / آواتار – فقط متن سایبری -->
-    <div class="main-title">صفحه در حال آپدیت</div>
-    <div class="sub-cyber">◈ سیستم بروزرسانی ◈</div>
-
-    <!-- ===== تایمر ===== -->
-    <div class="timer-container" id="timerContainer">
-      <div class="timer-item">
-        <span class="number" id="daysDisplay">۰</span>
-        <span class="label">روز</span>
-      </div>
-      <span class="timer-separator">:</span>
-      <div class="timer-item">
-        <span class="number" id="hoursDisplay">۰۰</span>
-        <span class="label">ساعت</span>
-      </div>
-      <span class="timer-separator">:</span>
-      <div class="timer-item">
-        <span class="number" id="minutesDisplay">۰۰</span>
-        <span class="label">دقیقه</span>
-      </div>
-      <span class="timer-separator">:</span>
-      <div class="timer-item">
-        <span class="number" id="secondsDisplay">۰۰</span>
-        <span class="label">ثانیه</span>
-      </div>
-    </div>
-    <div class="timer-status" id="countdownStatus">⏳ تا پایان بروزرسانی · ۱۵ آگوست ۲۰۲۶</div>
-
-    <!-- نوار پیشرفت سایبری -->
-    <div class="progress-container">
-      <div class="progress-bar"></div>
-    </div>
-    <div class="progress-label">
-      <span>پردازش</span>
-      <span>۶۸٪</span>
-    </div>
-
-    <!-- شبکه‌های اجتماعی با استایل سایبری -->
-    <div class="social-links">
-      <a href="#" class="social-item"><span class="icon">📡</span> اینستاگرام</a>
-      <a href="#" class="social-item"><span class="icon">⚡</span> تلگرام</a>
-      <a href="#" class="social-item"><span class="icon">🖥️</span> گیت‌هاب</a>
-      <a href="#" class="social-item"><span class="icon">✉</span> تماس</a>
-    </div>
-
-    <div class="footer-cyber">
-      <span>© ۱۴۰۵ · آقای خموش</span>
-      <span>سایبر <span class="heart">❤</span> کد</span>
-      <span>نسخه ۲.۰</span>
-    </div>
-  </div>
-
-  <script>
-    (function() {
-      // هدف: ۱۵ آگوست ۲۰۲۶، ساعت ۰۰:۰۰:۰۰ (به وقت محلی)
-      const targetDate = new Date(2026, 7, 15, 0, 0, 0);
-
-      const daysEl = document.getElementById('daysDisplay');
-      const hoursEl = document.getElementById('hoursDisplay');
-      const minutesEl = document.getElementById('minutesDisplay');
-      const secondsEl = document.getElementById('secondsDisplay');
-      const statusEl = document.getElementById('countdownStatus');
-
-      function padZero(num) {
-        return String(num).padStart(2, '0');
-      }
-
-      // تبدیل عدد به فارسی (برای نمایش زیباتر)
-      function toPersian(num) {
-        return num.toLocaleString('fa-IR', { useGrouping: false });
-      }
-
-      function updateTimer() {
-        const now = new Date();
-        let diff = targetDate.getTime() - now.getTime();
-
-        if (diff < 0) {
-          diff = 0;
-          if (statusEl) {
-            statusEl.textContent = '✅ بروزرسانی کامل شد · صفحه جدید فعال';
-          }
-        } else {
-          if (statusEl) {
-            statusEl.textContent = '⏳ تا پایان بروزرسانی · ۱۵ آگوست ۲۰۲۶';
-          }
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>سرفراز خموش | Sarfraz Khamoosh</title>
+    
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    
+    <!-- SEO Meta -->
+    <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
+    <meta name="keywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, مهاجرت, افغانستان, مزار شریف" />
+    <meta name="author" content="سرفراز خموش" />
+    <meta name="robots" content="index, follow" />
+    <meta property="og:title" content="سرفراز خموش | وب‌سایت رسمی" />
+    <meta property="og:description" content="سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
+    <meta property="og:image" content="https://khamoosh.abrdns.com/images/Kham.png" />
+    <meta property="og:url" content="https://khamoosh.abrdns.com" />
+    <meta name="theme-color" content="#8b5cf6" />
+    <link rel="icon" type="image/png" href="images/Kham.png" />
+    
+    <!-- PWA / Manifest -->
+    <link rel="manifest" href="/manifest.json" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    
+    <!-- Schema.org -->
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "سرفراز خموش",
+            "alternateName": "Sarfraz Khamoosh",
+            "url": "https://khamoosh.abrdns.com",
+            "image": "https://khamoosh.abrdns.com/images/Khamoosh.jpg",
+            "jobTitle": "برنامه‌نویس و طراح گرافیک",
+            "description": "سرفراز خموش، متخصص در برنامه‌نویسی، طراحی گرافیک و مشاوره مهاجرت",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "مزار شریف",
+                "addressCountry": "افغانستان"
+            },
+            "sameAs": [
+                "https://www.instagram.com/admin_khamoosh",
+                "https://www.linkedin.com/in/sarfraz-khamoosh-766277228",
+                "https://github.com/hammmmmad"
+            ]
+        }
+    </script>
+    
+    <!-- Pre‑register Service Worker -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js')
+                .then(reg => console.log('✅ SW registered:', reg))
+                .catch(err => console.log('❌ SW registration failed:', err));
+        }
+    </script>
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            background: #f0f2f8;
+            color: #1a1a2e;
+            min-height: 100vh;
+            padding-bottom: 140px;
+            transition: background 0.4s, color 0.4s;
+        }
+        body.dark {
+            background: #0a0a12;
+            color: #e8e8f0;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1.5rem 1.2rem;
         }
 
-        const totalSec = Math.floor(diff / 1000);
-        const days = Math.floor(totalSec / 86400);
-        const hours = Math.floor((totalSec % 86400) / 3600);
-        const minutes = Math.floor((totalSec % 3600) / 60);
-        const seconds = totalSec % 60;
+        /* ===== GLASS CARD ===== */
+        .glass {
+            background: rgba(255, 255, 255, 0.5);
+            backdrop-filter: blur(18px);
+            -webkit-backdrop-filter: blur(18px);
+            border-radius: 2.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.04);
+            padding: 2rem;
+            margin-bottom: 2rem;
+            transition: all 0.35s ease;
+        }
+        body.dark .glass {
+            background: rgba(16, 18, 34, 0.7);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+        .glass:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 28px 60px rgba(0, 0, 0, 0.07);
+        }
 
-        if (daysEl) daysEl.textContent = toPersian(days);
-        if (hoursEl) hoursEl.textContent = toPersian(hours);
-        if (minutesEl) minutesEl.textContent = toPersian(minutes);
-        if (secondsEl) secondsEl.textContent = toPersian(seconds);
-      }
+        /* ===== PAGES ===== */
+        .page {
+            display: none;
+            animation: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .page.active {
+            display: block;
+        }
+        @keyframes fadeUp {
+            0% { opacity: 0; transform: translateY(30px); }
+            100% { opacity: 1; transform: translateY(0); }
+        }
 
-      updateTimer();
-      setInterval(updateTimer, 1000);
-    })();
-  </script>
+        /* ===== BOTTOM NAVIGATION ===== */
+        .bottom-nav-wrapper {
+            position: fixed;
+            bottom: 24px;
+            left: 0;
+            right: 0;
+            display: flex;
+            justify-content: center;
+            z-index: 999;
+            pointer-events: none;
+        }
+        .bottom-nav {
+            pointer-events: auto;
+            background: rgba(255, 255, 255, 0.88);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 60px;
+            padding: 12px 18px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.08);
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            max-width: 700px;
+            width: calc(100% - 32px);
+            height: 82px;
+            transition: background 0.4s, border-color 0.4s;
+            gap: 2px;
+        }
+        body.dark .bottom-nav {
+            background: rgba(16, 18, 34, 0.92);
+            border-color: rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6);
+        }
+
+        .nav-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            color: #9ca3af;
+            font-size: 0.6rem;
+            font-weight: 500;
+            transition: color 0.25s, transform 0.2s;
+            padding: 4px 10px;
+            border-radius: 30px;
+            min-width: 50px;
+            cursor: pointer;
+            background: transparent;
+            border: none;
+            font-family: 'Vazirmatn', 'Inter', sans-serif;
+            gap: 4px;
+            flex: 1;
+            height: 68px;
+            position: relative;
+        }
+        .nav-item i {
+            font-size: 1.4rem;
+            transition: all 0.25s;
+            display: block;
+            color: currentColor;
+        }
+        .nav-item span {
+            font-size: 0.55rem;
+            letter-spacing: 0.4px;
+            opacity: 0.8;
+            line-height: 1.2;
+            font-weight: 600;
+            white-space: nowrap;
+            display: block;
+        }
+        .nav-item:hover {
+            color: #6b7280;
+            transform: translateY(-3px) scale(1.02);
+        }
+        .nav-item:active {
+            transform: scale(0.92) translateY(2px);
+        }
+        body.dark .nav-item {
+            color: #6b7280;
+        }
+        body.dark .nav-item:hover {
+            color: #b0b8c8;
+        }
+        .nav-item.active {
+            color: #1f2937;
+        }
+        body.dark .nav-item.active {
+            color: #e5e7eb;
+        }
+        .nav-item.active i {
+            transform: scale(1.08);
+        }
+
+        .nav-item-home {
+            position: relative;
+            top: 0;
+            flex: 0 0 72px;
+            height: 72px;
+            min-width: 72px;
+            background: linear-gradient(145deg, #c084fc, #8b5cf6);
+            border-radius: 50%;
+            box-shadow: 0 16px 38px rgba(139, 92, 246, 0.4);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 2.5px solid rgba(255, 255, 255, 0.85);
+            color: #ffffff;
+            cursor: pointer;
+            flex-shrink: 0;
+            gap: 2px;
+            animation: homePulse 2.5s ease-in-out infinite;
+        }
+        body.dark .nav-item-home {
+            background: linear-gradient(145deg, #a78bfa, #7c3aed);
+            border-color: rgba(0, 0, 0, 0.15);
+            box-shadow: 0 16px 38px rgba(139, 92, 246, 0.5);
+            color: #ffffff;
+        }
+        .nav-item-home i {
+            font-size: 2.2rem;
+            display: block;
+            color: inherit;
+            transition: 0.3s;
+            line-height: 1;
+        }
+        .nav-item-home span {
+            font-size: 0.5rem;
+            letter-spacing: 0.4px;
+            opacity: 0.9;
+            font-weight: 600;
+            color: inherit;
+            line-height: 1.2;
+            white-space: nowrap;
+            display: block;
+        }
+        .nav-item-home:hover {
+            transform: scale(1.08) translateY(-4px);
+            box-shadow: 0 22px 48px rgba(139, 92, 246, 0.5);
+            animation: none;
+        }
+        .nav-item-home:active {
+            transform: scale(0.92) translateY(2px);
+        }
+        @keyframes homePulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.03); }
+        }
+
+        /* ===== HOME - LOGO GRID ===== */
+        .logo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 2rem;
+            margin-top: 1rem;
+        }
+        .logo-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(14px);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.35s;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            cursor: pointer;
+        }
+        body.dark .logo-card {
+            background: rgba(16, 18, 34, 0.5);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        .logo-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(139, 92, 246, 0.15);
+            border-color: #8b5cf6;
+        }
+        .logo-card:active {
+            transform: scale(0.95);
+        }
+        .logo-card img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: contain;
+            border-radius: 1.5rem;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 0.5rem;
+            transition: 0.3s;
+        }
+        .logo-card:hover img {
+            transform: scale(1.05);
+        }
+        .logo-card .logo-name {
+            margin-top: 0.8rem;
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0.7;
+        }
+        .logo-card .logo-tag {
+            font-size: 0.65rem;
+            opacity: 0.4;
+            margin-top: 2px;
+        }
+
+        /* ===== ABOUT ===== */
+        .about-intro {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        .about-intro h2 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 2.6rem;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .about-intro p {
+            opacity: 0.7;
+            font-size: 1rem;
+            margin-top: 0.2rem;
+        }
+        .skills-doughnut-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            gap: 2rem;
+            justify-items: center;
+            margin-top: 1.5rem;
+        }
+        .doughnut-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .doughnut-item .label {
+            font-weight: 600;
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        .doughnut {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 1.2rem;
+            font-family: 'Inter', sans-serif;
+            background: conic-gradient(#8b5cf6 var(--pct), rgba(0, 0, 0, 0.07) var(--pct));
+            transition: background 1.2s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: 0 6px 24px rgba(139, 92, 246, 0.15);
+        }
+        .doughnut::after {
+            content: "";
+            position: absolute;
+            width: 76px;
+            height: 76px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(4px);
+        }
+        body.dark .doughnut::after {
+            background: rgba(12, 12, 26, 0.85);
+        }
+        .doughnut .val {
+            position: relative;
+            z-index: 2;
+            font-family: 'Inter', sans-serif;
+            font-weight: 700;
+        }
+        .specialties-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 0.8rem;
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        .specialties-list li {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 0.4rem 0.8rem;
+            background: rgba(139, 92, 246, 0.04);
+            border-radius: 2rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+        }
+        .specialties-list li i {
+            color: #8b5cf6;
+            font-size: 1rem;
+        }
+
+        /* ===== PROFILE ===== */
+        .profile-layout {
+            display: grid;
+            grid-template-columns: 1fr 1.8fr;
+            gap: 2rem;
+            align-items: start;
+        }
+        .profile-card {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(16px);
+            border-radius: 2.8rem;
+            padding: 2.2rem 1.8rem;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            text-align: center;
+            transition: 0.35s;
+        }
+        body.dark .profile-card {
+            background: rgba(16, 18, 34, 0.6);
+            border-color: rgba(255, 255, 255, 0.06);
+        }
+        .profile-card .avatar {
+            width: 148px;
+            height: 148px;
+            border-radius: 50%;
+            border: 4px solid #8b5cf6;
+            object-fit: cover;
+            margin-bottom: 1rem;
+            box-shadow: 0 12px 40px rgba(139, 92, 246, 0.2);
+            transition: 0.3s;
+        }
+        .profile-card .avatar:hover {
+            transform: scale(1.03);
+        }
+        .profile-card .name {
+            font-size: 2rem;
+            font-weight: 800;
+            font-family: 'Inter', sans-serif;
+            letter-spacing: -0.5px;
+        }
+        .profile-card .title {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            margin-top: 0.1rem;
+        }
+        .profile-details {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 0.8rem;
+            margin-top: 1.5rem;
+        }
+        .profile-details .item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(139, 92, 246, 0.05);
+            padding: 0.7rem 1rem;
+            border-radius: 1.8rem;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(139, 92, 246, 0.06);
+        }
+        .profile-details .item i {
+            color: #8b5cf6;
+            font-size: 1rem;
+            width: 22px;
+            text-align: center;
+        }
+        .profile-details .item span {
+            opacity: 0.7;
+            font-weight: 400;
+            margin-right: 4px;
+        }
+        .profile-social-list {
+            margin-top: 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.6rem;
+            align-items: stretch;
+        }
+        .profile-social-list a {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 2rem;
+            background: rgba(255, 255, 255, 0.15);
+            color: inherit;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border: 1px solid rgba(139, 92, 246, 0.06);
+            font-size: 0.9rem;
+        }
+        .profile-social-list a i {
+            width: 24px;
+            text-align: center;
+            color: #8b5cf6;
+            font-size: 1.1rem;
+            transition: 0.3s;
+        }
+        .profile-social-list a .sname {
+            flex: 1;
+            text-align: right;
+            font-weight: 500;
+        }
+        .profile-social-list a:hover {
+            background: #8b5cf6;
+            color: #fff;
+            transform: translateX(-4px) scale(1.02);
+            border-color: #8b5cf6;
+            box-shadow: 0 8px 25px rgba(139, 92, 246, 0.3);
+        }
+        .profile-social-list a:hover i {
+            color: #fff;
+        }
+        .profile-social-list a:active {
+            transform: scale(0.95) translateX(-2px);
+        }
+
+        /* ===== IMMIGRATION ===== */
+        .imm-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.2rem;
+        }
+        .imm-card {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(12px);
+            border-radius: 2rem;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.3s;
+        }
+        body.dark .imm-card {
+            background: rgba(16, 18, 34, 0.5);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        .imm-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 14px 32px rgba(0, 0, 0, 0.04);
+        }
+        .imm-card .info h4 {
+            font-weight: 700;
+            font-size: 1rem;
+        }
+        .imm-card .info .status {
+            font-size: 0.7rem;
+            opacity: 0.6;
+        }
+        .bell-btn {
+            background: rgba(139, 92, 246, 0.08);
+            border: none;
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            color: #8b5cf6;
+            font-size: 1.2rem;
+            cursor: pointer;
+            transition: 0.3s;
+            position: relative;
+            flex-shrink: 0;
+        }
+        .bell-btn:hover {
+            background: #8b5cf6;
+            color: #fff;
+            transform: scale(1.08) rotate(8deg);
+        }
+        .bell-btn:active {
+            transform: scale(0.92);
+        }
+        .bell-btn .badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.55rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+        }
+        .bell-btn.has-notification {
+            color: #ef4444;
+            animation: pulseBell 1.4s infinite;
+        }
+        @keyframes pulseBell {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.12); }
+        }
+
+        /* ===== TECH NEWS ===== */
+        .news-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .news-card {
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(14px);
+            border-radius: 2.2rem;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: 0.35s;
+            cursor: pointer;
+        }
+        body.dark .news-card {
+            background: rgba(16, 18, 34, 0.5);
+            border-color: rgba(255, 255, 255, 0.04);
+        }
+        .news-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 24px 48px rgba(0, 0, 0, 0.06);
+        }
+        .news-card:active {
+            transform: scale(0.98);
+        }
+        .news-card img {
+            width: 100%;
+            height: 190px;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .news-card:hover img {
+            transform: scale(1.03);
+        }
+        .news-card .body {
+            padding: 1.2rem 1.5rem;
+        }
+        .news-card .body h4 {
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin-bottom: 0.3rem;
+        }
+        .news-card .body .meta {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.7rem;
+            opacity: 0.5;
+            margin-top: 0.6rem;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+            border-radius: 1.8rem;
+            overflow: hidden;
+            position: relative;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+            transition: 0.35s;
+            border: 2px solid transparent;
+            background: rgba(0,0,0,0.02);
+        }
+        .gallery-item:hover {
+            transform: scale(1.03);
+            border-color: #8b5cf6;
+            box-shadow: 0 12px 30px rgba(139, 92, 246, 0.2);
+        }
+        .gallery-item:active {
+            transform: scale(0.95);
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: 0.4s;
+        }
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.5));
+            padding: 1rem;
+            color: #fff;
+            font-size: 0.7rem;
+            opacity: 0;
+            transition: 0.3s;
+            text-align: center;
+        }
+        .gallery-item:hover .overlay {
+            opacity: 1;
+        }
+
+        /* ===== SETTINGS ===== */
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+        body.dark .settings-row {
+            border-bottom-color: rgba(255, 255, 255, 0.04);
+        }
+        .settings-row .label {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-weight: 500;
+        }
+        .settings-row .label i {
+            color: #8b5cf6;
+            font-size: 1.2rem;
+            width: 28px;
+        }
+        .toggle-switch {
+            width: 54px;
+            height: 30px;
+            background: #d1d5db;
+            border-radius: 40px;
+            cursor: pointer;
+            transition: 0.35s;
+            position: relative;
+        }
+        body.dark .toggle-switch {
+            background: #374151;
+        }
+        .toggle-switch.active {
+            background: #8b5cf6;
+        }
+        .toggle-switch .slider {
+            width: 22px;
+            height: 22px;
+            background: #fff;
+            border-radius: 50%;
+            position: absolute;
+            top: 4px;
+            right: 4px;
+            transition: 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+        }
+        .toggle-switch.active .slider {
+            right: 28px;
+        }
+        .lang-group, .view-group {
+            display: flex;
+            gap: 0.6rem;
+            flex-wrap: wrap;
+        }
+        .lang-group button, .view-group button {
+            padding: 0.4rem 1.2rem;
+            border-radius: 40px;
+            border: 2px solid #d1d5db;
+            background: transparent;
+            font-family: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.25s;
+            color: inherit;
+            font-size: 0.8rem;
+        }
+        .lang-group button.active, .view-group button.active {
+            border-color: #8b5cf6;
+            background: rgba(139, 92, 246, 0.08);
+            color: #8b5cf6;
+        }
+        .lang-group button:hover, .view-group button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(139, 92, 246, 0.15);
+        }
+        .lang-group button:active, .view-group button:active {
+            transform: scale(0.95);
+        }
+
+        /* ===== ADMIN PANEL ===== */
+        #adminPanel {
+            display: none;
+            background: rgba(139, 92, 246, 0.04);
+            border-radius: 2rem;
+            padding: 1.5rem;
+            border: 1px solid rgba(139, 92, 246, 0.08);
+            margin-top: 1rem;
+        }
+        #adminPanel h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.8rem;
+        }
+        #adminPanel select,
+        #adminPanel input,
+        #adminPanel textarea {
+            background: rgba(255, 255, 255, 0.3);
+            border: 1px solid rgba(139, 92, 246, 0.1);
+            transition: 0.3s;
+        }
+        body.dark #adminPanel select,
+        body.dark #adminPanel input,
+        body.dark #adminPanel textarea {
+            background: rgba(0, 0, 0, 0.2);
+            border-color: rgba(255, 255, 255, 0.04);
+            color: #e8e8f0;
+        }
+        #adminPanel select:focus,
+        #adminPanel input:focus,
+        #adminPanel textarea:focus {
+            outline: none;
+            border-color: #8b5cf6;
+            box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
+        }
+
+        /* ===== ADMIN ARCHIVE ===== */
+        #adminArchive {
+            margin-top: 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            padding-top: 1.5rem;
+        }
+        body.dark #adminArchive {
+            border-top-color: rgba(255, 255, 255, 0.04);
+        }
+        #adminArchive h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #8b5cf6;
+        }
+        .archive-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0.8rem 1rem;
+            background: rgba(139, 92, 246, 0.04);
+            border-radius: 1.2rem;
+            margin-bottom: 0.6rem;
+            transition: 0.3s;
+            border: 1px solid rgba(139, 92, 246, 0.04);
+        }
+        .archive-item:hover {
+            background: rgba(139, 92, 246, 0.08);
+        }
+        .archive-item .info {
+            flex: 1;
+        }
+        .archive-item .info .title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .archive-item .info .body {
+            font-size: 0.8rem;
+            opacity: 0.6;
+            margin-top: 2px;
+        }
+        .archive-item .info .meta {
+            font-size: 0.65rem;
+            opacity: 0.4;
+            margin-top: 4px;
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+        .archive-item .status {
+            padding: 4px 12px;
+            border-radius: 40px;
+            font-size: 0.65rem;
+            font-weight: 600;
+            flex-shrink: 0;
+        }
+        .archive-item .status.delivered {
+            background: rgba(34, 197, 94, 0.15);
+            color: #22c55e;
+        }
+        .archive-item .status.pending {
+            background: rgba(234, 179, 8, 0.15);
+            color: #eab308;
+        }
+        .archive-item .status.failed {
+            background: rgba(239, 68, 68, 0.15);
+            color: #ef4444;
+        }
+        .archive-item .delete-archive {
+            background: none;
+            border: none;
+            color: #ef4444;
+            cursor: pointer;
+            opacity: 0.3;
+            transition: 0.3s;
+            padding: 4px 8px;
+            border-radius: 50%;
+        }
+        .archive-item .delete-archive:hover {
+            opacity: 1;
+            background: rgba(239, 68, 68, 0.06);
+        }
+        .archive-empty {
+            text-align: center;
+            opacity: 0.4;
+            padding: 1.5rem;
+            font-size: 0.9rem;
+        }
+
+        /* ===== NOTIFICATION CENTER ===== */
+        .notification-center {
+            position: fixed;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%) translateY(20px);
+            width: 400px;
+            max-width: calc(100% - 32px);
+            max-height: 60vh;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border-radius: 2rem;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.2);
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            z-index: 9999;
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+        }
+        .notification-center.open {
+            display: flex;
+            transform: translateX(-50%) translateY(0);
+        }
+        body.dark .notification-center {
+            background: rgba(16, 18, 34, 0.95);
+            border-color: rgba(255, 255, 255, 0.06);
+            color: #e8e8f0;
+        }
+
+        .notification-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 1.5rem;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.04);
+            flex-shrink: 0;
+        }
+        body.dark .notification-header {
+            border-bottom-color: rgba(255, 255, 255, 0.04);
+        }
+        .notification-header h3 {
+            font-weight: 700;
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        .notification-header h3 i {
+            color: #8b5cf6;
+        }
+        .notif-close-btn {
+            background: none;
+            border: none;
+            font-size: 1.2rem;
+            cursor: pointer;
+            color: inherit;
+            opacity: 0.5;
+            padding: 4px 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+        }
+        .notif-close-btn:hover {
+            opacity: 1;
+            background: rgba(0,0,0,0.04);
+        }
+
+        .notification-list {
+            flex: 1;
+            overflow-y: auto;
+            padding: 0.5rem 0;
+            max-height: 40vh;
+        }
+        .notification-list .empty-notif {
+            text-align: center;
+            padding: 2rem 1rem;
+            opacity: 0.5;
+        }
+
+        .notif-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 0.8rem 1.5rem;
+            cursor: pointer;
+            transition: 0.2s;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+        }
+        body.dark .notif-item {
+            border-bottom-color: rgba(255, 255, 255, 0.03);
+        }
+        .notif-item:hover {
+            background: rgba(139, 92, 246, 0.04);
+        }
+        .notif-item.unread {
+            border-right: 3px solid #8b5cf6;
+        }
+        .notif-item.read {
+            opacity: 0.6;
+        }
+        .notif-icon {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: rgba(139, 92, 246, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: #8b5cf6;
+        }
+        .notif-content {
+            flex: 1;
+            min-width: 0;
+        }
+        .notif-title {
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+        .notif-body {
+            font-size: 0.8rem;
+            opacity: 0.7;
+            margin-top: 2px;
+            word-break: break-word;
+        }
+        .notif-time {
+            font-size: 0.65rem;
+            opacity: 0.4;
+            margin-top: 4px;
+        }
+        .notif-delete-btn {
+            background: none;
+            border: none;
+            color: inherit;
+            opacity: 0.2;
+            cursor: pointer;
+            padding: 4px 8px;
+            border-radius: 50%;
+            transition: 0.3s;
+            flex-shrink: 0;
+        }
+        .notif-delete-btn:hover {
+            opacity: 1;
+            color: #ef4444;
+            background: rgba(239, 68, 68, 0.06);
+        }
+
+        .notification-footer {
+            padding: 0.8rem 1.5rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.04);
+            display: flex;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        body.dark .notification-footer {
+            border-top-color: rgba(255, 255, 255, 0.04);
+        }
+        .notif-clear-btn {
+            background: none;
+            border: none;
+            color: #ef4444;
+            font-size: 0.8rem;
+            cursor: pointer;
+            opacity: 0.6;
+            transition: 0.3s;
+            padding: 4px 16px;
+            border-radius: 20px;
+        }
+        .notif-clear-btn:hover {
+            opacity: 1;
+            background: rgba(239, 68, 68, 0.04);
+        }
+
+        .notif-bell-btn {
+            position: relative;
+        }
+        .notif-badge {
+            position: absolute;
+            top: -4px;
+            right: -4px;
+            background: #ef4444;
+            color: #fff;
+            font-size: 0.5rem;
+            width: 18px;
+            height: 18px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            animation: pulseBell 1.4s infinite;
+        }
+        .notif-bell-btn.has-notif {
+            color: #8b5cf6;
+        }
+
+        /* ===== MODALS ===== */
+        .modal-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(16px);
+            z-index: 9999;
+            align-items: center;
+            justify-content: center;
+            padding: 1.5rem;
+        }
+        .modal-overlay.open {
+            display: flex;
+        }
+        .modal-box {
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(28px);
+            border-radius: 3rem;
+            max-width: 720px;
+            width: 100%;
+            max-height: 85vh;
+            overflow-y: auto;
+            direction: rtl;
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
+            position: relative;
+            padding: 2rem 2.5rem;
+        }
+        body.dark .modal-box {
+            background: rgba(16, 18, 34, 0.92);
+            border-color: rgba(255, 255, 255, 0.04);
+            color: #e0e0ea;
+        }
+        .modal-box .close {
+            position: absolute;
+            top: 1.2rem;
+            left: 1.5rem;
+            background: #8b5cf6;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.2rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.25s;
+        }
+        .modal-box .close:hover {
+            transform: rotate(90deg);
+            background: #7c3aed;
+        }
+        .modal-box .close:active {
+            transform: scale(0.9) rotate(90deg);
+        }
+        .modal-box h2 {
+            font-size: 1.6rem;
+            font-weight: 700;
+            margin-bottom: 0.8rem;
+            padding-left: 2.8rem;
+        }
+        .modal-box .text {
+            line-height: 2;
+            text-align: justify;
+            font-size: 0.95rem;
+        }
+
+        /* ===== TOAST ===== */
+        .toast-msg {
+            position: fixed;
+            bottom: 110px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #1f2937;
+            color: #fff;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            z-index: 9998;
+            animation: fadeToast 2.8s ease forwards;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+        }
+        .toast-msg i {
+            margin-left: 8px;
+        }
+        @keyframes fadeToast {
+            0%, 70% { opacity: 1; transform: translateX(-50%) translateY(0); }
+            100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
+        }
+
+        .notif-popup {
+            position: fixed;
+            top: 24px;
+            right: 24px;
+            background: rgba(0, 0, 0, 0.88);
+            backdrop-filter: blur(16px);
+            color: #fff;
+            padding: 16px 24px;
+            border-radius: 1.8rem;
+            max-width: 360px;
+            z-index: 9999;
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+            animation: slideDown 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+        }
+        .notif-popup h4 {
+            color: #8b5cf6;
+            margin-bottom: 4px;
+            font-size: 1rem;
+        }
+        .notif-popup p {
+            font-size: 0.85rem;
+            opacity: 0.85;
+        }
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 768px) {
+            .container { padding: 1rem 0.8rem; }
+            .bottom-nav { height: 70px; padding: 8px 12px; border-radius: 40px; max-width: 100%; }
+            .nav-item { min-width: 38px; height: 56px; padding: 2px 6px; }
+            .nav-item i { font-size: 1.2rem; }
+            .nav-item span { font-size: 0.45rem; display: block !important; }
+            .nav-item-home { flex: 0 0 60px; height: 60px; min-width: 60px; }
+            .nav-item-home i { font-size: 1.8rem; }
+            .nav-item-home span { font-size: 0.45rem; display: block !important; }
+            .profile-layout { grid-template-columns: 1fr; }
+            .profile-details { grid-template-columns: 1fr; }
+            .about-intro h2 { font-size: 1.8rem; }
+            .doughnut { width: 90px; height: 90px; }
+            .doughnut::after { width: 64px; height: 64px; }
+            .imm-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+            .modal-box { padding: 1.5rem 1.2rem; border-radius: 2rem; }
+            .notification-center {
+                width: calc(100% - 16px);
+                bottom: 80px;
+                border-radius: 1.5rem;
+            }
+            .notification-header { padding: 0.8rem 1rem; }
+            .notif-item { padding: 0.6rem 1rem; }
+            .logo-grid { grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 1rem; }
+        }
+        @media (max-width: 480px) {
+            .bottom-nav { padding: 4px 6px; gap: 0; border-radius: 32px; height: 62px; }
+            .nav-item { min-width: 30px; padding: 2px 4px; height: 50px; }
+            .nav-item i { font-size: 1rem; }
+            .nav-item span { font-size: 0.38rem; display: block !important; }
+            .nav-item-home { flex: 0 0 50px; height: 50px; min-width: 50px; }
+            .nav-item-home i { font-size: 1.6rem; }
+            .nav-item-home span { font-size: 0.38rem; display: block !important; }
+            .logo-grid { grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 0.8rem; }
+            .news-grid { grid-template-columns: 1fr; }
+            .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+            .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <!-- ===== HOME (ACTIVE) - LOGO GALLERY ===== -->
+        <div class="page active" id="page-home">
+            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-images" style="color:#8b5cf6;"></i> 
+                <span id="homeTitle">آرشیو تصاویر</span>
+            </h2>
+            <div class="logo-grid" id="homeLogoGrid"></div>
+        </div>
+
+        <!-- ===== ABOUT ===== -->
+        <div class="page" id="page-about">
+            <div class="about-intro">
+                <h2>Sarfraz Khamoosh</h2>
+                <p id="aboutSubtitle">برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس</p>
+            </div>
+            <div class="glass">
+                <p id="aboutText" style="font-size:1rem; line-height:2; text-align:justify;">
+                    سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال،
+                    همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است. علاوه بر تخصص در برنامه‌نویسی و طراحی، به شعر و ادبیات
+                    علاقه‌مند است و مطالعه و سرودن شعر را بخشی از زندگی خود می‌داند.
+                </p>
+            </div>
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:0.8rem;">
+                    <i class="fas fa-code" style="color:#8b5cf6;"></i> <span id="skillsTitle">مهارت‌های فنی</span>
+                </h3>
+                <div class="skills-doughnut-grid" id="doughnutGrid"></div>
+            </div>
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:0.8rem;">
+                    <i class="fas fa-bolt" style="color:#8b5cf6;"></i> <span id="specialtiesTitle">حوزه‌های تخصصی</span>
+                </h3>
+                <ul class="specialties-list" id="specialtiesList"></ul>
+            </div>
+        </div>
+
+        <!-- ===== PROFILE ===== -->
+        <div class="page" id="page-profile">
+            <div class="profile-layout">
+                <div class="profile-card">
+                    <img class="avatar" src="images/Khamoosh.jpg" alt="سرفراز خموش" onerror="this.src='https://placehold.co/148x148?text=SK'" />
+                    <div class="name" id="profileName">سرفراز خموش</div>
+                    <div class="title"><i class="fas fa-briefcase" style="margin-left:6px;"></i> <span id="profileTitle">طراح گرافیک · برنامه‌نویس</span></div>
+                    <div class="title" style="font-size:0.8rem; margin-top:2px;"><i class="fas fa-dumbbell" style="margin-left:6px;"></i> <span id="profileFitness">مربی فیتنس</span></div>
+                    <div class="profile-details">
+                        <div class="item"><i class="fas fa-calendar-alt"></i> <span id="labelAge">سن</span> <span>۲۸</span></div>
+                        <div class="item"><i class="fas fa-map-marker-alt"></i> <span id="labelBirth">زادگاه</span> <span>مزار شریف</span></div>
+                        <div class="item"><i class="fas fa-location-dot"></i> <span id="labelLocation">موقعیت</span> <span>ازبکستان</span></div>
+                        <div class="item"><i class="fas fa-graduation-cap"></i> <span id="labelEducation">مدرک</span> <span>لیسانس</span></div>
+                    </div>
+                    <div class="profile-social-list" id="profileSocialList">
+                        <a href="https://www.facebook.com/profile.php?id=61590217606266" target="_blank"><i class="fab fa-facebook-f"></i><span class="sname">فیسبوک</span></a>
+                        <a href="https://www.instagram.com/admin_khamoosh" target="_blank"><i class="fab fa-instagram"></i><span class="sname">اینستاگرام</span></a>
+                        <a href="https://www.linkedin.com/in/sarfraz-khamoosh-766277228" target="_blank"><i class="fab fa-linkedin-in"></i><span class="sname">لینکدین</span></a>
+                        <a href="https://github.com/hammmmmad" target="_blank"><i class="fab fa-github"></i><span class="sname">گیت‌هاب</span></a>
+                        <a href="https://pin.it/WY1aeKX2a" target="_blank"><i class="fab fa-pinterest"></i><span class="sname">پینترست</span></a>
+                        <a href="https://www.behance.net/merlinsarfraz" target="_blank"><i class="fab fa-behance"></i><span class="sname">بهنس</span></a>
+                        <a href="https://wa.me/qr/E2RLH5T72CSFE1" target="_blank"><i class="fab fa-whatsapp"></i><span class="sname">واتساپ</span></a>
+                        <a href="https://www.tiktok.com/@sarfraz_khamoosh" target="_blank"><i class="fab fa-tiktok"></i><span class="sname">تیک تاک</span></a>
+                        <a href="https://khamoooooosh675.substack.com" target="_blank"><i class="fas fa-newspaper"></i><span class="sname">ساب‌استک</span></a>
+                        <a href="https://www.threads.com/@sarfraz_khamoosh23" target="_blank"><i class="fab fa-threads"></i><span class="sname">تردز</span></a>
+                        <a href="#" id="codmBtn" style="cursor:pointer;"><i class="fas fa-gamepad"></i><span class="sname">کال‌آف دیوتی</span></a>
+                    </div>
+                </div>
+                <div class="glass" style="padding:1.8rem;">
+                    <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:1.2rem;">
+                        <i class="fas fa-address-card" style="color:#8b5cf6;"></i> <span id="aboutMeTitle">درباره من</span>
+                    </h3>
+                    <p id="aboutMeText" style="line-height:2; text-align:justify; font-size:0.95rem;">
+                        من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک
+                        آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم. امروز به عنوان یک توسعه‌دهنده فول‌استک و طراح
+                        خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم. همچنین به عنوان مشاور مهاجرت و مربی فیتنس
+                        فعالیت دارم. عاشق شعر، کتاب و خلق تجربه‌های دیجیتال متفاوت هستم.
+                    </p>
+                    <div style="display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;">
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> برنامه‌نویس وب
+                        </span>
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> طراح گرافیک
+                        </span>
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> مشاور مهاجرت
+                        </span>
+                        <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
+                            <i class="fas fa-check-circle" style="color:#8b5cf6;"></i> مربی فیتنس
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== SETTINGS ===== -->
+        <div class="page" id="page-settings">
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:1.5rem;">
+                    <i class="fas fa-sliders-h" style="color:#8b5cf6;"></i> <span id="settingsTitle">تنظیمات</span>
+                </h3>
+                <div class="settings-row">
+                    <div class="label"><i class="fas fa-moon"></i> <span id="themeLabel">تم شب / روز</span></div>
+                    <div class="toggle-switch" id="themeToggle"><div class="slider"></div></div>
+                </div>
+                <div class="settings-row">
+                    <div class="label"><i class="fas fa-globe-asia"></i> <span id="langLabel">زبان</span></div>
+                    <div class="lang-group">
+                        <button class="lang-opt active" data-lang="fa">دری</button>
+                        <button class="lang-opt" data-lang="en">English</button>
+                    </div>
+                </div>
+                <div class="settings-row">
+                    <div class="label"><i class="fas fa-desktop"></i> <span id="viewLabel">حالت نمایش</span></div>
+                    <div class="view-group">
+                        <button class="view-btn active" data-view="desktop">دسکتاپ</button>
+                        <button class="view-btn" data-view="tablet">تبلت</button>
+                        <button class="view-btn" data-view="mobile">موبایل</button>
+                    </div>
+                </div>
+
+                <!-- ===== ADMIN PANEL + ARCHIVE ===== -->
+                <div id="adminPanel">
+                    <h4 style="color:#8b5cf6; width:100%; margin:0 0 1rem 0;">
+                        <i class="fas fa-crown"></i> 
+                        <span id="adminPanelTitle">پنل مدیریت</span>
+                    </h4>
+                    <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; align-items:center;">
+                        <select id="targetUser" style="flex:2; min-width:200px; padding:10px 16px; border-radius:16px; border:2px solid #e5e7eb; font-family:inherit;">
+                            <option value="">انتخاب کاربر...</option>
+                        </select>
+                        <input type="text" id="adminTitle" placeholder="عنوان خبر" style="flex:2; min-width:150px; padding:10px 16px; border-radius:16px; border:2px solid #e5e7eb; font-family:inherit;">
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
+                        <textarea id="adminBody" placeholder="متن خبر را بنویسید..." rows="3" style="flex:1; min-width:200px; padding:10px 16px; border-radius:16px; border:2px solid #e5e7eb; font-family:inherit; resize:vertical;"></textarea>
+                        <button onclick="sendAdminPush()" style="padding:10px 28px; border-radius:40px; border:none; background:#8b5cf6; color:#fff; cursor:pointer; font-weight:600; font-family:inherit; white-space:nowrap; align-self:flex-end;">
+                            <i class="fas fa-paper-plane"></i> <span id="adminSendBtn">ارسال به کاربر</span>
+                        </button>
+                    </div>
+                    <div style="display:flex; gap:1rem; font-size:0.8rem; opacity:0.5; margin-top:8px; flex-wrap:wrap;">
+                        <span>👥 <span id="userCount">۰</span> کاربر آنلاین</span>
+                        <span>🔑 <span id="adminStatus">وضعیت: آماده</span></span>
+                    </div>
+
+                    <!-- ===== ARCHIVE SECTION ===== -->
+                    <div id="adminArchive">
+                        <h4><i class="fas fa-archive"></i> <span id="archiveTitle">آرشیو پیام‌ها</span></h4>
+                        <div id="archiveList"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== IMMIGRATION ===== -->
+        <div class="page" id="page-immigration">
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700;">
+                    <i class="fas fa-passport" style="color:#8b5cf6;"></i> <span id="immigrationTitle">برنامه‌های مهاجرت آمریکا</span>
+                </h3>
+                <div class="imm-grid" id="immigrationGrid"></div>
+            </div>
+        </div>
+
+        <!-- ===== TECH NEWS ===== -->
+        <div class="page" id="page-technews">
+            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-newspaper" style="color:#8b5cf6;"></i> <span id="techTitle">اخبار فناوری</span>
+            </h2>
+            <div class="news-grid" id="newsGrid"></div>
+        </div>
+
+        <!-- ===== GALLERY ===== -->
+        <div class="page" id="page-gallery">
+            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
+                <i class="fas fa-images" style="color:#8b5cf6;"></i> <span id="galleryTitle">گالری تصاویر</span>
+            </h2>
+            <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+
+    </div>
+
+    <!-- ===== MODALS ===== -->
+    <div id="newsModal" class="modal-overlay">
+        <div class="modal-box">
+            <button class="close" id="modalCloseBtn"><i class="fas fa-times"></i></button>
+            <div id="modalContent"></div>
+        </div>
+    </div>
+
+    <div id="uidModal" class="modal-overlay">
+        <div class="modal-box" style="text-align:center; max-width:420px;">
+            <button class="close" id="closeUidModal"><i class="fas fa-times"></i></button>
+            <h3><i class="fas fa-gamepad" style="color:#8b5cf6;"></i> کال‌آف دیوتی موبایل</h3>
+            <p>UID من :</p>
+            <code style="display:inline-block; background:rgba(0,0,0,0.04); padding:6px 18px; border-radius:16px; font-family:'Inter',monospace; font-size:1.1rem; margin:8px 0 14px;">7500139701825634305</code>
+            <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
+                <button id="copyUidBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:#8b5cf6; color:#fff;"><i class="fas fa-copy"></i> کپی</button>
+                <button id="closeUidModalBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:rgba(0,0,0,0.04); color:inherit;">بستن</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <div class="bottom-nav-wrapper">
+        <nav class="bottom-nav" id="bottomNav">
+            <button class="nav-item-home" data-page="home" onclick="navigateTo('home')" aria-label="خانه">
+                <i class="fas fa-home"></i>
+                <span id="label-home">خانه</span>
+            </button>
+            <button class="nav-item" data-page="about" onclick="navigateTo('about')" aria-label="درباره">
+                <i class="fas fa-user"></i>
+                <span id="label-about">درباره</span>
+            </button>
+            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')" aria-label="پروفایل">
+                <i class="fas fa-id-card"></i>
+                <span id="label-profile">پروفایل</span>
+            </button>
+            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')" aria-label="تنظیمات">
+                <i class="fas fa-cog"></i>
+                <span id="label-settings">تنظیمات</span>
+            </button>
+            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')" aria-label="مهاجرت">
+                <i class="fas fa-plane"></i>
+                <span id="label-immigration">مهاجرت</span>
+            </button>
+            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')" aria-label="فناوری">
+                <i class="fas fa-microchip"></i>
+                <span id="label-technews">فناوری</span>
+            </button>
+            <button class="nav-item" data-page="gallery" onclick="navigateTo('gallery')" aria-label="گالری">
+                <i class="fas fa-images"></i>
+                <span id="label-gallery">گالری</span>
+            </button>
+        </nav>
+    </div>
+
+    <!-- ============================================================
+         JAVASCRIPT
+         ============================================================ -->
+    <script>
+        // ================================================================
+        // 1. DATA
+        // ================================================================
+        const translations = {
+            fa: {
+                nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', immigration: 'مهاجرت', technews: 'فناوری', gallery: 'گالری' },
+                homeTitle: 'آرشیو تصاویر',
+                aboutTitle: 'برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس',
+                aboutText: 'سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.',
+                skillsTitle: 'مهارت‌های فنی',
+                specialtiesTitle: 'حوزه‌های تخصصی',
+                profileName: 'سرفراز خموش',
+                profileTitle: 'طراح گرافیک · برنامه‌نویس',
+                profileFitness: 'مربی فیتنس',
+                profileAge: 'سن',
+                profileBirth: 'زادگاه',
+                profileLocation: 'موقعیت',
+                profileEducation: 'مدرک',
+                profileAbout: 'درباره من',
+                profileDesc: 'من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم.',
+                settingsTitle: 'تنظیمات',
+                themeLabel: 'تم شب / روز',
+                langLabel: 'زبان',
+                viewLabel: 'حالت نمایش',
+                immigrationTitle: 'برنامه‌های مهاجرت آمریکا',
+                techTitle: 'اخبار فناوری',
+                galleryTitle: 'گالری تصاویر',
+                adminPanel: 'پنل مدیریت',
+                adminSend: 'ارسال به کاربر',
+                adminTitlePlaceholder: 'عنوان خبر',
+                adminBodyPlaceholder: 'متن خبر را بنویسید...',
+                adminStatus: 'وضعیت: آماده',
+                adminUsers: 'کاربر آنلاین',
+                archiveTitle: 'آرشیو پیام‌ها',
+                archiveEmpty: 'هنوز پیامی ارسال نشده است',
+                statusDelivered: 'تحویل داده شده',
+                statusPending: 'در انتظار',
+                statusFailed: 'ناموفق',
+                social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب', pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک', substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
+            },
+            en: {
+                nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', immigration: 'Immigration', technews: 'Tech News', gallery: 'Gallery' },
+                homeTitle: 'Image Archive',
+                aboutTitle: 'Developer · Graphic Designer · Immigration Consultant · Fitness Coach',
+                aboutText: 'Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, with over 8 years of experience in technology, design and digital development.',
+                skillsTitle: 'Technical Skills',
+                specialtiesTitle: 'Specialties',
+                profileName: 'Sarfraz Khamoosh',
+                profileTitle: 'Graphic Designer · Developer',
+                profileFitness: 'Fitness Coach',
+                profileAge: 'Age',
+                profileBirth: 'Birthplace',
+                profileLocation: 'Location',
+                profileEducation: 'Education',
+                profileAbout: 'About Me',
+                profileDesc: 'I am Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif. I started my career in graphic design in 2015 and then entered the world of programming.',
+                settingsTitle: 'Settings',
+                themeLabel: 'Dark / Light Theme',
+                langLabel: 'Language',
+                viewLabel: 'Display Mode',
+                immigrationTitle: 'US Immigration Programs',
+                techTitle: 'Tech News',
+                galleryTitle: 'Image Gallery',
+                adminPanel: 'Admin Panel',
+                adminSend: 'Send to User',
+                adminTitlePlaceholder: 'News Title',
+                adminBodyPlaceholder: 'Write your news...',
+                adminStatus: 'Status: Ready',
+                adminUsers: 'Online Users',
+                archiveTitle: 'Message Archive',
+                archiveEmpty: 'No messages sent yet',
+                statusDelivered: 'Delivered',
+                statusPending: 'Pending',
+                statusFailed: 'Failed',
+                social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub', pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok', substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
+            }
+        };
+
+        // ===== LOGO DATA =====
+        const logoImages = [
+            { name: 'Kham.png', label: 'لوگو اصلی' },
+            { name: 'Khamoosh.jpg', label: 'پروفایل' },
+            { name: 'programer.png', label: 'برنامه‌نویسی' },
+            { name: 'website.png', label: 'طراحی وب' },
+            { name: 'application.png', label: 'اپلیکیشن' },
+            { name: 'ux.png', label: 'تجربه کاربری' },
+            { name: 'logo.png', label: 'طراحی لوگو' },
+            { name: 'banner.png', label: 'بنر' },
+            { name: 'mang.png', label: 'منگا' },
+            { name: 'imm.png', label: 'مهاجرت' },
+            { name: 'fit.png', label: 'فیتنس' },
+            { name: 'photoshop.png', label: 'فتوشاپ' },
+            { name: 'ill.png', label: 'ایلستریتور' },
+            { name: 'indesign.png', label: 'ایندیزاین' },
+            { name: 'light.png', label: 'لایتروم' },
+            { name: 'inshot.png', label: 'اینشات' },
+            { name: 'pics.png', label: 'پیکس' },
+            { name: 'mtn.jpg', label: 'کوهستان' },
+            { name: 'alight.png', label: 'الایت' },
+            { name: 'after.png', label: 'افترافکت' },
+            { name: 'conva.png', label: 'کانوا' },
+            { name: 'python.png', label: 'پایتون' },
+            { name: 'flutter.png', label: 'فلاتر' },
+            { name: 'xml.png', label: 'XML' },
+            { name: 'php.png', label: 'PHP' },
+            { name: 'go.png', label: 'Go' },
+            { name: 'javas.png', label: 'جاوااسکریپت' }
+        ];
+
+        // ===== OTHER DATA =====
+        const specialties = [
+            { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev" },
+            { fa: "طراحی و توسعه وب‌سایت", en: "Web Design & Dev" },
+            { fa: "طراحی اپلیکیشن موبایل", en: "Mobile App Design" },
+            { fa: "UI/UX Design", en: "UI/UX Design" },
+            { fa: "طراحی لوگو و برند", en: "Logo & Brand Identity" },
+            { fa: "مشاوره مهاجرت", en: "Immigration Consulting" },
+            { fa: "مربیگری فیتنس", en: "Fitness Coaching" }
+        ];
+        const skillsData = [
+            { name: "Photoshop", pct: 85 },
+            { name: "Illustrator", pct: 90 },
+            { name: "Flutter", pct: 80 },
+            { name: "Python", pct: 58 },
+            { name: "PHP", pct: 70 },
+            { name: "JavaScript", pct: 50 },
+            { name: "Go", pct: 90 },
+            { name: "InDesign", pct: 50 }
+        ];
+
+        const immigrationPrograms = [
+            { id: 'siv', fa: "برنامه SIV", en: "SIV Program", statusFa: "فعال", statusEn: "Active" },
+            { id: 'p1', fa: "برنامه P1", en: "P1 Program", statusFa: "فعال", statusEn: "Active" },
+            { id: 'p2', fa: "برنامه P2", en: "P2 Program", statusFa: "فعال", statusEn: "Active" },
+            { id: 'asylum', fa: "برنامه Asylum", en: "Asylum Program", statusFa: "فعال", statusEn: "Active" },
+            { id: 'parole', fa: "برنامه Parole", en: "Parole Program", statusFa: "در انتظار", statusEn: "Pending" },
+            { id: 'reparole', fa: "برنامه Re-Parole", en: "Re-Parole", statusFa: "فعال", statusEn: "Active" },
+            { id: 'welcome', fa: "برنامه Welcome Corps", en: "Welcome Corps", statusFa: "فعال", statusEn: "Active" },
+            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", statusFa: "فعال", statusEn: "Active" },
+            { id: 'cr2', fa: "برنامه CR2", en: "CR2 Marriage", statusFa: "فعال", statusEn: "Active" },
+            { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", statusFa: "فعال", statusEn: "Active" },
+            { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open" },
+            { id: 'i130_gc', fa: "I-130 با گرین کارت", en: "I-130 with Green Card", statusFa: "فعال", statusEn: "Active" },
+            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال", statusEn: "Active" }
+        ];
+
+        const newsData = [{
+            id: 1,
+            fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد",
+            en: "Google Raises $85B for AI",
+            date: "۳ جون ۲۰۲۶",
+            img: "news-pic/google.jpg",
+            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...",
+            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..."
+        }, {
+            id: 2,
+            fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد",
+            en: "Startup Lovable Expands Google Partnership",
+            date: "۳ جون ۲۰۲۶",
+            img: "news-pic/ai.jpg",
+            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...",
+            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..."
+        }, {
+            id: 3,
+            fa: "متا بازی VR «Supernatural» را نجات داد",
+            en: "Meta Rescues VR Game 'Supernatural'",
+            date: "۳ جون ۲۰۲۶",
+            img: "news-pic/meta.jpg",
+            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...",
+            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..."
+        }];
+
+        // ===== STATE =====
+        let currentLang = 'fa';
+        let currentPage = 'home';
+        let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
+        const WORKER_URL = 'https://your-worker-name.workers.dev'; // 🔑 CHANGE THIS
+
+        // ===== HELPERS =====
+        function toast(msg) {
+            let el = document.querySelector('.toast-msg');
+            if (el) el.remove();
+            let t = document.createElement('div');
+            t.className = 'toast-msg';
+            t.innerHTML = msg;
+            document.body.appendChild(t);
+            setTimeout(() => t.remove(), 2800);
+        }
+
+        // ===== NAVIGATION =====
+        function navigateTo(page) {
+            document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+            const target = document.getElementById('page-' + page);
+            if (target) target.classList.add('active');
+
+            document.querySelectorAll('.bottom-nav .nav-item, .bottom-nav .nav-item-home').forEach(el => {
+                el.classList.remove('active');
+                if (el.getAttribute('data-page') === page) el.classList.add('active');
+            });
+
+            if (page === 'home') renderHome();
+            if (page === 'about') renderAbout();
+            if (page === 'immigration') renderImmigration();
+            if (page === 'technews') renderNews();
+            if (page === 'gallery') renderGallery();
+            if (page === 'profile') updateProfilePage();
+            if (page === 'settings') { updateSettingsPage();
+                setTimeout(initAdminPanel, 500); }
+
+            currentPage = page;
+            localStorage.setItem('currentPage', page);
+            updateSEO(page);
+        }
+
+        function updateSEO(page) {
+            const titles = {
+                home: { fa: 'سرفراز خموش | صفحه اصلی', en: 'Sarfraz Khamoosh | Home' },
+                about: { fa: 'درباره من | سرفراز خموش', en: 'About | Sarfraz Khamoosh' },
+                profile: { fa: 'پروفایل | سرفراز خموش', en: 'Profile | Sarfraz Khamoosh' },
+                settings: { fa: 'تنظیمات | سرفراز خموش', en: 'Settings | Sarfraz Khamoosh' },
+                immigration: { fa: 'مهاجرت آمریکا | سرفراز خموش', en: 'US Immigration | Sarfraz Khamoosh' },
+                technews: { fa: 'اخبار فناوری | سرفراز خموش', en: 'Tech News | Sarfraz Khamoosh' },
+                gallery: { fa: 'گالری | سرفراز خموش', en: 'Gallery | Sarfraz Khamoosh' }
+            };
+            const data = titles[page];
+            if (data) {
+                document.title = currentLang === 'fa' ? data.fa : data.en;
+            }
+        }
+
+        // ===== RENDER FUNCTIONS =====
+        function renderHome() {
+            const grid = document.getElementById('homeLogoGrid');
+            if (!grid) return;
+            const t = translations[currentLang];
+            document.querySelector('#page-home h2 span').textContent = t.homeTitle;
+
+            const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
+            const validImages = logoImages.filter(item => validExts.includes(item.name.split('.').pop().toLowerCase()));
+
+            if (validImages.length === 0) {
+                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">هیچ تصویری یافت نشد</p>`;
+                return;
+            }
+
+            grid.innerHTML = validImages.map(item => {
+                const path = 'images/' + item.name;
+                return `<div class="logo-card" onclick="window.open('${path}','_blank')">
+                            <img src="${path}" alt="${item.label}" loading="lazy" onerror="this.src='https://placehold.co/400x400?text=Not+Found&bg=8b5cf6&text_color=fff'">
+                            <div class="logo-name">${item.label}</div>
+                            <div class="logo-tag">${item.name}</div>
+                        </div>`;
+            }).join('');
+        }
+
+        function renderAbout() {
+            const t = translations[currentLang];
+            document.getElementById('aboutSubtitle').textContent = t.aboutTitle;
+            document.getElementById('aboutText').textContent = t.aboutText;
+            document.getElementById('skillsTitle').textContent = t.skillsTitle;
+            document.getElementById('specialtiesTitle').textContent = t.specialtiesTitle;
+
+            const grid = document.getElementById('doughnutGrid');
+            if (grid) {
+                grid.innerHTML = skillsData.map(s => {
+                    const pct = s.pct;
+                    return `<div class="doughnut-item"><div class="doughnut" style="--pct:${pct}%;"><span class="val">${pct}%</span></div><span class="label">${s.name}</span></div>`;
+                }).join('');
+                setTimeout(() => {
+                    document.querySelectorAll('.doughnut').forEach(el => {
+                        const pct = el.style.getPropertyValue('--pct');
+                        el.style.background = `conic-gradient(#8b5cf6 ${pct}, rgba(0,0,0,0.06) ${pct})`;
+                    });
+                }, 200);
+            }
+            const list = document.getElementById('specialtiesList');
+            if (list) {
+                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
+            }
+        }
+
+        function updateProfilePage() {
+            const t = translations[currentLang];
+            document.getElementById('profileName').textContent = t.profileName;
+            document.getElementById('profileTitle').textContent = t.profileTitle;
+            document.getElementById('profileFitness').textContent = t.profileFitness;
+            document.getElementById('labelAge').textContent = t.profileAge;
+            document.getElementById('labelBirth').textContent = t.profileBirth;
+            document.getElementById('labelLocation').textContent = t.profileLocation;
+            document.getElementById('labelEducation').textContent = t.profileEducation;
+            document.getElementById('aboutMeTitle').textContent = t.profileAbout;
+            document.getElementById('aboutMeText').textContent = t.profileDesc;
+
+            const socialMap = {
+                'فیسبوک': t.social.facebook,
+                'اینستاگرام': t.social.instagram,
+                'لینکدین': t.social.linkedin,
+                'گیت‌هاب': t.social.github,
+                'پینترست': t.social.pinterest,
+                'بهنس': t.social.behance,
+                'واتساپ': t.social.whatsapp,
+                'تیک تاک': t.social.tiktok,
+                'ساب‌استک': t.social.substack,
+                'تردز': t.social.threads,
+                'کال‌آف دیوتی': t.social.codm
+            };
+            document.querySelectorAll('.profile-social-list .sname').forEach(el => {
+                if (socialMap[el.textContent]) el.textContent = socialMap[el.textContent];
+            });
+        }
+
+        function updateSettingsPage() {
+            const t = translations[currentLang];
+            document.getElementById('settingsTitle').textContent = t.settingsTitle;
+            document.getElementById('themeLabel').textContent = t.themeLabel;
+            document.getElementById('langLabel').textContent = t.langLabel;
+            document.getElementById('viewLabel').textContent = t.viewLabel;
+            document.getElementById('adminPanelTitle').textContent = t.adminPanel;
+            document.getElementById('adminSendBtn').textContent = t.adminSend;
+            document.getElementById('adminTitle').placeholder = t.adminTitlePlaceholder;
+            document.getElementById('adminBody').placeholder = t.adminBodyPlaceholder;
+            document.getElementById('adminStatus').textContent = t.adminStatus;
+            document.getElementById('archiveTitle').textContent = t.archiveTitle;
+        }
+
+        function renderImmigration() {
+            const grid = document.getElementById('immigrationGrid');
+            if (!grid) return;
+            const t = translations[currentLang];
+            document.getElementById('immigrationTitle').textContent = t.immigrationTitle;
+
+            grid.innerHTML = immigrationPrograms.map(prog => {
+                const name = currentLang === 'fa' ? prog.fa : prog.en;
+                const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
+                const hasNotif = notifBadges[prog.id] || false;
+                return `<div class="imm-card" data-program="${prog.id}">
+                            <div class="info">
+                                <h4>${name}</h4>
+                                <div class="status">${status}</div>
+                            </div>
+                            <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
+                                <i class="fas fa-bell"></i>
+                                ${hasNotif ? '<span class="badge">1</span>' : ''}
+                            </button>
+                        </div>`;
+            }).join('');
+        }
+
+        async function handleNotification(programId, programName, btn) {
+            if (typeof window.pushManager !== 'undefined') {
+                await window.pushManager.notifyProgram(programId, programName);
+                const hasNotif = notifBadges[programId] || false;
+                if (hasNotif) {
+                    notifBadges[programId] = false;
+                    btn.classList.remove('has-notification');
+                    const badge = btn.querySelector('.badge');
+                    if (badge) badge.remove();
+                } else {
+                    notifBadges[programId] = true;
+                    btn.classList.add('has-notification');
+                    if (!btn.querySelector('.badge')) {
+                        const b = document.createElement('span');
+                        b.className = 'badge';
+                        b.textContent = '1';
+                        btn.appendChild(b);
+                    }
+                }
+                localStorage.setItem('notifications', JSON.stringify(notifBadges));
+                if (window.pushManager) await window.pushManager.updateBellBadge();
+                toast(`✅ اعلان برای برنامه ${programName} ارسال شد`);
+            } else {
+                toast(`⏳ سیستم اعلان در حال بارگذاری...`);
+            }
+        }
+
+        function renderNews() {
+            const grid = document.getElementById('newsGrid');
+            if (!grid) return;
+            const t = translations[currentLang];
+            document.getElementById('techTitle').textContent = t.techTitle;
+            grid.innerHTML = newsData.map(n => {
+                const title = currentLang === 'fa' ? n.fa : n.en;
+                return `<div class="news-card" onclick="openNews(${n.id})">
+                            <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
+                            <div class="body">
+                                <h4>${title}</h4>
+                                <div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span><span>${n.date}</span></div>
+                            </div>
+                        </div>`;
+            }).join('');
+        }
+
+        function openNews(id) {
+            const n = newsData.find(x => x.id === id);
+            if (!n) return;
+            const modal = document.getElementById('newsModal');
+            const content = document.getElementById('modalContent');
+            const title = currentLang === 'fa' ? n.fa : n.en;
+            const text = currentLang === 'fa' ? n.fullFa : n.fullEn;
+            content.innerHTML = `<h2>${title}</h2><div class="text">${text.replace(/\n/g,'<br>')}</div>`;
+            modal.classList.add('open');
+        }
+
+        function closeNewsModal() {
+            document.getElementById('newsModal').classList.remove('open');
+        }
+
+        function renderGallery() {
+            const grid = document.getElementById('galleryGrid');
+            if (!grid) return;
+            const t = translations[currentLang];
+            document.getElementById('galleryTitle').textContent = t.galleryTitle;
+            const imageNames = [
+                'Khamoosh.jpg', 'Kham.png', 'programer.png', 'website.png',
+                'application.png', 'ux.png', 'logo.png', 'banner.png',
+                'mang.png', 'imm.png', 'fit.png', 'photoshop.png',
+                'ill.png', 'indesign.png', 'light.png', 'inshot.png',
+                'pics.png', 'mtn.jpg', 'alight.png', 'after.png',
+                'conva.png', 'python.png', 'flutter.png', 'xml.png',
+                'php.png', 'go.png', 'javas.png'
+            ];
+            const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
+            const validImages = imageNames.filter(name => validExts.includes(name.split('.').pop().toLowerCase()));
+            if (validImages.length === 0) {
+                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">${currentLang === 'fa' ? 'هیچ تصویری یافت نشد' : 'No images found'}</p>`;
+                return;
+            }
+            grid.innerHTML = validImages.map(name => {
+                const path = 'images/' + name;
+                const label = name.replace(/\.[^/.]+$/, "");
+                return `<div class="gallery-item" onclick="window.open('${path}','_blank')">
+                            <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
+                            <div class="overlay">${label}</div>
+                        </div>`;
+            }).join('');
+        }
+
+        // ===== ADMIN PANEL + ARCHIVE =====
+        async function loadUsers() {
+            try {
+                const response = await fetch(`${WORKER_URL}/api/users`);
+                if (!response.ok) throw new Error('Failed to fetch users');
+                const users = await response.json();
+                const select = document.getElementById('targetUser');
+                const countSpan = document.getElementById('userCount');
+                select.innerHTML = '<option value="">انتخاب کاربر...</option>';
+                if (users.length === 0) {
+                    select.innerHTML += '<option value="" disabled>هیچ کاربری ثبت نشده</option>';
+                    if (countSpan) countSpan.textContent = '۰';
+                    document.getElementById('adminStatus').textContent = '⏳ هیچ کاربری ثبت نشده';
+                    return;
+                }
+                users.forEach((user, index) => {
+                    const opt = document.createElement('option');
+                    const endpoint = user.subscription?.endpoint || '';
+                    const shortId = endpoint.slice(-20) || `کاربر ${index + 1}`;
+                    opt.value = user.id;
+                    opt.textContent = `کاربر ${index + 1} (${shortId.slice(0,12)}...)`;
+                    select.appendChild(opt);
+                });
+                if (countSpan) countSpan.textContent = users.length;
+                document.getElementById('adminStatus').textContent = '✅ آماده ارسال';
+                document.getElementById('adminPanel').style.display = 'block';
+                loadArchive();
+            } catch (error) {
+                console.warn('Admin panel not available:', error);
+                document.getElementById('adminStatus').textContent = '❌ سرور در دسترس نیست';
+            }
+        }
+
+        async function loadArchive() {
+            try {
+                const response = await fetch(`${WORKER_URL}/api/archive`);
+                if (!response.ok) throw new Error('Failed to fetch archive');
+                const archive = await response.json();
+                renderArchive(archive);
+            } catch (error) {
+                console.warn('Archive not available:', error);
+                document.getElementById('archiveList').innerHTML = '<div class="archive-empty">خطا در دریافت آرشیو</div>';
+            }
+        }
+
+        function renderArchive(archive) {
+            const container = document.getElementById('archiveList');
+            const t = translations[currentLang];
+            if (!archive || archive.length === 0) {
+                container.innerHTML = `<div class="archive-empty">${t.archiveEmpty}</div>`;
+                return;
+            }
+            container.innerHTML = archive.map(item => {
+                const statusText = item.status === 'delivered' ? t.statusDelivered :
+                    item.status === 'pending' ? t.statusPending : t.statusFailed;
+                const statusClass = item.status === 'delivered' ? 'delivered' :
+                    item.status === 'pending' ? 'pending' : 'failed';
+                const time = new Date(item.timestamp).toLocaleString('fa-IR');
+                return `<div class="archive-item">
+                            <div class="info">
+                                <div class="title">${item.title}</div>
+                                <div class="body">${item.body}</div>
+                                <div class="meta">
+                                    <span>👤 ${item.userId || 'ناشناس'}</span>
+                                    <span>🕐 ${time}</span>
+                                    <span>🆔 ${item.id ? item.id.slice(0,8) : ''}</span>
+                                </div>
+                            </div>
+                            <span class="status ${statusClass}">${statusText}</span>
+                            <button class="delete-archive" onclick="deleteArchiveItem('${item.id}')"><i class="fas fa-trash"></i></button>
+                        </div>`;
+            }).join('');
+        }
+
+        async function deleteArchiveItem(id) {
+            if (!confirm('آیا مطمئن هستید؟')) return;
+            try {
+                const response = await fetch(`${WORKER_URL}/api/archive/${id}`, { method: 'DELETE' });
+                if (response.ok) {
+                    toast('✅ پیام حذف شد');
+                    loadArchive();
+                } else {
+                    toast('❌ خطا در حذف پیام');
+                }
+            } catch (error) {
+                toast('❌ خطا در ارتباط با سرور');
+            }
+        }
+
+        async function sendAdminPush() {
+            const subscriptionId = document.getElementById('targetUser').value;
+            const title = document.getElementById('adminTitle').value.trim();
+            const body = document.getElementById('adminBody').value.trim();
+
+            if (!subscriptionId) { toast('❌ لطفاً یک کاربر را انتخاب کنید'); return; }
+            if (!title) { toast('❌ لطفاً عنوان خبر را وارد کنید'); return; }
+            if (!body) { toast('❌ لطفاً متن خبر را وارد کنید'); return; }
+
+            const btn = document.querySelector('#adminPanel button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(`${WORKER_URL}/api/send`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subscriptionId,
+                        title,
+                        body,
+                        programId: 'admin',
+                        icon: '/images/Kham.png'
+                    })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    toast('✅ خبر با موفقیت ارسال شد');
+                    document.getElementById('adminTitle').value = '';
+                    document.getElementById('adminBody').value = '';
+                    document.getElementById('adminStatus').textContent = '✅ ارسال موفق';
+                    loadArchive();
+                } else {
+                    toast('❌ خطا در ارسال: ' + (result.error || 'مشخص نیست'));
+                    document.getElementById('adminStatus').textContent = '❌ خطا';
+                }
+            } catch (error) {
+                toast('❌ خطا در ارتباط با سرور');
+                document.getElementById('adminStatus').textContent = '❌ خطای شبکه';
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+                setTimeout(loadUsers, 2000);
+            }
+        }
+
+        function initAdminPanel() {
+            const settingsPage = document.getElementById('page-settings');
+            if (settingsPage && settingsPage.classList.contains('active')) {
+                loadUsers();
+            }
+        }
+
+        // ===== LANGUAGE =====
+        function setLanguage(lang) {
+            currentLang = lang;
+            localStorage.setItem('sarfraz_lang', lang);
+            const t = translations[lang];
+            const labelMap = {
+                'label-home': t.nav.home,
+                'label-about': t.nav.about,
+                'label-profile': t.nav.profile,
+                'label-settings': t.nav.settings,
+                'label-immigration': t.nav.immigration,
+                'label-technews': t.nav.technews,
+                'label-gallery': t.nav.gallery
+            };
+            Object.keys(labelMap).forEach(id => {
+                const el = document.getElementById(id);
+                if (el) el.textContent = labelMap[id];
+            });
+            const langBtns = document.querySelectorAll('.lang-opt');
+            langBtns.forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
+            });
+            const active = document.querySelector('.page.active');
+            if (active) {
+                const id = active.id.replace('page-', '');
+                if (id === 'home') renderHome();
+                else if (id === 'about') renderAbout();
+                else if (id === 'immigration') renderImmigration();
+                else if (id === 'technews') renderNews();
+                else if (id === 'gallery') renderGallery();
+                else if (id === 'profile') updateProfilePage();
+                else if (id === 'settings') { updateSettingsPage();
+                    setTimeout(initAdminPanel, 500); }
+            }
+            updateSEO(currentPage);
+        }
+
+        // ===== SETTINGS INIT =====
+        function initSettings() {
+            const themeToggle = document.getElementById('themeToggle');
+            if (localStorage.getItem('sarfraz_theme') === 'dark') {
+                document.body.classList.add('dark');
+                themeToggle.classList.add('active');
+            }
+            themeToggle.addEventListener('click', function() {
+                this.classList.toggle('active');
+                document.body.classList.toggle('dark');
+                localStorage.setItem('sarfraz_theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+            });
+
+            document.querySelectorAll('.lang-opt').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    const lang = this.getAttribute('data-lang');
+                    if (lang) setLanguage(lang);
+                });
+            });
+            document.querySelectorAll('.view-btn').forEach(btn => {
+                btn.addEventListener('click', function() {
+                    document.querySelectorAll('.view-btn').forEach(b => b.classList.remove('active'));
+                    this.classList.add('active');
+                    const view = this.getAttribute('data-view');
+                    const c = document.querySelector('.container');
+                    if (view === 'desktop') { c.style.maxWidth = '1200px';
+                        c.style.padding = '1.5rem 1.2rem'; } else if (view === 'tablet') { c.style.maxWidth = '768px';
+                        c.style.padding = '1rem 0.8rem'; } else { c.style.maxWidth = '480px';
+                        c.style.padding = '0.8rem 0.6rem'; }
+                    localStorage.setItem('viewMode', view);
+                });
+            });
+            const sv = localStorage.getItem('viewMode') || 'desktop';
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === sv));
+            const sl = localStorage.getItem('sarfraz_lang') || 'fa';
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === sl));
+        }
+
+        // ===== MODALS =====
+        function initUidModal() {
+            const modal = document.getElementById('uidModal');
+            const openBtn = document.getElementById('codmBtn');
+            const closeBtn = document.getElementById('closeUidModal');
+            const closeBtn2 = document.getElementById('closeUidModalBtn');
+            const copyBtn = document.getElementById('copyUidBtn');
+            function open() { modal.classList.add('open'); }
+            function close() { modal.classList.remove('open'); }
+            function copyUid() {
+                navigator.clipboard.writeText('7500139701825634305');
+                toast('UID کپی شد!');
+                close();
+            }
+            if (openBtn) openBtn.addEventListener('click', open);
+            if (closeBtn) closeBtn.addEventListener('click', close);
+            if (closeBtn2) closeBtn2.addEventListener('click', close);
+            if (copyBtn) copyBtn.addEventListener('click', copyUid);
+            if (modal) modal.addEventListener('click', function(e) { if (e.target === this) close(); });
+        }
+
+        // ===== INIT =====
+        document.addEventListener('DOMContentLoaded', function() {
+            const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
+            setLanguage(savedLang);
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === savedLang));
+
+            initSettings();
+            initUidModal();
+
+            document.getElementById('modalCloseBtn').addEventListener('click', closeNewsModal);
+            document.getElementById('newsModal').addEventListener('click', function(e) {
+                if (e.target === this) closeNewsModal();
+            });
+
+            const params = new URLSearchParams(window.location.search);
+            const page = params.get('page') || localStorage.getItem('currentPage') || 'home';
+            navigateTo(page);
+
+            const highlight = params.get('highlight');
+            if (highlight && window.pushManager) {
+                setTimeout(() => window.pushManager.highlightProgram(highlight), 1000);
+            }
+        });
+    </script>
+
+    <!-- ===== PUSH NOTIFICATION SYSTEM ===== -->
+    <script src="/push-notification.js"></script>
 </body>
-</html>
+                                                                                                                                     </html>
