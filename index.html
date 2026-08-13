@@ -37,8 +37,7 @@
             "alternateName": "Sarfraz Khamoosh",
             "url": "https://khamoosh.abrdns.com",
             "image": "https://khamoosh.abrdns.com/images/Khamoosh.jpg",
-            "jobTitle": "برنامه‌نویس و طراح گرافیک",
-            "description": "سرفراز خموش، متخصص در برنامه‌نویسی، طراحی گرافیک و مشاوره مهاجرت"
+            "jobTitle": "برنامه‌نویس و طراح گرافیک"
         }
     </script>
     
@@ -259,7 +258,7 @@
         }
 
         /* ============================================================
-           HOME - PROFILE CARDS (فقط عکس پروفایل)
+           HOME - PROFILE CARDS
            ============================================================ */
         .profile-grid {
             display: grid;
@@ -878,15 +877,16 @@
         .archive-item .info .title {
             font-weight: 600;
             font-size: 0.9rem;
+            color: #8b5cf6;
         }
         .archive-item .info .body {
             font-size: 0.8rem;
-            opacity: 0.6;
+            opacity: 0.7;
             margin-top: 2px;
         }
         .archive-item .info .meta {
             font-size: 0.65rem;
-            opacity: 0.4;
+            opacity: 0.5;
             margin-top: 4px;
             display: flex;
             gap: 1rem;
@@ -1320,8 +1320,7 @@
             <div class="glass">
                 <p id="aboutText" style="font-size:1rem; line-height:2; text-align:justify;">
                     سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال،
-                    همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است. علاوه بر تخصص در برنامه‌نویسی و طراحی، به شعر و ادبیات
-                    علاقه‌مند است و مطالعه و سرودن شعر را بخشی از زندگی خود می‌داند.
+                    همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.
                 </p>
             </div>
             <div class="glass">
@@ -1373,8 +1372,7 @@
                     <p id="aboutMeText" style="line-height:2; text-align:justify; font-size:0.95rem;">
                         من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک
                         آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم. امروز به عنوان یک توسعه‌دهنده فول‌استک و طراح
-                        خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم. همچنین به عنوان مشاور مهاجرت و مربی فیتنس
-                        فعالیت دارم. عاشق شعر، کتاب و خلق تجربه‌های دیجیتال متفاوت هستم.
+                        خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم.
                     </p>
                     <div style="display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;">
                         <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
@@ -1574,9 +1572,9 @@
                 adminUsers: 'کاربر آنلاین',
                 archiveTitle: 'آرشیو پیام‌ها',
                 archiveEmpty: 'هنوز پیامی ارسال نشده است',
-                statusDelivered: 'تحویل داده شده',
-                statusPending: 'در انتظار',
-                statusFailed: 'ناموفق',
+                statusDelivered: '✅ تحویل داده شده',
+                statusPending: '⏳ در انتظار',
+                statusFailed: '❌ ناموفق',
                 social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب',
                     pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک',
                 substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
@@ -1613,16 +1611,16 @@
                 adminUsers: 'Online Users',
                 archiveTitle: 'Message Archive',
                 archiveEmpty: 'No messages sent yet',
-                statusDelivered: 'Delivered',
-                statusPending: 'Pending',
-                statusFailed: 'Failed',
+                statusDelivered: '✅ Delivered',
+                statusPending: '⏳ Pending',
+                statusFailed: '❌ Failed',
                 social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub',
                     pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok',
                 substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
             }
         };
 
-        // ===== PROFILE CARDS DATA (برای صفحه خانه) =====
+        // ===== PROFILE CARDS DATA =====
         const profileCards = [
             { id: 1, name: 'سرفراز خموش', title: 'برنامه‌نویس و طراح گرافیک', desc: 'متخصص در توسعه وب و طراحی رابط کاربری',
                 tags: ['برنامه‌نویسی', 'طراحی', 'UI/UX'] },
@@ -1706,7 +1704,6 @@
         let currentLang = 'fa';
         let currentPage = 'home';
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
-        const WORKER_URL = 'https://khamoosh-push.workers.dev'; // 🔑 CHANGE THIS
 
         // ===== HELPERS =====
         function toast(msg) {
@@ -1767,32 +1764,11 @@
             const t = translations[currentLang];
             document.querySelector('#page-home h2 span').textContent = t.homeTitle;
 
-            grid.innerHTML = profileCards.map((card, index) => {
+            grid.innerHTML = profileCards.map((card) => {
                 const name = currentLang === 'fa' ? card.name : 'Sarfraz Khamoosh';
-                const title = currentLang === 'fa' ? card.title : card.title.replace(/برنامه‌نویس/g, 'Developer').replace(
-                    /طراح گرافیک/g, 'Graphic Designer');
-                const desc = currentLang === 'fa' ? card.desc : card.desc.replace(/برنامه‌نویسی/g, 'Programming')
-                    .replace(/طراحی/g, 'Design').replace(/رابط کاربری/g, 'UI').replace(/مهاجرت/g, 'Immigration')
-                    .replace(/مشاوره/g, 'Consulting').replace(/بدنسازی/g, 'Bodybuilding').replace(/تناسب اندام/g,
-                        'Fitness');
-                const tags = currentLang === 'fa' ? card.tags : card.tags.map(t => {
-                    const map = {
-                        'برنامه‌نویسی': 'Programming',
-                        'طراحی': 'Design',
-                        'UI/UX': 'UI/UX',
-                        'مهاجرت': 'Immigration',
-                        'مشاوره': 'Consulting',
-                        'فیتنس': 'Fitness',
-                        'بدنسازی': 'Bodybuilding',
-                        'شعر': 'Poetry',
-                        'ادبیات': 'Literature',
-                        'لوگو': 'Logo',
-                        'برندینگ': 'Branding',
-                        'React': 'React',
-                        'Node.js': 'Node.js'
-                    };
-                    return map[t] || t;
-                });
+                const title = currentLang === 'fa' ? card.title : card.title;
+                const desc = currentLang === 'fa' ? card.desc : card.desc;
+                const tags = currentLang === 'fa' ? card.tags : card.tags;
                 return `<div class="profile-card-home">
                             <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
                             <div class="home-name">${name}</div>
@@ -1899,29 +1875,42 @@
         }
 
         async function handleNotification(programId, programName, btn) {
-            if (typeof window.pushManager !== 'undefined') {
-                await window.pushManager.notifyProgram(programId, programName);
-                const hasNotif = notifBadges[programId] || false;
-                if (hasNotif) {
-                    notifBadges[programId] = false;
-                    btn.classList.remove('has-notification');
-                    const badge = btn.querySelector('.badge');
-                    if (badge) badge.remove();
-                } else {
-                    notifBadges[programId] = true;
-                    btn.classList.add('has-notification');
-                    if (!btn.querySelector('.badge')) {
-                        const b = document.createElement('span');
-                        b.className = 'badge';
-                        b.textContent = '1';
-                        btn.appendChild(b);
-                    }
+            if (typeof window.notificationManager !== 'undefined') {
+                if (Notification.permission === 'default') {
+                    await Notification.requestPermission();
                 }
-                localStorage.setItem('notifications', JSON.stringify(notifBadges));
-                if (window.pushManager) await window.pushManager.updateBellBadge();
-                toast(`✅ اعلان برای برنامه ${programName} ارسال شد`);
+                
+                const success = await window.notificationManager.notifyProgram(programId, programName);
+                
+                if (success) {
+                    const hasNotif = notifBadges[programId] || false;
+                    if (hasNotif) {
+                        notifBadges[programId] = false;
+                        btn.classList.remove('has-notification');
+                        const badge = btn.querySelector('.badge');
+                        if (badge) badge.remove();
+                    } else {
+                        notifBadges[programId] = true;
+                        btn.classList.add('has-notification');
+                        if (!btn.querySelector('.badge')) {
+                            const b = document.createElement('span');
+                            b.className = 'badge';
+                            b.textContent = '1';
+                            btn.appendChild(b);
+                        }
+                    }
+                    localStorage.setItem('notifications', JSON.stringify(notifBadges));
+                    
+                    if (window.notificationManager) {
+                        await window.notificationManager.updateBellBadge();
+                    }
+                    
+                    toast(`✅ اعلان برای برنامه ${programName} ارسال شد`);
+                } else {
+                    toast('❌ خطا در ارسال اعلان');
+                }
             } else {
-                toast(`⏳ سیستم اعلان در حال بارگذاری...`);
+                toast('⏳ سیستم اعلان در حال بارگذاری...');
             }
         }
 
@@ -1988,12 +1977,13 @@
             }).join('');
         }
 
-        // ===== ADMIN PANEL + ARCHIVE =====
+        // ================================================================
+        // 8. ADMIN PANEL FUNCTIONS (با Ntfy)
+        // ================================================================
+
         async function loadUsers() {
-            try {
-                const response = await fetch(`${WORKER_URL}/api/users`);
-                if (!response.ok) throw new Error('Failed to fetch users');
-                const users = await response.json();
+            if (typeof window.notificationManager !== 'undefined') {
+                const users = await window.notificationManager.getUsers();
                 const select = document.getElementById('targetUser');
                 const countSpan = document.getElementById('userCount');
                 select.innerHTML = '<option value="">انتخاب کاربر...</option>';
@@ -2003,86 +1993,29 @@
                     document.getElementById('adminStatus').textContent = '⏳ هیچ کاربری ثبت نشده';
                     return;
                 }
-                users.forEach((user, index) => {
+                users.forEach(user => {
                     const opt = document.createElement('option');
-                    const endpoint = user.subscription?.endpoint || '';
-                    const shortId = endpoint.slice(-20) || `کاربر ${index + 1}`;
                     opt.value = user.id;
-                    opt.textContent = `کاربر ${index + 1} (${shortId.slice(0,12)}...)`;
+                    opt.textContent = user.name || user.id;
                     select.appendChild(opt);
                 });
                 if (countSpan) countSpan.textContent = users.length;
                 document.getElementById('adminStatus').textContent = '✅ آماده ارسال';
                 document.getElementById('adminPanel').style.display = 'block';
-                loadArchive();
-            } catch (error) {
-                console.warn('Admin panel not available:', error);
-                document.getElementById('adminStatus').textContent = '❌ سرور در دسترس نیست';
-            }
-        }
-
-        async function loadArchive() {
-            try {
-                const response = await fetch(`${WORKER_URL}/api/archive`);
-                if (!response.ok) throw new Error('Failed to fetch archive');
-                const archive = await response.json();
-                renderArchive(archive);
-            } catch (error) {
-                console.warn('Archive not available:', error);
-                document.getElementById('archiveList').innerHTML = '<div class="archive-empty">خطا در دریافت آرشیو</div>';
-            }
-        }
-
-        function renderArchive(archive) {
-            const container = document.getElementById('archiveList');
-            const t = translations[currentLang];
-            if (!archive || archive.length === 0) {
-                container.innerHTML = `<div class="archive-empty">${t.archiveEmpty}</div>`;
-                return;
-            }
-            container.innerHTML = archive.map(item => {
-                const statusText = item.status === 'delivered' ? t.statusDelivered :
-                    item.status === 'pending' ? t.statusPending : t.statusFailed;
-                const statusClass = item.status === 'delivered' ? 'delivered' :
-                    item.status === 'pending' ? 'pending' : 'failed';
-                const time = new Date(item.timestamp).toLocaleString('fa-IR');
-                return `<div class="archive-item">
-                            <div class="info">
-                                <div class="title">${item.title}</div>
-                                <div class="body">${item.body}</div>
-                                <div class="meta">
-                                    <span>👤 ${item.userId || 'ناشناس'}</span>
-                                    <span>🕐 ${time}</span>
-                                    <span>🆔 ${item.id ? item.id.slice(0,8) : ''}</span>
-                                </div>
-                            </div>
-                            <span class="status ${statusClass}">${statusText}</span>
-                            <button class="delete-archive" onclick="deleteArchiveItem('${item.id}')"><i class="fas fa-trash"></i></button>
-                        </div>`;
-            }).join('');
-        }
-
-        async function deleteArchiveItem(id) {
-            if (!confirm('آیا مطمئن هستید؟')) return;
-            try {
-                const response = await fetch(`${WORKER_URL}/api/archive/${id}`, { method: 'DELETE' });
-                if (response.ok) {
-                    toast('✅ پیام حذف شد');
-                    loadArchive();
-                } else {
-                    toast('❌ خطا در حذف پیام');
+                
+                // بارگذاری آرشیو
+                if (window.notificationManager) {
+                    await window.notificationManager.renderArchive();
                 }
-            } catch (error) {
-                toast('❌ خطا در ارتباط با سرور');
             }
         }
 
         async function sendAdminPush() {
-            const subscriptionId = document.getElementById('targetUser').value;
+            const userId = document.getElementById('targetUser').value;
             const title = document.getElementById('adminTitle').value.trim();
             const body = document.getElementById('adminBody').value.trim();
 
-            if (!subscriptionId) { toast('❌ لطفاً یک کاربر را انتخاب کنید'); return; }
+            if (!userId) { toast('❌ لطفاً یک کاربر را انتخاب کنید'); return; }
             if (!title) { toast('❌ لطفاً عنوان خبر را وارد کنید'); return; }
             if (!body) { toast('❌ لطفاً متن خبر را وارد کنید'); return; }
 
@@ -2092,35 +2025,21 @@
             btn.disabled = true;
 
             try {
-                const response = await fetch(`${WORKER_URL}/api/send`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        subscriptionId,
-                        title,
-                        body,
-                        programId: 'admin',
-                        icon: '/images/Kham.png'
-                    })
-                });
-                const result = await response.json();
-                if (result.success) {
+                const success = await window.notificationManager.sendToUser(userId, title, body);
+                if (success) {
                     toast('✅ خبر با موفقیت ارسال شد');
                     document.getElementById('adminTitle').value = '';
                     document.getElementById('adminBody').value = '';
                     document.getElementById('adminStatus').textContent = '✅ ارسال موفق';
-                    loadArchive();
+                    await window.notificationManager.renderArchive();
                 } else {
-                    toast('❌ خطا در ارسال: ' + (result.error || 'مشخص نیست'));
-                    document.getElementById('adminStatus').textContent = '❌ خطا';
+                    toast('❌ خطا در ارسال');
                 }
             } catch (error) {
                 toast('❌ خطا در ارتباط با سرور');
-                document.getElementById('adminStatus').textContent = '❌ خطای شبکه';
             } finally {
                 btn.innerHTML = originalText;
                 btn.disabled = false;
-                setTimeout(loadUsers, 2000);
             }
         }
 
@@ -2131,7 +2050,9 @@
             }
         }
 
-        // ===== LANGUAGE =====
+        // ================================================================
+        // 9. LANGUAGE
+        // ================================================================
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('sarfraz_lang', lang);
@@ -2169,7 +2090,9 @@
             updateSEO(currentPage);
         }
 
-        // ===== SETTINGS INIT =====
+        // ================================================================
+        // 10. SETTINGS INIT
+        // ================================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
             if (localStorage.getItem('sarfraz_theme') === 'dark') {
@@ -2210,7 +2133,9 @@
                 sl));
         }
 
-        // ===== MODALS =====
+        // ================================================================
+        // 11. MODALS
+        // ================================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
             const openBtn = document.getElementById('codmBtn');
@@ -2234,7 +2159,9 @@
             if (modal) modal.addEventListener('click', function(e) { if (e.target === this) close(); });
         }
 
-        // ===== INIT =====
+        // ================================================================
+        // 12. INIT
+        // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
             setLanguage(savedLang);
@@ -2254,13 +2181,13 @@
             navigateTo(page);
 
             const highlight = params.get('highlight');
-            if (highlight && window.pushManager) {
-                setTimeout(() => window.pushManager.highlightProgram(highlight), 1000);
+            if (highlight && window.notificationManager) {
+                setTimeout(() => window.notificationManager.highlightProgram(highlight), 1000);
             }
         });
     </script>
 
-    <!-- ===== PUSH NOTIFICATION SYSTEM ===== -->
-    <script src="/push-notification.js"></script>
+    <!-- ===== NTIFY NOTIFICATION SYSTEM ===== -->
+    <script src="/ntfy.js"></script>
 </body>
-</html>
+    </html>
