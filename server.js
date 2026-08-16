@@ -1,7 +1,3 @@
-// ============================================================
-// server.js - Push Notification Server for Khamoosh
-// ============================================================
-
 const express = require('express');
 const cors = require('cors');
 const webpush = require('web-push');
@@ -21,23 +17,25 @@ webpush.setVapidDetails(
 
 let subscriptions = [];
 
+// ثبت اشتراک جدید
 app.post('/api/subscribe', (req, res) => {
     try {
         const subscription = req.body;
         const id = Date.now().toString();
         subscriptions.push({ id, subscription });
-        console.log(`New subscription: ${id}`);
+        console.log('New subscription:', id);
         res.json({ success: true, id });
     } catch (error) {
         res.status(500).json({ success: false, error: error.message });
     }
 });
 
+// دریافت لیست کاربران
 app.get('/api/users', (req, res) => {
     try {
         const users = subscriptions.map((s, i) => ({
             id: s.id,
-            name: `User ${i + 1}`
+            name: 'User ' + (i + 1)
         }));
         res.json(users);
     } catch (error) {
@@ -45,6 +43,7 @@ app.get('/api/users', (req, res) => {
     }
 });
 
+// ارسال پیام به یک کاربر خاص
 app.post('/api/send', async (req, res) => {
     try {
         const { subscriptionId, title, body, programId } = req.body;
@@ -58,7 +57,7 @@ app.post('/api/send', async (req, res) => {
             body: body || 'You have a new update',
             programId: programId || 'admin',
             icon: '/images/Kham.png',
-            url: `/?page=immigration${programId ? `&highlight=${programId}` : ''}`
+            url: '/?page=immigration' + (programId ? '&highlight=' + programId : '')
         };
 
         await webpush.sendNotification(sub.subscription, JSON.stringify(payload));
@@ -72,6 +71,7 @@ app.post('/api/send', async (req, res) => {
     }
 });
 
+// ارسال پیام به همه کاربران
 app.post('/api/send-all', async (req, res) => {
     try {
         const { title, body, programId } = req.body;
@@ -101,10 +101,12 @@ app.post('/api/send-all', async (req, res) => {
     }
 });
 
+// Health Check
 app.get('/health', (req, res) => {
     res.json({ status: 'ok', subscriptions: subscriptions.length });
 });
 
+// روت اصلی
 app.get('/', (req, res) => {
     res.json({
         name: 'Push Server - Khamoosh',
@@ -115,6 +117,6 @@ app.get('/', (req, res) => {
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
-    console.log(`Server running on port ${PORT}`);
-    console.log(`Subscriptions: ${subscriptions.length}`);
+    console.log('Server running on port', PORT);
+    console.log('Subscriptions:', subscriptions.length);
 });
