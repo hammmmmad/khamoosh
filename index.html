@@ -1810,6 +1810,11 @@
                     toast('برای دریافت اعلان، لطفاً مجوز را فعال کنید');
                     return false;
                 }
+                // اگر قبلاً با یک کلید متفاوت (مثلاً کلید قدیمی/تستی) subscribe شده، اول آن را پاک کن
+                const existingSub = await registration.pushManager.getSubscription();
+                if (existingSub) {
+                    try { await existingSub.unsubscribe(); } catch (e) { console.warn('Old subscription cleanup failed:', e); }
+                }
                 const subscription = await registration.pushManager.subscribe({
                     userVisibleOnly: true,
                     applicationServerKey: urlBase64ToUint8Array('BJHh3BxLaFTdHfCJp25tP7LRtSe9rUIa7N1d_rFpbRn-Fhh3tNA1DI8LORxGalQpl1p1sjZTjU1tXB8oZPPgWbY')
@@ -1828,7 +1833,7 @@
                 return false;
             } catch (error) {
                 console.error('Subscribe error:', error);
-                toast('خطا در ثبت اشتراک');
+                toast('خطا در ثبت اشتراک: ' + (error && error.message ? error.message : 'نامشخص'));
                 return false;
             }
         }
