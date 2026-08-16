@@ -5,9 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سرفراز خموش | Sarfraz Khamoosh</title>
 
+    <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+    
+    <!-- Google Font -->
     <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
 
+    <!-- SEO -->
     <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
     <meta name="keywords" content="سرفراز خموش, Sarfraz Khamoosh, خموش, سرافراز خموش, برنامه‌نویس, مهاجرت, افغانستان, مزار شریف" />
     <meta name="author" content="سرفراز خموش" />
@@ -19,10 +23,12 @@
     <meta name="theme-color" content="#8b5cf6" />
     <link rel="icon" type="image/png" href="images/Kham.png" />
 
+    <!-- PWA -->
     <link rel="manifest" href="/manifest.json" />
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 
+    <!-- Schema -->
     <script type="application/ld+json">
         {
             "@context": "https://schema.org",
@@ -35,11 +41,12 @@
         }
     </script>
 
+    <!-- Service Worker -->
     <script>
         if ('serviceWorker' in navigator) {
             navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('✅ SW registered:', reg))
-                .catch(err => console.log('❌ SW registration failed:', err));
+                .then(reg => console.log('Service Worker registered:', reg))
+                .catch(err => console.log('Service Worker registration failed:', err));
         }
     </script>
 
@@ -58,12 +65,9 @@
             background: #0a0a12;
             color: #e8e8f0;
         }
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1.5rem 1.2rem;
-        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 1.5rem 1.2rem; }
 
+        /* ===== GLASS ===== */
         .glass {
             background: rgba(255, 255, 255, 0.5);
             backdrop-filter: blur(18px);
@@ -85,18 +89,18 @@
             box-shadow: 0 28px 60px rgba(0, 0, 0, 0.07);
         }
 
+        /* ===== PAGES ===== */
         .page {
             display: none;
             animation: fadeUp 0.5s cubic-bezier(0.23, 1, 0.32, 1);
         }
-        .page.active {
-            display: block;
-        }
+        .page.active { display: block; }
         @keyframes fadeUp {
             0% { opacity: 0; transform: translateY(30px); }
             100% { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== BOTTOM NAV ===== */
         .bottom-nav-wrapper {
             position: fixed;
             bottom: 24px;
@@ -174,21 +178,11 @@
         .nav-item:active {
             transform: scale(0.92) translateY(2px);
         }
-        body.dark .nav-item {
-            color: #6b7280;
-        }
-        body.dark .nav-item:hover {
-            color: #b0b8c8;
-        }
-        .nav-item.active {
-            color: #1f2937;
-        }
-        body.dark .nav-item.active {
-            color: #e5e7eb;
-        }
-        .nav-item.active i {
-            transform: scale(1.08);
-        }
+        body.dark .nav-item { color: #6b7280; }
+        body.dark .nav-item:hover { color: #b0b8c8; }
+        .nav-item.active { color: #1f2937; }
+        body.dark .nav-item.active { color: #e5e7eb; }
+        .nav-item.active i { transform: scale(1.08); }
 
         .nav-item-home {
             position: relative;
@@ -247,6 +241,7 @@
             50% { transform: scale(1.03); }
         }
 
+        /* ===== HOME PROFILE CARDS ===== */
         .profile-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -321,6 +316,7 @@
             border: 1px solid rgba(139, 92, 246, 0.06);
         }
 
+        /* ===== ABOUT ===== */
         .about-intro {
             text-align: center;
             margin-bottom: 2rem;
@@ -412,6 +408,7 @@
             font-size: 1rem;
         }
 
+        /* ===== PROFILE ===== */
         .profile-layout {
             display: grid;
             grid-template-columns: 1fr 1.8fr;
@@ -529,6 +526,7 @@
             transform: scale(0.95) translateX(-2px);
         }
 
+        /* ===== IMMIGRATION ===== */
         .imm-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -618,6 +616,7 @@
             50% { transform: scale(1.12); }
         }
 
+        /* ===== TECH NEWS ===== */
         .news-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
@@ -668,6 +667,7 @@
             margin-top: 0.6rem;
         }
 
+        /* ===== GALLERY ===== */
         .gallery-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -717,6 +717,7 @@
             opacity: 1;
         }
 
+        /* ===== SETTINGS ===== */
         .settings-row {
             display: flex;
             align-items: center;
@@ -799,6 +800,7 @@
             transform: scale(0.95);
         }
 
+        /* ===== ADMIN PANEL ===== */
         #adminPanel {
             display: none;
             background: rgba(139, 92, 246, 0.04);
@@ -918,6 +920,7 @@
             font-size: 0.9rem;
         }
 
+        /* ===== NOTIFICATION CENTER ===== */
         .notification-center {
             position: fixed;
             bottom: 110px;
@@ -1114,6 +1117,7 @@
             color: #8b5cf6;
         }
 
+        /* ===== MODALS ===== */
         .modal-overlay {
             display: none;
             position: fixed;
@@ -1183,6 +1187,7 @@
             font-size: 0.95rem;
         }
 
+        /* ===== TOAST ===== */
         .toast-msg {
             position: fixed;
             bottom: 110px;
@@ -1247,6 +1252,7 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .container { padding: 1rem 0.8rem; }
             .bottom-nav { height: 70px; padding: 8px 12px; border-radius: 40px; max-width: 100%; }
@@ -1288,6 +1294,7 @@
 
     <div class="container">
 
+        <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-user-circle" style="color:#8b5cf6;"></i>
@@ -1296,6 +1303,7 @@
             <div class="profile-grid" id="homeProfileGrid"></div>
         </div>
 
+        <!-- ===== ABOUT ===== -->
         <div class="page" id="page-about">
             <div class="about-intro">
                 <h2>Sarfraz Khamoosh</h2>
@@ -1321,6 +1329,7 @@
             </div>
         </div>
 
+        <!-- ===== PROFILE ===== -->
         <div class="page" id="page-profile">
             <div class="profile-layout">
                 <div class="profile-card">
@@ -1375,6 +1384,7 @@
             </div>
         </div>
 
+        <!-- ===== SETTINGS ===== -->
         <div class="page" id="page-settings">
             <div class="glass">
                 <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:1.5rem;">
@@ -1418,8 +1428,8 @@
                         </button>
                     </div>
                     <div style="display:flex; gap:1rem; font-size:0.8rem; opacity:0.5; margin-top:8px; flex-wrap:wrap;">
-                        <span>👥 <span id="userCount">۰</span> کاربر آنلاین</span>
-                        <span>🔑 <span id="adminStatus">وضعیت: آماده</span></span>
+                        <span><i class="fas fa-users"></i> <span id="userCount">0</span> کاربر آنلاین</span>
+                        <span><i class="fas fa-key"></i> <span id="adminStatus">وضعیت: آماده</span></span>
                     </div>
 
                     <div id="adminArchive">
@@ -1430,6 +1440,7 @@
             </div>
         </div>
 
+        <!-- ===== IMMIGRATION ===== -->
         <div class="page" id="page-immigration">
             <div class="glass">
                 <h3 style="display:flex; align-items:center; gap:12px; font-weight:700;">
@@ -1439,6 +1450,7 @@
             </div>
         </div>
 
+        <!-- ===== TECH NEWS ===== -->
         <div class="page" id="page-technews">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-newspaper" style="color:#8b5cf6;"></i> <span id="techTitle">اخبار فناوری</span>
@@ -1446,6 +1458,7 @@
             <div class="news-grid" id="newsGrid"></div>
         </div>
 
+        <!-- ===== GALLERY ===== -->
         <div class="page" id="page-gallery">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
                 <i class="fas fa-images" style="color:#8b5cf6;"></i> <span id="galleryTitle">گالری تصاویر</span>
@@ -1511,11 +1524,11 @@
     </div>
 
     <!-- ============================================================
-    JAVASCRIPT (بخش اصلی - توابع مدیریت)
+    JAVASCRIPT - ALL CODE IN ONE PLACE
     ============================================================ -->
     <script>
         // ================================================================
-        // 1. DATA
+        // 1. DATA & TRANSLATIONS
         // ================================================================
         const translations = {
             fa: {
@@ -1550,9 +1563,9 @@
                 adminUsers: 'کاربر آنلاین',
                 archiveTitle: 'آرشیو پیام‌ها',
                 archiveEmpty: 'هنوز پیامی ارسال نشده است',
-                statusDelivered: '✅ تحویل داده شده',
-                statusPending: '⏳ در انتظار',
-                statusFailed: '❌ ناموفق',
+                statusDelivered: 'تحویل داده شده',
+                statusPending: 'در انتظار',
+                statusFailed: 'ناموفق',
                 social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب',
                     pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک',
                     substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
@@ -1589,9 +1602,9 @@
                 adminUsers: 'Online Users',
                 archiveTitle: 'Message Archive',
                 archiveEmpty: 'No messages sent yet',
-                statusDelivered: '✅ Delivered',
-                statusPending: '⏳ Pending',
-                statusFailed: '❌ Failed',
+                statusDelivered: 'Delivered',
+                statusPending: 'Pending',
+                statusFailed: 'Failed',
                 social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub',
                     pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok',
                     substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
@@ -1683,7 +1696,12 @@
         let currentPage = 'home';
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
 
-        // ===== HELPERS =====
+        // ===== SERVER URL =====
+        const SERVER_URL = 'https://push-server.onrender.com'; // 🔑 آدرس Render خود را جایگزین کنید
+
+        // ================================================================
+        // 2. HELPERS
+        // ================================================================
         function toast(msg, isSpecial = false) {
             let el = document.querySelector('.toast-msg');
             if (el) el.remove();
@@ -1695,7 +1713,9 @@
             setTimeout(() => { if (t.parentNode) t.remove(); }, duration);
         }
 
-        // ===== NAVIGATION =====
+        // ================================================================
+        // 3. NAVIGATION
+        // ================================================================
         function navigateTo(page) {
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
@@ -1736,7 +1756,9 @@
             }
         }
 
-        // ===== RENDER FUNCTIONS =====
+        // ================================================================
+        // 4. RENDER FUNCTIONS
+        // ================================================================
         function renderHome() {
             const grid = document.getElementById('homeProfileGrid');
             if (!grid) return;
@@ -1749,12 +1771,12 @@
                 const desc = currentLang === 'fa' ? card.desc : card.desc;
                 const tags = currentLang === 'fa' ? card.tags : card.tags;
                 return `<div class="profile-card-home">
-                                <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
-                                <div class="home-name">${name}</div>
-                                <div class="home-title">${title}</div>
-                                <div class="home-desc">${desc}</div>
-                                <div class="home-tag">${tags.map(t => `<span>#${t}</span>`).join('')}</div>
-                            </div>`;
+                            <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
+                            <div class="home-name">${name}</div>
+                            <div class="home-title">${title}</div>
+                            <div class="home-desc">${desc}</div>
+                            <div class="home-tag">${tags.map(t => `<span>#${t}</span>`).join('')}</div>
+                        </div>`;
             }).join('');
         }
 
@@ -1781,8 +1803,7 @@
             const list = document.getElementById('specialtiesList');
             if (list) {
                 list.innerHTML = specialties.map(s =>
-                    `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join(
-                    '');
+                    `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
             }
         }
 
@@ -1831,22 +1852,111 @@
         }
 
         // ================================================================
-        // ===== تابع کلیک روی زنگوله (از طریق NotificationManager واحد) =====
+        // 5. NOTIFICATION FUNCTIONS (Web Push)
         // ================================================================
-        async function handleNotification(programId, programName, btn) {
-            const title = `📢 برنامه ${programName}`;
-            const body = `✅ خبر مربوط به برنامه "${programName}" برای شما اعلان و ویژه توسط آقای خموش ارسال میشود. این یک تکنولوژی ویژه برای شما خواهد بود.`;
 
-            console.log('🔔 کلیک روی زنگوله:', programId, programName);
+        // ===== ثبت اشتراک در سرور =====
+        async function subscribeToPush() {
+            try {
+                if (!('serviceWorker' in navigator)) {
+                    toast('مرورگر شما از Web Push پشتیبانی نمی‌کند');
+                    return false;
+                }
+
+                const registration = await navigator.serviceWorker.ready;
+                const permission = await Notification.requestPermission();
+
+                if (permission !== 'granted') {
+                    toast('برای دریافت اعلان، لطفاً مجوز را فعال کنید');
+                    return false;
+                }
+
+                const subscription = await registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: urlBase64ToUint8Array(
+                        'BEl62JiU0R9M6cL9nXZx7Qy8WpNfJkLmQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYz'
+                    )
+                });
+
+                // ارسال به سرور
+                const response = await fetch(`${SERVER_URL}/api/subscribe`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(subscription)
+                });
+
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('subscriptionId', data.id);
+                    toast('اشتراک با موفقیت ثبت شد');
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Subscribe error:', error);
+                toast('خطا در ثبت اشتراک');
+                return false;
+            }
+        }
+
+        // ===== تبدیل کلید VAPID =====
+        function urlBase64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+        // ===== ارسال Notification (کلیک روی زنگوله) =====
+        async function handleNotification(programId, programName, btn) {
+            const subscriptionId = localStorage.getItem('subscriptionId');
+            
+            if (!subscriptionId) {
+                toast('لطفاً ابتدا روی زنگوله کلیک کنید تا مجوز دریافت کنید');
+                const subscribed = await subscribeToPush();
+                if (!subscribed) return;
+            }
+
+            const messages = {
+                'siv': 'تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد',
+                'p1': 'برنامه P1: مهلت ثبت‌نام تا ۳۰ جولای تمدید شد',
+                'p2': 'برنامه P2: نتایج جدید منتشر شد',
+                'asylum': 'تغییرات در روند پناهندگی: زمان رسیدگی کاهش یافت',
+                'parole': 'برنامه Parole: دستورالعمل‌های جدید',
+                'reparole': 'Re-Parole: تمدید خودکار برای متقاضیان واجد شرایط',
+                'welcome': 'Welcome Corps: افزایش ظرفیت پذیرش تا ۱۰۰۰ نفر',
+                'cr1': 'CR1: کاهش زمان پردازش به ۱۲ ماه',
+                'cr2': 'CR2: به‌روزرسانی مدارک مورد نیاز',
+                'k1': 'K1: تغییرات در فرم‌های درخواست',
+                'dv': 'DV Lottery: تاریخ ثبت‌نام از ۱۵ اکتبر آغاز می‌شود',
+                'i130_gc': 'I-130 با گرین کارت: افزایش تعرفه به ۵۳۵ دلار',
+                'i130_us': 'I-130 با پاسپورت: تسریع در رسیدگی'
+            };
+
+            const title = `برنامه ${programName}`;
+            const body = messages[programId] || 'به‌روزرسانی جدید برای این برنامه موجود است';
+            const specialMessage = `خبر مربوط به برنامه "${programName}" برای شما اعلان و ویژه توسط آقای خموش ارسال میشود. این یک تکنولوژی ویژه برای شما خواهد بود.`;
 
             try {
-                await ensureNotifManager();
-                const success = await window.notifManager.sendNotification(title, body, programId);
+                const response = await fetch(`${SERVER_URL}/api/send`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subscriptionId: subscriptionId,
+                        title: title,
+                        body: body,
+                        programId: programId
+                    })
+                });
 
-                if (success) {
-                    console.log('✅ ارسال موفق');
-                    // پیام ویژه ۱۵ ثانیه
-                    toast(body, true);
+                if (response.ok) {
+                    // پیام ویژه ۱۵ ثانیه‌ای
+                    toast(specialMessage, true);
+
                     // سبز کردن دکمه
                     btn.classList.add('success');
                     setTimeout(() => btn.classList.remove('success'), 15000);
@@ -1870,18 +1980,74 @@
                     }
                     localStorage.setItem('notifications', JSON.stringify(notifBadges));
 
-                    toast(`✅ اعلان برای برنامه ${programName} ارسال شد`);
+                    toast(`اعلان برای برنامه ${programName} ارسال شد`);
                 } else {
-                    console.error('❌ ارسال ناموفق');
-                    toast('❌ خطا در ارسال اعلان');
+                    toast('خطا در ارسال اعلان');
                 }
             } catch (error) {
-                console.error('❌ خطا:', error);
-                toast('❌ خطا در ارسال اعلان');
+                console.error('Send error:', error);
+                toast('خطا در ارسال اعلان');
             }
         }
 
-        // ===== رندر بخش مهاجرت =====
+        // ===== ارسال از پنل مدیریت =====
+        async function sendAdminPush() {
+            const userId = document.getElementById('targetUser').value;
+            const title = document.getElementById('adminTitle').value.trim();
+            const body = document.getElementById('adminBody').value.trim();
+
+            if (!userId) { toast('لطفاً یک کاربر را انتخاب کنید'); return; }
+            if (!title) { toast('لطفاً عنوان خبر را وارد کنید'); return; }
+            if (!body) { toast('لطفاً متن خبر را وارد کنید'); return; }
+
+            const btn = document.querySelector('#adminPanel button');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
+            btn.disabled = true;
+
+            try {
+                const response = await fetch(`${SERVER_URL}/api/send`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        subscriptionId: userId,
+                        title: title,
+                        body: body,
+                        programId: 'admin'
+                    })
+                });
+
+                const result = await response.json();
+                if (result.success) {
+                    toast('خبر با موفقیت ارسال شد');
+                    document.getElementById('adminTitle').value = '';
+                    document.getElementById('adminBody').value = '';
+                    document.getElementById('adminStatus').textContent = 'ارسال موفق';
+                    // ذخیره در آرشیو
+                    if (window.notifManager) {
+                        await window.notifManager.saveNotification({
+                            title: title,
+                            body: body,
+                            userId: userId,
+                            status: 'delivered',
+                            programId: 'admin'
+                        });
+                        await window.notifManager.renderArchive();
+                    }
+                } else {
+                    toast('خطا در ارسال: ' + (result.error || 'مشخص نیست'));
+                }
+            } catch (error) {
+                toast('خطا در ارتباط با سرور');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // ================================================================
+        // 6. RENDER IMMIGRATION
+        // ================================================================
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
             if (!grid) return;
@@ -1893,19 +2059,21 @@
                 const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
                 const hasNotif = notifBadges[prog.id] || false;
                 return `<div class="imm-card" data-program="${prog.id}">
-                                <div class="info">
-                                    <h4>${name}</h4>
-                                    <div class="status">${status}</div>
-                                </div>
-                                <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
-                                    <i class="fas fa-bell"></i>
-                                    ${hasNotif ? '<span class="badge">1</span>' : ''}
-                                </button>
-                            </div>`;
+                            <div class="info">
+                                <h4>${name}</h4>
+                                <div class="status">${status}</div>
+                            </div>
+                            <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
+                                <i class="fas fa-bell"></i>
+                                ${hasNotif ? '<span class="badge">1</span>' : ''}
+                            </button>
+                        </div>`;
             }).join('');
         }
 
-        // ===== سایر توابع =====
+        // ================================================================
+        // 7. TECH NEWS & GALLERY
+        // ================================================================
         function renderNews() {
             const grid = document.getElementById('newsGrid');
             if (!grid) return;
@@ -1914,12 +2082,15 @@
             grid.innerHTML = newsData.map(n => {
                 const title = currentLang === 'fa' ? n.fa : n.en;
                 return `<div class="news-card" onclick="openNews(${n.id})">
-                                <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
-                                <div class="body">
-                                    <h4>${title}</h4>
-                                    <div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span><span>${n.date}</span></div>
+                            <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
+                            <div class="body">
+                                <h4>${title}</h4>
+                                <div class="meta">
+                                    <span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span>
+                                    <span>${n.date}</span>
                                 </div>
-                            </div>`;
+                            </div>
+                        </div>`;
             }).join('');
         }
 
@@ -1963,15 +2134,48 @@
                 const path = 'images/' + name;
                 const label = name.replace(/\.[^/.]+$/, "");
                 return `<div class="gallery-item" onclick="window.open('${path}','_blank')">
-                                <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
-                                <div class="overlay">${label}</div>
-                            </div>`;
+                            <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
+                            <div class="overlay">${label}</div>
+                        </div>`;
             }).join('');
         }
 
         // ================================================================
-        // ===== پنل مدیریت =====
+        // 8. ADMIN PANEL
         // ================================================================
+        async function loadUsers() {
+            try {
+                const response = await fetch(`${SERVER_URL}/api/users`);
+                if (!response.ok) throw new Error('Failed to fetch users');
+                const users = await response.json();
+                const select = document.getElementById('targetUser');
+                const countSpan = document.getElementById('userCount');
+                select.innerHTML = '<option value="">انتخاب کاربر...</option>';
+                if (users.length === 0) {
+                    select.innerHTML += '<option value="" disabled>هیچ کاربری ثبت نشده</option>';
+                    if (countSpan) countSpan.textContent = '0';
+                    document.getElementById('adminStatus').textContent = 'هیچ کاربری ثبت نشده';
+                    return;
+                }
+                users.forEach((user, index) => {
+                    const opt = document.createElement('option');
+                    opt.value = user.id;
+                    opt.textContent = `کاربر ${index + 1}`;
+                    select.appendChild(opt);
+                });
+                if (countSpan) countSpan.textContent = users.length;
+                document.getElementById('adminStatus').textContent = 'آماده ارسال';
+                document.getElementById('adminPanel').style.display = 'block';
+
+                if (window.notifManager) {
+                    await window.notifManager.renderArchive();
+                }
+            } catch (error) {
+                console.warn('Admin panel not available:', error);
+                document.getElementById('adminStatus').textContent = 'سرور در دسترس نیست';
+            }
+        }
+
         function initAdminPanel() {
             const settingsPage = document.getElementById('page-settings');
             if (settingsPage && settingsPage.classList.contains('active')) {
@@ -1979,69 +2183,8 @@
             }
         }
 
-        async function loadUsers() {
-            if (typeof window.notifManager !== 'undefined') {
-                const users = await window.notifManager.getUsers();
-                const select = document.getElementById('targetUser');
-                const countSpan = document.getElementById('userCount');
-                select.innerHTML = '<option value="">انتخاب کاربر...</option>';
-                if (users.length === 0) {
-                    select.innerHTML += '<option value="" disabled>هیچ کاربری ثبت نشده</option>';
-                    if (countSpan) countSpan.textContent = '۰';
-                    document.getElementById('adminStatus').textContent = '⏳ هیچ کاربری ثبت نشده';
-                    return;
-                }
-                users.forEach(user => {
-                    const opt = document.createElement('option');
-                    opt.value = user.id;
-                    opt.textContent = user.name || user.id;
-                    select.appendChild(opt);
-                });
-                if (countSpan) countSpan.textContent = users.length;
-                document.getElementById('adminStatus').textContent = '✅ آماده ارسال';
-                document.getElementById('adminPanel').style.display = 'block';
-
-                if (window.notifManager) {
-                    await window.notifManager.renderArchive();
-                }
-            }
-        }
-
-        async function sendAdminPush() {
-            const userId = document.getElementById('targetUser').value;
-            const title = document.getElementById('adminTitle').value.trim();
-            const body = document.getElementById('adminBody').value.trim();
-
-            if (!userId) { toast('❌ لطفاً یک کاربر را انتخاب کنید'); return; }
-            if (!title) { toast('❌ لطفاً عنوان خبر را وارد کنید'); return; }
-            if (!body) { toast('❌ لطفاً متن خبر را وارد کنید'); return; }
-
-            const btn = document.querySelector('#adminPanel button');
-            const originalText = btn.innerHTML;
-            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
-            btn.disabled = true;
-
-            try {
-                const success = await window.notifManager.sendToUser(userId, title, body);
-                if (success) {
-                    toast('✅ خبر با موفقیت ارسال شد');
-                    document.getElementById('adminTitle').value = '';
-                    document.getElementById('adminBody').value = '';
-                    document.getElementById('adminStatus').textContent = '✅ ارسال موفق';
-                    await window.notifManager.renderArchive();
-                } else {
-                    toast('❌ خطا در ارسال');
-                }
-            } catch (error) {
-                toast('❌ خطا در ارتباط با سرور');
-            } finally {
-                btn.innerHTML = originalText;
-                btn.disabled = false;
-            }
-        }
-
         // ================================================================
-        // ===== زبان =====
+        // 9. LANGUAGE
         // ================================================================
         function setLanguage(lang) {
             currentLang = lang;
@@ -2081,7 +2224,7 @@
         }
 
         // ================================================================
-        // ===== تنظیمات اولیه =====
+        // 10. SETTINGS INIT
         // ================================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
@@ -2124,7 +2267,7 @@
         }
 
         // ================================================================
-        // ===== مودال UID =====
+        // 11. MODALS
         // ================================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
@@ -2150,7 +2293,195 @@
         }
 
         // ================================================================
-        // ===== شروع =====
+        // 12. NOTIFICATION MANAGER (Archive)
+        // ================================================================
+        class NotificationManager {
+            constructor() {
+                this.notifications = [];
+                this.db = null;
+                this.initDB();
+                this.loadStoredNotifications();
+                this.createBellButton();
+                this.updateBellBadge();
+            }
+
+            async initDB() {
+                return new Promise((resolve) => {
+                    const request = indexedDB.open('SarfrazNotifDB', 1);
+                    request.onupgradeneeded = (event) => {
+                        const db = event.target.result;
+                        if (!db.objectStoreNames.contains('notifications')) {
+                            const store = db.createObjectStore('notifications', {
+                                keyPath: 'id',
+                                autoIncrement: true
+                            });
+                            store.createIndex('timestamp', 'timestamp', { unique: false });
+                        }
+                    };
+                    request.onsuccess = (event) => {
+                        this.db = event.target.result;
+                        resolve();
+                    };
+                    request.onerror = () => resolve();
+                });
+            }
+
+            async saveNotification(notification) {
+                if (!this.db) await this.initDB();
+                return new Promise((resolve) => {
+                    const transaction = this.db.transaction(['notifications'], 'readwrite');
+                    const store = transaction.objectStore('notifications');
+                    const data = {
+                        ...notification,
+                        timestamp: notification.timestamp || Date.now(),
+                        isRead: notification.isRead || false
+                    };
+                    const request = store.add(data);
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => resolve();
+                });
+            }
+
+            async getNotifications() {
+                if (!this.db) await this.initDB();
+                return new Promise((resolve) => {
+                    const transaction = this.db.transaction(['notifications'], 'readonly');
+                    const store = transaction.objectStore('notifications');
+                    const index = store.index('timestamp');
+                    const request = index.openCursor(null, 'prev');
+                    const results = [];
+                    request.onsuccess = (event) => {
+                        const cursor = event.target.result;
+                        if (cursor) {
+                            results.push(cursor.value);
+                            cursor.continue();
+                        } else {
+                            resolve(results);
+                        }
+                    };
+                    request.onerror = () => resolve([]);
+                });
+            }
+
+            async deleteNotification(id) {
+                if (!this.db) await this.initDB();
+                return new Promise((resolve) => {
+                    const transaction = this.db.transaction(['notifications'], 'readwrite');
+                    const store = transaction.objectStore('notifications');
+                    store.delete(id);
+                    resolve();
+                });
+            }
+
+            async loadStoredNotifications() {
+                this.notifications = await this.getNotifications();
+                this.updateBellBadge();
+                this.renderArchive();
+            }
+
+            async renderArchive() {
+                const container = document.getElementById('archiveList');
+                if (!container) return;
+
+                const notifications = await this.getNotifications();
+                if (notifications.length === 0) {
+                    container.innerHTML = `<div class="archive-empty">هنوز پیامی ارسال نشده است</div>`;
+                    return;
+                }
+
+                const t = translations[currentLang];
+                container.innerHTML = notifications.map(notif => {
+                    const statusText = notif.status === 'delivered' ? t.statusDelivered :
+                        notif.status === 'pending' ? t.statusPending : t.statusFailed;
+                    const statusClass = notif.status === 'delivered' ? 'delivered' :
+                        notif.status === 'pending' ? 'pending' : 'failed';
+                    const time = new Date(notif.timestamp).toLocaleString('fa-IR');
+                    return `<div class="archive-item">
+                                <div class="info">
+                                    <div class="title">${notif.title}</div>
+                                    <div class="body">${notif.body}</div>
+                                    <div class="meta">
+                                        <span><i class="fas fa-user"></i> ${notif.userId || 'همه کاربران'}</span>
+                                        <span><i class="fas fa-clock"></i> ${time}</span>
+                                    </div>
+                                </div>
+                                <span class="status ${statusClass}">${statusText}</span>
+                                <button class="delete-archive" onclick="window.deleteArchiveItem(${notif.id})">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </div>`;
+                }).join('');
+            }
+
+            async updateBellBadge() {
+                const notifs = await this.getNotifications();
+                const unread = notifs.filter(n => !n.isRead).length;
+                const bellBtn = document.querySelector('.notif-bell-btn');
+                if (bellBtn) {
+                    const badge = bellBtn.querySelector('.notif-badge');
+                    if (unread > 0) {
+                        if (!badge) {
+                            const b = document.createElement('span');
+                            b.className = 'notif-badge';
+                            b.textContent = unread;
+                            bellBtn.appendChild(b);
+                        } else {
+                            badge.textContent = unread;
+                        }
+                        bellBtn.classList.add('has-notif');
+                    } else {
+                        if (badge) badge.remove();
+                        bellBtn.classList.remove('has-notif');
+                    }
+                }
+            }
+
+            createBellButton() {
+                const existing = document.querySelector('.notif-bell-btn');
+                if (existing) existing.remove();
+
+                const nav = document.querySelector('.bottom-nav');
+                if (!nav) return;
+
+                const btn = document.createElement('button');
+                btn.className = 'nav-item notif-bell-btn';
+                btn.innerHTML = `<i class="fas fa-bell"></i><span>اعلان</span>`;
+                btn.style.position = 'relative';
+
+                nav.appendChild(btn);
+
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    // در صورت عدم مجوز، درخواست مجوز
+                    if (Notification.permission === 'default') {
+                        Notification.requestPermission().then(permission => {
+                            if (permission === 'granted') {
+                                subscribeToPush();
+                            }
+                        });
+                    }
+                });
+
+                this.updateBellBadge();
+            }
+
+            async deleteArchiveItem(id) {
+                await this.deleteNotification(id);
+                this.notifications = this.notifications.filter(n => n.id !== id);
+                this.renderArchive();
+                this.updateBellBadge();
+            }
+        }
+
+        window.deleteArchiveItem = async function(id) {
+            if (!confirm('آیا مطمئن هستید؟')) return;
+            if (window.notifManager) {
+                await window.notifManager.deleteArchiveItem(id);
+            }
+        };
+
+        // ================================================================
+        // 13. INIT
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
@@ -2160,6 +2491,12 @@
 
             initSettings();
             initUidModal();
+
+            // مقداردهی Notification Manager
+            if (typeof window.notifManager === 'undefined') {
+                window.notifManager = new NotificationManager();
+                window.notifManager.renderArchive();
+            }
 
             document.getElementById('modalCloseBtn').addEventListener('click', closeNewsModal);
             document.getElementById('newsModal').addEventListener('click', function(e) {
@@ -2172,512 +2509,24 @@
 
             const highlight = params.get('highlight');
             if (highlight) {
-                ensureNotifManager().then((mgr) => setTimeout(() => mgr.highlightProgram(highlight), 1000));
+                setTimeout(() => {
+                    const cards = document.querySelectorAll('.imm-card');
+                    cards.forEach(card => {
+                        const info = card.querySelector('.info h4');
+                        if (info && info.textContent.includes(highlight)) {
+                            card.style.transition = 'all 0.3s ease';
+                            card.style.boxShadow = '0 0 0 4px #8b5cf6, 0 8px 30px rgba(139,92,246,0.3)';
+                            card.style.transform = 'scale(1.02)';
+                            setTimeout(() => {
+                                card.style.boxShadow = '';
+                                card.style.transform = '';
+                            }, 3000);
+                        }
+                    });
+                }, 1000);
             }
         });
     </script>
 
-    <script>
-    // ================================================================
-    // ===== سیستم Notification با Ntfy (یکپارچه در index.html) =====
-    // ===== ارسال با JSON body — بدون هدر — رفع کامل خطای =====
-    // ===== ISO-8859-1 / non-Latin1 header encoding             =====
-    // ================================================================
-    const NTFY_TOPIC_PREFIX = 'sarfraz';
-    const SITE_URL = 'https://sarfraz.abrdns.com';
-
-    class NotificationManager {
-        constructor() {
-            this.notifications = [];
-            this.db = null;
-            this.initDB();
-            this.loadStoredNotifications();
-            this.createBellButton();
-            this.updateBellBadge();
-        }
-
-        async initDB() {
-            return new Promise((resolve) => {
-                const request = indexedDB.open('SarfrazNotifDB', 1);
-                request.onupgradeneeded = (event) => {
-                    const db = event.target.result;
-                    if (!db.objectStoreNames.contains('notifications')) {
-                        const store = db.createObjectStore('notifications', {
-                            keyPath: 'id',
-                            autoIncrement: true
-                        });
-                        store.createIndex('programId', 'programId', { unique: false });
-                        store.createIndex('timestamp', 'timestamp', { unique: false });
-                    }
-                };
-                request.onsuccess = (event) => {
-                    this.db = event.target.result;
-                    resolve();
-                };
-                request.onerror = () => resolve();
-            });
-        }
-
-        async saveNotification(notification) {
-            if (!this.db) await this.initDB();
-            return new Promise((resolve) => {
-                const transaction = this.db.transaction(['notifications'], 'readwrite');
-                const store = transaction.objectStore('notifications');
-                const data = {
-                    ...notification,
-                    timestamp: notification.timestamp || Date.now(),
-                    isRead: notification.isRead || false
-                };
-                const request = store.add(data);
-                request.onsuccess = () => resolve(request.result);
-                request.onerror = () => resolve();
-            });
-        }
-
-        async getNotifications() {
-            if (!this.db) await this.initDB();
-            return new Promise((resolve) => {
-                const transaction = this.db.transaction(['notifications'], 'readonly');
-                const store = transaction.objectStore('notifications');
-                const index = store.index('timestamp');
-                const request = index.openCursor(null, 'prev');
-                const results = [];
-                request.onsuccess = (event) => {
-                    const cursor = event.target.result;
-                    if (cursor) {
-                        results.push(cursor.value);
-                        cursor.continue();
-                    } else {
-                        resolve(results);
-                    }
-                };
-                request.onerror = () => resolve([]);
-            });
-        }
-
-        async deleteNotification(id) {
-            if (!this.db) await this.initDB();
-            return new Promise((resolve) => {
-                const transaction = this.db.transaction(['notifications'], 'readwrite');
-                const store = transaction.objectStore('notifications');
-                store.delete(id);
-                resolve();
-            });
-        }
-
-        async deleteAllNotifications() {
-            if (!this.db) await this.initDB();
-            return new Promise((resolve) => {
-                const transaction = this.db.transaction(['notifications'], 'readwrite');
-                const store = transaction.objectStore('notifications');
-                const request = store.clear();
-                request.onsuccess = () => resolve();
-                request.onerror = () => resolve();
-            });
-        }
-
-        async loadStoredNotifications() {
-            this.notifications = await this.getNotifications();
-            this.updateBellBadge();
-            this.renderArchive();
-        }
-
-        // ===== ارسال با JSON body (کاملاً استاندارد - بدون هدر سفارشی) =====
-        async sendNotification(title, body, programId, userId = null) {
-            const topic = `${NTFY_TOPIC_PREFIX}_${programId}`;
-            const payload = {
-                topic: topic,
-                title: title,
-                message: body,
-                priority: 'high',
-                tags: ['bell'],
-                click: `${SITE_URL}/?page=immigration&highlight=${programId}`
-            };
-
-            try {
-                const response = await fetch(`https://ntfy.sh/${topic}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (response.ok) {
-                    const notification = {
-                        title,
-                        body,
-                        programId,
-                        userId: userId || 'همه کاربران',
-                        status: 'delivered',
-                        topic: topic
-                    };
-                    await this.saveNotification(notification);
-                    this.notifications.unshift({
-                        ...notification,
-                        timestamp: Date.now(),
-                        isRead: false
-                    });
-                    this.updateBellBadge();
-                    this.renderArchive();
-
-                    this.showLocalNotification(title, body);
-
-                    return true;
-                }
-                return false;
-            } catch (error) {
-                console.error('Ntfy error:', error);
-                return false;
-            }
-        }
-
-        // نمایش نوتیفیکیشن محلی — هرگز نباید باعث شکست ارسال شود
-        // در موبایل (Chrome/Android) باید از طریق Service Worker نمایش داده شود،
-        // چون new Notification() مستقیم آنجا "Illegal constructor" می‌دهد.
-        showLocalNotification(title, body) {
-            try {
-                if (typeof Notification === 'undefined' || Notification.permission !== 'granted') return;
-
-                if ('serviceWorker' in navigator) {
-                    navigator.serviceWorker.ready.then((reg) => {
-                        if (reg && reg.showNotification) {
-                            reg.showNotification(title, {
-                                body: body,
-                                icon: '/images/Kham.png',
-                                badge: '/images/Kham.png'
-                            }).catch((err) => console.warn('showNotification skipped:', err));
-                        }
-                    }).catch((err) => console.warn('SW not ready, notification skipped:', err));
-                } else {
-                    new Notification(title, {
-                        body: body,
-                        icon: '/images/Kham.png',
-                        badge: '/images/Kham.png'
-                    });
-                }
-            } catch (err) {
-                console.warn('Local notification display skipped:', err);
-            }
-        }
-
-        async sendToUser(userId, title, body, programId = 'admin') {
-            const topic = `${NTFY_TOPIC_PREFIX}_${programId}`;
-            const payload = {
-                topic: topic,
-                title: `🔔 ${title}`,
-                message: `📨 ${body}`,
-                priority: 'high',
-                tags: ['envelope'],
-                click: `${SITE_URL}/?page=immigration`
-            };
-
-            try {
-                const response = await fetch(`https://ntfy.sh/${topic}`, {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json'
-                    },
-                    body: JSON.stringify(payload)
-                });
-
-                if (response.ok) {
-                    const notification = {
-                        title: `🔔 ${title}`,
-                        body: `📨 ${body}`,
-                        programId: programId,
-                        userId: userId,
-                        status: 'delivered',
-                        topic: topic
-                    };
-                    await this.saveNotification(notification);
-                    this.notifications.unshift({
-                        ...notification,
-                        timestamp: Date.now(),
-                        isRead: false
-                    });
-                    this.updateBellBadge();
-                    this.renderArchive();
-                    return true;
-                }
-                return false;
-            } catch (error) {
-                console.error('Error sending to user:', error);
-                return false;
-            }
-        }
-
-        createNotificationCenter() {
-            const existing = document.querySelector('.notification-center');
-            if (existing) existing.remove();
-
-            const center = document.createElement('div');
-            center.className = 'notification-center';
-            center.innerHTML = `
-                    <div class="notification-header">
-                        <h3><i class="fas fa-bell"></i> اعلان‌ها</h3>
-                        <button class="notif-close-btn"><i class="fas fa-times"></i></button>
-                    </div>
-                    <div class="notification-list"></div>
-                    <div class="notification-footer">
-                        <button class="notif-clear-btn">پاک کردن همه</button>
-                    </div>
-                `;
-
-            document.body.appendChild(center);
-
-            center.querySelector('.notif-close-btn').addEventListener('click', () => {
-                center.classList.remove('open');
-            });
-
-            center.querySelector('.notif-clear-btn').addEventListener('click', async () => {
-                if (confirm('آیا مطمئن هستید؟')) {
-                    await this.deleteAllNotifications();
-                    this.notifications = [];
-                    this.renderNotifications();
-                    this.renderArchive();
-                    this.updateBellBadge();
-                }
-            });
-
-            document.addEventListener('click', (e) => {
-                if (center.classList.contains('open') &&
-                    !center.contains(e.target) &&
-                    !e.target.closest('.notif-bell-btn')) {
-                    center.classList.remove('open');
-                }
-            });
-
-            return center;
-        }
-
-        async renderNotifications() {
-            let center = document.querySelector('.notification-center');
-            if (!center) center = this.createNotificationCenter();
-
-            const list = center.querySelector('.notification-list');
-            const notifications = await this.getNotifications();
-            this.notifications = notifications;
-
-            if (notifications.length === 0) {
-                list.innerHTML = '<p class="empty-notif">هیچ اعلانی وجود ندارد</p>';
-                center.classList.add('open');
-                this.updateBellBadge();
-                return;
-            }
-
-            list.innerHTML = notifications.map(notif => `
-                    <div class="notif-item ${notif.isRead ? 'read' : 'unread'}" data-id="${notif.id}">
-                        <div class="notif-icon"><i class="fas fa-bell"></i></div>
-                        <div class="notif-content">
-                            <div class="notif-title">${notif.title}</div>
-                            <div class="notif-body">${notif.body}</div>
-                            <div class="notif-time">${this.formatTime(notif.timestamp)}</div>
-                            <div style="font-size:0.6rem; opacity:0.3;">👤 ${notif.userId || 'همه'}</div>
-                        </div>
-                        <button class="notif-delete-btn" data-id="${notif.id}"><i class="fas fa-trash"></i></button>
-                    </div>
-                `).join('');
-
-            list.querySelectorAll('.notif-delete-btn').forEach(btn => {
-                btn.addEventListener('click', async (e) => {
-                    e.stopPropagation();
-                    const id = parseInt(btn.dataset.id);
-                    await this.deleteNotification(id);
-                    this.renderNotifications();
-                    this.renderArchive();
-                    this.updateBellBadge();
-                });
-            });
-
-            list.querySelectorAll('.notif-item').forEach(item => {
-                item.addEventListener('click', async () => {
-                    const id = parseInt(item.dataset.id);
-                    const notif = this.notifications.find(n => n.id === id);
-                    if (notif) {
-                        notif.isRead = true;
-                        await this.saveNotification(notif);
-                        item.classList.remove('unread');
-                        item.classList.add('read');
-                        this.updateBellBadge();
-                        this.renderArchive();
-                    }
-                });
-            });
-
-            center.classList.add('open');
-            this.updateBellBadge();
-        }
-
-        formatTime(timestamp) {
-            const diff = Date.now() - timestamp;
-            const minutes = Math.floor(diff / 60000);
-            const hours = Math.floor(diff / 3600000);
-            const days = Math.floor(diff / 86400000);
-            if (days > 0) return `${days} روز پیش`;
-            if (hours > 0) return `${hours} ساعت پیش`;
-            if (minutes > 0) return `${minutes} دقیقه پیش`;
-            return 'چند لحظه پیش';
-        }
-
-        async updateBellBadge() {
-            const notifs = await this.getNotifications();
-            const unread = notifs.filter(n => !n.isRead).length;
-            const bellBtn = document.querySelector('.notif-bell-btn');
-            if (bellBtn) {
-                const badge = bellBtn.querySelector('.notif-badge');
-                if (unread > 0) {
-                    if (!badge) {
-                        const b = document.createElement('span');
-                        b.className = 'notif-badge';
-                        b.textContent = unread;
-                        bellBtn.appendChild(b);
-                    } else {
-                        badge.textContent = unread;
-                    }
-                    bellBtn.classList.add('has-notif');
-                } else {
-                    if (badge) badge.remove();
-                    bellBtn.classList.remove('has-notif');
-                }
-            }
-        }
-
-        createBellButton() {
-            const existing = document.querySelector('.notif-bell-btn');
-            if (existing) existing.remove();
-
-            const nav = document.querySelector('.bottom-nav');
-            if (!nav) return;
-
-            const btn = document.createElement('button');
-            btn.className = 'nav-item notif-bell-btn';
-            btn.innerHTML = `<i class="fas fa-bell"></i><span>اعلان</span>`;
-            btn.style.position = 'relative';
-
-            nav.appendChild(btn);
-
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                this.renderNotifications();
-            });
-
-            this.updateBellBadge();
-        }
-
-        async renderArchive() {
-            const container = document.getElementById('archiveList');
-            if (!container) return;
-
-            const notifications = await this.getNotifications();
-
-            if (notifications.length === 0) {
-                container.innerHTML = `<div class="archive-empty">هنوز پیامی ارسال نشده است</div>`;
-                return;
-            }
-
-            container.innerHTML = notifications.map(notif => `
-                    <div class="archive-item">
-                        <div class="info">
-                            <div class="title">${notif.title}</div>
-                            <div class="body">${notif.body}</div>
-                            <div class="meta">
-                                <span>👤 ${notif.userId || 'همه کاربران'}</span>
-                                <span>🕐 ${this.formatTime(notif.timestamp)}</span>
-                                <span>📌 ${notif.programId || 'admin'}</span>
-                            </div>
-                        </div>
-                        <span class="status ${notif.status === 'delivered' ? 'delivered' : 'pending'}">
-                            ${notif.status === 'delivered' ? '✅ تحویل داده شده' : '⏳ در انتظار'}
-                        </span>
-                        <button class="delete-archive" onclick="window.deleteArchiveItem(${notif.id})">
-                            <i class="fas fa-trash"></i>
-                        </button>
-                    </div>
-                `).join('');
-        }
-
-        async notifyProgram(programId, programName) {
-            const title = `📢 برنامه ${programName}`;
-            const body = 'به‌روزرسانی جدید برای این برنامه موجود است';
-            const result = await this.sendNotification(title, body, programId);
-            this.updateBellBadge();
-            return result;
-        }
-
-        async getUsers() {
-            const storedUsers = JSON.parse(localStorage.getItem('ntfy_users') || '[]');
-            if (storedUsers.length === 0) {
-                return [{ id: 'admin', name: 'مدیر سایت' }];
-            }
-            return storedUsers;
-        }
-
-        async addUser(userId, userName) {
-            const users = await this.getUsers();
-            users.push({ id: userId, name: userName });
-            localStorage.setItem('ntfy_users', JSON.stringify(users));
-        }
-
-        async deleteArchiveItem(id) {
-            await this.deleteNotification(id);
-            this.notifications = this.notifications.filter(n => n.id !== id);
-            this.renderArchive();
-            this.updateBellBadge();
-        }
-
-        highlightProgram(programId) {
-            const cards = document.querySelectorAll('.imm-card');
-            cards.forEach(card => {
-                const info = card.querySelector('.info h4');
-                if (info && info.textContent.includes(programId)) {
-                    card.style.transition = 'all 0.3s ease';
-                    card.style.boxShadow = '0 0 0 4px #8b5cf6, 0 8px 30px rgba(139,92,246,0.3)';
-                    card.style.transform = 'scale(1.02)';
-                    setTimeout(() => {
-                        card.style.boxShadow = '';
-                        card.style.transform = '';
-                    }, 3000);
-                }
-            });
-        }
-    }
-
-    // ============ توابع سراسری ============
-    window.notifManager = null;
-    let notifManagerReady = null;
-
-    function initNotificationManager() {
-        if (!window.notifManager) {
-            window.notifManager = new NotificationManager();
-            window.notifManager.renderArchive();
-        }
-        return window.notifManager;
-    }
-
-    // به کدهای دیگر همین صفحه (مثل handleNotification) اجازه می‌دهد
-    // قبل از استفاده از notifManager صبر کنند تا کاملاً آماده شود.
-    function ensureNotifManager() {
-        if (!notifManagerReady) {
-            notifManagerReady = new Promise((resolve) => {
-                if (document.readyState === 'loading') {
-                    document.addEventListener('DOMContentLoaded', () => resolve(initNotificationManager()));
-                } else {
-                    resolve(initNotificationManager());
-                }
-            });
-        }
-        return notifManagerReady;
-    }
-
-    window.deleteArchiveItem = async function(id) {
-        if (!confirm('آیا مطمئن هستید؟')) return;
-        if (window.notifManager) {
-            await window.notifManager.deleteArchiveItem(id);
-        }
-    };
-
-    ensureNotifManager();
-    </script>
 </body>
-                        </html>
+    </html>
