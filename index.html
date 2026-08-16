@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>سرفراز خموش | Sarfraz Khamoosh</title>
 
-    <!-- Font Awesome 6 -->
+    <!-- Font Awesome 6 (آیکن‌های آنلاین) -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     
     <!-- Google Font -->
@@ -800,35 +800,111 @@
             transform: scale(0.95);
         }
 
-        /* ===== ADMIN PANEL ===== */
+        /* ===== ADMIN PANEL (با قفل) ===== */
         #adminPanel {
-            display: none;
-            background: rgba(139, 92, 246, 0.04);
-            border-radius: 2rem;
-            padding: 1.5rem;
-            border: 1px solid rgba(139, 92, 246, 0.08);
-            margin-top: 1rem;
+            margin-top: 2rem;
+            border-top: 2px solid #8b5cf6;
+            padding-top: 1rem;
+            display: block;
         }
         #adminPanel h4 {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            color: #8b5cf6;
             font-size: 1.1rem;
-            margin-bottom: 0.8rem;
+            margin-bottom: 1rem;
         }
-        #adminPanel select, #adminPanel input, #adminPanel textarea {
+        #adminLock {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            margin-bottom: 1rem;
+        }
+        #adminLock input {
+            padding: 8px 16px;
+            border-radius: 16px;
+            border: 2px solid #e5e7eb;
+            font-family: inherit;
+            width: 200px;
+            background: rgba(255,255,255,0.3);
+        }
+        body.dark #adminLock input {
+            background: rgba(0,0,0,0.2);
+            border-color: rgba(255,255,255,0.1);
+            color: #e8e8f0;
+        }
+        #adminLock button {
+            padding: 8px 20px;
+            border-radius: 16px;
+            border: none;
+            background: #8b5cf6;
+            color: #fff;
+            cursor: pointer;
+            font-family: inherit;
+            font-weight: 600;
+            transition: 0.3s;
+        }
+        #adminLock button:hover {
+            background: #7c3aed;
+            transform: scale(1.02);
+        }
+        #adminLockStatus {
+            font-size: 0.8rem;
+            opacity: 0.6;
+        }
+        #adminContent {
+            display: none;
+        }
+        #adminContent select, #adminContent input, #adminContent textarea {
             background: rgba(255, 255, 255, 0.3);
             border: 1px solid rgba(139, 92, 246, 0.1);
             transition: 0.3s;
+            font-family: inherit;
         }
-        body.dark #adminPanel select, body.dark #adminPanel input, body.dark #adminPanel textarea {
+        body.dark #adminContent select, body.dark #adminContent input, body.dark #adminContent textarea {
             background: rgba(0, 0, 0, 0.2);
             border-color: rgba(255, 255, 255, 0.04);
             color: #e8e8f0;
         }
-        #adminPanel select:focus, #adminPanel input:focus, #adminPanel textarea:focus {
+        #adminContent select:focus, #adminContent input:focus, #adminContent textarea:focus {
             outline: none;
             border-color: #8b5cf6;
             box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.1);
         }
-
+        .admin-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            width: 100%;
+            align-items: center;
+        }
+        .admin-row select { flex: 2; min-width: 200px; padding: 10px 16px; border-radius: 16px; }
+        .admin-row input { flex: 2; min-width: 150px; padding: 10px 16px; border-radius: 16px; }
+        .admin-textarea { flex: 1; min-width: 200px; padding: 10px 16px; border-radius: 16px; resize: vertical; }
+        .admin-send-btn {
+            padding: 10px 28px;
+            border-radius: 40px;
+            border: none;
+            background: #8b5cf6;
+            color: #fff;
+            cursor: pointer;
+            font-weight: 600;
+            font-family: inherit;
+            white-space: nowrap;
+            align-self: flex-end;
+            transition: 0.3s;
+        }
+        .admin-send-btn:hover { background: #7c3aed; transform: scale(1.02); }
+        .admin-stats {
+            display: flex;
+            gap: 1rem;
+            font-size: 0.8rem;
+            opacity: 0.5;
+            margin-top: 8px;
+            flex-wrap: wrap;
+        }
         #adminArchive {
             margin-top: 1.5rem;
             border-top: 1px solid rgba(0, 0, 0, 0.04);
@@ -859,9 +935,7 @@
         .archive-item:hover {
             background: rgba(139, 92, 246, 0.08);
         }
-        .archive-item .info {
-            flex: 1;
-        }
+        .archive-item .info { flex: 1; }
         .archive-item .info .title {
             font-weight: 600;
             font-size: 0.9rem;
@@ -950,7 +1024,6 @@
             border-color: rgba(255, 255, 255, 0.06);
             color: #e8e8f0;
         }
-
         .notification-header {
             display: flex;
             justify-content: space-between;
@@ -969,288 +1042,87 @@
             align-items: center;
             gap: 10px;
         }
-        .notification-header h3 i {
-            color: #8b5cf6;
-        }
+        .notification-header h3 i { color: #8b5cf6; }
         .notif-close-btn {
-            background: none;
-            border: none;
-            font-size: 1.2rem;
-            cursor: pointer;
-            color: inherit;
-            opacity: 0.5;
-            padding: 4px 8px;
-            border-radius: 50%;
-            transition: 0.3s;
+            background: none; border: none; font-size: 1.2rem; cursor: pointer; color: inherit; opacity: 0.5; padding: 4px 8px; border-radius: 50%; transition: 0.3s;
         }
-        .notif-close-btn:hover {
-            opacity: 1;
-            background: rgba(0, 0, 0, 0.04);
-        }
-
+        .notif-close-btn:hover { opacity: 1; background: rgba(0,0,0,0.04); }
         .notification-list {
-            flex: 1;
-            overflow-y: auto;
-            padding: 0.5rem 0;
-            max-height: 40vh;
+            flex: 1; overflow-y: auto; padding: 0.5rem 0; max-height: 40vh;
         }
-        .notification-list .empty-notif {
-            text-align: center;
-            padding: 2rem 1rem;
-            opacity: 0.5;
-        }
-
+        .notification-list .empty-notif { text-align: center; padding: 2rem 1rem; opacity: 0.5; }
         .notif-item {
-            display: flex;
-            align-items: flex-start;
-            gap: 12px;
-            padding: 0.8rem 1.5rem;
-            cursor: pointer;
-            transition: 0.2s;
-            border-bottom: 1px solid rgba(0, 0, 0, 0.03);
+            display: flex; align-items: flex-start; gap: 12px; padding: 0.8rem 1.5rem; cursor: pointer; transition: 0.2s; border-bottom: 1px solid rgba(0,0,0,0.03);
         }
-        body.dark .notif-item {
-            border-bottom-color: rgba(255, 255, 255, 0.03);
-        }
-        .notif-item:hover {
-            background: rgba(139, 92, 246, 0.04);
-        }
-        .notif-item.unread {
-            border-right: 3px solid #8b5cf6;
-        }
-        .notif-item.read {
-            opacity: 0.6;
-        }
+        body.dark .notif-item { border-bottom-color: rgba(255,255,255,0.03); }
+        .notif-item:hover { background: rgba(139,92,246,0.04); }
+        .notif-item.unread { border-right: 3px solid #8b5cf6; }
+        .notif-item.read { opacity: 0.6; }
         .notif-icon {
-            width: 36px;
-            height: 36px;
-            border-radius: 50%;
-            background: rgba(139, 92, 246, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-            color: #8b5cf6;
+            width: 36px; height: 36px; border-radius: 50%; background: rgba(139,92,246,0.1); display: flex; align-items: center; justify-content: center; flex-shrink: 0; color: #8b5cf6;
         }
-        .notif-content {
-            flex: 1;
-            min-width: 0;
-        }
-        .notif-title {
-            font-weight: 600;
-            font-size: 0.9rem;
-        }
-        .notif-body {
-            font-size: 0.8rem;
-            opacity: 0.7;
-            margin-top: 2px;
-            word-break: break-word;
-        }
-        .notif-time {
-            font-size: 0.65rem;
-            opacity: 0.4;
-            margin-top: 4px;
-        }
+        .notif-content { flex: 1; min-width: 0; }
+        .notif-title { font-weight: 600; font-size: 0.9rem; }
+        .notif-body { font-size: 0.8rem; opacity: 0.7; margin-top: 2px; word-break: break-word; }
+        .notif-time { font-size: 0.65rem; opacity: 0.4; margin-top: 4px; }
         .notif-delete-btn {
-            background: none;
-            border: none;
-            color: inherit;
-            opacity: 0.2;
-            cursor: pointer;
-            padding: 4px 8px;
-            border-radius: 50%;
-            transition: 0.3s;
-            flex-shrink: 0;
+            background: none; border: none; color: inherit; opacity: 0.2; cursor: pointer; padding: 4px 8px; border-radius: 50%; transition: 0.3s; flex-shrink: 0;
         }
-        .notif-delete-btn:hover {
-            opacity: 1;
-            color: #ef4444;
-            background: rgba(239, 68, 68, 0.06);
-        }
-
+        .notif-delete-btn:hover { opacity: 1; color: #ef4444; background: rgba(239,68,68,0.06); }
         .notification-footer {
-            padding: 0.8rem 1.5rem;
-            border-top: 1px solid rgba(0, 0, 0, 0.04);
-            display: flex;
-            justify-content: center;
-            flex-shrink: 0;
+            padding: 0.8rem 1.5rem; border-top: 1px solid rgba(0,0,0,0.04); display: flex; justify-content: center; flex-shrink: 0;
         }
-        body.dark .notification-footer {
-            border-top-color: rgba(255, 255, 255, 0.04);
-        }
+        body.dark .notification-footer { border-top-color: rgba(255,255,255,0.04); }
         .notif-clear-btn {
-            background: none;
-            border: none;
-            color: #ef4444;
-            font-size: 0.8rem;
-            cursor: pointer;
-            opacity: 0.6;
-            transition: 0.3s;
-            padding: 4px 16px;
-            border-radius: 20px;
+            background: none; border: none; color: #ef4444; font-size: 0.8rem; cursor: pointer; opacity: 0.6; transition: 0.3s; padding: 4px 16px; border-radius: 20px;
         }
-        .notif-clear-btn:hover {
-            opacity: 1;
-            background: rgba(239, 68, 68, 0.06);
-        }
-
-        .notif-bell-btn {
-            position: relative;
-        }
+        .notif-clear-btn:hover { opacity: 1; background: rgba(239,68,68,0.06); }
+        .notif-bell-btn { position: relative; }
         .notif-badge {
-            position: absolute;
-            top: -4px;
-            right: -4px;
-            background: #ef4444;
-            color: #fff;
-            font-size: 0.5rem;
-            width: 18px;
-            height: 18px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            animation: pulseBell 1.4s infinite;
+            position: absolute; top: -4px; right: -4px; background: #ef4444; color: #fff; font-size: 0.5rem; width: 18px; height: 18px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; animation: pulseBell 1.4s infinite;
         }
-        .notif-bell-btn.has-notif {
-            color: #8b5cf6;
-        }
+        .notif-bell-btn.has-notif { color: #8b5cf6; }
 
         /* ===== MODALS ===== */
         .modal-overlay {
-            display: none;
-            position: fixed;
-            inset: 0;
-            background: rgba(0, 0, 0, 0.5);
-            backdrop-filter: blur(16px);
-            z-index: 9999;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
+            display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.5); backdrop-filter: blur(16px); z-index: 9999; align-items: center; justify-content: center; padding: 1.5rem;
         }
-        .modal-overlay.open {
-            display: flex;
-        }
+        .modal-overlay.open { display: flex; }
         .modal-box {
-            background: rgba(255, 255, 255, 0.92);
-            backdrop-filter: blur(28px);
-            border-radius: 3rem;
-            max-width: 720px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            direction: rtl;
-            border: 1px solid rgba(255, 255, 255, 0.4);
-            box-shadow: 0 40px 80px rgba(0, 0, 0, 0.12);
-            position: relative;
-            padding: 2rem 2.5rem;
+            background: rgba(255,255,255,0.92); backdrop-filter: blur(28px); border-radius: 3rem; max-width: 720px; width: 100%; max-height: 85vh; overflow-y: auto; direction: rtl; border: 1px solid rgba(255,255,255,0.4); box-shadow: 0 40px 80px rgba(0,0,0,0.12); position: relative; padding: 2rem 2.5rem;
         }
-        body.dark .modal-box {
-            background: rgba(16, 18, 34, 0.92);
-            border-color: rgba(255, 255, 255, 0.04);
-            color: #e0e0ea;
-        }
+        body.dark .modal-box { background: rgba(16,18,34,0.92); border-color: rgba(255,255,255,0.04); color: #e0e0ea; }
         .modal-box .close {
-            position: absolute;
-            top: 1.2rem;
-            left: 1.5rem;
-            background: #8b5cf6;
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            color: #fff;
-            font-size: 1.2rem;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: 0.25s;
+            position: absolute; top: 1.2rem; left: 1.5rem; background: #8b5cf6; border: none; width: 40px; height: 40px; border-radius: 50%; color: #fff; font-size: 1.2rem; cursor: pointer; display: flex; align-items: center; justify-content: center; transition: 0.25s;
         }
-        .modal-box .close:hover {
-            transform: rotate(90deg);
-            background: #7c3aed;
-        }
-        .modal-box .close:active {
-            transform: scale(0.9) rotate(90deg);
-        }
-        .modal-box h2 {
-            font-size: 1.6rem;
-            font-weight: 700;
-            margin-bottom: 0.8rem;
-            padding-left: 2.8rem;
-        }
-        .modal-box .text {
-            line-height: 2;
-            text-align: justify;
-            font-size: 0.95rem;
-        }
+        .modal-box .close:hover { transform: rotate(90deg); background: #7c3aed; }
+        .modal-box .close:active { transform: scale(0.9) rotate(90deg); }
+        .modal-box h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.8rem; padding-left: 2.8rem; }
+        .modal-box .text { line-height: 2; text-align: justify; font-size: 0.95rem; }
 
         /* ===== TOAST ===== */
         .toast-msg {
-            position: fixed;
-            bottom: 110px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #1f2937;
-            color: #fff;
-            padding: 10px 28px;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            z-index: 9998;
-            animation: fadeToast 2.8s ease forwards;
-            backdrop-filter: blur(8px);
-            box-shadow: 0 8px 28px rgba(0, 0, 0, 0.15);
+            position: fixed; bottom: 110px; left: 50%; transform: translateX(-50%); background: #1f2937; color: #fff; padding: 10px 28px; border-radius: 50px; font-size: 0.8rem; z-index: 9998; animation: fadeToast 2.8s ease forwards; backdrop-filter: blur(8px); box-shadow: 0 8px 28px rgba(0,0,0,0.15);
         }
         .toast-msg.special {
-            background: #8b5cf6;
-            color: #fff;
-            font-weight: 600;
-            box-shadow: 0 8px 30px rgba(139, 92, 246, 0.4);
-            animation: fadeToastSpecial 15s ease forwards;
+            background: #8b5cf6; color: #fff; font-weight: 600; box-shadow: 0 8px 30px rgba(139,92,246,0.4); animation: fadeToastSpecial 15s ease forwards;
         }
         @keyframes fadeToastSpecial {
             0%, 10% { opacity: 1; transform: translateX(-50%) translateY(0); }
             90% { opacity: 1; transform: translateX(-50%) translateY(0); }
             100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
         }
-        .toast-msg i {
-            margin-left: 8px;
-        }
+        .toast-msg i { margin-left: 8px; }
         @keyframes fadeToast {
             0%, 70% { opacity: 1; transform: translateX(-50%) translateY(0); }
             100% { opacity: 0; transform: translateX(-50%) translateY(20px); visibility: hidden; }
         }
-
         .notif-popup {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            background: rgba(0, 0, 0, 0.88);
-            backdrop-filter: blur(16px);
-            color: #fff;
-            padding: 16px 24px;
-            border-radius: 1.8rem;
-            max-width: 360px;
-            z-index: 9999;
-            border: 1px solid rgba(255, 255, 255, 0.06);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
-            animation: slideDown 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            position: fixed; top: 24px; right: 24px; background: rgba(0,0,0,0.88); backdrop-filter: blur(16px); color: #fff; padding: 16px 24px; border-radius: 1.8rem; max-width: 360px; z-index: 9999; border: 1px solid rgba(255,255,255,0.06); box-shadow: 0 20px 50px rgba(0,0,0,0.3); animation: slideDown 0.4s cubic-bezier(0.23,1,0.32,1);
         }
-        .notif-popup h4 {
-            color: #8b5cf6;
-            margin-bottom: 4px;
-            font-size: 1rem;
-        }
-        .notif-popup p {
-            font-size: 0.85rem;
-            opacity: 0.85;
-        }
-        @keyframes slideDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .notif-popup h4 { color: #8b5cf6; margin-bottom: 4px; font-size: 1rem; }
+        .notif-popup p { font-size: 0.85rem; opacity: 0.85; }
+        @keyframes slideDown { from { opacity: 0; transform: translateY(-30px); } to { opacity: 1; transform: translateY(0); } }
 
         /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
@@ -1291,9 +1163,7 @@
     </style>
 </head>
 <body>
-
     <div class="container">
-
         <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
             <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
@@ -1311,8 +1181,7 @@
             </div>
             <div class="glass">
                 <p id="aboutText" style="font-size:1rem; line-height:2; text-align:justify;">
-                    سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال،
-                    همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.
+                    سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.
                 </p>
             </div>
             <div class="glass">
@@ -1362,9 +1231,7 @@
                         <i class="fas fa-address-card" style="color:#8b5cf6;"></i> <span id="aboutMeTitle">درباره من</span>
                     </h3>
                     <p id="aboutMeText" style="line-height:2; text-align:justify; font-size:0.95rem;">
-                        من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک
-                        آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم. امروز به عنوان یک توسعه‌دهنده فول‌استک و طراح
-                        خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم.
+                        من سرفراز خموش هستم، متولد ۱۳۷۷ در مزار شریف. از سال ۱۳۹۴ فعالیت خود را در زمینه طراحی گرافیک آغاز کردم و سپس به دنیای برنامه‌نویسی وارد شدم. امروز به عنوان یک توسعه‌دهنده فول‌استک و طراح خلاق، به مشتریان در سراسر جهان خدمات ارائه می‌دهم.
                     </p>
                     <div style="display:flex; gap:1rem; margin-top:1.5rem; flex-wrap:wrap;">
                         <span style="background:rgba(139,92,246,0.06); padding:0.4rem 1.2rem; border-radius:2rem; font-size:0.8rem; border:1px solid rgba(139,92,246,0.1);">
@@ -1410,31 +1277,31 @@
                     </div>
                 </div>
 
+                <!-- ===== ADMIN PANEL WITH LOCK ===== -->
                 <div id="adminPanel">
-                    <h4 style="color:#8b5cf6; width:100%; margin:0 0 1rem 0;">
-                        <i class="fas fa-crown"></i>
-                        <span id="adminPanelTitle">پنل مدیریت</span>
-                    </h4>
-                    <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; align-items:center;">
-                        <select id="targetUser" style="flex:2; min-width:200px; padding:10px 16px; border-radius:16px; border:2px solid #e5e7eb; font-family:inherit;">
-                            <option value="">انتخاب کاربر...</option>
-                        </select>
-                        <input type="text" id="adminTitle" placeholder="عنوان خبر" style="flex:2; min-width:150px; padding:10px 16px; border-radius:16px; border:2px solid #e5e7eb; font-family:inherit;">
+                    <h4><i class="fas fa-lock" style="color:#8b5cf6;"></i> <span id="adminPanelTitle">پنل مدیریت (فقط مدیر)</span></h4>
+                    <div id="adminLock">
+                        <input type="password" id="adminPassword" placeholder="رمز عبور مدیریت را وارد کنید" />
+                        <button onclick="unlockAdmin()"><i class="fas fa-unlock"></i> ورود</button>
+                        <span id="adminLockStatus">وارد شوید</span>
                     </div>
-                    <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
-                        <textarea id="adminBody" placeholder="متن خبر را بنویسید..." rows="3" style="flex:1; min-width:200px; padding:10px 16px; border-radius:16px; border:2px solid #e5e7eb; font-family:inherit; resize:vertical;"></textarea>
-                        <button onclick="sendAdminPush()" style="padding:10px 28px; border-radius:40px; border:none; background:#8b5cf6; color:#fff; cursor:pointer; font-weight:600; font-family:inherit; white-space:nowrap; align-self:flex-end;">
-                            <i class="fas fa-paper-plane"></i> <span id="adminSendBtn">ارسال به کاربر</span>
-                        </button>
-                    </div>
-                    <div style="display:flex; gap:1rem; font-size:0.8rem; opacity:0.5; margin-top:8px; flex-wrap:wrap;">
-                        <span><i class="fas fa-users"></i> <span id="userCount">0</span> کاربر آنلاین</span>
-                        <span><i class="fas fa-key"></i> <span id="adminStatus">وضعیت: آماده</span></span>
-                    </div>
-
-                    <div id="adminArchive">
-                        <h4><i class="fas fa-archive"></i> <span id="archiveTitle">آرشیو پیام‌ها</span></h4>
-                        <div id="archiveList"></div>
+                    <div id="adminContent">
+                        <div class="admin-row">
+                            <select id="targetUser"><option value="">انتخاب کاربر...</option></select>
+                            <input type="text" id="adminTitle" placeholder="عنوان خبر" />
+                        </div>
+                        <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
+                            <textarea id="adminBody" placeholder="متن خبر را بنویسید..." rows="3" class="admin-textarea"></textarea>
+                            <button onclick="sendAdminPush()" class="admin-send-btn"><i class="fas fa-paper-plane"></i> <span id="adminSendBtn">ارسال به کاربر</span></button>
+                        </div>
+                        <div class="admin-stats">
+                            <span><i class="fas fa-users"></i> <span id="userCount">0</span> کاربر آنلاین</span>
+                            <span><i class="fas fa-key"></i> <span id="adminStatus">وضعیت: آماده</span></span>
+                        </div>
+                        <div id="adminArchive">
+                            <h4><i class="fas fa-archive"></i> <span id="archiveTitle">آرشیو پیام‌ها</span></h4>
+                            <div id="archiveList"></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1465,75 +1332,33 @@
             </h2>
             <div class="gallery-grid" id="galleryGrid"></div>
         </div>
-
     </div>
 
     <!-- ===== MODALS ===== -->
-    <div id="newsModal" class="modal-overlay">
-        <div class="modal-box">
-            <button class="close" id="modalCloseBtn"><i class="fas fa-times"></i></button>
-            <div id="modalContent"></div>
-        </div>
-    </div>
-
-    <div id="uidModal" class="modal-overlay">
-        <div class="modal-box" style="text-align:center; max-width:420px;">
-            <button class="close" id="closeUidModal"><i class="fas fa-times"></i></button>
-            <h3><i class="fas fa-gamepad" style="color:#8b5cf6;"></i> کال‌آف دیوتی موبایل</h3>
-            <p>UID من :</p>
-            <code style="display:inline-block; background:rgba(0,0,0,0.04); padding:6px 18px; border-radius:16px; font-family:'Inter',monospace; font-size:1.1rem; margin:8px 0 14px;">7500139701825634305</code>
-            <div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;">
-                <button id="copyUidBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:#8b5cf6; color:#fff;"><i class="fas fa-copy"></i> کپی</button>
-                <button id="closeUidModalBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:rgba(0,0,0,0.04); color:inherit;">بستن</button>
-            </div>
-        </div>
-    </div>
+    <div id="newsModal" class="modal-overlay"><div class="modal-box"><button class="close" id="modalCloseBtn"><i class="fas fa-times"></i></button><div id="modalContent"></div></div></div>
+    <div id="uidModal" class="modal-overlay"><div class="modal-box" style="text-align:center; max-width:420px;"><button class="close" id="closeUidModal"><i class="fas fa-times"></i></button><h3><i class="fas fa-gamepad" style="color:#8b5cf6;"></i> کال‌آف دیوتی موبایل</h3><p>UID من :</p><code style="display:inline-block; background:rgba(0,0,0,0.04); padding:6px 18px; border-radius:16px; font-family:'Inter',monospace; font-size:1.1rem; margin:8px 0 14px;">7500139701825634305</code><div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;"><button id="copyUidBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:#8b5cf6; color:#fff;"><i class="fas fa-copy"></i> کپی</button><button id="closeUidModalBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:rgba(0,0,0,0.04); color:inherit;">بستن</button></div></div></div>
 
     <!-- ===== BOTTOM NAVIGATION ===== -->
     <div class="bottom-nav-wrapper">
         <nav class="bottom-nav" id="bottomNav">
-            <button class="nav-item-home" data-page="home" onclick="navigateTo('home')" aria-label="خانه">
-                <i class="fas fa-home"></i>
-                <span id="label-home">خانه</span>
-            </button>
-            <button class="nav-item" data-page="about" onclick="navigateTo('about')" aria-label="درباره">
-                <i class="fas fa-user"></i>
-                <span id="label-about">درباره</span>
-            </button>
-            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')" aria-label="پروفایل">
-                <i class="fas fa-id-card"></i>
-                <span id="label-profile">پروفایل</span>
-            </button>
-            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')" aria-label="تنظیمات">
-                <i class="fas fa-cog"></i>
-                <span id="label-settings">تنظیمات</span>
-            </button>
-            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')" aria-label="مهاجرت">
-                <i class="fas fa-plane"></i>
-                <span id="label-immigration">مهاجرت</span>
-            </button>
-            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')" aria-label="فناوری">
-                <i class="fas fa-microchip"></i>
-                <span id="label-technews">فناوری</span>
-            </button>
-            <button class="nav-item" data-page="gallery" onclick="navigateTo('gallery')" aria-label="گالری">
-                <i class="fas fa-images"></i>
-                <span id="label-gallery">گالری</span>
-            </button>
+            <button class="nav-item-home" data-page="home" onclick="navigateTo('home')" aria-label="خانه"><i class="fas fa-home"></i><span id="label-home">خانه</span></button>
+            <button class="nav-item" data-page="about" onclick="navigateTo('about')" aria-label="درباره"><i class="fas fa-user"></i><span id="label-about">درباره</span></button>
+            <button class="nav-item" data-page="profile" onclick="navigateTo('profile')" aria-label="پروفایل"><i class="fas fa-id-card"></i><span id="label-profile">پروفایل</span></button>
+            <button class="nav-item" data-page="settings" onclick="navigateTo('settings')" aria-label="تنظیمات"><i class="fas fa-cog"></i><span id="label-settings">تنظیمات</span></button>
+            <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')" aria-label="مهاجرت"><i class="fas fa-plane"></i><span id="label-immigration">مهاجرت</span></button>
+            <button class="nav-item" data-page="technews" onclick="navigateTo('technews')" aria-label="فناوری"><i class="fas fa-microchip"></i><span id="label-technews">فناوری</span></button>
+            <button class="nav-item" data-page="gallery" onclick="navigateTo('gallery')" aria-label="گالری"><i class="fas fa-images"></i><span id="label-gallery">گالری</span></button>
         </nav>
     </div>
 
-    <!-- ============================================================
-    JAVASCRIPT - ALL CODE IN ONE PLACE
-    ============================================================ -->
+    <!-- ============================================================ JAVASCRIPT ============================================================ -->
     <script>
         // ================================================================
         // 1. DATA & TRANSLATIONS
         // ================================================================
         const translations = {
             fa: {
-                nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', immigration: 'مهاجرت',
-                    technews: 'فناوری', gallery: 'گالری' },
+                nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', immigration: 'مهاجرت', technews: 'فناوری', gallery: 'گالری' },
                 homeTitle: 'پروفایل‌ها',
                 aboutTitle: 'برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس',
                 aboutText: 'سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.',
@@ -1555,7 +1380,7 @@
                 immigrationTitle: 'برنامه‌های مهاجرت آمریکا',
                 techTitle: 'اخبار فناوری',
                 galleryTitle: 'گالری تصاویر',
-                adminPanel: 'پنل مدیریت',
+                adminPanel: 'پنل مدیریت (فقط مدیر)',
                 adminSend: 'ارسال به کاربر',
                 adminTitlePlaceholder: 'عنوان خبر',
                 adminBodyPlaceholder: 'متن خبر را بنویسید...',
@@ -1566,13 +1391,10 @@
                 statusDelivered: 'تحویل داده شده',
                 statusPending: 'در انتظار',
                 statusFailed: 'ناموفق',
-                social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب',
-                    pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک',
-                    substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
+                social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب', pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک', substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
             },
             en: {
-                nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', immigration: 'Immigration',
-                    technews: 'Tech News', gallery: 'Gallery' },
+                nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', immigration: 'Immigration', technews: 'Tech News', gallery: 'Gallery' },
                 homeTitle: 'Profiles',
                 aboutTitle: 'Developer · Graphic Designer · Immigration Consultant · Fitness Coach',
                 aboutText: 'Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, with over 8 years of experience in technology, design and digital development.',
@@ -1594,7 +1416,7 @@
                 immigrationTitle: 'US Immigration Programs',
                 techTitle: 'Tech News',
                 galleryTitle: 'Image Gallery',
-                adminPanel: 'Admin Panel',
+                adminPanel: 'Admin Panel (Only Admin)',
                 adminSend: 'Send to User',
                 adminTitlePlaceholder: 'News Title',
                 adminBodyPlaceholder: 'Write your news...',
@@ -1605,26 +1427,18 @@
                 statusDelivered: 'Delivered',
                 statusPending: 'Pending',
                 statusFailed: 'Failed',
-                social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub',
-                    pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok',
-                    substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
+                social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub', pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok', substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
             }
         };
 
         // ===== PROFILE CARDS =====
         const profileCards = [
-            { id: 1, name: 'سرفراز خموش', title: 'برنامه‌نویس و طراح گرافیک', desc: 'متخصص در توسعه وب و طراحی رابط کاربری',
-                tags: ['برنامه‌نویسی', 'طراحی', 'UI/UX'] },
-            { id: 2, name: 'سرفراز خموش', title: 'مشاور مهاجرت', desc: 'راهنمایی در زمینه مهاجرت به آمریکا و کانادا',
-                tags: ['مهاجرت', 'مشاوره'] },
-            { id: 3, name: 'سرفراز خموش', title: 'مربی فیتنس', desc: 'مربی بدنسازی و تناسب اندام با متدهای روز دنیا',
-                tags: ['فیتنس', 'بدنسازی'] },
-            { id: 4, name: 'سرفراز خموش', title: 'شاعر و نویسنده', desc: 'نویسنده اشعار عارفانه و عاشقانه با سبک مدرن',
-                tags: ['شعر', 'ادبیات'] },
-            { id: 5, name: 'سرفراز خموش', title: 'طراح لوگو و برند', desc: 'طراحی هویت بصری و لوگو برای برندهای مختلف',
-                tags: ['لوگو', 'برندینگ'] },
-            { id: 6, name: 'سرفراز خموش', title: 'توسعه‌دهنده فول‌استک', desc: 'توسعه وب‌سایت و اپلیکیشن با React و Node.js',
-                tags: ['React', 'Node.js'] }
+            { id: 1, name: 'سرفراز خموش', title: 'برنامه‌نویس و طراح گرافیک', desc: 'متخصص در توسعه وب و طراحی رابط کاربری', tags: ['برنامه‌نویسی', 'طراحی', 'UI/UX'] },
+            { id: 2, name: 'سرفراز خموش', title: 'مشاور مهاجرت', desc: 'راهنمایی در زمینه مهاجرت به آمریکا و کانادا', tags: ['مهاجرت', 'مشاوره'] },
+            { id: 3, name: 'سرفراز خموش', title: 'مربی فیتنس', desc: 'مربی بدنسازی و تناسب اندام با متدهای روز دنیا', tags: ['فیتنس', 'بدنسازی'] },
+            { id: 4, name: 'سرفراز خموش', title: 'شاعر و نویسنده', desc: 'نویسنده اشعار عارفانه و عاشقانه با سبک مدرن', tags: ['شعر', 'ادبیات'] },
+            { id: 5, name: 'سرفراز خموش', title: 'طراح لوگو و برند', desc: 'طراحی هویت بصری و لوگو برای برندهای مختلف', tags: ['لوگو', 'برندینگ'] },
+            { id: 6, name: 'سرفراز خموش', title: 'توسعه‌دهنده فول‌استک', desc: 'توسعه وب‌سایت و اپلیکیشن با React و Node.js', tags: ['React', 'Node.js'] }
         ];
 
         // ===== OTHER DATA =====
@@ -1638,14 +1452,9 @@
             { fa: "مربیگری فیتنس", en: "Fitness Coaching" }
         ];
         const skillsData = [
-            { name: "Photoshop", pct: 85 },
-            { name: "Illustrator", pct: 90 },
-            { name: "Flutter", pct: 80 },
-            { name: "Python", pct: 58 },
-            { name: "PHP", pct: 70 },
-            { name: "JavaScript", pct: 50 },
-            { name: "Go", pct: 90 },
-            { name: "InDesign", pct: 50 }
+            { name: "Photoshop", pct: 85 }, { name: "Illustrator", pct: 90 }, { name: "Flutter", pct: 80 },
+            { name: "Python", pct: 58 }, { name: "PHP", pct: 70 }, { name: "JavaScript", pct: 50 },
+            { name: "Go", pct: 90 }, { name: "InDesign", pct: 50 }
         ];
 
         const immigrationPrograms = [
@@ -1661,43 +1470,21 @@
             { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", statusFa: "فعال", statusEn: "Active" },
             { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open" },
             { id: 'i130_gc', fa: "I-130 با گرین کارت", en: "I-130 with Green Card", statusFa: "فعال", statusEn: "Active" },
-            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال",
-                statusEn: "Active" }
+            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال", statusEn: "Active" }
         ];
 
-        const newsData = [{
-            id: 1,
-            fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد",
-            en: "Google Raises $85B for AI",
-            date: "۳ جون ۲۰۲۶",
-            img: "news-pic/google.jpg",
-            fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...",
-            fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..."
-        }, {
-            id: 2,
-            fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد",
-            en: "Startup Lovable Expands Google Partnership",
-            date: "۳ جون ۲۰۲۶",
-            img: "news-pic/ai.jpg",
-            fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...",
-            fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..."
-        }, {
-            id: 3,
-            fa: "متا بازی VR «Supernatural» را نجات داد",
-            en: "Meta Rescues VR Game 'Supernatural'",
-            date: "۳ جون ۲۰۲۶",
-            img: "news-pic/meta.jpg",
-            fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...",
-            fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..."
-        }];
+        const newsData = [
+            { id: 1, fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد", en: "Google Raises $85B for AI", date: "۳ جون ۲۰۲۶", img: "news-pic/google.jpg", fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...", fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..." },
+            { id: 2, fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد", en: "Startup Lovable Expands Google Partnership", date: "۳ جون ۲۰۲۶", img: "news-pic/ai.jpg", fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...", fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..." },
+            { id: 3, fa: "متا بازی VR «Supernatural» را نجات داد", en: "Meta Rescues VR Game 'Supernatural'", date: "۳ جون ۲۰۲۶", img: "news-pic/meta.jpg", fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...", fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..." }
+        ];
 
         // ===== STATE =====
         let currentLang = 'fa';
         let currentPage = 'home';
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
-
-        // ===== SERVER URL =====
-        const SERVER_URL = 'https://push-server.onrender.com'; // 🔑 آدرس Render خود را جایگزین کنید
+        const SERVER_URL = 'https://hammmmmmad.onrender.com';
+        const ADMIN_PASSWORD = 'admin123'; // رمز عبور مدیریت
 
         // ================================================================
         // 2. HELPERS
@@ -1720,21 +1507,17 @@
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
             if (target) target.classList.add('active');
-
             document.querySelectorAll('.bottom-nav .nav-item, .bottom-nav .nav-item-home').forEach(el => {
                 el.classList.remove('active');
                 if (el.getAttribute('data-page') === page) el.classList.add('active');
             });
-
             if (page === 'home') renderHome();
             if (page === 'about') renderAbout();
             if (page === 'immigration') renderImmigration();
             if (page === 'technews') renderNews();
             if (page === 'gallery') renderGallery();
             if (page === 'profile') updateProfilePage();
-            if (page === 'settings') { updateSettingsPage();
-                setTimeout(initAdminPanel, 500); }
-
+            if (page === 'settings') { updateSettingsPage(); }
             currentPage = page;
             localStorage.setItem('currentPage', page);
             updateSEO(page);
@@ -1764,7 +1547,6 @@
             if (!grid) return;
             const t = translations[currentLang];
             document.querySelector('#page-home h2 span').textContent = t.homeTitle;
-
             grid.innerHTML = profileCards.map((card) => {
                 const name = currentLang === 'fa' ? card.name : 'Sarfraz Khamoosh';
                 const title = currentLang === 'fa' ? card.title : card.title;
@@ -1786,13 +1568,9 @@
             document.getElementById('aboutText').textContent = t.aboutText;
             document.getElementById('skillsTitle').textContent = t.skillsTitle;
             document.getElementById('specialtiesTitle').textContent = t.specialtiesTitle;
-
             const grid = document.getElementById('doughnutGrid');
             if (grid) {
-                grid.innerHTML = skillsData.map(s => {
-                    const pct = s.pct;
-                    return `<div class="doughnut-item"><div class="doughnut" style="--pct:${pct}%;"><span class="val">${pct}%</span></div><span class="label">${s.name}</span></div>`;
-                }).join('');
+                grid.innerHTML = skillsData.map(s => `<div class="doughnut-item"><div class="doughnut" style="--pct:${s.pct}%;"><span class="val">${s.pct}%</span></div><span class="label">${s.name}</span></div>`).join('');
                 setTimeout(() => {
                     document.querySelectorAll('.doughnut').forEach(el => {
                         const pct = el.style.getPropertyValue('--pct');
@@ -1802,8 +1580,7 @@
             }
             const list = document.getElementById('specialtiesList');
             if (list) {
-                list.innerHTML = specialties.map(s =>
-                    `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
+                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
             }
         }
 
@@ -1818,19 +1595,11 @@
             document.getElementById('labelEducation').textContent = t.profileEducation;
             document.getElementById('aboutMeTitle').textContent = t.profileAbout;
             document.getElementById('aboutMeText').textContent = t.profileDesc;
-
             const socialMap = {
-                'فیسبوک': t.social.facebook,
-                'اینستاگرام': t.social.instagram,
-                'لینکدین': t.social.linkedin,
-                'گیت‌هاب': t.social.github,
-                'پینترست': t.social.pinterest,
-                'بهنس': t.social.behance,
-                'واتساپ': t.social.whatsapp,
-                'تیک تاک': t.social.tiktok,
-                'ساب‌استک': t.social.substack,
-                'تردز': t.social.threads,
-                'کال‌آف دیوتی': t.social.codm
+                'فیسبوک': t.social.facebook, 'اینستاگرام': t.social.instagram, 'لینکدین': t.social.linkedin,
+                'گیت‌هاب': t.social.github, 'پینترست': t.social.pinterest, 'بهنس': t.social.behance,
+                'واتساپ': t.social.whatsapp, 'تیک تاک': t.social.tiktok, 'ساب‌استک': t.social.substack,
+                'تردز': t.social.threads, 'کال‌آف دیوتی': t.social.codm
             };
             document.querySelectorAll('.profile-social-list .sname').forEach(el => {
                 if (socialMap[el.textContent]) el.textContent = socialMap[el.textContent];
@@ -1852,75 +1621,15 @@
         }
 
         // ================================================================
-        // 5. NOTIFICATION FUNCTIONS (Web Push)
+        // 5. NOTIFICATION FUNCTIONS
         // ================================================================
-
-        // ===== ثبت اشتراک در سرور =====
-        async function subscribeToPush() {
-            try {
-                if (!('serviceWorker' in navigator)) {
-                    toast('مرورگر شما از Web Push پشتیبانی نمی‌کند');
-                    return false;
-                }
-
-                const registration = await navigator.serviceWorker.ready;
-                const permission = await Notification.requestPermission();
-
-                if (permission !== 'granted') {
-                    toast('برای دریافت اعلان، لطفاً مجوز را فعال کنید');
-                    return false;
-                }
-
-                const subscription = await registration.pushManager.subscribe({
-                    userVisibleOnly: true,
-                    applicationServerKey: urlBase64ToUint8Array(
-                        'BEl62JiU0R9M6cL9nXZx7Qy8WpNfJkLmQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYz'
-                    )
-                });
-
-                // ارسال به سرور
-                const response = await fetch(`${SERVER_URL}/api/subscribe`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(subscription)
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    localStorage.setItem('subscriptionId', data.id);
-                    toast('اشتراک با موفقیت ثبت شد');
-                    return true;
-                }
-                return false;
-            } catch (error) {
-                console.error('Subscribe error:', error);
-                toast('خطا در ثبت اشتراک');
-                return false;
-            }
-        }
-
-        // ===== تبدیل کلید VAPID =====
-        function urlBase64ToUint8Array(base64String) {
-            const padding = '='.repeat((4 - base64String.length % 4) % 4);
-            const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
-            const rawData = window.atob(base64);
-            const outputArray = new Uint8Array(rawData.length);
-            for (let i = 0; i < rawData.length; ++i) {
-                outputArray[i] = rawData.charCodeAt(i);
-            }
-            return outputArray;
-        }
-
-        // ===== ارسال Notification (کلیک روی زنگوله) =====
         async function handleNotification(programId, programName, btn) {
             const subscriptionId = localStorage.getItem('subscriptionId');
-            
             if (!subscriptionId) {
                 toast('لطفاً ابتدا روی زنگوله کلیک کنید تا مجوز دریافت کنید');
                 const subscribed = await subscribeToPush();
                 if (!subscribed) return;
             }
-
             const messages = {
                 'siv': 'تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد',
                 'p1': 'برنامه P1: مهلت ثبت‌نام تا ۳۰ جولای تمدید شد',
@@ -1936,11 +1645,9 @@
                 'i130_gc': 'I-130 با گرین کارت: افزایش تعرفه به ۵۳۵ دلار',
                 'i130_us': 'I-130 با پاسپورت: تسریع در رسیدگی'
             };
-
             const title = `برنامه ${programName}`;
             const body = messages[programId] || 'به‌روزرسانی جدید برای این برنامه موجود است';
             const specialMessage = `خبر مربوط به برنامه "${programName}" برای شما اعلان و ویژه توسط آقای خموش ارسال میشود. این یک تکنولوژی ویژه برای شما خواهد بود.`;
-
             try {
                 const response = await fetch(`${SERVER_URL}/api/send`, {
                     method: 'POST',
@@ -1952,16 +1659,10 @@
                         programId: programId
                     })
                 });
-
                 if (response.ok) {
-                    // پیام ویژه ۱۵ ثانیه‌ای
                     toast(specialMessage, true);
-
-                    // سبز کردن دکمه
                     btn.classList.add('success');
                     setTimeout(() => btn.classList.remove('success'), 15000);
-
-                    // به‌روزرسانی نشانگر
                     const hasNotif = notifBadges[programId] || false;
                     if (hasNotif) {
                         notifBadges[programId] = false;
@@ -1979,7 +1680,6 @@
                         }
                     }
                     localStorage.setItem('notifications', JSON.stringify(notifBadges));
-
                     toast(`اعلان برای برنامه ${programName} ارسال شد`);
                 } else {
                     toast('خطا در ارسال اعلان');
@@ -1990,21 +1690,134 @@
             }
         }
 
-        // ===== ارسال از پنل مدیریت =====
+        async function subscribeToPush() {
+            try {
+                if (!('serviceWorker' in navigator)) {
+                    toast('مرورگر شما از Web Push پشتیبانی نمی‌کند');
+                    return false;
+                }
+                const registration = await navigator.serviceWorker.ready;
+                const permission = await Notification.requestPermission();
+                if (permission !== 'granted') {
+                    toast('برای دریافت اعلان، لطفاً مجوز را فعال کنید');
+                    return false;
+                }
+                const subscription = await registration.pushManager.subscribe({
+                    userVisibleOnly: true,
+                    applicationServerKey: urlBase64ToUint8Array('BEl62JiU0R9M6cL9nXZx7Qy8WpNfJkLmQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYz')
+                });
+                const response = await fetch(`${SERVER_URL}/api/subscribe`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(subscription)
+                });
+                if (response.ok) {
+                    const data = await response.json();
+                    localStorage.setItem('subscriptionId', data.id);
+                    toast('اشتراک با موفقیت ثبت شد');
+                    return true;
+                }
+                return false;
+            } catch (error) {
+                console.error('Subscribe error:', error);
+                toast('خطا در ثبت اشتراک');
+                return false;
+            }
+        }
+
+        function urlBase64ToUint8Array(base64String) {
+            const padding = '='.repeat((4 - base64String.length % 4) % 4);
+            const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
+            const rawData = window.atob(base64);
+            const outputArray = new Uint8Array(rawData.length);
+            for (let i = 0; i < rawData.length; ++i) {
+                outputArray[i] = rawData.charCodeAt(i);
+            }
+            return outputArray;
+        }
+
+        function renderImmigration() {
+            const grid = document.getElementById('immigrationGrid');
+            if (!grid) return;
+            const t = translations[currentLang];
+            document.getElementById('immigrationTitle').textContent = t.immigrationTitle;
+            grid.innerHTML = immigrationPrograms.map(prog => {
+                const name = currentLang === 'fa' ? prog.fa : prog.en;
+                const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
+                const hasNotif = notifBadges[prog.id] || false;
+                return `<div class="imm-card" data-program="${prog.id}">
+                            <div class="info"><h4>${name}</h4><div class="status">${status}</div></div>
+                            <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
+                                <i class="fas fa-bell"></i>${hasNotif ? '<span class="badge">1</span>' : ''}
+                            </button>
+                        </div>`;
+            }).join('');
+        }
+
+        // ================================================================
+        // 6. ADMIN PANEL (WITH PASSWORD LOCK)
+        // ================================================================
+        function unlockAdmin() {
+            const input = document.getElementById('adminPassword');
+            const status = document.getElementById('adminLockStatus');
+            const content = document.getElementById('adminContent');
+            const lockDiv = document.getElementById('adminLock');
+            if (input.value === ADMIN_PASSWORD) {
+                content.style.display = 'block';
+                lockDiv.style.display = 'none';
+                status.textContent = 'دسترسی مجاز';
+                loadUsers();
+            } else {
+                status.textContent = 'رمز اشتباه است';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        async function loadUsers() {
+            try {
+                const response = await fetch(`${SERVER_URL}/api/users`);
+                if (!response.ok) throw new Error('Failed to fetch users');
+                const users = await response.json();
+                const select = document.getElementById('targetUser');
+                const countSpan = document.getElementById('userCount');
+                select.innerHTML = '<option value="">انتخاب کاربر...</option>';
+                if (users.length === 0) {
+                    select.innerHTML += '<option value="" disabled>هیچ کاربری ثبت نشده</option>';
+                    if (countSpan) countSpan.textContent = '0';
+                    document.getElementById('adminStatus').textContent = 'هیچ کاربری ثبت نشده';
+                    return;
+                }
+                users.forEach((user, index) => {
+                    const opt = document.createElement('option');
+                    opt.value = user.id;
+                    opt.textContent = `کاربر ${index + 1}`;
+                    select.appendChild(opt);
+                });
+                if (countSpan) countSpan.textContent = users.length;
+                document.getElementById('adminStatus').textContent = 'آماده ارسال';
+                if (window.notifManager) {
+                    await window.notifManager.renderArchive();
+                }
+            } catch (error) {
+                console.warn('Admin panel not available:', error);
+                document.getElementById('adminStatus').textContent = 'سرور در دسترس نیست';
+                const select = document.getElementById('targetUser');
+                select.innerHTML = '<option value="admin">مدیر (تست)</option>';
+            }
+        }
+
         async function sendAdminPush() {
             const userId = document.getElementById('targetUser').value;
             const title = document.getElementById('adminTitle').value.trim();
             const body = document.getElementById('adminBody').value.trim();
-
             if (!userId) { toast('لطفاً یک کاربر را انتخاب کنید'); return; }
             if (!title) { toast('لطفاً عنوان خبر را وارد کنید'); return; }
             if (!body) { toast('لطفاً متن خبر را وارد کنید'); return; }
-
-            const btn = document.querySelector('#adminPanel button');
+            const btn = document.querySelector('.admin-send-btn');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
             btn.disabled = true;
-
             try {
                 const response = await fetch(`${SERVER_URL}/api/send`, {
                     method: 'POST',
@@ -2016,14 +1829,12 @@
                         programId: 'admin'
                     })
                 });
-
                 const result = await response.json();
                 if (result.success) {
                     toast('خبر با موفقیت ارسال شد');
                     document.getElementById('adminTitle').value = '';
                     document.getElementById('adminBody').value = '';
                     document.getElementById('adminStatus').textContent = 'ارسال موفق';
-                    // ذخیره در آرشیو
                     if (window.notifManager) {
                         await window.notifManager.saveNotification({
                             title: title,
@@ -2046,33 +1857,161 @@
         }
 
         // ================================================================
-        // 6. RENDER IMMIGRATION
+        // 7. NOTIFICATION MANAGER (ARCHIVE)
         // ================================================================
-        function renderImmigration() {
-            const grid = document.getElementById('immigrationGrid');
-            if (!grid) return;
-            const t = translations[currentLang];
-            document.getElementById('immigrationTitle').textContent = t.immigrationTitle;
-
-            grid.innerHTML = immigrationPrograms.map(prog => {
-                const name = currentLang === 'fa' ? prog.fa : prog.en;
-                const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
-                const hasNotif = notifBadges[prog.id] || false;
-                return `<div class="imm-card" data-program="${prog.id}">
-                            <div class="info">
-                                <h4>${name}</h4>
-                                <div class="status">${status}</div>
-                            </div>
-                            <button class="bell-btn ${hasNotif ? 'has-notification' : ''}" onclick="handleNotification('${prog.id}','${name.replace(/"/g,'&quot;')}',this)">
-                                <i class="fas fa-bell"></i>
-                                ${hasNotif ? '<span class="badge">1</span>' : ''}
-                            </button>
-                        </div>`;
-            }).join('');
+        class NotificationManager {
+            constructor() {
+                this.notifications = [];
+                this.db = null;
+                this.initDB();
+                this.loadStoredNotifications();
+                this.createBellButton();
+                this.updateBellBadge();
+            }
+            async initDB() {
+                return new Promise((resolve) => {
+                    const request = indexedDB.open('SarfrazNotifDB', 1);
+                    request.onupgradeneeded = (event) => {
+                        const db = event.target.result;
+                        if (!db.objectStoreNames.contains('notifications')) {
+                            const store = db.createObjectStore('notifications', { keyPath: 'id', autoIncrement: true });
+                            store.createIndex('timestamp', 'timestamp', { unique: false });
+                        }
+                    };
+                    request.onsuccess = (event) => { this.db = event.target.result; resolve(); };
+                    request.onerror = () => resolve();
+                });
+            }
+            async saveNotification(notification) {
+                if (!this.db) await this.initDB();
+                return new Promise((resolve) => {
+                    const transaction = this.db.transaction(['notifications'], 'readwrite');
+                    const store = transaction.objectStore('notifications');
+                    const data = { ...notification, timestamp: notification.timestamp || Date.now(), isRead: notification.isRead || false };
+                    const request = store.add(data);
+                    request.onsuccess = () => resolve(request.result);
+                    request.onerror = () => resolve();
+                });
+            }
+            async getNotifications() {
+                if (!this.db) await this.initDB();
+                return new Promise((resolve) => {
+                    const transaction = this.db.transaction(['notifications'], 'readonly');
+                    const store = transaction.objectStore('notifications');
+                    const index = store.index('timestamp');
+                    const request = index.openCursor(null, 'prev');
+                    const results = [];
+                    request.onsuccess = (event) => {
+                        const cursor = event.target.result;
+                        if (cursor) { results.push(cursor.value); cursor.continue(); } else { resolve(results); }
+                    };
+                    request.onerror = () => resolve([]);
+                });
+            }
+            async deleteNotification(id) {
+                if (!this.db) await this.initDB();
+                return new Promise((resolve) => {
+                    const transaction = this.db.transaction(['notifications'], 'readwrite');
+                    const store = transaction.objectStore('notifications');
+                    store.delete(id);
+                    resolve();
+                });
+            }
+            async loadStoredNotifications() {
+                this.notifications = await this.getNotifications();
+                this.updateBellBadge();
+                this.renderArchive();
+            }
+            async renderArchive() {
+                const container = document.getElementById('archiveList');
+                if (!container) return;
+                const notifications = await this.getNotifications();
+                if (notifications.length === 0) {
+                    container.innerHTML = `<div class="archive-empty">هنوز پیامی ارسال نشده است</div>`;
+                    return;
+                }
+                const t = translations[currentLang];
+                container.innerHTML = notifications.map(notif => {
+                    const statusText = notif.status === 'delivered' ? t.statusDelivered :
+                        notif.status === 'pending' ? t.statusPending : t.statusFailed;
+                    const statusClass = notif.status === 'delivered' ? 'delivered' :
+                        notif.status === 'pending' ? 'pending' : 'failed';
+                    const time = new Date(notif.timestamp).toLocaleString('fa-IR');
+                    return `<div class="archive-item">
+                                <div class="info">
+                                    <div class="title">${notif.title}</div>
+                                    <div class="body">${notif.body}</div>
+                                    <div class="meta">
+                                        <span><i class="fas fa-user"></i> ${notif.userId || 'همه کاربران'}</span>
+                                        <span><i class="fas fa-clock"></i> ${time}</span>
+                                    </div>
+                                </div>
+                                <span class="status ${statusClass}">${statusText}</span>
+                                <button class="delete-archive" onclick="window.deleteArchiveItem(${notif.id})"><i class="fas fa-trash"></i></button>
+                            </div>`;
+                }).join('');
+            }
+            async updateBellBadge() {
+                const notifs = await this.getNotifications();
+                const unread = notifs.filter(n => !n.isRead).length;
+                const bellBtn = document.querySelector('.notif-bell-btn');
+                if (bellBtn) {
+                    const badge = bellBtn.querySelector('.notif-badge');
+                    if (unread > 0) {
+                        if (!badge) {
+                            const b = document.createElement('span');
+                            b.className = 'notif-badge';
+                            b.textContent = unread;
+                            bellBtn.appendChild(b);
+                        } else {
+                            badge.textContent = unread;
+                        }
+                        bellBtn.classList.add('has-notif');
+                    } else {
+                        if (badge) badge.remove();
+                        bellBtn.classList.remove('has-notif');
+                    }
+                }
+            }
+            createBellButton() {
+                const existing = document.querySelector('.notif-bell-btn');
+                if (existing) existing.remove();
+                const nav = document.querySelector('.bottom-nav');
+                if (!nav) return;
+                const btn = document.createElement('button');
+                btn.className = 'nav-item notif-bell-btn';
+                btn.innerHTML = `<i class="fas fa-bell"></i><span>اعلان</span>`;
+                btn.style.position = 'relative';
+                nav.appendChild(btn);
+                btn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    if (Notification.permission === 'default') {
+                        Notification.requestPermission().then(permission => {
+                            if (permission === 'granted') {
+                                subscribeToPush();
+                            }
+                        });
+                    }
+                });
+                this.updateBellBadge();
+            }
+            async deleteArchiveItem(id) {
+                await this.deleteNotification(id);
+                this.notifications = this.notifications.filter(n => n.id !== id);
+                this.renderArchive();
+                this.updateBellBadge();
+            }
         }
 
+        window.deleteArchiveItem = async function(id) {
+            if (!confirm('آیا مطمئن هستید؟')) return;
+            if (window.notifManager) {
+                await window.notifManager.deleteArchiveItem(id);
+            }
+        };
+
         // ================================================================
-        // 7. TECH NEWS & GALLERY
+        // 8. TECH NEWS & GALLERY
         // ================================================================
         function renderNews() {
             const grid = document.getElementById('newsGrid');
@@ -2083,13 +2022,7 @@
                 const title = currentLang === 'fa' ? n.fa : n.en;
                 return `<div class="news-card" onclick="openNews(${n.id})">
                             <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
-                            <div class="body">
-                                <h4>${title}</h4>
-                                <div class="meta">
-                                    <span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span>
-                                    <span>${n.date}</span>
-                                </div>
-                            </div>
+                            <div class="body"><h4>${title}</h4><div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span><span>${n.date}</span></div></div>
                         </div>`;
             }).join('');
         }
@@ -2126,8 +2059,7 @@
             const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
             const validImages = imageNames.filter(name => validExts.includes(name.split('.').pop().toLowerCase()));
             if (validImages.length === 0) {
-                grid.innerHTML =
-                    `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">${currentLang === 'fa' ? 'هیچ تصویری یافت نشد' : 'No images found'}</p>`;
+                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">${currentLang === 'fa' ? 'هیچ تصویری یافت نشد' : 'No images found'}</p>`;
                 return;
             }
             grid.innerHTML = validImages.map(name => {
@@ -2141,70 +2073,22 @@
         }
 
         // ================================================================
-        // 8. ADMIN PANEL
-        // ================================================================
-        async function loadUsers() {
-            try {
-                const response = await fetch(`${SERVER_URL}/api/users`);
-                if (!response.ok) throw new Error('Failed to fetch users');
-                const users = await response.json();
-                const select = document.getElementById('targetUser');
-                const countSpan = document.getElementById('userCount');
-                select.innerHTML = '<option value="">انتخاب کاربر...</option>';
-                if (users.length === 0) {
-                    select.innerHTML += '<option value="" disabled>هیچ کاربری ثبت نشده</option>';
-                    if (countSpan) countSpan.textContent = '0';
-                    document.getElementById('adminStatus').textContent = 'هیچ کاربری ثبت نشده';
-                    return;
-                }
-                users.forEach((user, index) => {
-                    const opt = document.createElement('option');
-                    opt.value = user.id;
-                    opt.textContent = `کاربر ${index + 1}`;
-                    select.appendChild(opt);
-                });
-                if (countSpan) countSpan.textContent = users.length;
-                document.getElementById('adminStatus').textContent = 'آماده ارسال';
-                document.getElementById('adminPanel').style.display = 'block';
-
-                if (window.notifManager) {
-                    await window.notifManager.renderArchive();
-                }
-            } catch (error) {
-                console.warn('Admin panel not available:', error);
-                document.getElementById('adminStatus').textContent = 'سرور در دسترس نیست';
-            }
-        }
-
-        function initAdminPanel() {
-            const settingsPage = document.getElementById('page-settings');
-            if (settingsPage && settingsPage.classList.contains('active')) {
-                loadUsers();
-            }
-        }
-
-        // ================================================================
-        // 9. LANGUAGE
+        // 9. LANGUAGE & SETTINGS
         // ================================================================
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('sarfraz_lang', lang);
             const t = translations[lang];
             const labelMap = {
-                'label-home': t.nav.home,
-                'label-about': t.nav.about,
-                'label-profile': t.nav.profile,
-                'label-settings': t.nav.settings,
-                'label-immigration': t.nav.immigration,
-                'label-technews': t.nav.technews,
-                'label-gallery': t.nav.gallery
+                'label-home': t.nav.home, 'label-about': t.nav.about, 'label-profile': t.nav.profile,
+                'label-settings': t.nav.settings, 'label-immigration': t.nav.immigration,
+                'label-technews': t.nav.technews, 'label-gallery': t.nav.gallery
             };
             Object.keys(labelMap).forEach(id => {
                 const el = document.getElementById(id);
                 if (el) el.textContent = labelMap[id];
             });
-            const langBtns = document.querySelectorAll('.lang-opt');
-            langBtns.forEach(btn => {
+            document.querySelectorAll('.lang-opt').forEach(btn => {
                 btn.classList.remove('active');
                 if (btn.getAttribute('data-lang') === lang) btn.classList.add('active');
             });
@@ -2217,15 +2101,11 @@
                 else if (id === 'technews') renderNews();
                 else if (id === 'gallery') renderGallery();
                 else if (id === 'profile') updateProfilePage();
-                else if (id === 'settings') { updateSettingsPage();
-                    setTimeout(initAdminPanel, 500); }
+                else if (id === 'settings') { updateSettingsPage(); }
             }
             updateSEO(currentPage);
         }
 
-        // ================================================================
-        // 10. SETTINGS INIT
-        // ================================================================
         function initSettings() {
             const themeToggle = document.getElementById('themeToggle');
             if (localStorage.getItem('sarfraz_theme') === 'dark') {
@@ -2237,7 +2117,6 @@
                 document.body.classList.toggle('dark');
                 localStorage.setItem('sarfraz_theme', document.body.classList.contains('dark') ? 'dark' : 'light');
             });
-
             document.querySelectorAll('.lang-opt').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
@@ -2250,24 +2129,20 @@
                     this.classList.add('active');
                     const view = this.getAttribute('data-view');
                     const c = document.querySelector('.container');
-                    if (view === 'desktop') { c.style.maxWidth = '1200px';
-                        c.style.padding = '1.5rem 1.2rem'; } else if (view === 'tablet') { c.style.maxWidth =
-                            '768px';
-                        c.style.padding = '1rem 0.8rem'; } else { c.style.maxWidth = '480px';
-                        c.style.padding = '0.8rem 0.6rem'; }
+                    if (view === 'desktop') { c.style.maxWidth = '1200px'; c.style.padding = '1.5rem 1.2rem'; }
+                    else if (view === 'tablet') { c.style.maxWidth = '768px'; c.style.padding = '1rem 0.8rem'; }
+                    else { c.style.maxWidth = '480px'; c.style.padding = '0.8rem 0.6rem'; }
                     localStorage.setItem('viewMode', view);
                 });
             });
             const sv = localStorage.getItem('viewMode') || 'desktop';
-            document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-view') ===
-                sv));
+            document.querySelectorAll('.view-btn').forEach(b => b.classList.toggle('active', b.getAttribute('data-view') === sv));
             const sl = localStorage.getItem('sarfraz_lang') || 'fa';
-            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') ===
-                sl));
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === sl));
         }
 
         // ================================================================
-        // 11. MODALS
+        // 10. MODALS
         // ================================================================
         function initUidModal() {
             const modal = document.getElementById('uidModal');
@@ -2275,11 +2150,8 @@
             const closeBtn = document.getElementById('closeUidModal');
             const closeBtn2 = document.getElementById('closeUidModalBtn');
             const copyBtn = document.getElementById('copyUidBtn');
-
             function open() { modal.classList.add('open'); }
-
             function close() { modal.classList.remove('open'); }
-
             function copyUid() {
                 navigator.clipboard.writeText('7500139701825634305');
                 toast('UID کپی شد!');
@@ -2293,220 +2165,23 @@
         }
 
         // ================================================================
-        // 12. NOTIFICATION MANAGER (Archive)
-        // ================================================================
-        class NotificationManager {
-            constructor() {
-                this.notifications = [];
-                this.db = null;
-                this.initDB();
-                this.loadStoredNotifications();
-                this.createBellButton();
-                this.updateBellBadge();
-            }
-
-            async initDB() {
-                return new Promise((resolve) => {
-                    const request = indexedDB.open('SarfrazNotifDB', 1);
-                    request.onupgradeneeded = (event) => {
-                        const db = event.target.result;
-                        if (!db.objectStoreNames.contains('notifications')) {
-                            const store = db.createObjectStore('notifications', {
-                                keyPath: 'id',
-                                autoIncrement: true
-                            });
-                            store.createIndex('timestamp', 'timestamp', { unique: false });
-                        }
-                    };
-                    request.onsuccess = (event) => {
-                        this.db = event.target.result;
-                        resolve();
-                    };
-                    request.onerror = () => resolve();
-                });
-            }
-
-            async saveNotification(notification) {
-                if (!this.db) await this.initDB();
-                return new Promise((resolve) => {
-                    const transaction = this.db.transaction(['notifications'], 'readwrite');
-                    const store = transaction.objectStore('notifications');
-                    const data = {
-                        ...notification,
-                        timestamp: notification.timestamp || Date.now(),
-                        isRead: notification.isRead || false
-                    };
-                    const request = store.add(data);
-                    request.onsuccess = () => resolve(request.result);
-                    request.onerror = () => resolve();
-                });
-            }
-
-            async getNotifications() {
-                if (!this.db) await this.initDB();
-                return new Promise((resolve) => {
-                    const transaction = this.db.transaction(['notifications'], 'readonly');
-                    const store = transaction.objectStore('notifications');
-                    const index = store.index('timestamp');
-                    const request = index.openCursor(null, 'prev');
-                    const results = [];
-                    request.onsuccess = (event) => {
-                        const cursor = event.target.result;
-                        if (cursor) {
-                            results.push(cursor.value);
-                            cursor.continue();
-                        } else {
-                            resolve(results);
-                        }
-                    };
-                    request.onerror = () => resolve([]);
-                });
-            }
-
-            async deleteNotification(id) {
-                if (!this.db) await this.initDB();
-                return new Promise((resolve) => {
-                    const transaction = this.db.transaction(['notifications'], 'readwrite');
-                    const store = transaction.objectStore('notifications');
-                    store.delete(id);
-                    resolve();
-                });
-            }
-
-            async loadStoredNotifications() {
-                this.notifications = await this.getNotifications();
-                this.updateBellBadge();
-                this.renderArchive();
-            }
-
-            async renderArchive() {
-                const container = document.getElementById('archiveList');
-                if (!container) return;
-
-                const notifications = await this.getNotifications();
-                if (notifications.length === 0) {
-                    container.innerHTML = `<div class="archive-empty">هنوز پیامی ارسال نشده است</div>`;
-                    return;
-                }
-
-                const t = translations[currentLang];
-                container.innerHTML = notifications.map(notif => {
-                    const statusText = notif.status === 'delivered' ? t.statusDelivered :
-                        notif.status === 'pending' ? t.statusPending : t.statusFailed;
-                    const statusClass = notif.status === 'delivered' ? 'delivered' :
-                        notif.status === 'pending' ? 'pending' : 'failed';
-                    const time = new Date(notif.timestamp).toLocaleString('fa-IR');
-                    return `<div class="archive-item">
-                                <div class="info">
-                                    <div class="title">${notif.title}</div>
-                                    <div class="body">${notif.body}</div>
-                                    <div class="meta">
-                                        <span><i class="fas fa-user"></i> ${notif.userId || 'همه کاربران'}</span>
-                                        <span><i class="fas fa-clock"></i> ${time}</span>
-                                    </div>
-                                </div>
-                                <span class="status ${statusClass}">${statusText}</span>
-                                <button class="delete-archive" onclick="window.deleteArchiveItem(${notif.id})">
-                                    <i class="fas fa-trash"></i>
-                                </button>
-                            </div>`;
-                }).join('');
-            }
-
-            async updateBellBadge() {
-                const notifs = await this.getNotifications();
-                const unread = notifs.filter(n => !n.isRead).length;
-                const bellBtn = document.querySelector('.notif-bell-btn');
-                if (bellBtn) {
-                    const badge = bellBtn.querySelector('.notif-badge');
-                    if (unread > 0) {
-                        if (!badge) {
-                            const b = document.createElement('span');
-                            b.className = 'notif-badge';
-                            b.textContent = unread;
-                            bellBtn.appendChild(b);
-                        } else {
-                            badge.textContent = unread;
-                        }
-                        bellBtn.classList.add('has-notif');
-                    } else {
-                        if (badge) badge.remove();
-                        bellBtn.classList.remove('has-notif');
-                    }
-                }
-            }
-
-            createBellButton() {
-                const existing = document.querySelector('.notif-bell-btn');
-                if (existing) existing.remove();
-
-                const nav = document.querySelector('.bottom-nav');
-                if (!nav) return;
-
-                const btn = document.createElement('button');
-                btn.className = 'nav-item notif-bell-btn';
-                btn.innerHTML = `<i class="fas fa-bell"></i><span>اعلان</span>`;
-                btn.style.position = 'relative';
-
-                nav.appendChild(btn);
-
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    // در صورت عدم مجوز، درخواست مجوز
-                    if (Notification.permission === 'default') {
-                        Notification.requestPermission().then(permission => {
-                            if (permission === 'granted') {
-                                subscribeToPush();
-                            }
-                        });
-                    }
-                });
-
-                this.updateBellBadge();
-            }
-
-            async deleteArchiveItem(id) {
-                await this.deleteNotification(id);
-                this.notifications = this.notifications.filter(n => n.id !== id);
-                this.renderArchive();
-                this.updateBellBadge();
-            }
-        }
-
-        window.deleteArchiveItem = async function(id) {
-            if (!confirm('آیا مطمئن هستید؟')) return;
-            if (window.notifManager) {
-                await window.notifManager.deleteArchiveItem(id);
-            }
-        };
-
-        // ================================================================
-        // 13. INIT
+        // 11. INIT
         // ================================================================
         document.addEventListener('DOMContentLoaded', function() {
             const savedLang = localStorage.getItem('sarfraz_lang') || 'fa';
             setLanguage(savedLang);
-            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') ===
-                savedLang));
-
+            document.querySelectorAll('.lang-opt').forEach(b => b.classList.toggle('active', b.getAttribute('data-lang') === savedLang));
             initSettings();
             initUidModal();
-
-            // مقداردهی Notification Manager
             if (typeof window.notifManager === 'undefined') {
                 window.notifManager = new NotificationManager();
                 window.notifManager.renderArchive();
             }
-
             document.getElementById('modalCloseBtn').addEventListener('click', closeNewsModal);
-            document.getElementById('newsModal').addEventListener('click', function(e) {
-                if (e.target === this) closeNewsModal();
-            });
-
+            document.getElementById('newsModal').addEventListener('click', function(e) { if (e.target === this) closeNewsModal(); });
             const params = new URLSearchParams(window.location.search);
             const page = params.get('page') || localStorage.getItem('currentPage') || 'home';
             navigateTo(page);
-
             const highlight = params.get('highlight');
             if (highlight) {
                 setTimeout(() => {
@@ -2527,6 +2202,5 @@
             }
         });
     </script>
-
 </body>
-    </html>
+</html>
