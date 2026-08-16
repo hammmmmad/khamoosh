@@ -1,90 +1,194 @@
 // ============================================================
-// sw.js — Service Worker سایت سرفراز خموش
-// نسخه‌بندی‌شده برای رفع همیشگیِ مشکل «تغییرات دیده نمی‌شوند»
+// sw.js - Service Worker برای Web Push Notifications
 // ============================================================
 
-// هر بار که سایت را آپدیت می‌کنید، فقط همین عدد را +۱ کنید.
-// همین یک تغییر کافی است تا مرورگر کش قدیمی را کنار بگذارد.
-const CACHE_VERSION = 'sarfraz-v1';
-const CORE_CACHE = `${CACHE_VERSION}-core`;
-
-// فقط فایل‌هایی که مطمئنیم وجود دارند — هرکدام جدا کش می‌شود
-// تا اگر یکی ۴۰۴ داد، بقیه‌ی نصب خراب نشود (برخلاف addAll قدیمی).
-const CORE_ASSETS = [
+const CACHE_NAME = 'sarfraz-pwa-v1';
+const STATIC_CACHE_URLS = [
     '/',
     '/index.html',
     '/manifest.json',
-    '/images/Kham.png'
+    '/images/Kham.png',
+    '/images/Khamoosh.jpg'
 ];
 
-// ===== نصب =====
-self.addEventListener('install', (event) => {
-    self.skipWaiting(); // نسخه‌ی جدید فوراً فعال می‌شود، بدون نیاز به بستن تب‌ها
+// ===== نصب Service Worker =====
+self.addEventListener('install', event => {
     event.waitUntil(
-        caches.open(CORE_CACHE).then((cache) => {
-            return Promise.all(
-                CORE_ASSETS.map((url) =>
-                    cache.add(url).catch((err) => {
-                        console.warn('⚠️ کش نشد (نادیده گرفته شد، نصب ادامه می‌یابد):', url, err.message);
-                    })
-                )
-            );
-        })
+        caches.open(CACHE_NAME)
+            .then(cache => {
+                console.log('[SW] Cache opened, adding files...');
+                return cache.addAll(STATIC_CACHE_URLS);
+            })
+            .then(() => {
+                console.log('[SW] All static files cached');
+                return self.skipWaiting();
+            })
+            .catch(err => {
+                console.error('[SW] Cache installation failed:', err);
+            })
     );
 });
 
-// ===== فعال‌سازی: حذف کش‌های قدیمی + کنترل فوری همه‌ی تب‌های باز =====
-self.addEventListener('activate', (event) => {
+// ===== فعال‌سازی =====
+self.addEventListener('activate', event => {
     event.waitUntil(
-        Promise.all([
-            caches.keys().then((keys) =>
-                Promise.all(
-                    keys
-                        .filter((key) => key.startsWith('sarfraz-') && key !== CORE_CACHE)
-                        .map((key) => caches.delete(key))
-                )
-            ),
-            self.clients.claim()
-        ])
+        caches.keys()
+            .then(cacheNames => {
+                return Promise.all(
+                    cacheNames
+                        .filter(name => name !== CACHE_NAME)
+                        .map(name => {
+                            console.log('[SW] Removing old cache:', name);
+                            return caches.delete(name);
+                        })
+                );
+            })
+            .then(() => {
+                console.log('[SW] Claiming clients...');
+                return self.clients.claim();
+            })
     );
 });
 
-// ===== واکشی =====
-// HTML و JS: همیشه اول از شبکه (Network First) — تضمین می‌کند
-// همیشه آخرین نسخه‌ی فایل دیده شود؛ فقط وقتی آفلاین باشد از کش استفاده می‌شود.
-// بقیه (عکس، فونت، CSS): اول کش (Cache First) برای سرعت بیشتر.
-self.addEventListener('fetch', (event) => {
-    const { request } = event;
-    if (request.method !== 'GET') return;
+// ===== دریافت Push Notification =====
+self.addEventListener('push', event => {
+    console.log('[SW] Push event received');
 
-    const isPage = request.mode === 'navigate';
-    const isScript = request.destination === 'script';
+    let data = {};
+    if (event.data) {
+        try {
+            data = event.data.json();
+            console.log('[SW] Push data:', data);
+        } catch (error) {
+            console.error('[SW] Failed to parse push data:', error);
+            data = {
+                title: 'سرفراز خموش',
+                body: event.data.text() || 'خبر جدید در بخش مهاجرت',
+                icon: '/images/Kham.png',
+                badge: '/images/Kham.png',
+                programId: null,
+                url: '/?page=immigration'
+            };
+        }
+    } else {
+        // اگر داده‌ای در push نباشد
+        data = {
+            title: 'سرفراز خموش',
+            body: 'خبر جدید در بخش مهاجرت',
+            icon: '/images/Kham.png',
+            badge: '/images/Kham.png',
+            programId: null,
+            url: '/?page=immigration'
+        };
+    }
 
-    if (isPage || isScript) {
-        event.respondWith(
-            fetch(request)
-                .then((response) => {
-                    const clone = response.clone();
-                    caches.open(CORE_CACHE).then((cache) => cache.put(request, clone));
-                    return response;
-                })
-                .catch(() =>
-                    caches.match(request).then((cached) => cached || caches.match('/index.html'))
-                )
-        );
+    // تنظیمات نمایش Notification
+    const options = {
+        body: data.body || 'خبر جدید در بخش مهاجرت',
+        icon: data.icon || '/images/Kham.png',
+        badge: data.badge || '/images/Kham.png',
+        vibrate: [200, 100, 200],
+        data: {
+            url: data.url || '/?page=immigration',
+            programId: data.programId || null
+        },
+        actions: [
+            {
+                action: 'open',
+                title: 'مشاهده',
+                icon: '/images/Kham.png'
+            },
+            {
+                action: 'close',
+                title: 'بستن',
+                icon: '/images/Kham.png'
+            }
+        ],
+        dir: 'rtl',
+        lang: 'fa',
+        requireInteraction: true,
+        silent: false,
+        tag: data.programId || 'default',
+        renotify: true
+    };
+
+    event.waitUntil(
+        self.registration.showNotification(
+            data.title || 'سرفراز خموش',
+            options
+        )
+    );
+});
+
+// ===== کلیک روی Notification =====
+self.addEventListener('notificationclick', event => {
+    console.log('[SW] Notification clicked:', event);
+
+    // بستن Notification
+    event.notification.close();
+
+    // اگر کاربر روی دکمه "بستن" کلیک کرده باشد
+    if (event.action === 'close') {
         return;
     }
 
-    event.respondWith(
-        caches.match(request).then((cached) => {
-            if (cached) return cached;
-            return fetch(request)
-                .then((response) => {
-                    const clone = response.clone();
-                    caches.open(CORE_CACHE).then((cache) => cache.put(request, clone));
-                    return response;
-                })
-                .catch(() => cached);
+    const urlToOpen = event.notification.data?.url || '/?page=immigration';
+    const programId = event.notification.data?.programId;
+
+    event.waitUntil(
+        clients.matchAll({
+            type: 'window',
+            includeUncontrolled: true
+        })
+        .then(windowClients => {
+            // اگر پنجره باز وجود دارد، به آن برو
+            for (const client of windowClients) {
+                if (client.url.includes(urlToOpen) && 'focus' in client) {
+                    client.focus();
+                    // اگر programId وجود دارد، به صفحه مهاجرت با هایلایت برو
+                    if (programId) {
+                        client.postMessage({
+                            type: 'highlight-program',
+                            programId: programId
+                        });
+                    }
+                    return;
+                }
+            }
+            // در غیر این صورت پنجره جدید باز کن
+            if (clients.openWindow) {
+                const openUrl = programId
+                    ? `${urlToOpen}&highlight=${programId}`
+                    : urlToOpen;
+                return clients.openWindow(openUrl);
+            }
         })
     );
 });
+
+// ===== دریافت پیام از صفحه =====
+self.addEventListener('message', event => {
+    console.log('[SW] Message received:', event.data);
+
+    if (event.data && event.data.type === 'skipWaiting') {
+        self.skipWaiting();
+    }
+
+    if (event.data && event.data.type === 'getSubscription') {
+        event.ports[0].postMessage({
+            subscription: self.registration.pushManager.getSubscription()
+        });
+    }
+});
+
+// ===== مدیریت خطاها و لاگ‌ها =====
+self.addEventListener('error', event => {
+    console.error('[SW] Error:', event.message);
+});
+
+self.addEventListener('unhandledrejection', event => {
+    console.error('[SW] Unhandled rejection:', event.reason);
+});
+
+// ===== برای اطمینان از به‌روزرسانی =====
+console.log('[SW] Service Worker loaded successfully');
