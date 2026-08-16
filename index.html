@@ -787,6 +787,9 @@
             color: inherit;
             font-size: 0.8rem;
         }
+        .lang-group button i, .view-group button i {
+            margin-left: 6px;
+        }
         .lang-group button.active, .view-group button.active {
             border-color: #8b5cf6;
             background: rgba(139, 92, 246, 0.08);
@@ -1097,7 +1100,7 @@
         }
         .modal-box .close:hover { transform: rotate(90deg); background: #7c3aed; }
         .modal-box .close:active { transform: scale(0.9) rotate(90deg); }
-        .modal-box h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.8rem; padding-left: 2.8rem; }
+        .modal-box h2 { font-size: 1.6rem; font-weight: 700; margin-bottom: 0.8rem; padding-left: 2.8rem; display: flex; align-items: center; gap: 10px; }
         .modal-box .text { line-height: 2; text-align: justify; font-size: 0.95rem; }
 
         /* ===== TOAST ===== */
@@ -1264,8 +1267,9 @@
                 <div class="settings-row">
                     <div class="label"><i class="fas fa-globe-asia"></i> <span id="langLabel">زبان</span></div>
                     <div class="lang-group">
-                        <button class="lang-opt active" data-lang="fa">دری</button>
-                        <button class="lang-opt" data-lang="en">English</button>
+                        <button class="lang-opt active" data-lang="fa"><i class="fas fa-language"></i>دری</button>
+                        <button class="lang-opt" data-lang="en"><i class="fas fa-language"></i>English</button>
+                        <button class="lang-opt" data-lang="ps"><i class="fas fa-language"></i>پښتو</button>
                     </div>
                 </div>
                 <div class="settings-row">
@@ -1302,6 +1306,39 @@
                             <h4><i class="fas fa-archive"></i> <span id="archiveTitle">آرشیو پیام‌ها</span></h4>
                             <div id="archiveList"></div>
                         </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ===== PUBLISH NOTIFICATION ===== -->
+        <div class="page" id="page-publish">
+            <div class="glass">
+                <h3 style="display:flex; align-items:center; gap:12px; font-weight:700; margin-bottom:0.4rem;">
+                    <i class="fas fa-bullhorn" style="color:#8b5cf6;"></i> <span id="publishTitle">نشر اعلان</span>
+                </h3>
+                <p id="publishDesc" style="font-size:0.85rem; opacity:0.65; margin-bottom:1.5rem; line-height:1.8;">یک دسته را انتخاب کن و خبر را فقط برای کاربرانی که زنگولهٔ همان دسته را زده‌اند بفرست.</p>
+
+                <div id="publishLock" style="display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:1rem;">
+                    <input type="password" id="publishPassword" placeholder="رمز عبور مدیریت را وارد کنید" style="padding:8px 16px; border-radius:16px; border:2px solid #e5e7eb; font-family:inherit; width:200px; background:rgba(255,255,255,0.3);" />
+                    <button onclick="unlockPublish()" style="padding:8px 20px; border-radius:16px; border:none; background:#8b5cf6; color:#fff; cursor:pointer; font-family:inherit; font-weight:600; display:flex; align-items:center; gap:8px;"><i class="fas fa-unlock"></i> ورود</button>
+                    <span id="publishLockStatus" style="font-size:0.8rem; opacity:0.6;">وارد شوید</span>
+                </div>
+
+                <div id="publishContent" style="display:none;">
+                    <div class="admin-row">
+                        <select id="publishCategory">
+                            <option value="">انتخاب دسته...</option>
+                        </select>
+                        <input type="text" id="publishTitleInput" placeholder="عنوان خبر" />
+                    </div>
+                    <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
+                        <textarea id="publishBody" placeholder="متن خبر را بنویسید..." rows="3" class="admin-textarea"></textarea>
+                        <button onclick="sendCategoryPush()" class="admin-send-btn"><i class="fas fa-paper-plane"></i> <span id="publishBtnLabel">نشر کن</span></button>
+                    </div>
+                    <div class="admin-stats">
+                        <span><i class="fas fa-users"></i> <span id="categorySubCount">0</span> مشترک این دسته</span>
+                        <span><i class="fas fa-key"></i> <span id="publishStatus">وضعیت: آماده</span></span>
                     </div>
                 </div>
             </div>
@@ -1345,6 +1382,7 @@
             <button class="nav-item" data-page="about" onclick="navigateTo('about')" aria-label="درباره"><i class="fas fa-user"></i><span id="label-about">درباره</span></button>
             <button class="nav-item" data-page="profile" onclick="navigateTo('profile')" aria-label="پروفایل"><i class="fas fa-id-card"></i><span id="label-profile">پروفایل</span></button>
             <button class="nav-item" data-page="settings" onclick="navigateTo('settings')" aria-label="تنظیمات"><i class="fas fa-cog"></i><span id="label-settings">تنظیمات</span></button>
+            <button class="nav-item" data-page="publish" onclick="navigateTo('publish')" aria-label="نشر"><i class="fas fa-bullhorn"></i><span id="label-publish">نشر</span></button>
             <button class="nav-item" data-page="immigration" onclick="navigateTo('immigration')" aria-label="مهاجرت"><i class="fas fa-plane"></i><span id="label-immigration">مهاجرت</span></button>
             <button class="nav-item" data-page="technews" onclick="navigateTo('technews')" aria-label="فناوری"><i class="fas fa-microchip"></i><span id="label-technews">فناوری</span></button>
             <button class="nav-item" data-page="gallery" onclick="navigateTo('gallery')" aria-label="گالری"><i class="fas fa-images"></i><span id="label-gallery">گالری</span></button>
@@ -1358,7 +1396,7 @@
         // ================================================================
         const translations = {
             fa: {
-                nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', immigration: 'مهاجرت', technews: 'فناوری', gallery: 'گالری' },
+                nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', publish: 'نشر', immigration: 'مهاجرت', technews: 'فناوری', gallery: 'گالری' },
                 homeTitle: 'پروفایل‌ها',
                 aboutTitle: 'برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس',
                 aboutText: 'سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.',
@@ -1391,10 +1429,17 @@
                 statusDelivered: 'تحویل داده شده',
                 statusPending: 'در انتظار',
                 statusFailed: 'ناموفق',
+                publishTitle: 'نشر اعلان',
+                publishDesc: 'یک دسته را انتخاب کن و خبر را فقط برای کاربرانی که زنگولهٔ همان دسته را زده‌اند بفرست.',
+                selectCategory: 'انتخاب دسته...',
+                publishBtn: 'نشر کن',
+                subscribedMsg: 'شما برای این برنامه عضو اعلان‌ها شدید',
+                unsubscribedMsg: 'اشتراک شما برای این برنامه لغو شد',
+                readArticle: 'مطالعه خبر',
                 social: { facebook: 'فیسبوک', instagram: 'اینستاگرام', linkedin: 'لینکدین', github: 'گیت‌هاب', pinterest: 'پینترست', behance: 'بهنس', whatsapp: 'واتساپ', tiktok: 'تیک تاک', substack: 'ساب‌استک', threads: 'تردز', codm: 'کال‌آف دیوتی' }
             },
             en: {
-                nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', immigration: 'Immigration', technews: 'Tech News', gallery: 'Gallery' },
+                nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', publish: 'Publish', immigration: 'Immigration', technews: 'Tech News', gallery: 'Gallery' },
                 homeTitle: 'Profiles',
                 aboutTitle: 'Developer · Graphic Designer · Immigration Consultant · Fitness Coach',
                 aboutText: 'Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, with over 8 years of experience in technology, design and digital development.',
@@ -1427,7 +1472,57 @@
                 statusDelivered: 'Delivered',
                 statusPending: 'Pending',
                 statusFailed: 'Failed',
+                publishTitle: 'Publish Notification',
+                publishDesc: 'Choose a category and send news only to users who tapped the bell for that category.',
+                selectCategory: 'Select category...',
+                publishBtn: 'Publish',
+                subscribedMsg: 'You are now subscribed to updates for this program',
+                unsubscribedMsg: 'You unsubscribed from this program',
+                readArticle: 'Read article',
                 social: { facebook: 'Facebook', instagram: 'Instagram', linkedin: 'LinkedIn', github: 'GitHub', pinterest: 'Pinterest', behance: 'Behance', whatsapp: 'WhatsApp', tiktok: 'TikTok', substack: 'Substack', threads: 'Threads', codm: 'Call of Duty' }
+            },
+            ps: {
+                nav: { home: 'کور', about: 'زما په اړه', profile: 'پروفایل', settings: 'امستنې', publish: 'خپرول', immigration: 'مهاجرت', technews: 'ټکنالوژي', gallery: 'ګالري' },
+                homeTitle: 'پروفایلونه',
+                aboutTitle: 'پروګرامر · ګرافیک ډیزاینر · د مهاجرت مشاور · فټنس روزونکی',
+                aboutText: 'سرفراز خموش، په ۱۳۷۷ کال کې د افغانستان مزار شریف کې زیږیدلی، په ټکنالوژۍ، ډیزاین او ډیجیټل پرمختیا کې له ۸ کلونو څخه زیات تجربه لري.',
+                skillsTitle: 'تخنیکي مهارتونه',
+                specialtiesTitle: 'د تخصص ساحې',
+                profileName: 'سرفراز خموش',
+                profileTitle: 'ګرافیک ډیزاینر · پروګرامر',
+                profileFitness: 'فټنس روزونکی',
+                profileAge: 'عمر',
+                profileBirth: 'زیږون ځای',
+                profileLocation: 'موقعیت',
+                profileEducation: 'زده کړه',
+                profileAbout: 'زما په اړه',
+                profileDesc: 'زه سرفراز خموش یم، په ۱۳۷۷ کال کې د مزار شریف کې زیږیدلی یم. له ۱۳۹۴ کال راهیسې مې د ګرافیک ډیزاین چارې پیل کړې او بیا د پروګرامینګ نړۍ ته ننوتلم.',
+                settingsTitle: 'امستنې',
+                themeLabel: 'شپه / ورځ ډول',
+                langLabel: 'ژبه',
+                viewLabel: 'د ښودنې حالت',
+                immigrationTitle: 'د امریکا مهاجرت پروګرامونه',
+                techTitle: 'د ټکنالوژۍ خبرونه',
+                galleryTitle: 'د انځورونو ګالري',
+                adminPanel: 'د مدیریت پینل (یوازې مدیر)',
+                adminSend: 'کاروونکي ته ولیږئ',
+                adminTitlePlaceholder: 'د خبر سرلیک',
+                adminBodyPlaceholder: 'د خبر متن ولیکئ...',
+                adminStatus: 'حالت: چمتو',
+                adminUsers: 'آنلاین کاروونکي',
+                archiveTitle: 'د پیغامونو آرشیف',
+                archiveEmpty: 'تر اوسه هیڅ پیغام نه دی لیږل شوی',
+                statusDelivered: 'ورسیدلی',
+                statusPending: 'په تمه',
+                statusFailed: 'ناکام',
+                publishTitle: 'د خبر نشر',
+                publishDesc: 'یوه ډله وټاکئ او خبر یوازې هغو کاروونکو ته ولیږئ چې د دې ډلې زنګ یې فشار کړی وي.',
+                selectCategory: 'ډله وټاکئ...',
+                publishBtn: 'نشر کړئ',
+                subscribedMsg: 'تاسو د دې پروګرام لپاره د اعلانونو غړی شوئ',
+                unsubscribedMsg: 'ستاسو غړیتوب د دې پروګرام لپاره لغوه شو',
+                readArticle: 'د خبر لوستل',
+                social: { facebook: 'فیسبوک', instagram: 'انسټاګرام', linkedin: 'لینکډین', github: 'ګیتهب', pinterest: 'پنټرست', behance: 'بیهانس', whatsapp: 'واتساپ', tiktok: 'ټیک ټاک', substack: 'سبستیک', threads: 'تریډز', codm: 'کال آف ډیوټي' }
             }
         };
 
@@ -1483,8 +1578,9 @@
         let currentLang = 'fa';
         let currentPage = 'home';
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
-        const SERVER_URL = 'https://hammmmmmad.onrender.com';
+        const SERVER_URL = 'https://khamoosh.onrender.com';
         const ADMIN_PASSWORD = 'admin123'; // رمز عبور مدیریت
+        const PUBLISH_PASSWORD = ADMIN_PASSWORD; // همان رمز مدیریت برای صفحه نشر
 
         // ================================================================
         // 2. HELPERS
@@ -1518,6 +1614,7 @@
             if (page === 'gallery') renderGallery();
             if (page === 'profile') updateProfilePage();
             if (page === 'settings') { updateSettingsPage(); }
+            if (page === 'publish') { updatePublishTranslations(); renderPublishCategories(); }
             currentPage = page;
             localStorage.setItem('currentPage', page);
             updateSEO(page);
@@ -1529,13 +1626,14 @@
                 about: { fa: 'درباره من | سرفراز خموش', en: 'About | Sarfraz Khamoosh' },
                 profile: { fa: 'پروفایل | سرفراز خموش', en: 'Profile | Sarfraz Khamoosh' },
                 settings: { fa: 'تنظیمات | سرفراز خموش', en: 'Settings | Sarfraz Khamoosh' },
+                publish: { fa: 'نشر اعلان | سرفراز خموش', en: 'Publish | Sarfraz Khamoosh' },
                 immigration: { fa: 'مهاجرت آمریکا | سرفراز خموش', en: 'US Immigration | Sarfraz Khamoosh' },
                 technews: { fa: 'اخبار فناوری | سرفراز خموش', en: 'Tech News | Sarfraz Khamoosh' },
                 gallery: { fa: 'گالری | سرفراز خموش', en: 'Gallery | Sarfraz Khamoosh' }
             };
             const data = titles[page];
             if (data) {
-                document.title = currentLang === 'fa' ? data.fa : data.en;
+                document.title = currentLang === 'en' ? data.en : data.fa;
             }
         }
 
@@ -1549,15 +1647,15 @@
             document.querySelector('#page-home h2 span').textContent = t.homeTitle;
             grid.innerHTML = profileCards.map((card) => {
                 const name = currentLang === 'fa' ? card.name : 'Sarfraz Khamoosh';
-                const title = currentLang === 'fa' ? card.title : card.title;
-                const desc = currentLang === 'fa' ? card.desc : card.desc;
-                const tags = currentLang === 'fa' ? card.tags : card.tags;
+                const title = card.title;
+                const desc = card.desc;
+                const tags = card.tags;
                 return `<div class="profile-card-home">
                             <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
                             <div class="home-name">${name}</div>
                             <div class="home-title">${title}</div>
                             <div class="home-desc">${desc}</div>
-                            <div class="home-tag">${tags.map(t => `<span>#${t}</span>`).join('')}</div>
+                            <div class="home-tag">${tags.map(tg => `<span>#${tg}</span>`).join('')}</div>
                         </div>`;
             }).join('');
         }
@@ -1570,18 +1668,31 @@
             document.getElementById('specialtiesTitle').textContent = t.specialtiesTitle;
             const grid = document.getElementById('doughnutGrid');
             if (grid) {
-                grid.innerHTML = skillsData.map(s => `<div class="doughnut-item"><div class="doughnut" style="--pct:${s.pct}%;"><span class="val">${s.pct}%</span></div><span class="label">${s.name}</span></div>`).join('');
-                setTimeout(() => {
-                    document.querySelectorAll('.doughnut').forEach(el => {
-                        const pct = el.style.getPropertyValue('--pct');
-                        el.style.background = `conic-gradient(#8b5cf6 ${pct}, rgba(0,0,0,0.06) ${pct})`;
-                    });
-                }, 200);
+                grid.innerHTML = skillsData.map(s => `<div class="doughnut-item"><div class="doughnut" data-pct="${s.pct}" style="--pct:0%;"><span class="val">0%</span></div><span class="label">${s.name}</span></div>`).join('');
+                requestAnimationFrame(() => setTimeout(animateSkillDoughnuts, 150));
             }
             const list = document.getElementById('specialtiesList');
             if (list) {
-                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'fa' ? s.fa : s.en}</li>`).join('');
+                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'en' ? s.en : s.fa}</li>`).join('');
             }
+        }
+
+        function animateSkillDoughnuts() {
+            document.querySelectorAll('.doughnut').forEach(el => {
+                const target = parseInt(el.getAttribute('data-pct'), 10) || 0;
+                const valEl = el.querySelector('.val');
+                const duration = 1300;
+                const start = performance.now();
+                function frame(now) {
+                    const progress = Math.min((now - start) / duration, 1);
+                    const eased = 1 - Math.pow(1 - progress, 3);
+                    const current = Math.round(target * eased);
+                    el.style.background = `conic-gradient(#8b5cf6 ${current}%, rgba(0,0,0,0.07) ${current}%)`;
+                    if (valEl) valEl.textContent = current + '%';
+                    if (progress < 1) requestAnimationFrame(frame);
+                }
+                requestAnimationFrame(frame);
+            });
         }
 
         function updateProfilePage() {
@@ -1599,7 +1710,10 @@
                 'فیسبوک': t.social.facebook, 'اینستاگرام': t.social.instagram, 'لینکدین': t.social.linkedin,
                 'گیت‌هاب': t.social.github, 'پینترست': t.social.pinterest, 'بهنس': t.social.behance,
                 'واتساپ': t.social.whatsapp, 'تیک تاک': t.social.tiktok, 'ساب‌استک': t.social.substack,
-                'تردز': t.social.threads, 'کال‌آف دیوتی': t.social.codm
+                'تردز': t.social.threads, 'کال‌آف دیوتی': t.social.codm,
+                'انسټاګرام': t.social.instagram, 'لینکډین': t.social.linkedin, 'ګیتهب': t.social.github,
+                'پنټرست': t.social.pinterest, 'بیهانس': t.social.behance, 'ټیک ټاک': t.social.tiktok,
+                'سبستیک': t.social.substack, 'تریډز': t.social.threads, 'کال آف ډیوټي': t.social.codm
             };
             document.querySelectorAll('.profile-social-list .sname').forEach(el => {
                 if (socialMap[el.textContent]) el.textContent = socialMap[el.textContent];
@@ -1620,56 +1734,38 @@
             document.getElementById('archiveTitle').textContent = t.archiveTitle;
         }
 
+        function updatePublishTranslations() {
+            const t = translations[currentLang];
+            const elTitle = document.getElementById('publishTitle');
+            const elDesc = document.getElementById('publishDesc');
+            const elBtn = document.getElementById('publishBtnLabel');
+            if (elTitle) elTitle.textContent = t.publishTitle;
+            if (elDesc) elDesc.textContent = t.publishDesc;
+            if (elBtn) elBtn.textContent = t.publishBtn;
+        }
+
         // ================================================================
         // 5. NOTIFICATION FUNCTIONS
         // ================================================================
+        // فشردن زنگوله یک برنامه = عضویت (یا لغو عضویت) در اعلان‌های همان دسته.
+        // خبر واقعی فقط از صفحه «نشر» برای مشترکین همان دسته فرستاده می‌شود.
         async function handleNotification(programId, programName, btn) {
-            const subscriptionId = localStorage.getItem('subscriptionId');
+            let subscriptionId = localStorage.getItem('subscriptionId');
             if (!subscriptionId) {
-                toast('لطفاً ابتدا روی زنگوله کلیک کنید تا مجوز دریافت کنید');
                 const subscribed = await subscribeToPush();
                 if (!subscribed) return;
+                subscriptionId = localStorage.getItem('subscriptionId');
             }
-            const messages = {
-                'siv': 'تغییرات جدید در برنامه SIV: اولویت‌بندی مجدد',
-                'p1': 'برنامه P1: مهلت ثبت‌نام تا ۳۰ جولای تمدید شد',
-                'p2': 'برنامه P2: نتایج جدید منتشر شد',
-                'asylum': 'تغییرات در روند پناهندگی: زمان رسیدگی کاهش یافت',
-                'parole': 'برنامه Parole: دستورالعمل‌های جدید',
-                'reparole': 'Re-Parole: تمدید خودکار برای متقاضیان واجد شرایط',
-                'welcome': 'Welcome Corps: افزایش ظرفیت پذیرش تا ۱۰۰۰ نفر',
-                'cr1': 'CR1: کاهش زمان پردازش به ۱۲ ماه',
-                'cr2': 'CR2: به‌روزرسانی مدارک مورد نیاز',
-                'k1': 'K1: تغییرات در فرم‌های درخواست',
-                'dv': 'DV Lottery: تاریخ ثبت‌نام از ۱۵ اکتبر آغاز می‌شود',
-                'i130_gc': 'I-130 با گرین کارت: افزایش تعرفه به ۵۳۵ دلار',
-                'i130_us': 'I-130 با پاسپورت: تسریع در رسیدگی'
-            };
-            const title = `برنامه ${programName}`;
-            const body = messages[programId] || 'به‌روزرسانی جدید برای این برنامه موجود است';
-            const specialMessage = `خبر مربوط به برنامه "${programName}" برای شما اعلان و ویژه توسط آقای خموش ارسال میشود. این یک تکنولوژی ویژه برای شما خواهد بود.`;
+            const t = translations[currentLang];
             try {
-                const response = await fetch(`${SERVER_URL}/api/send`, {
+                const response = await fetch(`${SERVER_URL}/api/subscribe-category`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        subscriptionId: subscriptionId,
-                        title: title,
-                        body: body,
-                        programId: programId
-                    })
+                    body: JSON.stringify({ subscriptionId, programId })
                 });
-                if (response.ok) {
-                    toast(specialMessage, true);
-                    btn.classList.add('success');
-                    setTimeout(() => btn.classList.remove('success'), 15000);
-                    const hasNotif = notifBadges[programId] || false;
-                    if (hasNotif) {
-                        notifBadges[programId] = false;
-                        btn.classList.remove('has-notification');
-                        const badge = btn.querySelector('.badge');
-                        if (badge) badge.remove();
-                    } else {
+                const result = await response.json();
+                if (result.success) {
+                    if (result.subscribed) {
                         notifBadges[programId] = true;
                         btn.classList.add('has-notification');
                         if (!btn.querySelector('.badge')) {
@@ -1678,15 +1774,23 @@
                             b.textContent = '1';
                             btn.appendChild(b);
                         }
+                        btn.classList.add('success');
+                        setTimeout(() => btn.classList.remove('success'), 1200);
+                        toast(t.subscribedMsg);
+                    } else {
+                        notifBadges[programId] = false;
+                        btn.classList.remove('has-notification');
+                        const badge = btn.querySelector('.badge');
+                        if (badge) badge.remove();
+                        toast(t.unsubscribedMsg);
                     }
                     localStorage.setItem('notifications', JSON.stringify(notifBadges));
-                    toast(`اعلان برای برنامه ${programName} ارسال شد`);
                 } else {
-                    toast('خطا در ارسال اعلان');
+                    toast(currentLang === 'en' ? 'Error updating subscription' : 'خطا در ثبت اشتراک');
                 }
             } catch (error) {
-                console.error('Send error:', error);
-                toast('خطا در ارسال اعلان');
+                console.error('Category subscribe error:', error);
+                toast(currentLang === 'en' ? 'Server connection error' : 'خطا در ارتباط با سرور');
             }
         }
 
@@ -1704,7 +1808,7 @@
                 }
                 const subscription = await registration.pushManager.subscribe({
                     userVisibleOnly: true,
-                    applicationServerKey: urlBase64ToUint8Array('BEl62JiU0R9M6cL9nXZx7Qy8WpNfJkLmQrStUvWxYzAbCdEfGhIjKlMnOpQrStUvWxYz')
+                    applicationServerKey: urlBase64ToUint8Array('BJHh3BxLaFTdHfCJp25tP7LRtSe9rUIa7N1d_rFpbRn-Fhh3tNA1DI8LORxGalQpl1p1sjZTjU1tXB8oZPPgWbY')
                 });
                 const response = await fetch(`${SERVER_URL}/api/subscribe`, {
                     method: 'POST',
@@ -1742,8 +1846,8 @@
             const t = translations[currentLang];
             document.getElementById('immigrationTitle').textContent = t.immigrationTitle;
             grid.innerHTML = immigrationPrograms.map(prog => {
-                const name = currentLang === 'fa' ? prog.fa : prog.en;
-                const status = currentLang === 'fa' ? prog.statusFa : prog.statusEn;
+                const name = currentLang === 'en' ? prog.en : prog.fa;
+                const status = currentLang === 'en' ? prog.statusEn : prog.statusFa;
                 const hasNotif = notifBadges[prog.id] || false;
                 return `<div class="imm-card" data-program="${prog.id}">
                             <div class="info"><h4>${name}</h4><div class="status">${status}</div></div>
@@ -1755,7 +1859,7 @@
         }
 
         // ================================================================
-        // 6. ADMIN PANEL (WITH PASSWORD LOCK)
+        // 6. ADMIN PANEL (WITH PASSWORD LOCK) — پیام مستقیم به یک کاربر
         // ================================================================
         function unlockAdmin() {
             const input = document.getElementById('adminPassword');
@@ -1814,7 +1918,7 @@
             if (!userId) { toast('لطفاً یک کاربر را انتخاب کنید'); return; }
             if (!title) { toast('لطفاً عنوان خبر را وارد کنید'); return; }
             if (!body) { toast('لطفاً متن خبر را وارد کنید'); return; }
-            const btn = document.querySelector('.admin-send-btn');
+            const btn = document.querySelector('#page-settings .admin-send-btn');
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
             btn.disabled = true;
@@ -1842,6 +1946,96 @@
                             userId: userId,
                             status: 'delivered',
                             programId: 'admin'
+                        });
+                        await window.notifManager.renderArchive();
+                    }
+                } else {
+                    toast('خطا در ارسال: ' + (result.error || 'مشخص نیست'));
+                }
+            } catch (error) {
+                toast('خطا در ارتباط با سرور');
+            } finally {
+                btn.innerHTML = originalText;
+                btn.disabled = false;
+            }
+        }
+
+        // ================================================================
+        // 6b. PUBLISH PANEL (WITH PASSWORD LOCK) — نشر برای مشترکین یک دسته
+        // ================================================================
+        function unlockPublish() {
+            const input = document.getElementById('publishPassword');
+            const status = document.getElementById('publishLockStatus');
+            const content = document.getElementById('publishContent');
+            const lockDiv = document.getElementById('publishLock');
+            if (input.value === PUBLISH_PASSWORD) {
+                content.style.display = 'block';
+                lockDiv.style.display = 'none';
+                status.textContent = 'دسترسی مجاز';
+                renderPublishCategories();
+            } else {
+                status.textContent = 'رمز اشتباه است';
+                input.value = '';
+                input.focus();
+            }
+        }
+
+        function renderPublishCategories() {
+            const select = document.getElementById('publishCategory');
+            if (!select) return;
+            const t = translations[currentLang];
+            const prevValue = select.value;
+            select.innerHTML = `<option value="">${t.selectCategory}</option>` +
+                immigrationPrograms.map(p => `<option value="${p.id}">${currentLang === 'en' ? p.en : p.fa}</option>`).join('');
+            if (prevValue) select.value = prevValue;
+            select.onchange = updateCategoryCount;
+            updateCategoryCount();
+        }
+
+        async function updateCategoryCount() {
+            const programId = document.getElementById('publishCategory').value;
+            const countEl = document.getElementById('categorySubCount');
+            if (!countEl) return;
+            if (!programId) { countEl.textContent = '0'; return; }
+            try {
+                const res = await fetch(`${SERVER_URL}/api/category-count/${programId}`);
+                const data = await res.json();
+                countEl.textContent = (data && typeof data.count === 'number') ? data.count : '0';
+            } catch (error) {
+                countEl.textContent = '؟';
+            }
+        }
+
+        async function sendCategoryPush() {
+            const programId = document.getElementById('publishCategory').value;
+            const title = document.getElementById('publishTitleInput').value.trim();
+            const body = document.getElementById('publishBody').value.trim();
+            if (!programId) { toast('لطفاً یک دسته را انتخاب کنید'); return; }
+            if (!title) { toast('لطفاً عنوان خبر را وارد کنید'); return; }
+            if (!body) { toast('لطفاً متن خبر را وارد کنید'); return; }
+            const btn = document.querySelector('#page-publish .admin-send-btn');
+            const originalText = btn.innerHTML;
+            btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
+            btn.disabled = true;
+            try {
+                const response = await fetch(`${SERVER_URL}/api/send-category`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ programId, title, body })
+                });
+                const result = await response.json();
+                if (result.success) {
+                    toast(currentLang === 'en' ? `Sent to ${result.sent} subscribers` : `خبر برای ${result.sent} مشترک ارسال شد`);
+                    document.getElementById('publishTitleInput').value = '';
+                    document.getElementById('publishBody').value = '';
+                    document.getElementById('publishStatus').textContent = translations[currentLang].statusDelivered;
+                    if (window.notifManager) {
+                        await window.notifManager.saveNotification({
+                            title: title,
+                            body: body,
+                            userId: 'دسته: ' + programId,
+                            status: 'delivered',
+                            programId: programId
                         });
                         await window.notifManager.renderArchive();
                     }
@@ -2019,10 +2213,14 @@
             const t = translations[currentLang];
             document.getElementById('techTitle').textContent = t.techTitle;
             grid.innerHTML = newsData.map(n => {
-                const title = currentLang === 'fa' ? n.fa : n.en;
+                const title = currentLang === 'en' ? n.en : n.fa;
                 return `<div class="news-card" onclick="openNews(${n.id})">
                             <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
-                            <div class="body"><h4>${title}</h4><div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'fa' ? 'سرفراز خموش' : 'Sarfraz Khamoosh'}</span><span>${n.date}</span></div></div>
+                            <div class="body">
+                                <h4>${title}</h4>
+                                <div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'en' ? 'Sarfraz Khamoosh' : 'سرفراز خموش'}</span><span>${n.date}</span></div>
+                                <div style="margin-top:8px; font-size:0.7rem; color:#8b5cf6; display:flex; align-items:center; gap:6px;"><i class="fas fa-book-open"></i> ${t.readArticle}</div>
+                            </div>
                         </div>`;
             }).join('');
         }
@@ -2032,9 +2230,16 @@
             if (!n) return;
             const modal = document.getElementById('newsModal');
             const content = document.getElementById('modalContent');
-            const title = currentLang === 'fa' ? n.fa : n.en;
-            const text = currentLang === 'fa' ? n.fullFa : n.fullEn;
-            content.innerHTML = `<h2>${title}</h2><div class="text">${text.replace(/\n/g,'<br>')}</div>`;
+            const title = currentLang === 'en' ? n.en : n.fa;
+            const text = currentLang === 'en' ? n.fullEn : n.fullFa;
+            content.innerHTML = `
+                <img src="${n.img}" alt="${title}" style="width:100%; max-height:260px; object-fit:cover; border-radius:1.8rem; margin-bottom:1.2rem;" onerror="this.style.display='none'">
+                <div style="display:flex; align-items:center; gap:16px; margin-bottom:0.8rem; opacity:0.55; font-size:0.8rem;">
+                    <span><i class="fas fa-calendar-alt"></i> ${n.date}</span>
+                    <span><i class="fas fa-user-circle"></i> ${currentLang === 'en' ? 'Sarfraz Khamoosh' : 'سرفراز خموش'}</span>
+                </div>
+                <h2><i class="fas fa-newspaper" style="color:#8b5cf6;"></i> ${title}</h2>
+                <div class="text">${text.replace(/\n/g,'<br>')}</div>`;
             modal.classList.add('open');
         }
 
@@ -2047,29 +2252,16 @@
             if (!grid) return;
             const t = translations[currentLang];
             document.getElementById('galleryTitle').textContent = t.galleryTitle;
-            const imageNames = [
-                'Khamoosh.jpg', 'Kham.png', 'programer.png', 'website.png',
-                'application.png', 'ux.png', 'logo.png', 'banner.png',
-                'mang.png', 'imm.png', 'fit.png', 'photoshop.png',
-                'ill.png', 'indesign.png', 'light.png', 'inshot.png',
-                'pics.png', 'mtn.jpg', 'alight.png', 'after.png',
-                'conva.png', 'python.png', 'flutter.png', 'xml.png',
-                'php.png', 'go.png', 'javas.png'
-            ];
-            const validExts = ['jpg', 'jpeg', 'png', 'webp', 'gif', 'svg'];
-            const validImages = imageNames.filter(name => validExts.includes(name.split('.').pop().toLowerCase()));
-            if (validImages.length === 0) {
-                grid.innerHTML = `<p style="text-align:center; opacity:0.5; grid-column:1/-1;">${currentLang === 'fa' ? 'هیچ تصویری یافت نشد' : 'No images found'}</p>`;
-                return;
+            const totalImages = 23;
+            let html = '';
+            for (let i = 1; i <= totalImages; i++) {
+                const path = `images/${i}.png`;
+                html += `<div class="gallery-item" onclick="window.open('${path}','_blank')">
+                            <img src="${path}" alt="تصویر ${i}" loading="lazy" onerror="this.closest('.gallery-item').style.display='none'">
+                            <div class="overlay"><i class="fas fa-image"></i> ${i}</div>
+                         </div>`;
             }
-            grid.innerHTML = validImages.map(name => {
-                const path = 'images/' + name;
-                const label = name.replace(/\.[^/.]+$/, "");
-                return `<div class="gallery-item" onclick="window.open('${path}','_blank')">
-                            <img src="${path}" alt="${label}" loading="lazy" onerror="this.src='https://placehold.co/200x200?text=Not+Found&bg=f0f0f0&text_color=999'">
-                            <div class="overlay">${label}</div>
-                        </div>`;
-            }).join('');
+            grid.innerHTML = html;
         }
 
         // ================================================================
@@ -2081,7 +2273,7 @@
             const t = translations[lang];
             const labelMap = {
                 'label-home': t.nav.home, 'label-about': t.nav.about, 'label-profile': t.nav.profile,
-                'label-settings': t.nav.settings, 'label-immigration': t.nav.immigration,
+                'label-settings': t.nav.settings, 'label-publish': t.nav.publish, 'label-immigration': t.nav.immigration,
                 'label-technews': t.nav.technews, 'label-gallery': t.nav.gallery
             };
             Object.keys(labelMap).forEach(id => {
@@ -2102,6 +2294,7 @@
                 else if (id === 'gallery') renderGallery();
                 else if (id === 'profile') updateProfilePage();
                 else if (id === 'settings') { updateSettingsPage(); }
+                else if (id === 'publish') { updatePublishTranslations(); renderPublishCategories(); }
             }
             updateSEO(currentPage);
         }
@@ -2187,8 +2380,7 @@
                 setTimeout(() => {
                     const cards = document.querySelectorAll('.imm-card');
                     cards.forEach(card => {
-                        const info = card.querySelector('.info h4');
-                        if (info && info.textContent.includes(highlight)) {
+                        if (card.getAttribute('data-program') === highlight) {
                             card.style.transition = 'all 0.3s ease';
                             card.style.boxShadow = '0 0 0 4px #8b5cf6, 0 8px 30px rgba(139,92,246,0.3)';
                             card.style.transform = 'scale(1.02)';
