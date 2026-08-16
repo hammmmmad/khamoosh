@@ -1757,13 +1757,31 @@
                 subscriptionId = localStorage.getItem('subscriptionId');
             }
             const t = translations[currentLang];
-            try {
+            const attemptSubscribeCategory = async (subId) => {
                 const response = await fetch(`${SERVER_URL}/api/subscribe-category`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ subscriptionId, programId })
+                    body: JSON.stringify({ subscriptionId: subId, programId })
                 });
-                const result = await response.json();
+                const result = await response.json().catch(() => ({}));
+                return { status: response.status, result };
+            };
+            try {
+                let { status, result } = await attemptSubscribeCategory(subscriptionId);
+
+                // اگر سرور این subscriptionId را نمی‌شناسد (مثلاً بعد از خواب/ری‌استارت رایگان Render)،
+                // یک بار خودکار دوباره subscribe کن و تلاش را تکرار کن
+                if (!result.success && status === 404) {
+                    localStorage.removeItem('subscriptionId');
+                    const resubscribed = await subscribeToPush();
+                    if (!resubscribed) {
+                        toast(currentLang === 'en' ? 'Could not resubscribe' : 'اشتراک دوباره ثبت نشد');
+                        return;
+                    }
+                    subscriptionId = localStorage.getItem('subscriptionId');
+                    ({ status, result } = await attemptSubscribeCategory(subscriptionId));
+                }
+
                 if (result.success) {
                     if (result.subscribed) {
                         notifBadges[programId] = true;
@@ -1786,7 +1804,8 @@
                     }
                     localStorage.setItem('notifications', JSON.stringify(notifBadges));
                 } else {
-                    toast(currentLang === 'en' ? 'Error updating subscription' : 'خطا در ثبت اشتراک');
+                    const reason = result.error ? ` (${result.error})` : '';
+                    toast((currentLang === 'en' ? 'Error updating subscription' : 'خطا در ثبت اشتراک') + reason);
                 }
             } catch (error) {
                 console.error('Category subscribe error:', error);
