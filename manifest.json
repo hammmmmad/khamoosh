@@ -13,15 +13,15 @@
     "icons": [
         {
             "src": "/images/notification.png",
-            "sizes": "256×256",
-            "type": "image/Khamoosh",
-            "purpose": "any maskable"
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "any"
         },
         {
-            "s",
+            "src": "/images/notification.png",
             "sizes": "512x512",
-            "type": "image/jpeg",
-            "purpose": "any maskable"
+            "type": "image/png",
+            "purpose": "maskable"
         }
     ],
     "shortcuts": [
@@ -32,8 +32,8 @@
             "url": "/?page=immigration",
             "icons": [
                 {
-                    "src": "/images/Khamoosh.jpg",
-                    "sizes": "192x192"
+                    "src": "/images/notification.png",
+                    "sizes": "512x512"
                 }
             ]
         },
@@ -44,8 +44,8 @@
             "url": "/?page=gallery",
             "icons": [
                 {
-                    "src": "/images/Khamoosh.jpg",
-                    "sizes": "192x192"
+                    "src": "/images/notification.png",
+                    "sizes": "512x512"
                 }
             ]
         }
