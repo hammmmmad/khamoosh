@@ -2065,7 +2065,15 @@
             if (page === 'profile') updateProfilePage();
             if (page === 'settings') { updateSettingsPage(); }
             if (page === 'publish') { updatePublishTranslations(); renderPublishCategories(); }
-            if (page === 'notify') { renderNotifyPage(); }
+            if (page === 'notify') {
+                renderNotifyPage();
+                // آدرس صفحه را از حالت نوتیف (?page=notify&title=...) پاک می‌کنیم
+                // تا اگر کاربر صفحه را رفرش/تازه کند، به‌جای گیر کردن روی همان خبر، به خانه برود
+                if (window.history && window.history.replaceState) {
+                    window.history.replaceState({}, '', window.location.pathname);
+                }
+                localStorage.setItem('currentPage', 'home');
+            }
             currentPage = page;
             if (page !== 'notify') localStorage.setItem('currentPage', page);
             updateSEO(page);
