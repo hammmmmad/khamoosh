@@ -14,7 +14,7 @@ app.use(express.json());
 const ONESIGNAL_APP_ID = (process.env.ONESIGNAL_APP_ID || '').trim();
 const ONESIGNAL_REST_API_KEY = (process.env.ONESIGNAL_REST_API_KEY || '').trim();
 const SITE_URL = process.env.SITE_URL || 'https://sarfraz.abrdns.com';
-const DEFAULT_IMAGE = process.env.DEFAULT_NOTIF_IMAGE || (SITE_URL + '/images/notification.png');
+const DEFAULT_IMAGE = process.env.DEFAULT_NOTIF_IMAGE || (SITE_URL + '/images/Khamoosh.jpg');
 
 const pushEnabled = !!(ONESIGNAL_APP_ID && ONESIGNAL_REST_API_KEY);
 
@@ -31,7 +31,7 @@ async function sendOneSignalNotification({ title, body, imageUrl, filters, inclu
         headings: { en: title || 'سرفراز خموش' },
         contents: { en: body || '' },
         chrome_web_image: imageUrl || DEFAULT_IMAGE,
-        chrome_web_icon: SITE_URL + '/images/notification.png',
+        chrome_web_icon: SITE_URL + '/images/Khamoosh.jpg',
         url: SITE_URL + '/?page=immigration'
     };
     if (filters) payload.filters = filters;
