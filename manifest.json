@@ -12,13 +12,13 @@
     "categories": ["education", "productivity", "news"],
     "icons": [
         {
-            "src": "/images/Khamoosh.jpg",
-            "sizes": "192x192",
-            "type": "image/jpeg",
+            "src": "/images/notification.png",
+            "sizes": "256×256",
+            "type": "image/Khamoosh",
             "purpose": "any maskable"
         },
         {
-            "src": "/images/Khamoosh.jpg",
+            "s",
             "sizes": "512x512",
             "type": "image/jpeg",
             "purpose": "any maskable"
