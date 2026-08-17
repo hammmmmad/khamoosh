@@ -1741,7 +1741,7 @@
                         <input type="text" id="publishTitleInput" placeholder="عنوان خبر" />
                     </div>
                     <div class="admin-row" style="margin-top:1rem;">
-                        <input type="text" id="publishImageUrl" placeholder="آدرس عکس (اختیاری)" value="https://sarfraz.abrdns.com/images/Khamoosh.jpg" />
+                        <input type="text" id="publishImageUrl" placeholder="آدرس عکس (اختیاری)" value="https://sarfraz.abrdns.com/images/notification.png" />
                     </div>
                     <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
                         <textarea id="publishBody" placeholder="متن خبر را بنویسید..." rows="3" class="admin-textarea"></textarea>
@@ -1781,11 +1781,28 @@
             </h2>
             <div class="gallery-grid" id="galleryGrid"></div>
         </div>
+
+        <!-- ===== NOTIFICATION LANDING (opened when a push notification is tapped) ===== -->
+        <div class="page" id="page-notify">
+            <div class="glass" id="notifyCard" style="max-width:560px; margin:2rem auto; text-align:center; padding:2.4rem 1.8rem;">
+                <div style="width:72px; height:72px; border-radius:50%; overflow:hidden; margin:0 auto 1.2rem; border:3px solid #8b5cf6; box-shadow:0 8px 30px rgba(139,92,246,0.3);">
+                    <img id="notifyImage" src="" alt="" style="width:100%; height:100%; object-fit:cover; display:none;" onerror="this.style.display='none'">
+                    <div id="notifyImageFallback" style="width:100%; height:100%; display:flex; align-items:center; justify-content:center; background:rgba(139,92,246,0.08);"><i class="fas fa-bell" style="color:#8b5cf6; font-size:1.6rem;"></i></div>
+                </div>
+                <div style="font-family:'Share Tech Mono', monospace; font-size:0.65rem; letter-spacing:2px; color:#8b5cf6; opacity:0.8; margin-bottom:0.8rem;" id="notifyEyebrow">SARFRAZ KHAMOOSH</div>
+                <h2 id="notifyTitle" style="font-weight:800; font-size:1.4rem; margin-bottom:1rem; line-height:1.6;"></h2>
+                <p id="notifyBody" style="line-height:2.1; font-size:1rem; opacity:0.85; text-align:justify;"></p>
+                <button onclick="navigateTo('home')" style="margin-top:1.8rem; padding:11px 30px; border-radius:40px; border:none; background:#8b5cf6; color:#fff; font-weight:600; cursor:pointer; font-family:inherit; display:inline-flex; align-items:center; gap:8px;">
+                    <i class="fas fa-home"></i> <span id="notifyBackLabel">بازگشت به خانه</span>
+                </button>
+            </div>
+        </div>
     </div>
 
     <!-- ===== MODALS ===== -->
     <div id="newsModal" class="modal-overlay"><div class="modal-box"><button class="close" id="modalCloseBtn"><i class="fas fa-times"></i></button><div id="modalContent"></div></div></div>
     <div id="uidModal" class="modal-overlay"><div class="modal-box" style="text-align:center; max-width:420px;"><button class="close" id="closeUidModal"><i class="fas fa-times"></i></button><h3><i class="fas fa-gamepad" style="color:#8b5cf6;"></i> کال‌آف دیوتی موبایل</h3><p>UID من :</p><code style="display:inline-block; background:rgba(0,0,0,0.04); padding:6px 18px; border-radius:16px; font-family:'Inter',monospace; font-size:1.1rem; margin:8px 0 14px;">7500139701825634305</code><div style="display:flex; gap:1rem; justify-content:center; margin-top:1rem;"><button id="copyUidBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:#8b5cf6; color:#fff;"><i class="fas fa-copy"></i> کپی</button><button id="closeUidModalBtn" style="padding:8px 28px; border-radius:40px; border:none; font-weight:600; cursor:pointer; background:rgba(0,0,0,0.04); color:inherit;">بستن</button></div></div></div>
+
 
     <!-- ===== BOTTOM NAVIGATION ===== -->
     <div class="bottom-nav-wrapper">
@@ -2031,8 +2048,9 @@
             if (page === 'profile') updateProfilePage();
             if (page === 'settings') { updateSettingsPage(); }
             if (page === 'publish') { updatePublishTranslations(); renderPublishCategories(); }
+            if (page === 'notify') { renderNotifyPage(); }
             currentPage = page;
-            localStorage.setItem('currentPage', page);
+            if (page !== 'notify') localStorage.setItem('currentPage', page);
             updateSEO(page);
         }
 
@@ -2059,6 +2077,36 @@
         let cyberTypedTimer = null;
         let cyberGlitchTimer = null;
         let matrixAnimId = null;
+
+        function renderNotifyPage() {
+            const params = new URLSearchParams(window.location.search);
+            const title = params.get('title') || '';
+            const body = params.get('body') || '';
+            const image = params.get('image') || '';
+            const lang = params.get('lang') || currentLang;
+
+            const card = document.getElementById('notifyCard');
+            const isRtl = lang !== 'en';
+            card.setAttribute('dir', isRtl ? 'rtl' : 'ltr');
+
+            document.getElementById('notifyTitle').textContent = title || (lang === 'en' ? 'Notification' : 'اعلان');
+            document.getElementById('notifyBody').textContent = body;
+
+            const imgEl = document.getElementById('notifyImage');
+            const fallbackEl = document.getElementById('notifyImageFallback');
+            if (image) {
+                imgEl.src = image;
+                imgEl.style.display = 'block';
+                fallbackEl.style.display = 'none';
+                imgEl.onerror = () => { imgEl.style.display = 'none'; fallbackEl.style.display = 'flex'; };
+            } else {
+                imgEl.style.display = 'none';
+                fallbackEl.style.display = 'flex';
+            }
+
+            const backLabels = { fa: 'بازگشت به خانه', en: 'Back to Home', ps: 'کور ته بیرته' };
+            document.getElementById('notifyBackLabel').textContent = backLabels[lang] || backLabels.fa;
+        }
 
         function renderHome() {
             const t = translations[currentLang];
@@ -2288,6 +2336,8 @@
                         return;
                     }
                 }
+                // زبان فعلی کاربر را به‌عنوان تگ ثبت کن تا سرور بداند خبر را به کدام زبان برایش بفرستد
+                await OneSignal.User.addTag('lang', currentLang);
 
                 const alreadyTagged = !!notifBadges[programId];
                 if (!alreadyTagged) {
@@ -2710,6 +2760,9 @@
         function setLanguage(lang) {
             currentLang = lang;
             localStorage.setItem('sarfraz_lang', lang);
+            if (typeof OneSignal !== 'undefined' && window.__oneSignalReady && OneSignal.User.PushSubscription.optedIn) {
+                OneSignal.User.addTag('lang', lang).catch(() => {});
+            }
             const t = translations[lang];
             const labelMap = {
                 'label-home': t.nav.home, 'label-about': t.nav.about, 'label-profile': t.nav.profile,
