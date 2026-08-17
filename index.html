@@ -1970,13 +1970,13 @@
         // ===== PROFILE CARDS =====
         // ===== OTHER DATA =====
         const specialties = [
-            { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev" },
-            { fa: "طراحی و توسعه وب‌سایت", en: "Web Design & Dev" },
-            { fa: "طراحی اپلیکیشن موبایل", en: "Mobile App Design" },
-            { fa: "UI/UX Design", en: "UI/UX Design" },
-            { fa: "طراحی لوگو و برند", en: "Logo & Brand Identity" },
-            { fa: "مشاوره مهاجرت", en: "Immigration Consulting" },
-            { fa: "مربیگری فیتنس", en: "Fitness Coaching" }
+            { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev", ps: "پروګرامینګ او د سافټویر پراختیا" },
+            { fa: "طراحی و توسعه وب‌سایت", en: "Web Design & Dev", ps: "د ویب سایټ ډیزاین او پراختیا" },
+            { fa: "طراحی اپلیکیشن موبایل", en: "Mobile App Design", ps: "د موبایل اپلیکیشن ډیزاین" },
+            { fa: "UI/UX Design", en: "UI/UX Design", ps: "UI/UX ډیزاین" },
+            { fa: "طراحی لوگو و برند", en: "Logo & Brand Identity", ps: "د لوگو او برانډ ډیزاین" },
+            { fa: "مشاوره مهاجرت", en: "Immigration Consulting", ps: "د مهاجرت مشوره" },
+            { fa: "مربیگری فیتنس", en: "Fitness Coaching", ps: "د فټنس روزنه" }
         ];
         const skillsData = [
             { name: "Photoshop", pct: 85 }, { name: "Illustrator", pct: 90 }, { name: "Flutter", pct: 80 },
@@ -1985,25 +1985,25 @@
         ];
 
         const immigrationPrograms = [
-            { id: 'siv', fa: "برنامه SIV", en: "SIV Program", statusFa: "فعال", statusEn: "Active" },
-            { id: 'p1', fa: "برنامه P1", en: "P1 Program", statusFa: "فعال", statusEn: "Active" },
-            { id: 'p2', fa: "برنامه P2", en: "P2 Program", statusFa: "فعال", statusEn: "Active" },
-            { id: 'asylum', fa: "برنامه Asylum", en: "Asylum Program", statusFa: "فعال", statusEn: "Active" },
-            { id: 'parole', fa: "برنامه Parole", en: "Parole Program", statusFa: "در انتظار", statusEn: "Pending" },
-            { id: 'reparole', fa: "برنامه Re-Parole", en: "Re-Parole", statusFa: "فعال", statusEn: "Active" },
-            { id: 'welcome', fa: "برنامه Welcome Corps", en: "Welcome Corps", statusFa: "فعال", statusEn: "Active" },
-            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", statusFa: "فعال", statusEn: "Active" },
-            { id: 'cr2', fa: "برنامه CR2", en: "CR2 Marriage", statusFa: "فعال", statusEn: "Active" },
-            { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", statusFa: "فعال", statusEn: "Active" },
-            { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", statusFa: "ثبت‌نام باز", statusEn: "Open" },
-            { id: 'i130_gc', fa: "I-130 با گرین کارت", en: "I-130 with Green Card", statusFa: "فعال", statusEn: "Active" },
-            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", statusFa: "فعال", statusEn: "Active" }
+            { id: 'siv', fa: "برنامه SIV", en: "SIV Program", ps: "د SIV پروګرام", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'p1', fa: "برنامه P1", en: "P1 Program", ps: "د P1 پروګرام", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'p2', fa: "برنامه P2", en: "P2 Program", ps: "د P2 پروګرام", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'asylum', fa: "برنامه Asylum", en: "Asylum Program", ps: "د پناه غوښتنې پروګرام", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'parole', fa: "برنامه Parole", en: "Parole Program", ps: "د Parole پروګرام", statusFa: "در انتظار", statusEn: "Pending", statusPs: "په تمه" },
+            { id: 'reparole', fa: "برنامه Re-Parole", en: "Re-Parole", ps: "بیا-Parole", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'welcome', fa: "برنامه Welcome Corps", en: "Welcome Corps", ps: "Welcome Corps پروګرام", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'cr1', fa: "برنامه CR1", en: "CR1 Marriage", ps: "د CR1 واده", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'cr2', fa: "برنامه CR2", en: "CR2 Marriage", ps: "د CR2 واده", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'k1', fa: "برنامه K1", en: "K1 Fiancé", ps: "د K1 نامزدي", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'dv', fa: "برنامه DV Lottery", en: "DV Lottery", ps: "د DV پیاوړتیا", statusFa: "ثبت‌نام باز", statusEn: "Open", statusPs: "نوم لیکنه پرانیستې" },
+            { id: 'i130_gc', fa: "I-130 با گرین کارت", en: "I-130 with Green Card", ps: "I-130 د ګرین کارت سره", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" },
+            { id: 'i130_us', fa: "I-130 با پاسپورت آمریکایی", en: "I-130 with US Passport", ps: "I-130 د امریکایي پاسپورت سره", statusFa: "فعال", statusEn: "Active", statusPs: "فعال" }
         ];
 
         const newsData = [
-            { id: 1, fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد", en: "Google Raises $85B for AI", date: "۳ جون ۲۰۲۶", img: "news-pic/google.jpg", fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...", fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion..." },
-            { id: 2, fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد", en: "Startup Lovable Expands Google Partnership", date: "۳ جون ۲۰۲۶", img: "news-pic/ai.jpg", fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...", fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud..." },
-            { id: 3, fa: "متا بازی VR «Supernatural» را نجات داد", en: "Meta Rescues VR Game 'Supernatural'", date: "۳ جون ۲۰۲۶", img: "news-pic/meta.jpg", fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...", fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down..." }
+            { id: 1, fa: "گوگل ۸۵ میلیارد دلار برای هوش مصنوعی جذب کرد", en: "Google Raises $85B for AI", ps: "ګوگل د AI لپاره ۸۵ میلیارده ډالره راټول کړل", date: "۳ جون ۲۰۲۶", img: "news-pic/google.jpg", fullFa: "شرکت مادر گوگل، Alphabet Inc.، موفق شده است با یک عرضه بزرگ سهام، حدود ۸۵ میلیارد دلار سرمایه برای توسعه پروژه‌های هوش مصنوعی جذب کند...", fullEn: "Google's parent company, Alphabet Inc., has successfully raised approximately $85 billion...", fullPs: "د ګوگل مور شرکت، Alphabet Inc.، د سهمونو د لوی خرڅلاو له لارې شاوخوا ۸۵ میلیارده ډالره پانګه د مصنوعي ځیرکتیا پروژو لپاره راټوله کړې ده..." },
+            { id: 2, fa: "استارتاپ Lovable همکاری با گوگل را گسترش داد", en: "Startup Lovable Expands Google Partnership", ps: "Lovable سټارتاپ له ګوگل سره خپل همکاري پراخه کړه", date: "۳ جون ۲۰۲۶", img: "news-pic/ai.jpg", fullFa: "استارتاپ سوئدی Lovable که در زمینه توسعه نرم‌افزار با کمک هوش مصنوعی فعالیت می‌کند، قرارداد چندساله جدیدی را با Google Cloud امضا کرده است...", fullEn: "Swedish startup Lovable, which develops AI-powered software, has signed a new multi-year agreement with Google Cloud...", fullPs: "سویډنۍ سټارتاپ Lovable، چې د مصنوعي ځیرکتیا په مرسته سافټویر جوړوي، له Google Cloud سره یو نوی څو کلن تړون لاسلیک کړی دی..." },
+            { id: 3, fa: "متا بازی VR «Supernatural» را نجات داد", en: "Meta Rescues VR Game 'Supernatural'", ps: "میټا د 'Supernatural' VR لوبه وژغورله", date: "۳ جون ۲۰۲۶", img: "news-pic/meta.jpg", fullFa: "شرکت Meta اعلام کرد که اپلیکیشن ورزشی واقعیت مجازی Supernatural به جای تعطیلی کامل، به یک شرکت مستقل جدید منتقل خواهد شد...", fullEn: "Meta has announced that the virtual reality fitness app Supernatural will not be shut down...", fullPs: "میټا اعلان کړی چې د مجازی واقعیت فټنس اپلیکیشن Supernatural به بشپړ نه تړل کیږي، بلکې یوه نوې خپلواکه شرکت ته به لیږدول کیږي..." }
         ];
 
         // ===== STATE =====
@@ -2017,6 +2017,23 @@
         // ================================================================
         // 2. HELPERS
         // ================================================================
+        // برمی‌گرداند مقدار زبان فعلی از یک آبجکت { fa, en, ps }
+        // اگر ترجمهٔ پشتو موجود نبود، به انگلیسی و بعد دری برمی‌گردد (هیچ‌وقت خالی نمی‌ماند)
+        function pick(obj) {
+            if (!obj) return '';
+            return obj[currentLang] || obj.en || obj.fa || '';
+        }
+        // نسخهٔ pick برای فیلدهایی با پسوند (مثلاً status -> statusFa/statusEn/statusPs)
+        function pickField(obj, base) {
+            if (!obj) return '';
+            const cap = base.charAt(0).toUpperCase() + base.slice(1);
+            const key = base + (currentLang === 'fa' ? 'Fa' : currentLang === 'en' ? 'En' : 'Ps');
+            return obj[key] || obj[base + 'En'] || obj[base + 'Fa'] || '';
+        }
+        // برای رشته‌های ثابت رابط کاربری (توست‌ها و پیام‌ها)
+        function trUI(fa, en, ps) {
+            return currentLang === 'en' ? en : currentLang === 'ps' ? (ps || fa) : fa;
+        }
         function toast(msg, isSpecial = false) {
             let el = document.querySelector('.toast-msg');
             if (el) el.remove();
@@ -2067,7 +2084,7 @@
             };
             const data = titles[page];
             if (data) {
-                document.title = currentLang === 'en' ? data.en : data.fa;
+                document.title = pick(data);
             }
         }
 
@@ -2243,7 +2260,7 @@
             }
             const list = document.getElementById('specialtiesList');
             if (list) {
-                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${currentLang === 'en' ? s.en : s.fa}</li>`).join('');
+                list.innerHTML = specialties.map(s => `<li><i class="fas fa-check-circle"></i> ${pick(s)}</li>`).join('');
             }
         }
 
@@ -2322,7 +2339,7 @@
         async function handleNotification(programId, programName, btn) {
             const t = translations[currentLang];
             if (typeof OneSignal === 'undefined' || !window.__oneSignalReady) {
-                toast(currentLang === 'en' ? 'Notifications are still loading, try again in a moment' : 'سیستم اعلان هنوز بارگذاری می‌شود، چند لحظه دیگر دوباره امتحان کن');
+                toast(trUI('سیستم اعلان هنوز بارگذاری می‌شود، چند لحظه دیگر دوباره امتحان کن', 'Notifications are still loading, try again in a moment', 'د خبرتیا سیسټم لاهم بارېږي، لطفاً یو څه وروسته بیا هڅه وکړئ'));
                 return;
             }
             try {
@@ -2332,7 +2349,7 @@
                     // بعد از پاسخ کاربر به پرامپت، کمی صبر کن تا وضعیت به‌روزرسانی شود
                     await new Promise(resolve => setTimeout(resolve, 800));
                     if (!OneSignal.User.PushSubscription.optedIn) {
-                        toast(currentLang === 'en' ? 'Please allow notifications to subscribe' : 'برای عضویت، لطفاً اجازهٔ نوتیف را فعال کن');
+                        toast(trUI('برای عضویت، لطفاً اجازهٔ نوتیف را فعال کن', 'Please allow notifications to subscribe', 'د غړیتوب لپاره مهرباني وکړئ د خبرتیا اجازه فعال کړئ'));
                         return;
                     }
                 }
@@ -2364,7 +2381,7 @@
                 localStorage.setItem('notifications', JSON.stringify(notifBadges));
             } catch (error) {
                 console.error('OneSignal tag error:', error);
-                toast(currentLang === 'en' ? 'Error updating subscription' : 'خطا در ثبت اشتراک');
+                toast(trUI('خطا در ثبت اشتراک', 'Error updating subscription', 'د غړیتوب په ثبتولو کې تېروتنه'));
             }
         }
 
@@ -2395,8 +2412,8 @@
             const t = translations[currentLang];
             document.getElementById('immigrationTitle').textContent = t.immigrationTitle;
             grid.innerHTML = immigrationPrograms.map(prog => {
-                const name = currentLang === 'en' ? prog.en : prog.fa;
-                const status = currentLang === 'en' ? prog.statusEn : prog.statusFa;
+                const name = pick(prog);
+                const status = pickField(prog, 'status');
                 const hasNotif = notifBadges[prog.id] || false;
                 return `<div class="imm-card" data-program="${prog.id}">
                             <div class="info"><h4>${name}</h4><div class="status">${status}</div></div>
@@ -2444,7 +2461,7 @@
                 });
                 const result = await response.json();
                 if (result.success) {
-                    toast(currentLang === 'en' ? `Sent to everyone (${result.recipients ?? ''})` : `خبر برای همه ارسال شد`);
+                    toast(trUI(`خبر برای همه ارسال شد`, `Sent to everyone (${result.recipients ?? ''})`, `خبر ټولو ته واستول شو`));
                     document.getElementById('adminTitle').value = '';
                     document.getElementById('adminBody').value = '';
                     document.getElementById('adminStatus').textContent = 'ارسال موفق';
@@ -2452,7 +2469,7 @@
                         await window.notifManager.saveNotification({
                             title: title,
                             body: body,
-                            userId: currentLang === 'en' ? 'Everyone' : 'همه کاربران',
+                            userId: trUI('همه کاربران', 'Everyone', 'ټول کاروونکي'),
                             status: 'delivered',
                             programId: 'admin'
                         });
@@ -2495,7 +2512,7 @@
             const t = translations[currentLang];
             const prevValue = select.value;
             select.innerHTML = `<option value="">${t.selectCategory}</option>` +
-                immigrationPrograms.map(p => `<option value="${p.id}">${currentLang === 'en' ? p.en : p.fa}</option>`).join('');
+                immigrationPrograms.map(p => `<option value="${p.id}">${pick(p)}</option>`).join('');
             if (prevValue) select.value = prevValue;
         }
 
@@ -2519,7 +2536,7 @@
                 });
                 const result = await response.json();
                 if (result.success) {
-                    toast(currentLang === 'en' ? 'News published' : 'خبر با موفقیت نشر شد');
+                    toast(trUI('خبر با موفقیت نشر شد', 'News published', 'خبر په بریالیتوب سره خپور شو'));
                     document.getElementById('publishTitleInput').value = '';
                     document.getElementById('publishBody').value = '';
                     document.getElementById('publishStatus').textContent = translations[currentLang].statusDelivered;
@@ -2703,12 +2720,12 @@
             const t = translations[currentLang];
             document.getElementById('techTitle').textContent = t.techTitle;
             grid.innerHTML = newsData.map(n => {
-                const title = currentLang === 'en' ? n.en : n.fa;
+                const title = pick(n);
                 return `<div class="news-card" onclick="openNews(${n.id})">
                             <img src="${n.img}" alt="${title}" onerror="this.src='https://placehold.co/600x190?text=News+Image&bg=8b5cf6&text_color=fff'">
                             <div class="body">
                                 <h4>${title}</h4>
-                                <div class="meta"><span><i class="fas fa-user-circle"></i> ${currentLang === 'en' ? 'Sarfraz Khamoosh' : 'سرفراز خموش'}</span><span>${n.date}</span></div>
+                                <div class="meta"><span><i class="fas fa-user-circle"></i> سرفراز خموش</span><span>${n.date}</span></div>
                                 <div style="margin-top:8px; font-size:0.7rem; color:#8b5cf6; display:flex; align-items:center; gap:6px;"><i class="fas fa-book-open"></i> ${t.readArticle}</div>
                             </div>
                         </div>`;
@@ -2720,13 +2737,13 @@
             if (!n) return;
             const modal = document.getElementById('newsModal');
             const content = document.getElementById('modalContent');
-            const title = currentLang === 'en' ? n.en : n.fa;
-            const text = currentLang === 'en' ? n.fullEn : n.fullFa;
+            const title = pick(n);
+            const text = pickField(n, 'full');
             content.innerHTML = `
                 <img src="${n.img}" alt="${title}" style="width:100%; max-height:260px; object-fit:cover; border-radius:1.8rem; margin-bottom:1.2rem;" onerror="this.style.display='none'">
                 <div style="display:flex; align-items:center; gap:16px; margin-bottom:0.8rem; opacity:0.55; font-size:0.8rem;">
                     <span><i class="fas fa-calendar-alt"></i> ${n.date}</span>
-                    <span><i class="fas fa-user-circle"></i> ${currentLang === 'en' ? 'Sarfraz Khamoosh' : 'سرفراز خموش'}</span>
+                    <span><i class="fas fa-user-circle"></i> سرفراز خموش</span>
                 </div>
                 <h2><i class="fas fa-newspaper" style="color:#8b5cf6;"></i> ${title}</h2>
                 <div class="text">${text.replace(/\n/g,'<br>')}</div>`;
