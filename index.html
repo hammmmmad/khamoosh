@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
     
     <!-- Google Font -->
-    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;700;900&family=Inter:wght@300;400;600;700;800&family=Orbitron:wght@600;700;800;900&family=Share+Tech+Mono&display=swap" rel="stylesheet" />
 
     <!-- SEO -->
     <meta name="description" content="سایت رسمی سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
@@ -41,13 +41,21 @@
         }
     </script>
 
-    <!-- Service Worker -->
+    <!-- OneSignal Web Push SDK -->
+    <script src="https://cdn.onesignal.com/sdks/web/v16/OneSignalSDK.page.js" defer></script>
     <script>
-        if ('serviceWorker' in navigator) {
-            navigator.serviceWorker.register('/sw.js')
-                .then(reg => console.log('Service Worker registered:', reg))
-                .catch(err => console.log('Service Worker registration failed:', err));
-        }
+        window.OneSignalDeferred = window.OneSignalDeferred || [];
+        OneSignalDeferred.push(async function(OneSignal) {
+            await OneSignal.init({
+                appId: "90f1a8dc-f0fb-46fc-b7a9-b7368fde9f47",
+                safari_web_id: "web.onesignal.auto.552dcc8d-cced-4aac-823c-93a119513fed",
+                notifyButton: { enable: false }
+            });
+            window.__oneSignalReady = true;
+            if (typeof syncNotifBadgesFromOneSignal === 'function') {
+                syncNotifBadgesFromOneSignal();
+            }
+        });
     </script>
 
     <style>
@@ -239,6 +247,210 @@
         @keyframes homePulse {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.03); }
+        }
+
+        /* ===== CYBER HERO (Home) ===== */
+        .cyber-hero {
+            position: relative;
+            border-radius: 2.5rem;
+            overflow: hidden;
+            background: #050810;
+            border: 1px solid rgba(34, 240, 255, 0.18);
+            padding: 3.2rem 1.8rem 2.6rem;
+            box-shadow: 0 30px 80px rgba(0, 0, 0, 0.55), inset 0 0 60px rgba(34, 240, 255, 0.04);
+            isolation: isolate;
+        }
+        .cyber-hero canvas#matrixCanvas {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.32;
+            z-index: 0;
+        }
+        .cyber-hero::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            background: radial-gradient(ellipse at 50% 0%, rgba(34, 240, 255, 0.14), transparent 60%),
+                        radial-gradient(ellipse at 50% 100%, rgba(57, 255, 136, 0.08), transparent 55%);
+            z-index: 1;
+            pointer-events: none;
+        }
+        .cyber-scanline {
+            position: absolute;
+            left: 0; right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, rgba(34, 240, 255, 0.9), transparent);
+            box-shadow: 0 0 12px 2px rgba(34, 240, 255, 0.6);
+            z-index: 3;
+            animation: cyberScan 5s linear infinite;
+        }
+        @keyframes cyberScan {
+            0% { top: -2px; opacity: 0; }
+            8% { opacity: 1; }
+            92% { opacity: 1; }
+            100% { top: 100%; opacity: 0; }
+        }
+        .cyber-hero-content {
+            position: relative;
+            z-index: 2;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.1rem;
+        }
+        .cyber-eyebrow {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 3px;
+            color: #39FF88;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            opacity: 0.9;
+        }
+        .cyber-eyebrow .dot {
+            width: 6px; height: 6px; border-radius: 50%;
+            background: #39FF88;
+            box-shadow: 0 0 8px 2px rgba(57, 255, 136, 0.8);
+            animation: cyberPulseDot 1.6s ease-in-out infinite;
+        }
+        @keyframes cyberPulseDot {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.4; transform: scale(0.7); }
+        }
+        .cyber-photo-frame {
+            position: relative;
+            width: 176px;
+            height: 176px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .cyber-photo-frame::before {
+            content: "";
+            position: absolute;
+            inset: -10px;
+            border-radius: 50%;
+            background: conic-gradient(from 0deg, #22F0FF, #39FF88, #22F0FF 50%, #FF2E63, #22F0FF);
+            animation: cyberRotate 6s linear infinite;
+            -webkit-mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+            mask: radial-gradient(farthest-side, transparent calc(100% - 4px), #000 calc(100% - 4px));
+        }
+        @keyframes cyberRotate {
+            to { transform: rotate(360deg); }
+        }
+        .cyber-photo-inner {
+            position: relative;
+            width: 158px;
+            height: 158px;
+            border-radius: 50%;
+            overflow: hidden;
+            background: #0a1420;
+            box-shadow: 0 0 40px rgba(34, 240, 255, 0.35);
+        }
+        .cyber-photo-inner img {
+            width: 100%; height: 100%; object-fit: cover;
+            filter: saturate(1.1) contrast(1.05);
+        }
+        .cyber-photo-inner::after {
+            content: "";
+            position: absolute;
+            left: 0; right: 0; height: 40%;
+            background: linear-gradient(180deg, rgba(34,240,255,0.35), transparent);
+            animation: cyberPhotoSweep 3.2s ease-in-out infinite;
+        }
+        @keyframes cyberPhotoSweep {
+            0% { top: -40%; }
+            100% { top: 100%; }
+        }
+        .cyber-name {
+            font-family: 'Orbitron', 'Inter', sans-serif;
+            font-weight: 800;
+            font-size: 2.1rem;
+            letter-spacing: 2px;
+            color: #EAFEFF;
+            text-shadow: 0 0 18px rgba(34, 240, 255, 0.55);
+            position: relative;
+            margin-top: 0.4rem;
+        }
+        .cyber-name .glitch-layer {
+            position: absolute;
+            inset: 0;
+            opacity: 0;
+        }
+        .cyber-name.glitching .glitch-layer.cyan {
+            opacity: 0.85;
+            color: #22F0FF;
+            transform: translate(2px, 0);
+            clip-path: inset(20% 0 55% 0);
+        }
+        .cyber-name.glitching .glitch-layer.magenta {
+            opacity: 0.85;
+            color: #FF2E63;
+            transform: translate(-2px, 0);
+            clip-path: inset(60% 0 10% 0);
+        }
+        .cyber-role {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.95rem;
+            color: #8FE9F5;
+            min-height: 1.4em;
+            letter-spacing: 0.5px;
+        }
+        .cyber-role .cursor {
+            display: inline-block;
+            width: 8px; height: 1em;
+            background: #39FF88;
+            margin-right: 2px;
+            vertical-align: -2px;
+            animation: cyberBlink 1s steps(1) infinite;
+        }
+        @keyframes cyberBlink {
+            0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; }
+        }
+        .cyber-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem;
+            justify-content: center;
+            margin-top: 0.4rem;
+        }
+        .cyber-tag {
+            font-family: 'Share Tech Mono', monospace;
+            font-size: 0.68rem;
+            letter-spacing: 0.6px;
+            color: #BFF7FF;
+            border: 1px solid rgba(34, 240, 255, 0.35);
+            background: rgba(34, 240, 255, 0.06);
+            padding: 5px 14px;
+            border-radius: 30px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .cyber-tag i { color: #39FF88; font-size: 0.75rem; }
+        .cyber-desc {
+            max-width: 480px;
+            font-size: 0.9rem;
+            line-height: 1.9;
+            color: #A9C8D0;
+            margin-top: 0.6rem;
+        }
+        @media (prefers-reduced-motion: reduce) {
+            .cyber-scanline, .cyber-photo-frame::before, .cyber-photo-inner::after, .cyber-eyebrow .dot, .cyber-role .cursor {
+                animation: none !important;
+            }
+        }
+        @media (max-width: 480px) {
+            .cyber-hero { padding: 2.4rem 1.2rem 2rem; }
+            .cyber-name { font-size: 1.5rem; }
+            .cyber-photo-frame { width: 140px; height: 140px; }
+            .cyber-photo-inner { width: 124px; height: 124px; }
         }
 
         /* ===== HOME PROFILE CARDS ===== */
@@ -1169,11 +1381,33 @@
     <div class="container">
         <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
-            <h2 style="font-weight:700; margin-bottom:1.2rem; display:flex; align-items:center; gap:12px;">
-                <i class="fas fa-user-circle" style="color:#8b5cf6;"></i>
-                <span id="homeTitle">پروفایل‌ها</span>
-            </h2>
-            <div class="profile-grid" id="homeProfileGrid"></div>
+            <div class="cyber-hero">
+                <canvas id="matrixCanvas"></canvas>
+                <div class="cyber-scanline"></div>
+                <div class="cyber-hero-content">
+                    <div class="cyber-eyebrow"><span class="dot"></span><span id="cyberEyebrow">SECURE CONNECTION ESTABLISHED</span></div>
+
+                    <div class="cyber-photo-frame">
+                        <div class="cyber-photo-inner">
+                            <img src="images/Khamoosh.jpg" alt="Sarfraz Khamoosh" onerror="this.src='https://placehold.co/158x158/0a1420/22F0FF?text=SK'" />
+                        </div>
+                    </div>
+
+                    <div class="cyber-name" id="cyberName">
+                        SARFRAZ KHAMOOSH
+                        <span class="glitch-layer cyan" aria-hidden="true">SARFRAZ KHAMOOSH</span>
+                        <span class="glitch-layer magenta" aria-hidden="true">SARFRAZ KHAMOOSH</span>
+                    </div>
+
+                    <div class="cyber-role"><span class="cursor"></span><span id="cyberTyped"></span></div>
+
+                    <div class="cyber-tags" id="cyberTags"></div>
+
+                    <p class="cyber-desc" id="cyberDesc">
+                        دانشجوی امنیت سایبری در دانشگاه ELTE مجارستان؛ فعال در برنامه‌نویسی، طراحی وب‌سایت، طراحی اپلیکیشن، گرافیک دیزاین و UX/UI در تمام حوزه‌ها.
+                    </p>
+                </div>
+            </div>
         </div>
 
         <!-- ===== ABOUT ===== -->
@@ -1291,20 +1525,19 @@
                     </div>
                     <div id="adminContent">
                         <div class="admin-row">
-                            <select id="targetUser"><option value="">انتخاب کاربر...</option></select>
-                            <input type="text" id="adminTitle" placeholder="عنوان خبر" />
+                            <input type="text" id="adminTitle" placeholder="عنوان خبر" style="flex:1;" />
                         </div>
                         <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
                             <textarea id="adminBody" placeholder="متن خبر را بنویسید..." rows="3" class="admin-textarea"></textarea>
-                            <button onclick="sendAdminPush()" class="admin-send-btn"><i class="fas fa-paper-plane"></i> <span id="adminSendBtn">ارسال به کاربر</span></button>
+                            <button onclick="sendAdminPush()" class="admin-send-btn"><i class="fas fa-bullhorn"></i> <span id="adminSendBtn">ارسال به همه</span></button>
                         </div>
                         <div class="admin-stats">
-                            <span><i class="fas fa-users"></i> <span id="userCount">0</span> کاربر آنلاین</span>
                             <span><i class="fas fa-key"></i> <span id="adminStatus">وضعیت: آماده</span></span>
                         </div>
                         <div id="adminArchive">
                             <h4><i class="fas fa-archive"></i> <span id="archiveTitle">آرشیو پیام‌ها</span></h4>
                             <div id="archiveList"></div>
+
                         </div>
                     </div>
                 </div>
@@ -1332,17 +1565,21 @@
                         </select>
                         <input type="text" id="publishTitleInput" placeholder="عنوان خبر" />
                     </div>
+                    <div class="admin-row" style="margin-top:1rem;">
+                        <input type="text" id="publishImageUrl" placeholder="آدرس عکس (اختیاری)" value="https://sarfraz.abrdns.com/images/notification.png" />
+                    </div>
                     <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
                         <textarea id="publishBody" placeholder="متن خبر را بنویسید..." rows="3" class="admin-textarea"></textarea>
                         <button onclick="sendCategoryPush()" class="admin-send-btn"><i class="fas fa-paper-plane"></i> <span id="publishBtnLabel">نشر کن</span></button>
                     </div>
                     <div class="admin-stats">
-                        <span><i class="fas fa-users"></i> <span id="categorySubCount">0</span> مشترک این دسته</span>
+                        <span><i class="fas fa-image"></i> <span id="publishImageHint">عکس همراه خبر نمایش داده می‌شود</span></span>
                         <span><i class="fas fa-key"></i> <span id="publishStatus">وضعیت: آماده</span></span>
                     </div>
                 </div>
             </div>
         </div>
+
 
         <!-- ===== IMMIGRATION ===== -->
         <div class="page" id="page-immigration">
@@ -1398,6 +1635,10 @@
             fa: {
                 nav: { home: 'خانه', about: 'درباره', profile: 'پروفایل', settings: 'تنظیمات', publish: 'نشر', immigration: 'مهاجرت', technews: 'فناوری', gallery: 'گالری' },
                 homeTitle: 'پروفایل‌ها',
+                cyberEyebrow: 'اتصال امن برقرار شد',
+                cyberRoles: ['دانشجوی امنیت سایبری @ دانشگاه ELTE، مجارستان', 'برنامه‌نویس فول‌استک', 'طراح وب‌سایت', 'طراح اپلیکیشن', 'گرافیک دیزاینر', 'طراح UX/UI'],
+                cyberTags: [{icon:'fa-graduation-cap', text:'ELTE University'}, {icon:'fa-shield-halved', text:'Cybersecurity'}, {icon:'fa-code', text:'Full-Stack Dev'}, {icon:'fa-pen-ruler', text:'UX / UI'}],
+                cyberDesc: 'دانشجوی امنیت سایبری در دانشگاه ELTE مجارستان؛ فعال در برنامه‌نویسی، طراحی وب‌سایت، طراحی اپلیکیشن، گرافیک دیزاین و UX/UI در تمام حوزه‌ها.',
                 aboutTitle: 'برنامه‌نویس · طراح گرافیک · مشاور مهاجرت · مربی فیتنس',
                 aboutText: 'سرفراز خموش، متولد ۱۳۷۷ در مزار شریف افغانستان، با بیش از ۸ سال تجربه در حوزه فناوری، طراحی و توسعه دیجیتال، همواره به دنبال خلق آثاری خلاقانه و کاربردی بوده است.',
                 skillsTitle: 'مهارت‌های فنی',
@@ -1419,7 +1660,7 @@
                 techTitle: 'اخبار فناوری',
                 galleryTitle: 'گالری تصاویر',
                 adminPanel: 'پنل مدیریت (فقط مدیر)',
-                adminSend: 'ارسال به کاربر',
+                adminSend: 'ارسال به همه',
                 adminTitlePlaceholder: 'عنوان خبر',
                 adminBodyPlaceholder: 'متن خبر را بنویسید...',
                 adminStatus: 'وضعیت: آماده',
@@ -1441,6 +1682,10 @@
             en: {
                 nav: { home: 'Home', about: 'About', profile: 'Profile', settings: 'Settings', publish: 'Publish', immigration: 'Immigration', technews: 'Tech News', gallery: 'Gallery' },
                 homeTitle: 'Profiles',
+                cyberEyebrow: 'Secure connection established',
+                cyberRoles: ['Cybersecurity Student @ ELTE University, Hungary', 'Full-Stack Developer', 'Web Designer', 'App Designer', 'Graphic Designer', 'UX / UI Designer'],
+                cyberTags: [{icon:'fa-graduation-cap', text:'ELTE University'}, {icon:'fa-shield-halved', text:'Cybersecurity'}, {icon:'fa-code', text:'Full-Stack Dev'}, {icon:'fa-pen-ruler', text:'UX / UI'}],
+                cyberDesc: 'Cybersecurity student at ELTE University, Hungary — working across programming, web design, app design, graphic design, and UX/UI in every field.',
                 aboutTitle: 'Developer · Graphic Designer · Immigration Consultant · Fitness Coach',
                 aboutText: 'Sarfraz Khamoosh, born in 1998 in Mazar-i-Sharif, Afghanistan, with over 8 years of experience in technology, design and digital development.',
                 skillsTitle: 'Technical Skills',
@@ -1462,7 +1707,7 @@
                 techTitle: 'Tech News',
                 galleryTitle: 'Image Gallery',
                 adminPanel: 'Admin Panel (Only Admin)',
-                adminSend: 'Send to User',
+                adminSend: 'Send to Everyone',
                 adminTitlePlaceholder: 'News Title',
                 adminBodyPlaceholder: 'Write your news...',
                 adminStatus: 'Status: Ready',
@@ -1484,6 +1729,10 @@
             ps: {
                 nav: { home: 'کور', about: 'زما په اړه', profile: 'پروفایل', settings: 'امستنې', publish: 'خپرول', immigration: 'مهاجرت', technews: 'ټکنالوژي', gallery: 'ګالري' },
                 homeTitle: 'پروفایلونه',
+                cyberEyebrow: 'خوندي اړیکه ټینګه شوه',
+                cyberRoles: ['د سایبري امنیت زده‌کوونکی @ ELTE پوهنتون، هنگري', 'فُل-سټیک پروګرامر', 'ویب ډیزاینر', 'اپلیکیشن ډیزاینر', 'ګرافیک ډیزاینر', 'UX/UI ډیزاینر'],
+                cyberTags: [{icon:'fa-graduation-cap', text:'ELTE University'}, {icon:'fa-shield-halved', text:'Cybersecurity'}, {icon:'fa-code', text:'Full-Stack Dev'}, {icon:'fa-pen-ruler', text:'UX / UI'}],
+                cyberDesc: 'د هنگري ELTE پوهنتون کې د سایبري امنیت زده‌کوونکی؛ په پروګرامینګ، ویب ډیزاین، اپلیکیشن ډیزاین، ګرافیک ډیزاین او UX/UI کې فعال دی.',
                 aboutTitle: 'پروګرامر · ګرافیک ډیزاینر · د مهاجرت مشاور · فټنس روزونکی',
                 aboutText: 'سرفراز خموش، په ۱۳۷۷ کال کې د افغانستان مزار شریف کې زیږیدلی، په ټکنالوژۍ، ډیزاین او ډیجیټل پرمختیا کې له ۸ کلونو څخه زیات تجربه لري.',
                 skillsTitle: 'تخنیکي مهارتونه',
@@ -1505,7 +1754,7 @@
                 techTitle: 'د ټکنالوژۍ خبرونه',
                 galleryTitle: 'د انځورونو ګالري',
                 adminPanel: 'د مدیریت پینل (یوازې مدیر)',
-                adminSend: 'کاروونکي ته ولیږئ',
+                adminSend: 'ټولو ته یې ولیږئ',
                 adminTitlePlaceholder: 'د خبر سرلیک',
                 adminBodyPlaceholder: 'د خبر متن ولیکئ...',
                 adminStatus: 'حالت: چمتو',
@@ -1527,15 +1776,6 @@
         };
 
         // ===== PROFILE CARDS =====
-        const profileCards = [
-            { id: 1, name: 'سرفراز خموش', title: 'برنامه‌نویس و طراح گرافیک', desc: 'متخصص در توسعه وب و طراحی رابط کاربری', tags: ['برنامه‌نویسی', 'طراحی', 'UI/UX'] },
-            { id: 2, name: 'سرفراز خموش', title: 'مشاور مهاجرت', desc: 'راهنمایی در زمینه مهاجرت به آمریکا و کانادا', tags: ['مهاجرت', 'مشاوره'] },
-            { id: 3, name: 'سرفراز خموش', title: 'مربی فیتنس', desc: 'مربی بدنسازی و تناسب اندام با متدهای روز دنیا', tags: ['فیتنس', 'بدنسازی'] },
-            { id: 4, name: 'سرفراز خموش', title: 'شاعر و نویسنده', desc: 'نویسنده اشعار عارفانه و عاشقانه با سبک مدرن', tags: ['شعر', 'ادبیات'] },
-            { id: 5, name: 'سرفراز خموش', title: 'طراح لوگو و برند', desc: 'طراحی هویت بصری و لوگو برای برندهای مختلف', tags: ['لوگو', 'برندینگ'] },
-            { id: 6, name: 'سرفراز خموش', title: 'توسعه‌دهنده فول‌استک', desc: 'توسعه وب‌سایت و اپلیکیشن با React و Node.js', tags: ['React', 'Node.js'] }
-        ];
-
         // ===== OTHER DATA =====
         const specialties = [
             { fa: "برنامه‌نویسی و توسعه نرم‌افزار", en: "Programming & Software Dev" },
@@ -1600,6 +1840,7 @@
         // 3. NAVIGATION
         // ================================================================
         function navigateTo(page) {
+            if (page !== 'home') stopHomeAnimations();
             document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
             const target = document.getElementById('page-' + page);
             if (target) target.classList.add('active');
@@ -1640,24 +1881,130 @@
         // ================================================================
         // 4. RENDER FUNCTIONS
         // ================================================================
+        let cyberTypedTimer = null;
+        let cyberGlitchTimer = null;
+        let matrixAnimId = null;
+
         function renderHome() {
-            const grid = document.getElementById('homeProfileGrid');
-            if (!grid) return;
             const t = translations[currentLang];
-            document.querySelector('#page-home h2 span').textContent = t.homeTitle;
-            grid.innerHTML = profileCards.map((card) => {
-                const name = currentLang === 'fa' ? card.name : 'Sarfraz Khamoosh';
-                const title = card.title;
-                const desc = card.desc;
-                const tags = card.tags;
-                return `<div class="profile-card-home">
-                            <img class="avatar-home" src="images/Khamoosh.jpg" alt="${name}" loading="lazy" onerror="this.src='https://placehold.co/120x120?text=SK&bg=8b5cf6&text_color=fff'">
-                            <div class="home-name">${name}</div>
-                            <div class="home-title">${title}</div>
-                            <div class="home-desc">${desc}</div>
-                            <div class="home-tag">${tags.map(tg => `<span>#${tg}</span>`).join('')}</div>
-                        </div>`;
-            }).join('');
+            const eyebrowEl = document.getElementById('cyberEyebrow');
+            const descEl = document.getElementById('cyberDesc');
+            const tagsEl = document.getElementById('cyberTags');
+            if (!eyebrowEl || !descEl || !tagsEl) return;
+
+            eyebrowEl.textContent = t.cyberEyebrow;
+            descEl.textContent = t.cyberDesc;
+            tagsEl.innerHTML = t.cyberTags.map(tag =>
+                `<span class="cyber-tag"><i class="fas ${tag.icon}"></i>${tag.text}</span>`
+            ).join('');
+
+            startCyberTyped(t.cyberRoles);
+            startCyberGlitch();
+            startMatrixRain();
+        }
+
+        function stopHomeAnimations() {
+            if (cyberTypedTimer) { clearTimeout(cyberTypedTimer); cyberTypedTimer = null; }
+            if (cyberGlitchTimer) { clearInterval(cyberGlitchTimer); cyberGlitchTimer = null; }
+            if (matrixAnimId) { cancelAnimationFrame(matrixAnimId); matrixAnimId = null; }
+        }
+
+        function startCyberTyped(roles) {
+            if (cyberTypedTimer) clearTimeout(cyberTypedTimer);
+            const el = document.getElementById('cyberTyped');
+            if (!el) return;
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+            if (reduceMotion) {
+                el.textContent = roles[0];
+                return;
+            }
+            let roleIndex = 0, charIndex = 0, deleting = false;
+            function tick() {
+                const current = roles[roleIndex % roles.length];
+                if (!deleting) {
+                    charIndex++;
+                    el.textContent = current.slice(0, charIndex);
+                    if (charIndex === current.length) {
+                        deleting = true;
+                        cyberTypedTimer = setTimeout(tick, 1800);
+                        return;
+                    }
+                    cyberTypedTimer = setTimeout(tick, 55);
+                } else {
+                    charIndex--;
+                    el.textContent = current.slice(0, charIndex);
+                    if (charIndex === 0) {
+                        deleting = false;
+                        roleIndex++;
+                        cyberTypedTimer = setTimeout(tick, 400);
+                        return;
+                    }
+                    cyberTypedTimer = setTimeout(tick, 25);
+                }
+            }
+            tick();
+        }
+
+        function startCyberGlitch() {
+            if (cyberGlitchTimer) clearInterval(cyberGlitchTimer);
+            const nameEl = document.getElementById('cyberName');
+            if (!nameEl) return;
+            if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+            cyberGlitchTimer = setInterval(() => {
+                nameEl.classList.add('glitching');
+                setTimeout(() => nameEl.classList.remove('glitching'), 180);
+            }, 4500);
+        }
+
+        function startMatrixRain() {
+            if (matrixAnimId) cancelAnimationFrame(matrixAnimId);
+            const canvas = document.getElementById('matrixCanvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            const hero = canvas.closest('.cyber-hero');
+            const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+            function resize() {
+                canvas.width = hero.clientWidth;
+                canvas.height = hero.clientHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            const chars = '01アカサタナハマヤラワSARFRAZKHAMOOSH#$%&';
+            const fontSize = 14;
+            let columns = Math.floor(canvas.width / fontSize);
+            let drops = new Array(columns).fill(1);
+
+            if (reduceMotion) {
+                // یک فریم ثابت بکش و انیمیشن را متوقف کن
+                ctx.fillStyle = '#050810';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.fillStyle = 'rgba(34, 240, 255, 0.5)';
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < columns; i++) {
+                    ctx.fillText(chars[Math.floor(Math.random() * chars.length)], i * fontSize, Math.random() * canvas.height);
+                }
+                return;
+            }
+
+            function draw() {
+                ctx.fillStyle = 'rgba(5, 8, 16, 0.12)';
+                ctx.fillRect(0, 0, canvas.width, canvas.height);
+                ctx.font = fontSize + 'px monospace';
+                for (let i = 0; i < drops.length; i++) {
+                    const text = chars[Math.floor(Math.random() * chars.length)];
+                    const isHead = Math.random() > 0.93;
+                    ctx.fillStyle = isHead ? 'rgba(190, 255, 240, 0.9)' : 'rgba(34, 240, 255, 0.45)';
+                    ctx.fillText(text, i * fontSize, drops[i] * fontSize);
+                    if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                        drops[i] = 0;
+                    }
+                    drops[i]++;
+                }
+                matrixAnimId = requestAnimationFrame(draw);
+            }
+            draw();
         }
 
         function renderAbout() {
@@ -1745,128 +2092,77 @@
         }
 
         // ================================================================
-        // 5. NOTIFICATION FUNCTIONS
+        // 5. NOTIFICATION FUNCTIONS (OneSignal)
         // ================================================================
-        // فشردن زنگوله یک برنامه = عضویت (یا لغو عضویت) در اعلان‌های همان دسته.
-        // خبر واقعی فقط از صفحه «نشر» برای مشترکین همان دسته فرستاده می‌شود.
+        // فشردن زنگوله یک برنامه = عضویت (یا لغو عضویت) در تگ همان دسته در OneSignal.
+        // خبر واقعی فقط از صفحه «نشر» برای مشترکین همان تگ فرستاده می‌شود.
         async function handleNotification(programId, programName, btn) {
-            let subscriptionId = localStorage.getItem('subscriptionId');
-            if (!subscriptionId) {
-                const subscribed = await subscribeToPush();
-                if (!subscribed) return;
-                subscriptionId = localStorage.getItem('subscriptionId');
-            }
             const t = translations[currentLang];
-            const attemptSubscribeCategory = async (subId) => {
-                const response = await fetch(`${SERVER_URL}/api/subscribe-category`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ subscriptionId: subId, programId })
-                });
-                const result = await response.json().catch(() => ({}));
-                return { status: response.status, result };
-            };
+            if (typeof OneSignal === 'undefined' || !window.__oneSignalReady) {
+                toast(currentLang === 'en' ? 'Notifications are still loading, try again in a moment' : 'سیستم اعلان هنوز بارگذاری می‌شود، چند لحظه دیگر دوباره امتحان کن');
+                return;
+            }
             try {
-                let { status, result } = await attemptSubscribeCategory(subscriptionId);
-
-                // اگر سرور این subscriptionId را نمی‌شناسد (مثلاً بعد از خواب/ری‌استارت رایگان Render)،
-                // یک بار خودکار دوباره subscribe کن و تلاش را تکرار کن
-                if (!result.success && status === 404) {
-                    localStorage.removeItem('subscriptionId');
-                    const resubscribed = await subscribeToPush();
-                    if (!resubscribed) {
-                        toast(currentLang === 'en' ? 'Could not resubscribe' : 'اشتراک دوباره ثبت نشد');
+                const isOptedIn = OneSignal.User.PushSubscription.optedIn;
+                if (!isOptedIn) {
+                    await OneSignal.Slidedown.promptPush();
+                    // بعد از پاسخ کاربر به پرامپت، کمی صبر کن تا وضعیت به‌روزرسانی شود
+                    await new Promise(resolve => setTimeout(resolve, 800));
+                    if (!OneSignal.User.PushSubscription.optedIn) {
+                        toast(currentLang === 'en' ? 'Please allow notifications to subscribe' : 'برای عضویت، لطفاً اجازهٔ نوتیف را فعال کن');
                         return;
                     }
-                    subscriptionId = localStorage.getItem('subscriptionId');
-                    ({ status, result } = await attemptSubscribeCategory(subscriptionId));
                 }
 
-                if (result.success) {
-                    if (result.subscribed) {
-                        notifBadges[programId] = true;
-                        btn.classList.add('has-notification');
-                        if (!btn.querySelector('.badge')) {
-                            const b = document.createElement('span');
-                            b.className = 'badge';
-                            b.textContent = '1';
-                            btn.appendChild(b);
-                        }
-                        btn.classList.add('success');
-                        setTimeout(() => btn.classList.remove('success'), 1200);
-                        toast(t.subscribedMsg);
-                    } else {
-                        notifBadges[programId] = false;
-                        btn.classList.remove('has-notification');
-                        const badge = btn.querySelector('.badge');
-                        if (badge) badge.remove();
-                        toast(t.unsubscribedMsg);
+                const alreadyTagged = !!notifBadges[programId];
+                if (!alreadyTagged) {
+                    await OneSignal.User.addTag(programId, '1');
+                    notifBadges[programId] = true;
+                    btn.classList.add('has-notification');
+                    if (!btn.querySelector('.badge')) {
+                        const b = document.createElement('span');
+                        b.className = 'badge';
+                        b.textContent = '1';
+                        btn.appendChild(b);
                     }
-                    localStorage.setItem('notifications', JSON.stringify(notifBadges));
+                    btn.classList.add('success');
+                    setTimeout(() => btn.classList.remove('success'), 1200);
+                    toast(t.subscribedMsg);
                 } else {
-                    const reason = result.error ? ` (${result.error})` : '';
-                    toast((currentLang === 'en' ? 'Error updating subscription' : 'خطا در ثبت اشتراک') + reason);
+                    await OneSignal.User.removeTag(programId);
+                    notifBadges[programId] = false;
+                    btn.classList.remove('has-notification');
+                    const badge = btn.querySelector('.badge');
+                    if (badge) badge.remove();
+                    toast(t.unsubscribedMsg);
                 }
+                localStorage.setItem('notifications', JSON.stringify(notifBadges));
             } catch (error) {
-                console.error('Category subscribe error:', error);
-                toast(currentLang === 'en' ? 'Server connection error' : 'خطا در ارتباط با سرور');
+                console.error('OneSignal tag error:', error);
+                toast(currentLang === 'en' ? 'Error updating subscription' : 'خطا در ثبت اشتراک');
             }
         }
 
-        async function subscribeToPush() {
+        // در بارگذاری صفحه، تگ‌های واقعی ثبت‌شده در OneSignal را می‌خواند تا اگر کاربر
+        // از دستگاه دیگری وارد شده، وضعیت زنگوله‌ها درست نمایش داده شود
+        async function syncNotifBadgesFromOneSignal() {
             try {
-                if (!('serviceWorker' in navigator)) {
-                    toast('مرورگر شما از Web Push پشتیبانی نمی‌کند');
-                    return false;
+                if (typeof OneSignal === 'undefined' || !OneSignal.User.PushSubscription.optedIn) return;
+                const tags = await OneSignal.User.getTags();
+                if (tags && typeof tags === 'object') {
+                    Object.keys(tags).forEach(key => {
+                        if (tags[key] === '1') notifBadges[key] = true;
+                    });
+                    localStorage.setItem('notifications', JSON.stringify(notifBadges));
+                    if (document.getElementById('page-immigration').classList.contains('active')) {
+                        renderImmigration();
+                    }
                 }
-                const registration = await navigator.serviceWorker.ready;
-                toast(currentLang === 'en'
-                    ? 'Chrome will ask for permission — this lets you get real updates only for the program you choose'
-                    : 'کروم از شما اجازه می‌خواهد — این فقط برای دریافت خبرهای همان برنامه‌ای است که خودت انتخاب می‌کنی');
-                await new Promise(resolve => setTimeout(resolve, 600));
-                const permission = await Notification.requestPermission();
-                if (permission !== 'granted') {
-                    toast('برای دریافت اعلان، لطفاً مجوز را فعال کنید');
-                    return false;
-                }
-                // اگر قبلاً با یک کلید متفاوت (مثلاً کلید قدیمی/تستی) subscribe شده، اول آن را پاک کن
-                const existingSub = await registration.pushManager.getSubscription();
-                if (existingSub) {
-                    try { await existingSub.unsubscribe(); } catch (e) { console.warn('Old subscription cleanup failed:', e); }
-                }
-                const subscription = await registration.pushManager.subscribe({
-                    userVisibleOnly: true,
-                    applicationServerKey: urlBase64ToUint8Array('BJHh3BxLaFTdHfCJp25tP7LRtSe9rUIa7N1d_rFpbRn-Fhh3tNA1DI8LORxGalQpl1p1sjZTjU1tXB8oZPPgWbY')
-                });
-                const response = await fetch(`${SERVER_URL}/api/subscribe`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(subscription)
-                });
-                if (response.ok) {
-                    const data = await response.json();
-                    localStorage.setItem('subscriptionId', data.id);
-                    toast('اشتراک با موفقیت ثبت شد');
-                    return true;
-                }
-                return false;
             } catch (error) {
-                console.error('Subscribe error:', error);
-                toast('خطا در ثبت اشتراک: ' + (error && error.message ? error.message : 'نامشخص'));
-                return false;
+                console.warn('OneSignal tag sync skipped:', error);
             }
         }
 
-        function urlBase64ToUint8Array(base64String) {
-            const padding = '='.repeat((4 - base64String.length % 4) % 4);
-            const base64 = (base64String + padding).replace(/\-/g, '+').replace(/_/g, '/');
-            const rawData = window.atob(base64);
-            const outputArray = new Uint8Array(rawData.length);
-            for (let i = 0; i < rawData.length; ++i) {
-                outputArray[i] = rawData.charCodeAt(i);
-            }
-            return outputArray;
-        }
 
         function renderImmigration() {
             const grid = document.getElementById('immigrationGrid');
@@ -1898,7 +2194,7 @@
                 content.style.display = 'block';
                 lockDiv.style.display = 'none';
                 status.textContent = 'دسترسی مجاز';
-                loadUsers();
+                document.getElementById('adminStatus').textContent = 'آماده ارسال';
             } else {
                 status.textContent = 'رمز اشتباه است';
                 input.value = '';
@@ -1906,44 +2202,9 @@
             }
         }
 
-        async function loadUsers() {
-            try {
-                const response = await fetch(`${SERVER_URL}/api/users`);
-                if (!response.ok) throw new Error('Failed to fetch users');
-                const users = await response.json();
-                const select = document.getElementById('targetUser');
-                const countSpan = document.getElementById('userCount');
-                select.innerHTML = '<option value="">انتخاب کاربر...</option>';
-                if (users.length === 0) {
-                    select.innerHTML += '<option value="" disabled>هیچ کاربری ثبت نشده</option>';
-                    if (countSpan) countSpan.textContent = '0';
-                    document.getElementById('adminStatus').textContent = 'هیچ کاربری ثبت نشده';
-                    return;
-                }
-                users.forEach((user, index) => {
-                    const opt = document.createElement('option');
-                    opt.value = user.id;
-                    opt.textContent = `کاربر ${index + 1}`;
-                    select.appendChild(opt);
-                });
-                if (countSpan) countSpan.textContent = users.length;
-                document.getElementById('adminStatus').textContent = 'آماده ارسال';
-                if (window.notifManager) {
-                    await window.notifManager.renderArchive();
-                }
-            } catch (error) {
-                console.warn('Admin panel not available:', error);
-                document.getElementById('adminStatus').textContent = 'سرور در دسترس نیست';
-                const select = document.getElementById('targetUser');
-                select.innerHTML = '<option value="admin">مدیر (تست)</option>';
-            }
-        }
-
         async function sendAdminPush() {
-            const userId = document.getElementById('targetUser').value;
             const title = document.getElementById('adminTitle').value.trim();
             const body = document.getElementById('adminBody').value.trim();
-            if (!userId) { toast('لطفاً یک کاربر را انتخاب کنید'); return; }
             if (!title) { toast('لطفاً عنوان خبر را وارد کنید'); return; }
             if (!body) { toast('لطفاً متن خبر را وارد کنید'); return; }
             const btn = document.querySelector('#page-settings .admin-send-btn');
@@ -1951,19 +2212,14 @@
             btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> در حال ارسال...';
             btn.disabled = true;
             try {
-                const response = await fetch(`${SERVER_URL}/api/send`, {
+                const response = await fetch(`${SERVER_URL}/api/send-all`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        subscriptionId: userId,
-                        title: title,
-                        body: body,
-                        programId: 'admin'
-                    })
+                    body: JSON.stringify({ title, body })
                 });
                 const result = await response.json();
                 if (result.success) {
-                    toast('خبر با موفقیت ارسال شد');
+                    toast(currentLang === 'en' ? `Sent to everyone (${result.recipients ?? ''})` : `خبر برای همه ارسال شد`);
                     document.getElementById('adminTitle').value = '';
                     document.getElementById('adminBody').value = '';
                     document.getElementById('adminStatus').textContent = 'ارسال موفق';
@@ -1971,7 +2227,7 @@
                         await window.notifManager.saveNotification({
                             title: title,
                             body: body,
-                            userId: userId,
+                            userId: currentLang === 'en' ? 'Everyone' : 'همه کاربران',
                             status: 'delivered',
                             programId: 'admin'
                         });
@@ -2016,28 +2272,13 @@
             select.innerHTML = `<option value="">${t.selectCategory}</option>` +
                 immigrationPrograms.map(p => `<option value="${p.id}">${currentLang === 'en' ? p.en : p.fa}</option>`).join('');
             if (prevValue) select.value = prevValue;
-            select.onchange = updateCategoryCount;
-            updateCategoryCount();
-        }
-
-        async function updateCategoryCount() {
-            const programId = document.getElementById('publishCategory').value;
-            const countEl = document.getElementById('categorySubCount');
-            if (!countEl) return;
-            if (!programId) { countEl.textContent = '0'; return; }
-            try {
-                const res = await fetch(`${SERVER_URL}/api/category-count/${programId}`);
-                const data = await res.json();
-                countEl.textContent = (data && typeof data.count === 'number') ? data.count : '0';
-            } catch (error) {
-                countEl.textContent = '؟';
-            }
         }
 
         async function sendCategoryPush() {
             const programId = document.getElementById('publishCategory').value;
             const title = document.getElementById('publishTitleInput').value.trim();
             const body = document.getElementById('publishBody').value.trim();
+            const imageUrl = document.getElementById('publishImageUrl').value.trim();
             if (!programId) { toast('لطفاً یک دسته را انتخاب کنید'); return; }
             if (!title) { toast('لطفاً عنوان خبر را وارد کنید'); return; }
             if (!body) { toast('لطفاً متن خبر را وارد کنید'); return; }
@@ -2049,11 +2290,11 @@
                 const response = await fetch(`${SERVER_URL}/api/send-category`, {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ programId, title, body })
+                    body: JSON.stringify({ programId, title, body, imageUrl })
                 });
                 const result = await response.json();
                 if (result.success) {
-                    toast(currentLang === 'en' ? `Sent to ${result.sent} subscribers` : `خبر برای ${result.sent} مشترک ارسال شد`);
+                    toast(currentLang === 'en' ? 'News published' : 'خبر با موفقیت نشر شد');
                     document.getElementById('publishTitleInput').value = '';
                     document.getElementById('publishBody').value = '';
                     document.getElementById('publishStatus').textContent = translations[currentLang].statusDelivered;
@@ -2207,12 +2448,8 @@
                 nav.appendChild(btn);
                 btn.addEventListener('click', (e) => {
                     e.stopPropagation();
-                    if (Notification.permission === 'default') {
-                        Notification.requestPermission().then(permission => {
-                            if (permission === 'granted') {
-                                subscribeToPush();
-                            }
-                        });
+                    if (typeof OneSignal !== 'undefined' && window.__oneSignalReady && !OneSignal.User.PushSubscription.optedIn) {
+                        OneSignal.Slidedown.promptPush();
                     }
                 });
                 this.updateBellBadge();
