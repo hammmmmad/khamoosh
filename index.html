@@ -2823,7 +2823,12 @@
             document.querySelectorAll('.lang-opt').forEach(btn => {
                 btn.addEventListener('click', function() {
                     const lang = this.getAttribute('data-lang');
-                    if (lang) setLanguage(lang);
+                    if (!lang || lang === currentLang) return;
+                    // ذخیره زبان و بارگذاری مجدد صفحه تا همه‌ی بخش‌ها (منو، محتوا، عنوان صفحه)
+                    // دقیقاً مثل حالت بعد از رفرش، به‌درستی و کامل با زبان جدید بارگذاری شوند
+                    localStorage.setItem('sarfraz_lang', lang);
+                    localStorage.setItem('currentPage', currentPage);
+                    location.reload();
                 });
             });
             document.querySelectorAll('.view-btn').forEach(btn => {
