@@ -22,6 +22,11 @@
     <meta property="og:url" content="https://sarfraz.abrdns.com" />
     <meta name="theme-color" content="#8b5cf6" />
     <link rel="icon" type="image/png" href="images/Kham.png" />
+    <link rel="apple-touch-icon" href="images/Kham.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/Kham.png" />
+    <link rel="apple-touch-icon" sizes="152x152" href="images/Kham.png" />
+    <link rel="apple-touch-icon" sizes="167x167" href="images/Kham.png" />
+    <link rel="mask-icon" href="images/Kham.png" color="#8b5cf6" />
 
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json" />
@@ -56,6 +61,87 @@
                 syncNotifBadgesFromOneSignal();
             }
         });
+    </script>
+
+    <!-- ===== INSTALL APP (Add to Home Screen) — همهٔ گوشی‌ها و سیستم‌ها ===== -->
+    <script>
+        (function() {
+            let deferredInstallPrompt = null;
+
+            function isStandaloneMode() {
+                return window.matchMedia('(display-mode: standalone)').matches ||
+                       window.navigator.standalone === true; // iOS Safari
+            }
+
+            function isIOS() {
+                return /iphone|ipad|ipod/i.test(navigator.userAgent) ||
+                       (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+            }
+
+            const installBtn = document.getElementById('installAppBtn');
+
+            function showInstallButton() {
+                if (isStandaloneMode()) return; // از قبل نصب شده
+                if (installBtn) installBtn.classList.add('show');
+            }
+
+            function hideInstallButton() {
+                if (installBtn) installBtn.classList.remove('show');
+            }
+
+            // Chrome / Edge / Android / اکثر مرورگرهای دسکتاپ و اندروید
+            window.addEventListener('beforeinstallprompt', function(e) {
+                e.preventDefault();
+                deferredInstallPrompt = e;
+                showInstallButton();
+            });
+
+            window.addEventListener('appinstalled', function() {
+                hideInstallButton();
+                deferredInstallPrompt = null;
+            });
+
+            window.handleInstallClick = async function() {
+                if (deferredInstallPrompt) {
+                    // مسیر استاندارد نصب (اندروید / کروم / اج / دسکتاپ)
+                    deferredInstallPrompt.prompt();
+                    const choice = await deferredInstallPrompt.userChoice;
+                    deferredInstallPrompt = null;
+                    if (choice.outcome === 'accepted') hideInstallButton();
+                } else {
+                    // سافاری iOS و مرورگرهایی که beforeinstallprompt ندارند
+                    openInstallModal();
+                }
+            };
+
+            window.openInstallModal = function() {
+                const overlay = document.getElementById('installModalOverlay');
+                const iosSteps = document.getElementById('installStepsIOS');
+                const androidSteps = document.getElementById('installStepsAndroidManual');
+                if (isIOS()) {
+                    iosSteps.style.display = 'block';
+                    androidSteps.style.display = 'none';
+                } else {
+                    iosSteps.style.display = 'none';
+                    androidSteps.style.display = 'block';
+                }
+                overlay.classList.add('show');
+            };
+
+            window.closeInstallModal = function() {
+                document.getElementById('installModalOverlay').classList.remove('show');
+            };
+
+            // اگر از قبل نصب نشده، دکمه رو نشون بده (برای iOS چون beforeinstallprompt نداره، دستی نشون می‌دیم)
+            document.addEventListener('DOMContentLoaded', function() {
+                if (!isStandaloneMode()) {
+                    if (isIOS()) {
+                        showInstallButton();
+                    }
+                    // برای بقیه، منتظر رویداد beforeinstallprompt می‌مونیم
+                }
+            });
+        })();
     </script>
 
     <style>
@@ -1375,9 +1461,83 @@
             .skills-doughnut-grid { grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
             .gallery-grid { grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); }
         }
+        /* ===== INSTALL APP BUTTON & MODAL ===== */
+        #installAppBtn {
+            position: fixed;
+            bottom: 90px;
+            left: 16px;
+            z-index: 9999;
+            display: none;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 18px;
+            border-radius: 30px;
+            border: none;
+            background: linear-gradient(135deg, #8b5cf6, #6d28d9);
+            color: #fff;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.85rem;
+            box-shadow: 0 6px 20px rgba(139, 92, 246, 0.45);
+            cursor: pointer;
+        }
+        #installAppBtn.show { display: flex; }
+        #installAppBtn i { font-size: 1rem; }
+
+        #installModalOverlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.6);
+            z-index: 10000;
+            display: none;
+            align-items: flex-end;
+            justify-content: center;
+        }
+        #installModalOverlay.show { display: flex; }
+        #installModalBox {
+            background: #fff;
+            width: 100%;
+            max-width: 480px;
+            border-radius: 24px 24px 0 0;
+            padding: 1.5rem;
+            font-family: inherit;
+            direction: rtl;
+            animation: slideUpModal 0.25s ease-out;
+        }
+        body.dark #installModalBox { background: #16151f; color: #eee; }
+        @keyframes slideUpModal { from { transform: translateY(30px); opacity:0; } to { transform: translateY(0); opacity:1; } }
+        #installModalBox h4 { margin:0 0 1rem 0; font-weight:800; display:flex; align-items:center; gap:8px; }
+        #installModalBox .install-step { display:flex; align-items:center; gap:12px; margin-bottom:0.9rem; font-size:0.9rem; line-height:1.6; }
+        #installModalBox .install-step .num { flex-shrink:0; width:28px; height:28px; border-radius:50%; background:#8b5cf6; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:0.8rem; }
+        #installModalBox .install-step i.icon-hint { color:#8b5cf6; margin:0 4px; }
+        #installModalClose { margin-top:0.5rem; width:100%; padding:12px; border:none; border-radius:16px; background:#8b5cf6; color:#fff; font-weight:700; font-family:inherit; cursor:pointer; }
     </style>
 </head>
 <body>
+    <!-- ===== INSTALL APP BUTTON ===== -->
+    <button id="installAppBtn" onclick="handleInstallClick()">
+        <i class="fas fa-download"></i>
+        <span>نصب برنامه</span>
+    </button>
+
+    <!-- ===== INSTALL INSTRUCTIONS MODAL (iOS / manual) ===== -->
+    <div id="installModalOverlay" onclick="if(event.target===this) closeInstallModal()">
+        <div id="installModalBox">
+            <h4><i class="fas fa-mobile-screen-button" style="color:#8b5cf6;"></i> نصب برنامه روی گوشی</h4>
+            <div id="installStepsIOS" style="display:none;">
+                <div class="install-step"><span class="num">1</span><span>در سافاری، دکمهٔ Share <i class="fas fa-arrow-up-from-bracket icon-hint"></i> (پایین یا بالای صفحه) را بزنید</span></div>
+                <div class="install-step"><span class="num">2</span><span>گزینهٔ «Add to Home Screen» <i class="fas fa-square-plus icon-hint"></i> را انتخاب کنید</span></div>
+                <div class="install-step"><span class="num">3</span><span>روی «Add» بزنید — آیکون برنامه به صفحهٔ اصلی اضافه می‌شود</span></div>
+            </div>
+            <div id="installStepsAndroidManual" style="display:none;">
+                <div class="install-step"><span class="num">1</span><span>روی منوی سه‌نقطهٔ مرورگر <i class="fas fa-ellipsis-vertical icon-hint"></i> بزنید</span></div>
+                <div class="install-step"><span class="num">2</span><span>گزینهٔ «Add to Home screen» یا «Install app» را انتخاب کنید</span></div>
+                <div class="install-step"><span class="num">3</span><span>روی «Install» یا «Add» بزنید</span></div>
+            </div>
+            <button id="installModalClose" onclick="closeInstallModal()">متوجه شدم</button>
+        </div>
+    </div>
+
     <div class="container">
         <!-- ===== HOME ===== -->
         <div class="page active" id="page-home">
@@ -1566,7 +1726,7 @@
                         <input type="text" id="publishTitleInput" placeholder="عنوان خبر" />
                     </div>
                     <div class="admin-row" style="margin-top:1rem;">
-                        <input type="text" id="publishImageUrl" placeholder="آدرس عکس (اختیاری)" value="https://sarfraz.abrdns.com/images/notification.png" />
+                        <input type="text" id="publishImageUrl" placeholder="آدرس عکس (اختیاری)" value="https://sarfraz.abrdns.com/images/Khamoosh.jpg" />
                     </div>
                     <div style="display:flex; flex-wrap:wrap; gap:1rem; width:100%; margin-top:1rem;">
                         <textarea id="publishBody" placeholder="متن خبر را بنویسید..." rows="3" class="admin-textarea"></textarea>
