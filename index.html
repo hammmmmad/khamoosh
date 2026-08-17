@@ -18,15 +18,15 @@
     <meta name="robots" content="index, follow" />
     <meta property="og:title" content="سرفراز خموش | وب‌سایت رسمی" />
     <meta property="og:description" content="سرفراز خموش، برنامه‌نویس، طراح گرافیک، مشاور مهاجرت و شاعر" />
-    <meta property="og:image" content="https://sarfraz.abrdns.com/images/Kham.png" />
+    <meta property="og:image" content="https://sarfraz.abrdns.com/images/Khamoosh.jpg" />
     <meta property="og:url" content="https://sarfraz.abrdns.com" />
     <meta name="theme-color" content="#8b5cf6" />
-    <link rel="icon" type="image/png" href="images/Kham.png" />
-    <link rel="apple-touch-icon" href="images/Kham.png" />
-    <link rel="apple-touch-icon" sizes="180x180" href="images/Kham.png" />
-    <link rel="apple-touch-icon" sizes="152x152" href="images/Kham.png" />
-    <link rel="apple-touch-icon" sizes="167x167" href="images/Kham.png" />
-    <link rel="mask-icon" href="images/Kham.png" color="#8b5cf6" />
+    <link rel="icon" type="image/jpeg" href="images/Khamoosh.jpg" />
+    <link rel="apple-touch-icon" href="images/Khamoosh.jpg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="images/Khamoosh.jpg" />
+    <link rel="apple-touch-icon" sizes="152x152" href="images/Khamoosh.jpg" />
+    <link rel="apple-touch-icon" sizes="167x167" href="images/Khamoosh.jpg" />
+    <link rel="mask-icon" href="images/Khamoosh.jpg" color="#8b5cf6" />
 
     <!-- PWA -->
     <link rel="manifest" href="/manifest.json" />
@@ -61,6 +61,21 @@
                 syncNotifBadgesFromOneSignal();
             }
         });
+    </script>
+
+    <!-- ===== ثبت Service Worker (OneSignal + کش آفلاین) ===== -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', function() {
+                navigator.serviceWorker.register('/OneSignalSDKWorker.js', { scope: '/' })
+                    .then(function(reg) {
+                        console.log('[App] Service Worker registered:', reg.scope);
+                    })
+                    .catch(function(err) {
+                        console.error('[App] Service Worker registration failed:', err);
+                    });
+            });
+        }
     </script>
 
     <!-- ===== INSTALL APP (Add to Home Screen) — همهٔ گوشی‌ها و سیستم‌ها ===== -->
@@ -1978,7 +1993,7 @@
         let currentLang = 'fa';
         let currentPage = 'home';
         let notifBadges = JSON.parse(localStorage.getItem('notifications')) || {};
-        const SERVER_URL = 'https://khamoosh.onrender.com';
+        const SERVER_URL = 'https://khamoosh-1.onrender.com';
         const ADMIN_PASSWORD = 'admin123'; // رمز عبور مدیریت
         const PUBLISH_PASSWORD = ADMIN_PASSWORD; // همان رمز مدیریت برای صفحه نشر
 
